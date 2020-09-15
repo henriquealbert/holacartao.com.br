@@ -1,11 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { Stage, Layer, Rect, Image } from 'react-konva';
 import useImage from 'use-image';
-import { changeDpiDataUrl } from 'changedpi';
-import { useEditorStoreFrente } from '../Store';
-import { WarningsEditor, FrenteEditor } from '../Infos';
+// import { changeDpiDataUrl } from 'changedpi';
+import { useEditorStoreVerso } from '../Store';
+import { OiEditor, WarningsEditor, VersoEditor } from '../Infos';
 import EditorChangeSide from '../ChangeSide';
-import { useEditorUtilsContext } from '../../Context/EditorUtilsContext';
 
 // Styles
 import * as S from './styled';
@@ -21,7 +20,7 @@ import IconComponent from '../../Objects/Icon';
 
 const URL = 'http://127.0.0.1:3000/images/user.png';
 
-export default function EditorCanvaFrente() {
+export default function EditorCanvaVerso() {
   // store
   const {
     store,
@@ -30,10 +29,9 @@ export default function EditorCanvaFrente() {
     checkDeselect,
     updateElement,
     setText,
+    colorBG,
     imageBG
-  } = useEditorStoreFrente();
-
-  const { setFrontCardImg } = useEditorUtilsContext();
+  } = useEditorStoreVerso();
 
   const [image] = useImage(URL, 'Anonimus');
   const imageRef = useRef(null);
@@ -67,22 +65,39 @@ export default function EditorCanvaFrente() {
 
   const stageRef = useRef(null);
 
-  useEffect(() => {
-    return () => {
-      const img = document
-        .getElementsByTagName('canvas')[0]
-        .toDataURL('image/png', 1.0);
-      setFrontCardImg(img);
-    };
-  }, [setFrontCardImg]);
+  // function downloadURI(uri, name) {
+  //   const link = document.createElement('a');
+  //   link.download = name;
+  //   link.href = uri;
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  // }
+
+  // useEffect(() => {
+  //   if (stageRef.current) {
+  //     const stage = stageRef.current.getStage();
+  //     const sangria = stageRef.current.getStage().findOne('#linha-sangria');
+
+  //     setHandleSave(() => {
+  //       return () => {
+  //         sangria.remove();
+  //         const dataURL = stage.toDataURL({ pixelRatio: 5.0609375 });
+  //         const daurl150dpi = changeDpiDataUrl(dataURL, 904);
+  //         downloadURI(daurl150dpi, 'teste.jpg');
+  //       };
+  //     });
+  //   }
+  // }, [setHandleSave]);
 
   return (
     <S.EditorContainer>
+      <OiEditor />
       <S.EditorWrapper>
         <WarningsEditor />
-        <FrenteEditor />
+        <VersoEditor />
 
-        <div id="frente-cartao">
+        <div id="verso-cartao">
           <Stage
             width={640}
             height={360.0123494905835}
@@ -96,10 +111,10 @@ export default function EditorCanvaFrente() {
                 return (
                   <Rect
                     key={bg.id}
-                    fill={bg.fill}
+                    fill={colorBG}
                     width={bg.width}
                     height={bg.height}
-                    id="bg-frente"
+                    id="bg-verso"
                   />
                 );
               })}

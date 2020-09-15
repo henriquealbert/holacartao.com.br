@@ -1,11 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { Stage, Layer, Rect, Image } from 'react-konva';
 import useImage from 'use-image';
-import { changeDpiDataUrl } from 'changedpi';
+// import { changeDpiDataUrl } from 'changedpi';
 import { useEditorStoreVerso } from '../Store';
 import { WarningsEditor, VersoEditor } from '../Infos';
 import EditorChangeSide from '../ChangeSide';
-import { useEditorUtilsContext } from '../../Context/EditorUtilsContext';
 
 // Styles
 import * as S from './styled';

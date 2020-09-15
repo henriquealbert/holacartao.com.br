@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { Stage, Layer, Rect, Image } from 'react-konva';
 import useImage from 'use-image';
-import { changeDpiDataUrl } from 'changedpi';
+// import { changeDpiDataUrl } from 'changedpi';
 import { useEditorStoreFrente } from '../Store';
-import { OiEditor, WarningsEditor, FrenteEditor } from '../Infos';
+import { WarningsEditor, FrenteEditor } from '../Infos';
 import EditorChangeSide from '../ChangeSide';
 import { useEditorUtilsContext } from '../../Context/EditorUtilsContext';
 
@@ -30,7 +30,6 @@ export default function EditorCanvaFrente() {
     checkDeselect,
     updateElement,
     setText,
-    colorBG,
     imageBG
   } = useEditorStoreFrente();
 
@@ -79,7 +78,6 @@ export default function EditorCanvaFrente() {
 
   return (
     <S.EditorContainer>
-      <OiEditor />
       <S.EditorWrapper>
         <WarningsEditor />
         <FrenteEditor />
@@ -98,7 +96,7 @@ export default function EditorCanvaFrente() {
                 return (
                   <Rect
                     key={bg.id}
-                    fill={colorBG}
+                    fill={bg.fill}
                     width={bg.width}
                     height={bg.height}
                     id="bg-frente"
