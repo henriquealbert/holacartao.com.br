@@ -1,4 +1,4 @@
-import { auth } from '../../Contexts/AppContext';
+// import { auth } from '../../Contexts/AppContext';
 
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -25,9 +25,9 @@ export default function Editor() {
   );
 }
 
-export async function getServerSideProps(ctx) {
-  const token = auth(ctx);
-  return {
-    props: { token } // will be passed to the page component as props
-  };
-}
+// export async function getServerSideProps(ctx) {
+//   const token = auth(ctx);
+//   return {
+//     props: { token } // will be passed to the page component as props
+//   };
+// }

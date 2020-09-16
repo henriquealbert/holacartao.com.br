@@ -2,10 +2,10 @@ import { authAdmin } from '../../../../Contexts/AdminContext';
 
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import LoadingEditor from '../../../../components/AdminCardModelEdit/Loading';
-import { EditorUtilsProvider } from '../../../../components/AdminCardModelEdit/Context/EditorUtilsContext';
-import { EditorProviderFrente } from '../../../../components/AdminCardModelEdit/Frente/Store';
-import { EditorProviderVerso } from '../../../../components/AdminCardModelEdit/Verso/Store';
+import LoadingEditor from '../../../../Editor/Loading';
+import { EditorUtilsProvider } from '../../../../Editor/Context/EditorUtilsContext';
+import { EditorProviderFrente } from '../../../../Editor/Frente/Store';
+import { EditorProviderVerso } from '../../../../Editor/Verso/Store';
 import serverClient from '../../../../graphql/serverClient';
 import GET_CARD_MODEL from '../../../../graphql/admin/GetCardModel';
 
@@ -14,10 +14,7 @@ const options = {
   loading: LoadingEditor
 };
 
-const EditorComponentAdminEdit = dynamic(
-  () => import('../../../../components/AdminCardModelEdit'),
-  options
-);
+const EditorComponent = dynamic(() => import('../../../../Editor'), options);
 
 export default function CardModelEdit({ data }) {
   return (
@@ -28,7 +25,7 @@ export default function CardModelEdit({ data }) {
       <EditorUtilsProvider>
         <EditorProviderFrente>
           <EditorProviderVerso>
-            <EditorComponentAdminEdit data={data} />
+            <EditorComponent data={data} user />
           </EditorProviderVerso>
         </EditorProviderFrente>
       </EditorUtilsProvider>

@@ -23,6 +23,7 @@ export default function Dashboard({ orders }) {
 
 export async function getServerSideProps(ctx) {
   const adminToken = authAdmin(ctx);
+
   const orders = await serverClient(adminToken).request(GET_ALL_ORDERS);
 
   return {

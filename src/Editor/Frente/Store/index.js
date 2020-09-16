@@ -4,18 +4,8 @@ import { nanoid } from 'nanoid';
 const EditorFrenteContext = createContext(null);
 
 export const EditorProviderFrente = ({ children }) => {
-  // Create BG
-  const BG = {
-    id: String(nanoid() + Date.now()),
-    type: 'bg',
-    fill: '#ffffff',
-    width: 640,
-    height: 360.0123494905835,
-    x: 0,
-    y: 0
-  };
   // Create array of Elements
-  const [store, setStore] = useState([BG]);
+  const [store, setStore] = useState([]);
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
