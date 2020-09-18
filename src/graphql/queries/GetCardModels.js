@@ -3,6 +3,11 @@ const GET_CARD_MODELS = /* GraphQL */ `
     cardModels {
       id
       title
+      slug
+      example_image {
+        id
+        url
+      }
       card_category {
         id
         title

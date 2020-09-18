@@ -59,7 +59,7 @@ export default function AdminCardTable() {
                     <td>{formatDateHour(card.updated_at)}</td>
                     <td>
                       <Link
-                        href="/admin/card-models/edit/[pid]"
+                        href="/admin/card-models/edit/[id]"
                         as={`/admin/card-models/edit/${card.slug}_${card.id}`}
                       >
                         <a>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Edit, Trash } from '@styled-icons/boxicons-solid/';
+import { Edit } from '@styled-icons/boxicons-solid/';
 
 export const AdminCardTableWrapper = styled.div`
   margin: 0 auto;

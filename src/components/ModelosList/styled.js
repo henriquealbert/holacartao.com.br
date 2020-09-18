@@ -56,4 +56,12 @@ export const Modelo = styled.div`
   height: 100px;
   background: #c4c4c4;
   margin: 0 auto 0.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ModeloContent = styled.div`
+  width: 100%;
+  height: 100%;
 `;

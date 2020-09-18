@@ -1,5 +1,6 @@
 import * as S from './styled';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function ModelosList({ data }) {
   const { cardModels } = data;
@@ -16,7 +17,9 @@ export default function ModelosList({ data }) {
       <S.TextWrapper>
         <p>
           Crie seu próprio cartão de visita à partir de modelo em branco{' '}
-          <a href="#">clicando aqui</a>
+          <Link href="/editor/">
+            <a>clicando aqui</a>
+          </Link>
         </p>
         <p>Ou clique em um modelo abaixo para personalizar. </p>
       </S.TextWrapper>
@@ -42,10 +45,32 @@ export default function ModelosList({ data }) {
       <S.ModeloGrid>
         {categoria === 'All'
           ? cardModels.map((model) => {
-              return <S.Modelo key={model.id}>{model.title}</S.Modelo>;
+              return (
+                <S.Modelo key={model.id}>
+                  <Link
+                    href="/editor/[id]"
+                    as={`/editor/${model.slug}_${model.id}`}
+                  >
+                    <a>
+                      <S.ModeloContent>{model.title}</S.ModeloContent>
+                    </a>
+                  </Link>
+                </S.Modelo>
+              );
             })
-          : categoriesList.map((item) => {
-              return <S.Modelo key={item.id}>{item.title}</S.Modelo>;
+          : categoriesList.map((model) => {
+              return (
+                <S.Modelo key={model.id}>
+                  <Link
+                    href="/editor/[id]"
+                    as={`/editor/${model.slug}_${model.id}`}
+                  >
+                    <a>
+                      <S.ModeloContent>{model.title}</S.ModeloContent>
+                    </a>
+                  </Link>
+                </S.Modelo>
+              );
             })}
       </S.ModeloGrid>
     </S.ModelosWrapper>

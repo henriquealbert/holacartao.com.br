@@ -10,16 +10,13 @@ export default function EditorComponent({ data, user }) {
   const { setStore: setStoreFrente } = useEditorStoreFrente();
   const { setStore: setStoreVerso } = useEditorStoreVerso();
 
-  // load store from the backed
+  // load store from the backend
   useEffect(() => {
-    setStoreFrente(data.cardModel.frontal_card);
-    setStoreVerso(data.cardModel.back_card);
-  }, [
-    data.cardModel.frontal_card,
-    data.cardModel.back_card,
-    setStoreFrente,
-    setStoreVerso
-  ]);
+    if (data) {
+      setStoreFrente(data.cardModel.frontal_card);
+      setStoreVerso(data.cardModel.back_card);
+    }
+  }, [data, setStoreFrente, setStoreVerso]);
 
   return (
     <>
