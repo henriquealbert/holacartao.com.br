@@ -12,16 +12,15 @@ import * as S from './styled';
 
 export default function MyAccOrders({ initialData }) {
   // Get User ID
-  const { data: user, error } = useFetch(GET_ME, {
+  const { data: user, error } = useFetch(GET_ME, null, {
     initialData: initialData.user
   });
 
-  const userID = user !== undefined ? user.me.id : -1;
   // Get Order Data passing the User Id to the query
   const { data: pedidos, error: ordersError } = useFetch(
     () => GET_ORDERS,
     {
-      id: userID
+      id: user.me.id
     },
     { initialData: initialData.orders }
   );

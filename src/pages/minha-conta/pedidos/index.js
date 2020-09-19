@@ -25,12 +25,10 @@ export default function MinhaContaPedidos({ initialData }) {
 
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
-
   const user = await serverClient(token).request(GET_ME);
 
-  const userID = user !== undefined ? user.me.id : -1;
   const orders = await serverClient(token).request(GET_ORDERS, {
-    id: userID
+    id: user.me.id
   });
 
   return {

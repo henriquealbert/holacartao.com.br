@@ -17,7 +17,12 @@ export default function ModelosList({ data }) {
       <S.TextWrapper>
         <p>
           Crie seu próprio cartão de visita à partir de modelo em branco{' '}
-          <Link href="/editor/">
+          <Link
+            href={{
+              pathname: '/editor/',
+              query: { url: 'editor/' }
+            }}
+          >
             <a>clicando aqui</a>
           </Link>
         </p>
@@ -45,11 +50,15 @@ export default function ModelosList({ data }) {
       <S.ModeloGrid>
         {categoria === 'All'
           ? cardModels.map((model) => {
+              const url = `${model.slug}_${model.id}`;
+
               return (
                 <S.Modelo key={model.id}>
                   <Link
-                    href="/editor/[id]"
-                    as={`/editor/${model.slug}_${model.id}`}
+                    href={{
+                      pathname: `/editor/${url}`,
+                      query: { url: `/editor/${url}` }
+                    }}
                   >
                     <a>
                       <S.ModeloContent>{model.title}</S.ModeloContent>
@@ -59,11 +68,15 @@ export default function ModelosList({ data }) {
               );
             })
           : categoriesList.map((model) => {
+              const url = `${model.slug}_${model.id}`;
+
               return (
                 <S.Modelo key={model.id}>
                   <Link
-                    href="/editor/[id]"
-                    as={`/editor/${model.slug}_${model.id}`}
+                    href={{
+                      pathname: `/editor/${url}`,
+                      query: { url: `/editor/${url}` }
+                    }}
                   >
                     <a>
                       <S.ModeloContent>{model.title}</S.ModeloContent>

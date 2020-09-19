@@ -16,7 +16,7 @@ import { useEditorUtilsContext } from '../../../Context/EditorUtilsContext';
 import * as S from './styled';
 
 export default function FormCardModelEdit({ infoCard }) {
-  const { closeModal, changeSide } = useEditorUtilsContext();
+  const { closeModal, setFrente, setIsOpen } = useEditorUtilsContext();
   // Get Select Options
   const { data: allCardCategories } = useFetchAdmin(GET_ALL_CARD_CATEGORIES);
 
@@ -57,11 +57,11 @@ export default function FormCardModelEdit({ infoCard }) {
         input
       });
       if (res) {
-        setLoading(false);
         resetForm();
-        Router.push('/admin/card-models/');
-        closeModal();
-        changeSide();
+        setFrente(true);
+        setIsOpen(false);
+        Router.push('/admin/card-models');
+        setLoading(false);
       }
     }
 
@@ -80,11 +80,11 @@ export default function FormCardModelEdit({ infoCard }) {
       input
     });
     if (res) {
-      setLoading(false);
       resetForm();
-      Router.push('/admin/card-models/');
-      closeModal();
-      changeSide();
+      setFrente(true);
+      setIsOpen(false);
+      Router.push('/admin/card-models');
+      setLoading(false);
     }
   };
 

@@ -62,9 +62,8 @@ export default function MyAccOrdersID({ data }) {
         </table>
         <S.OrderDetails>
           <p>
-            O pedido <span>#2020{order.id}</span> foi realizado em{' '}
-            <strong>{formatDateHour(order.created_at)}</strong> e atualmente
-            está{' '}
+            O pedido <strong>#2020{order.id}</strong> foi realizado em{' '}
+            <b>{formatDateHour(order.created_at)}</b> e atualmente está{' '}
             <S.StatusColor status={order.status}>
               {formatStatus(order.status)}
             </S.StatusColor>

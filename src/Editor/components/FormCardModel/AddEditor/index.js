@@ -17,7 +17,7 @@ import { useEditorUtilsContext } from '../../../Context/EditorUtilsContext';
 import * as S from './styled';
 
 export default function FormCardModelAdd() {
-  const { closeModal } = useEditorUtilsContext();
+  const { closeModal, setFrente, setIsOpen } = useEditorUtilsContext();
   // Get Select Options
   const { data } = useFetchAdmin(GET_ALL_CARD_CATEGORIES);
   // Get Stores to save
@@ -56,9 +56,11 @@ export default function FormCardModelAdd() {
         input
       });
       if (res) {
-        setLoading(false);
         resetForm();
         Router.push('/admin/card-models');
+        setFrente(true);
+        setIsOpen(false);
+        setLoading(false);
       }
     }
   };

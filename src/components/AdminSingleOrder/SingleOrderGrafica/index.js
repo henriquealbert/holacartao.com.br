@@ -33,7 +33,6 @@ export default function SingleOrderGrafica({ data, mutate }) {
           ...data,
           grafica_pedido: res.updateOrder.order.grafica_pedido
         });
-        console.log(res);
         resetForm();
       })
       .catch(() => {

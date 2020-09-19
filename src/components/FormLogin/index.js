@@ -1,7 +1,6 @@
 // Utils
 import Link from 'next/link';
 import React, { useState, useContext } from 'react';
-import { useRouter } from 'next/router';
 import { login } from '../../lib/auth';
 import AppContext from '../../Contexts/AppContext';
 
@@ -15,7 +14,7 @@ import * as S from './styled';
 export default function FormLogin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const router = useRouter();
+
   const appContext = useContext(AppContext);
 
   const validations = Yup.object().shape({
@@ -34,7 +33,6 @@ export default function FormLogin() {
         setLoading(false);
         // set authed User in global context to update header/app state
         appContext.setUser(res.data.user);
-        router.push('/minha-conta');
       })
       .catch((error) => {
         setError(error.response.data);
@@ -47,7 +45,7 @@ export default function FormLogin() {
       <h1>bem-vindo de novo!</h1>
       <S.NaoPossui>
         ainda não possui uma conta?{' '}
-        <Link href="/criar-conta">
+        <Link href="/criar-conta/">
           <a>clique aqui</a>
         </Link>
       </S.NaoPossui>
@@ -89,7 +87,7 @@ export default function FormLogin() {
 
       <p>
         esqueceu sua senha?{' '}
-        <Link href="/esqueceu-senha">
+        <Link href="/esqueceu-senha/">
           <a>clique aqui</a>
         </Link>
       </p>

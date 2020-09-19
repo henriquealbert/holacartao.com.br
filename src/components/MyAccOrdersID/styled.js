@@ -54,7 +54,7 @@ export const MyAccOrdersID = styled.div`
   }
 `;
 
-export const StatusColor = styled.p`
+export const StatusColor = styled.span`
   display: inline;
   padding: 0.25rem 0.4rem;
   border-radius: 1rem;
@@ -81,9 +81,8 @@ export const OrderDetails = styled.div`
   margin-bottom: 2rem;
 
   p {
-    span {
+    strong {
       color: var(--green);
-      font-weight: bold;
     }
   }
 `;

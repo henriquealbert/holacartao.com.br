@@ -16,7 +16,7 @@ export default function CardModelAdd() {
       <Head>
         <title>Adicionar Modelo de Cartão - Admin - Hola Cartão</title>
       </Head>
-      <EditorComponent />
+      <EditorComponent add />
     </>
   );
 }

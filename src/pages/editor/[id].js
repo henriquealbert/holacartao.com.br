@@ -18,15 +18,15 @@ export default function UserEditor({ data }) {
       <Head>
         <title>Edite seu Modelo de Cartão - Hola Cartão</title>
       </Head>
-      <EditorComponent data={data} user />
+      <EditorComponent data={data} user add={false} />
     </>
   );
 }
 
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
-  const { id } = await ctx.query;
-  const parsedId = id.split('_').pop();
+  const { id } = await ctx.params;
+  const parsedId = String(id).slice(-2);
   const data = await serverClient(token).request(GET_CARD_MODEL, {
     id: parsedId
   });

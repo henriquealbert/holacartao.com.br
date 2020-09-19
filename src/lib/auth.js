@@ -26,7 +26,7 @@ export const registerUser = (username, email, password, occupation, terms) => {
         //resolve the promise to set loading to false in SignUp form
         resolve(res);
         //redirect back to home page for restaurance selection
-        Router.push('/minha-conta');
+        Router.push('/minha-conta/');
       })
       .catch((error) => {
         //reject the promise and pass the error object back to the form
@@ -51,8 +51,11 @@ export const login = (identifier, password) => {
           window.localStorage.removeItem('logout');
           //resolve the promise to set loading to false in SignUp form
           resolve(res);
-          //redirect back to home page for restaurance selection
-          Router.push('/minha-conta');
+          if (Router.query.url) {
+            Router.push(Router.query.url);
+          } else {
+            Router.push('/minha-conta/');
+          }
         }
       })
       .catch((error) => {
@@ -69,5 +72,5 @@ export const logout = () => {
   // sync logout between multiple windows
   window.localStorage.setItem('logout', Date.now());
   //redirect to the home page
-  Router.push('/login?redirected=true');
+  Router.push('/login/?redirected=true');
 };
