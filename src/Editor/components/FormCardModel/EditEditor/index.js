@@ -60,8 +60,8 @@ export default function FormCardModelEdit({ infoCard }) {
         resetForm();
         setFrente(true);
         setIsOpen(false);
-        Router.push('/admin/card-models');
         setLoading(false);
+        Router.push('/admin/card-models');
       }
     }
 
@@ -83,8 +83,8 @@ export default function FormCardModelEdit({ infoCard }) {
       resetForm();
       setFrente(true);
       setIsOpen(false);
-      Router.push('/admin/card-models');
       setLoading(false);
+      Router.push('/admin/card-models');
     }
   };
 

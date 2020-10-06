@@ -6,7 +6,7 @@ export default function ChangeSide({ frente }) {
   const { changeSide } = useEditorUtilsContext();
 
   return (
-    <S.ChangeSideWrapper frente={frente}>
+    <S.ChangeSideWrapper frente={frente} id="changeSide">
       <button onClick={changeSide}>
         {frente === true ? (
           <>

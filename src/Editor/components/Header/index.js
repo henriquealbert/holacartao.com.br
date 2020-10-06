@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import SaveCardHeader from '../SaveCardHeader';
+import Router from 'next/router';
 
 import * as S from './styled';
 
@@ -10,13 +11,9 @@ export default function Header({ editorStore, user }) {
       <S.HeaderEditorContainer>
         <div>
           {user ? (
-            <Link href="/modelos/">
-              <a>
-                <S.BackLink title="Sair do Editor">
-                  <S.ArrowBackIcon /> Sair do Editor
-                </S.BackLink>
-              </a>
-            </Link>
+            <S.BackLink title="Sair do Editor" onClick={() => Router.back()}>
+              <S.ArrowBackIcon /> Sair do Editor
+            </S.BackLink>
           ) : (
             <Link href="/admin/card-models/">
               <a>

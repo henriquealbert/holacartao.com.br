@@ -28,9 +28,8 @@ export async function getServerSideProps(ctx) {
 
   const user = await serverClient(token).request(GET_ME);
 
-  const userID = user !== undefined ? user.me.id : -1;
   const savedCards = await serverClient(token).request(GET_SAVED_CARDS, {
-    id: userID
+    id: user.me.id
   });
 
   return {

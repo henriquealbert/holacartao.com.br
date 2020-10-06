@@ -43,7 +43,7 @@ export default function EditorCanvaFrente({
         setFrontCardImg(img);
       }
     };
-  }, [setFrontCardImg]);
+  }, [setFrontCardImg, setSelectedId]);
 
   return (
     <S.Wrapper>

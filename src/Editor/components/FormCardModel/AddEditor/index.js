@@ -57,10 +57,10 @@ export default function FormCardModelAdd() {
       });
       if (res) {
         resetForm();
-        Router.push('/admin/card-models');
         setFrente(true);
         setIsOpen(false);
         setLoading(false);
+        Router.push('/admin/card-models/');
       }
     }
   };

@@ -4,12 +4,7 @@ const GET_SAVED_CARDS = /* GraphQL */ `
       saved_cards {
         id
         title
-        card_model {
-          title
-          card_category {
-            title
-          }
-        }
+        slug
         created_at
         updated_at
       }

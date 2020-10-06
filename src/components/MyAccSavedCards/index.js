@@ -16,12 +16,11 @@ export default function MyAccSavedCards({ initialData }) {
     initialData: initialData.user
   });
 
-  const userID = user !== undefined ? user.me.id : -1;
   // Get Order Data passing the User Id to the query
   const { data: savedCards, error: savedCardsErrors } = useFetch(
     () => GET_SAVED_CARDS,
     {
-      id: userID
+      id: user.me.id
     },
     { initialData: initialData.savedCards }
   );
@@ -48,8 +47,6 @@ export default function MyAccSavedCards({ initialData }) {
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Modelo</th>
-              <th>Categoria</th>
               <th>Criado</th>
               <th>Atualizado</th>
               <th> </th>
@@ -60,15 +57,18 @@ export default function MyAccSavedCards({ initialData }) {
               return (
                 <tr key={card.id}>
                   <td>{card.title}</td>
-                  <td>{card.card_model?.title}</td>
-                  <td>{card.card_model?.card_category.title}</td>
                   <td>{formatDate(card.created_at)}</td>
                   <td>{formatDateHour(card.updated_at)}</td>
                   <td>
                     <Link
-                      href="/editor"
-                      // link precisa abrir o cartão carregado no editor
-                      // as={`/minha-conta/savedCards/2020${card.id}`}
+                      href={{
+                        pathname: `/editor/${card.slug}`,
+                        query: {
+                          url: `/editor/${card.slug}`,
+                          saved_card: true,
+                          card: card.id
+                        }
+                      }}
                     >
                       <a>Abrir no editor</a>
                     </Link>

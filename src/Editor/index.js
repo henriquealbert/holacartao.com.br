@@ -7,7 +7,7 @@ import EditorVerso from './Verso';
 import { nanoid } from 'nanoid';
 
 export default function EditorComponent({ data, user, add }) {
-  const { frente } = useEditorUtilsContext();
+  const { frente, setSaveCardHeader } = useEditorUtilsContext();
   const { setStore: setStoreFrente } = useEditorStoreFrente();
   const { setStore: setStoreVerso } = useEditorStoreVerso();
 
@@ -35,11 +35,17 @@ export default function EditorComponent({ data, user, add }) {
       setStoreFrente([whiteBackgroundFrente]);
       setStoreVerso([whiteBackgroundVerso]);
     }
-    if (data) {
+    if (data?.cardModel) {
       setStoreFrente(data.cardModel.frontal_card);
       setStoreVerso(data.cardModel.back_card);
+      setSaveCardHeader(null);
     }
-  }, [add, setStoreFrente, setStoreVerso, data]);
+    if (data?.savedCard) {
+      setStoreFrente(data.savedCard.front_card);
+      setStoreVerso(data.savedCard.back_card);
+      setSaveCardHeader(data.savedCard);
+    }
+  }, [add, setStoreFrente, setStoreVerso, data, setSaveCardHeader]);
 
   return (
     <>

@@ -1,9 +1,11 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-
 import { auth } from '../../Contexts/AppContext';
+
 import serverClient from '../../graphql/serverClient';
 import GET_CARD_MODEL from '../../graphql/admin/GetCardModel';
+import GET_SINGLE_SAVED_CARD from '../../graphql/queries/GetSingleSavedCard';
+
 import LoadingEditor from '../../Editor/Loading';
 
 const options = {
@@ -25,12 +27,25 @@ export default function UserEditor({ data }) {
 
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
-  const { id } = await ctx.params;
-  const parsedId = String(id).slice(-2);
-  const data = await serverClient(token).request(GET_CARD_MODEL, {
-    id: parsedId
-  });
-  return {
-    props: { data } // will be passed to the page component as props
-  };
+  const query = await ctx.query;
+
+  if (query.saved_card) {
+    const data = await serverClient(token).request(GET_SINGLE_SAVED_CARD, {
+      id: query.card
+    });
+
+    return {
+      props: { data } // will be passed to the page component as props
+    };
+  }
+
+  if (!query.saved_card) {
+    const data = await serverClient(token).request(GET_CARD_MODEL, {
+      id: query.card
+    });
+
+    return {
+      props: { data } // will be passed to the page component as props
+    };
+  }
 }

@@ -50,14 +50,12 @@ export default function ModelosList({ data }) {
       <S.ModeloGrid>
         {categoria === 'All'
           ? cardModels.map((model) => {
-              const url = `${model.slug}_${model.id}`;
-
               return (
                 <S.Modelo key={model.id}>
                   <Link
                     href={{
-                      pathname: `/editor/${url}`,
-                      query: { url: `/editor/${url}` }
+                      pathname: `/editor/${model.slug}`,
+                      query: { url: `/editor/${model.slug}`, card: model.id }
                     }}
                   >
                     <a>
@@ -68,14 +66,12 @@ export default function ModelosList({ data }) {
               );
             })
           : categoriesList.map((model) => {
-              const url = `${model.slug}_${model.id}`;
-
               return (
                 <S.Modelo key={model.id}>
                   <Link
                     href={{
-                      pathname: `/editor/${url}`,
-                      query: { url: `/editor/${url}` }
+                      pathname: `/editor/${model.slug}`,
+                      query: { url: `/editor/${model.slug}`, card: model.id }
                     }}
                   >
                     <a>

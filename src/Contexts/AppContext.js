@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 import Router from 'next/router';
 import nextCookie from 'next-cookies';
 
@@ -6,6 +6,8 @@ import nextCookie from 'next-cookies';
 const AppContext = createContext({ isAuthenticated: false });
 
 export default AppContext;
+
+export const useAppContext = () => useContext(AppContext);
 
 // Client Auth
 export const auth = (ctx) => {

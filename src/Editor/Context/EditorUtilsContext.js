@@ -16,6 +16,7 @@ export const EditorUtilsProvider = ({ children }) => {
   const openModal = () => {
     setIsOpen(true);
   };
+
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -24,20 +25,24 @@ export const EditorUtilsProvider = ({ children }) => {
   const [frontCardImg, setFrontCardImg] = useState(null);
   const [backCardImg, setBackCardImg] = useState(null);
 
+  const [saveCardHeader, setSaveCardHeader] = useState(null);
+
   return (
     <EditorUtilsContext.Provider
       value={{
         changeSide,
         frente,
         setFrente,
-        openModal,
         modalIsOpen,
+        openModal,
         setIsOpen,
         closeModal,
         frontCardImg,
         setFrontCardImg,
         backCardImg,
-        setBackCardImg
+        setBackCardImg,
+        saveCardHeader,
+        setSaveCardHeader
       }}
     >
       {children}
