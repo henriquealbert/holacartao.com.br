@@ -20,7 +20,7 @@ export default function ModelosList({ data }) {
           <Link
             href={{
               pathname: '/editor/',
-              query: { url: 'editor/' }
+              query: { url: '/editor/' }
             }}
           >
             <a>clicando aqui</a>
@@ -55,7 +55,10 @@ export default function ModelosList({ data }) {
                   <Link
                     href={{
                       pathname: `/editor/${model.slug}`,
-                      query: { url: `/editor/${model.slug}`, card: model.id }
+                      query: {
+                        url: `/editor/${model.slug}`,
+                        card: model.id
+                      }
                     }}
                   >
                     <a>
@@ -71,7 +74,11 @@ export default function ModelosList({ data }) {
                   <Link
                     href={{
                       pathname: `/editor/${model.slug}`,
-                      query: { url: `/editor/${model.slug}`, card: model.id }
+
+                      query: {
+                        url: `/editor/${model.slug}`,
+                        card: model.id
+                      }
                     }}
                   >
                     <a>

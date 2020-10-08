@@ -13,7 +13,8 @@ import * as S from './styled';
 export default function MyAccOrders({ initialData }) {
   // Get User ID
   const { data: user, error } = useFetch(GET_ME, null, {
-    initialData: initialData.user
+    initialData: initialData.user,
+    revalidateOnMount: true
   });
 
   // Get Order Data passing the User Id to the query
@@ -22,7 +23,7 @@ export default function MyAccOrders({ initialData }) {
     {
       id: user.me.id
     },
-    { initialData: initialData.orders }
+    { initialData: initialData.orders, revalidateOnMount: true }
   );
 
   if (error || ordersError || user?.error || pedidos?.error) {

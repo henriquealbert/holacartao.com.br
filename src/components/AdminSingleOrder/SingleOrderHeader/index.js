@@ -7,6 +7,7 @@ import { formatDateHour } from '../../../utils/format';
 import * as S from './styled';
 
 const optionsStatus = [
+  { value: 'incompleto', label: 'Incompleto' },
   { value: 'analise', label: 'Análise Financeira' },
   { value: 'producao', label: 'Em Produção' },
   { value: 'transporte', label: 'Em Transporte' },

@@ -10,6 +10,9 @@ export default function AdminTrello({ initialData }) {
     revalidateOnMount: true
   });
 
+  const incompletos = data?.orders.filter(
+    (pedido) => pedido.status === 'incompleto'
+  );
   const analises = data?.orders.filter((pedido) => pedido.status === 'analise');
   const producoes = data?.orders.filter(
     (pedido) => pedido.status === 'producao'
@@ -41,6 +44,25 @@ export default function AdminTrello({ initialData }) {
 
   return (
     <S.TrelloContainer>
+      <S.Card>
+        <h2>Incompleto</h2>
+
+        {incompletos?.map((item) => {
+          return (
+            <div key={item.id}>
+              <Link
+                href="/admin/dashboard/[id]"
+                as={`/admin/dashboard/2020${item.id}`}
+              >
+                <S.Pedido color={item.status}>
+                  <a>#2020{item.id}</a>
+                  <span>+</span>
+                </S.Pedido>
+              </Link>
+            </div>
+          );
+        })}
+      </S.Card>
       <S.Card>
         <h2>Análise Financeira</h2>
 

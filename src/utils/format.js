@@ -61,6 +61,8 @@ export function formatStatus(status) {
       ? 'Estornado'
       : status === 'cancelado'
       ? 'Cancelado'
+      : status === 'incompleto'
+      ? 'Incompleto'
       : '';
   return updatedStatus;
 }
