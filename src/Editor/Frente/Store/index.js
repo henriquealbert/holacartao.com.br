@@ -12,6 +12,14 @@ export const EditorProviderFrente = ({ children }) => {
     setHistory((prev) => prev.concat([store]));
   }, [store]);
 
+  useEffect(() => {
+    const imgsbg = store.filter((element) => element.type === 'image-bg');
+    if (imgsbg.length > 0) {
+      setImageBG(imgsbg[0]);
+    }
+    console.log(imgsbg);
+  }, [store]);
+
   const handleUndo = () => {
     if (history.length === 1) {
       return;
@@ -128,7 +136,7 @@ export const EditorProviderFrente = ({ children }) => {
   // UTILS
 
   // Color BG
-  const [colorBG, setColorBG] = useState('#FFFFFF');
+  const [colorBG, setColorBG] = useState('');
 
   // Image BG
   const [imageBG, setImageBG] = useState('');

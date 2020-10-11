@@ -43,6 +43,14 @@ export default function Item5({ openItem5, editorStore }) {
   };
 
   const removeImage = () => {
+    if (imgsbgs.length > 0) {
+      setImageBG('');
+      const elements = store.filter((element) => element.id !== imgsbgs[0].id);
+      setStore(elements);
+    }
+  };
+
+  const deselectImage = () => {
     setImageBG('');
   };
 
@@ -80,9 +88,13 @@ export default function Item5({ openItem5, editorStore }) {
           </label>
         </S.AddImageFundo>
 
+        <S.DeselectImgFundo>
+          <button onClick={deselectImage}>Deselecionar imagem de fundo</button>
+        </S.DeselectImgFundo>
         <S.RemoveImgFundo>
           <button onClick={removeImage}>Remover imagem de fundo</button>
         </S.RemoveImgFundo>
+
         <S.ListofAllImgsBgs>
           <h4>Fundos já carregados:</h4>
           <ul>

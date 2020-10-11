@@ -57,9 +57,9 @@ export default function EditorCanvaFrente({
         <Layer>
           <BackgroundColor store={store} BgId={BgId} />
           <BackgroundImage imageBG={imageBG} />
-
           <LinhaSangria />
-
+        </Layer>
+        <Layer>
           {/* Formas */}
           <Rectangles
             store={store}

@@ -5,9 +5,6 @@ import { nanoid } from 'nanoid';
 export default function Item4({ openItem4, editorStore }) {
   const { setStore, store, imageLibrary, setImageLibrary } = editorStore;
 
-  // get all images
-  const imgs = store.filter((element) => element.type === 'image');
-
   // add new image from file
   const addImage = async (e) => {
     const file = e.target.files[0];
@@ -74,10 +71,10 @@ export default function Item4({ openItem4, editorStore }) {
         <p>Para logos, utilize imagens PNG com fundo transparente.</p>
 
         <S.ListofAllImgsUploaded>
-          <h4>Imagens já carregadas:</h4>
+          <h4>Imagens carregadas:</h4>
           <ul>
             {imageLibrary.length === 0 ? (
-              <small>Não há nenhuma imagem carregada.</small>
+              <small>Você não fez upload de nenhuma imagem.</small>
             ) : (
               imageLibrary.map((img) => {
                 return (

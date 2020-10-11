@@ -81,7 +81,24 @@ export const RemoveImgFundo = styled.div`
   margin: 0 auto;
   display: flex;
   button {
-    margin: 1rem auto;
+    margin: 0.5rem auto;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    color: var(--blue);
+
+    &:hover {
+      color: var(--red);
+    }
+  }
+`;
+
+export const DeselectImgFundo = styled.div`
+  margin: 0 auto;
+  display: flex;
+  button {
+    margin: 0 auto;
+    margin-top: 1rem;
     border: none;
     background: none;
     text-decoration: underline;
