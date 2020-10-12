@@ -52,7 +52,10 @@ export const login = (identifier, password) => {
           //resolve the promise to set loading to false in SignUp form
           resolve(res);
           if (Router.query.url) {
-            Router.push(Router.query.url);
+            Router.push({
+              pathname: Router.query.url,
+              query: Router.query
+            });
           } else {
             Router.push('/minha-conta/');
           }

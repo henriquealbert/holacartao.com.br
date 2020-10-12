@@ -27,11 +27,12 @@ export default function UserEditor({ data }) {
 
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
-  const query = await ctx.query;
 
-  if (query.saved_card) {
+  console.log(ctx);
+
+  if (ctx.query.saved_card) {
     const data = await serverClient(token).request(GET_SINGLE_SAVED_CARD, {
-      id: query.card
+      id: ctx.query.card
     });
 
     return {
@@ -39,9 +40,9 @@ export async function getServerSideProps(ctx) {
     };
   }
 
-  if (!query.saved_card) {
+  if (!ctx.query.saved_card) {
     const data = await serverClient(token).request(GET_CARD_MODEL, {
-      id: query.card
+      id: ctx.query.card
     });
 
     return {
