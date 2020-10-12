@@ -14,12 +14,4 @@ export const ButtonsModal = styled.div`
     border: none;
     background: none;
   }
-
-  button:last-child {
-    padding: 1rem 1.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    background: var(--green);
-    font-weight: bold;
-  }
 `;

@@ -17,7 +17,6 @@ export const EditorProviderFrente = ({ children }) => {
     if (imgsbg.length > 0) {
       setImageBG(imgsbg[0]);
     }
-    console.log(imgsbg);
   }, [store]);
 
   const handleUndo = () => {

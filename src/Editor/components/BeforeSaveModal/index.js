@@ -3,6 +3,8 @@ import { useEditorUtilsContext } from '../../Context/EditorUtilsContext';
 
 import CardReviewImg from '../CardReviewImg';
 import FormCardModel from '../FormCardModel';
+import SubmitPrint from '../SubmitPrint';
+
 import * as S from './styled';
 
 Modal.setAppElement('#__next');
@@ -41,7 +43,7 @@ export default function BeforeSaveModal({ infoCard, user }) {
               <button onClick={closeModal}>
                 {'<-'} Tá ruim, volta pra edição
               </button>
-              <button>Tudo certo, imprimir!</button>
+              <SubmitPrint />
             </S.ButtonsModal>
           ) : (
             <FormCardModel infoCard={infoCard} />
