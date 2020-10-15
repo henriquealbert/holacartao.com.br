@@ -2,6 +2,7 @@ import { useState } from 'react';
 import MUTATION_GRAFICA from '../../../graphql/admin/MutationStatus';
 import clientAdmin from '../../../graphql/clientAdmin';
 import { Formik, Form, Field } from 'formik';
+import CardImgs from '../CardImgs';
 
 import * as S from './styled';
 
@@ -42,7 +43,7 @@ export default function SingleOrderGrafica({ data, mutate }) {
 
   return (
     <S.OrderGrafica>
-      <img src="/images/cartao.png" alt="Cartão do Cliente" />
+      <CardImgs data={data} />
       <Formik
         initialValues={{
           grafica_pedido: ''

@@ -12,9 +12,6 @@ import { useEditorStoreVerso } from '../../Verso/Store';
 import * as S from './styled';
 
 export default function SubmitPrint() {
-  // 4. gera e salvar imagens frente e verso cartao no tamanho correto para impressão ((FAZER))
-  // 5. redireciona para página de pagamento ((FEITO X))
-
   const [loading, setLoading] = useState(false);
 
   const { user } = useAppContext();
@@ -24,6 +21,8 @@ export default function SubmitPrint() {
   const handleClick = async () => {
     setLoading(true);
     const query = Router.query;
+    const cartao_frente = JSON.stringify(localStorage.getItem('frenteFinal'));
+    const cartao_verso = JSON.stringify(localStorage.getItem('versoFinal'));
 
     // se o user já tiver um cartão salvo
     if (query.saved_card) {
@@ -31,7 +30,9 @@ export default function SubmitPrint() {
         input: {
           data: {
             user: user.id,
-            saved_card: query.card
+            saved_card: query.card,
+            cartao_frente: cartao_frente,
+            cartao_verso: cartao_verso
           }
         }
       });
@@ -60,7 +61,9 @@ export default function SubmitPrint() {
         input: {
           data: {
             user: user.id,
-            saved_card: newSavedCard.createSavedCard.savedCard.id
+            saved_card: newSavedCard.createSavedCard.savedCard.id,
+            cartao_frente: cartao_frente,
+            cartao_verso: cartao_verso
           }
         }
       });
@@ -71,6 +74,7 @@ export default function SubmitPrint() {
       }
     }
   };
+
   return (
     <S.Button onClick={handleClick} disabled={loading}>
       {loading ? 'Carregando...' : 'Tudo certo, imprimir!'}

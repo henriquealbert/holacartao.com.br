@@ -6,24 +6,26 @@ export const EditorUtilsProvider = ({ children }) => {
   // Card Sides
   const [frente, setFrente] = useState(true);
 
-  const changeSide = () => {
+  const changeSide = (sangria, final) => {
+    localStorage.setItem('frenteSangria', sangria);
+    localStorage.setItem('frenteFinal', final);
+
     setFrente(!frente);
   };
 
   // Modal Before Save
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const openModal = () => {
+  const openModal = (sangria, final) => {
+    localStorage.setItem('versoSangria', sangria);
+    localStorage.setItem('versoFinal', final);
+
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
   };
-
-  // Save
-  const [frontCardImg, setFrontCardImg] = useState(null);
-  const [backCardImg, setBackCardImg] = useState(null);
 
   const [saveCardHeader, setSaveCardHeader] = useState(null);
 
@@ -37,10 +39,6 @@ export const EditorUtilsProvider = ({ children }) => {
         openModal,
         setIsOpen,
         closeModal,
-        frontCardImg,
-        setFrontCardImg,
-        backCardImg,
-        setBackCardImg,
         saveCardHeader,
         setSaveCardHeader
       }}

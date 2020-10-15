@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "base64-img": "^1.0.4",
     "changedpi": "^1.0.4",
     "formik": "^2.1.7",
     "graphql-request": "^2.0.0",

@@ -9,6 +9,11 @@ const GET_SINGLE_ORDER = /* GraphQL */ `
       preco
       grafica_pedido
       metodo_pagamento
+      cartao_verso
+      cartao_frente
+      saved_card {
+        id
+      }
       address {
         id
         name

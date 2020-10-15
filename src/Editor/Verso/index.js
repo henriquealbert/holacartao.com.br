@@ -24,11 +24,11 @@ export default function EditorVerso({ infoCard, user }) {
           <WarningsEditor />
           <VersoEditor />
           <Canva editorStore={storeVerso} BgId={'bg-verso'} />
-          <ChangeSide />
+          <ChangeSide editorStore={storeVerso} />
         </S.Wrapper>
       </S.Container>
 
-      <OpenModalButton user={user} />
+      <OpenModalButton user={user} editorStore={storeVerso} />
       <BeforeSaveModal infoCard={infoCard} user={user} />
     </S.EditorWrapper>
   );

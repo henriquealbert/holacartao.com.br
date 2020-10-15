@@ -19,7 +19,7 @@ export default function EditorComponent({ data, user, add }) {
         type: 'bg',
         fill: '#FFFFFF',
         width: 640,
-        height: 360.0123494905835,
+        height: 360.1860465116279,
         x: 0,
         y: 0
       };
@@ -28,7 +28,7 @@ export default function EditorComponent({ data, user, add }) {
         type: 'bg',
         fill: '#FFFFFF',
         width: 640,
-        height: 360.0123494905835,
+        height: 360.1860465116279,
         x: 0,
         y: 0
       };
@@ -50,9 +50,9 @@ export default function EditorComponent({ data, user, add }) {
   return (
     <>
       {frente ? (
-        <EditorFrente user={user} />
+        <EditorFrente user={user} frente={frente} />
       ) : (
-        <EditorVerso user={user} infoCard={data} />
+        <EditorVerso user={user} infoCard={data} frente={frente} />
       )}
     </>
   );

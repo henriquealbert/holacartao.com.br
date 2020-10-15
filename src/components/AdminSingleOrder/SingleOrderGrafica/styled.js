@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
 export const OrderGrafica = styled.div`
-  img {
-    width: 150px;
-    min-height: 100px;
-    border-radius: 15px;
-    margin-right: 2rem;
-  }
   form {
     input {
       width: 150px;

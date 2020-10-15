@@ -150,7 +150,10 @@ export const EditorProviderFrente = ({ children }) => {
   const [text, setText] = useState('');
 
   // Save
-  const [handleSave, setHandleSave] = useState(null);
+  const [saveFinalCard, setSaveFinalCard] = useState(null);
+
+  // Canva com Sangria
+  const [saveWithSangria, setSaveWithSangria] = useState(null);
 
   // Selections
   const [selectedId, setSelectedId] = useState(null);
@@ -184,8 +187,6 @@ export const EditorProviderFrente = ({ children }) => {
         addText,
         updateElement,
         removeElement,
-        handleSave,
-        setHandleSave,
         selectedId,
         setSelectedId,
         checkDeselect,
@@ -199,7 +200,11 @@ export const EditorProviderFrente = ({ children }) => {
         imageLibrary,
         setImageLibrary,
         iconColor,
-        setIconColor
+        setIconColor,
+        saveFinalCard,
+        setSaveFinalCard,
+        saveWithSangria,
+        setSaveWithSangria
       }}
     >
       {children}

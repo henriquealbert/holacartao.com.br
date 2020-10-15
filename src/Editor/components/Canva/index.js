@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Stage, Layer } from 'react-konva';
+import { changeDpiDataUrl } from 'changedpi';
+import { useEditorUtilsContext } from '../../Context/EditorUtilsContext';
 
 // Styles
 import * as S from './styled';
@@ -17,11 +19,7 @@ import Images from '../objects/list/Images';
 import Stars from '../objects/list/Stars';
 import Texts from '../objects/list/Texts';
 
-export default function EditorCanvaFrente({
-  setFrontCardImg,
-  BgId,
-  editorStore
-}) {
+export default function EditorCanvaFrente({ BgId, editorStore }) {
   const {
     store,
     selectedId,
@@ -29,37 +27,53 @@ export default function EditorCanvaFrente({
     checkDeselect,
     updateElement,
     setText,
-    imageBG
+    imageBG,
+    setSaveFinalCard,
+    setSaveWithSangria
   } = editorStore;
+
   // Configs
   const stageRef = useRef(null);
 
   useEffect(() => {
-    return () => {
-      if (setFrontCardImg !== undefined) {
-        const img = document
-          .getElementsByTagName('canvas')[0]
-          .toDataURL('image/png', 1.0);
-        setFrontCardImg(img);
-      }
-    };
-  }, [setFrontCardImg, setSelectedId]);
+    if (stageRef.current) {
+      const stage = stageRef.current.getStage();
+      const sangria = stageRef.current.getStage().findOne('#linha-sangria');
+
+      setSaveWithSangria(() => {
+        return () => {
+          const dataURL = stage.toDataURL({ pixelRatio: 1.6796875 });
+          const art = changeDpiDataUrl(dataURL, 300);
+          return art;
+        };
+      });
+
+      setSaveFinalCard(() => {
+        return () => {
+          sangria.remove();
+          const dataURL = stage.toDataURL({ pixelRatio: 1.6796875 });
+          const art = changeDpiDataUrl(dataURL, 300);
+          return art;
+        };
+      });
+    }
+  }, [setSaveWithSangria, setSaveFinalCard]);
 
   return (
     <S.Wrapper>
       <Stage
         width={640}
-        height={360.0123494905835}
+        height={360.1860465116279}
         ref={stageRef}
         onMouseDown={checkDeselect}
         onTouchStart={checkDeselect}
       >
         <Layer>
           <BackgroundColor store={store} BgId={BgId} />
+
           <BackgroundImage imageBG={imageBG} />
           <LinhaSangria />
-        </Layer>
-        <Layer>
+
           {/* Formas */}
           <Rectangles
             store={store}

@@ -28,8 +28,6 @@ export default function UserEditor({ data }) {
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
 
-  console.log(ctx);
-
   if (ctx.query.saved_card) {
     const data = await serverClient(token).request(GET_SINGLE_SAVED_CARD, {
       id: ctx.query.card

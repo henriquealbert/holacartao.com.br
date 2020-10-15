@@ -15,7 +15,7 @@ export default function SingleOrderTable({ order }) {
         <tr>
           <td>Nome:</td>
           <td>
-            {order?.address.name} {order?.address.last_name}
+            {order?.address?.name} {order?.address?.last_name}
           </td>
         </tr>
         <tr>
@@ -24,11 +24,11 @@ export default function SingleOrderTable({ order }) {
         </tr>
         <tr>
           <td>Telefone:</td>
-          <td>{formatPhone(order?.address.telefone)}</td>
+          <td>{formatPhone(order?.address?.telefone)}</td>
         </tr>
         <tr>
           <td>CPF:</td>
-          <td>{formatCPF(order?.address.cpf)}</td>
+          <td>{formatCPF(order?.address?.cpf)}</td>
         </tr>
         <tr>
           <td>Quantidade:</td>
@@ -45,29 +45,29 @@ export default function SingleOrderTable({ order }) {
         <tr>
           <td>Endereço:</td>
           <td>
-            {order?.address.logradouro} - <strong>nº</strong>{' '}
-            {order?.address.numero} - <strong>Bairro</strong>{' '}
-            {order?.address.bairro}
+            {order?.address?.logradouro} - <strong>nº</strong>{' '}
+            {order?.address?.numero} - <strong>Bairro</strong>{' '}
+            {order?.address?.bairro}
           </td>
         </tr>
         <tr>
           <td>Cidade e Estado:</td>
           <td>
-            {order?.address.cidade} - {order?.address.estado}
+            {order?.address?.cidade} - {order?.address?.estado}
           </td>
         </tr>
         <tr>
           <td>CEP:</td>
-          <td>{formatCEP(order?.address.cep)}</td>
+          <td>{formatCEP(order?.address?.cep)}</td>
         </tr>
         <tr>
           <td>Complemento:</td>
-          <td>{order?.address.complemento}</td>
+          <td>{order?.address?.complemento}</td>
         </tr>
 
         <tr>
           <td>Referência:</td>
-          <td>{order?.address.referencia}</td>
+          <td>{order?.address?.referencia}</td>
         </tr>
 
         <tr>
