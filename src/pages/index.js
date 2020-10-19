@@ -8,6 +8,8 @@ import BannerBenefits from '../components/BannerBenefits';
 import HowItWorks from '../components/HowItWorks';
 import Pricing from '../components/Pricing';
 
+import Link from 'next/link';
+
 export default function Index() {
   return (
     <>
@@ -15,6 +17,9 @@ export default function Index() {
         <title>Início - Hola Cartão</title>
       </Head>
       <Layout>
+        <Link href="/pagamento/">
+          <a>pagamento</a>
+        </Link>
         <Hero />
         <BannerFrete />
         <Pagseguro />

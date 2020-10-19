@@ -75,39 +75,39 @@ export default function MyAccOrdersID({ data }) {
             <li>
               Nome Completo:
               <span>
-                {order.address.name} {order.address.last_name}
+                {order.address?.name} {order.address?.last_name}
               </span>
             </li>
             <li>
               CPF:
-              <span>{formatCPF(order.address.cpf)}</span>
+              <span>{formatCPF(order.address?.cpf)}</span>
             </li>
             <li>
-              CEP: <span>{formatCEP(order.address.cep)}</span>
+              CEP: <span>{formatCEP(order.address?.cep)}</span>
             </li>
             <li>
-              Telefone:<span>{formatPhone(order.address.telefone)}</span>
+              Telefone:<span>{formatPhone(order.address?.telefone)}</span>
             </li>
             <li>
-              Logradouro:<span>{order.address.logradouro}</span>
+              Logradouro:<span>{order.address?.logradouro}</span>
             </li>
             <li>
-              Número:<span>{order.address.numero}</span>
+              Número:<span>{order.address?.numero}</span>
             </li>
             <li>
-              Complemento:<span>{order.address.complemento}</span>
+              Complemento:<span>{order.address?.complemento}</span>
             </li>
             <li>
-              Referência:<span>{order.address.referencia}</span>
+              Referência:<span>{order.address?.referencia}</span>
             </li>
             <li>
-              Bairro:<span>{order.address.bairro}</span>
+              Bairro:<span>{order.address?.bairro}</span>
             </li>
             <li>
-              Cidade:<span>{order.address.cidade}</span>
+              Cidade:<span>{order.address?.cidade}</span>
             </li>
             <li>
-              Estado:<span>{order.address.estado}</span>
+              Estado:<span>{order.address?.estado}</span>
             </li>
             <li>
               E-mail:
