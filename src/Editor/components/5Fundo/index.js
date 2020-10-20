@@ -4,6 +4,8 @@ import axios from 'axios';
 import { nanoid } from 'nanoid';
 
 export default function Item5({ openItem5, editorStore }) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const { setStore, store, colorBG, setColorBG, setImageBG } = editorStore;
 
   // change bg color
@@ -24,10 +26,10 @@ export default function Item5({ openItem5, editorStore }) {
     data.append('files', file);
     const upload_res = await axios({
       method: 'POST',
-      url: 'http://localhost:1337/upload',
+      url: `${API_URL}/upload`,
       data
     });
-    const url = `http://localhost:1337${upload_res.data[0].url}`;
+    const url = `${API_URL}${upload_res.data[0].url}`;
     const imgObject = {
       url: url,
       id: String(nanoid() + Date.now()),

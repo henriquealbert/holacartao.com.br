@@ -17,6 +17,8 @@ import { useEditorUtilsContext } from '../../../Context/EditorUtilsContext';
 import * as S from './styled';
 
 export default function FormCardModelAdd() {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const { closeModal, setFrente, setIsOpen } = useEditorUtilsContext();
   // Get Select Options
   const { data } = useFetchAdmin(GET_ALL_CARD_CATEGORIES);
@@ -37,7 +39,7 @@ export default function FormCardModelAdd() {
 
     const upload_res = await axios({
       method: 'POST',
-      url: 'http://localhost:1337/upload',
+      url: `${API_URL}/upload`,
       data
     });
 

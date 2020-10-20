@@ -16,6 +16,8 @@ import { useEditorUtilsContext } from '../../../Context/EditorUtilsContext';
 import * as S from './styled';
 
 export default function FormCardModelEdit({ infoCard }) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const { closeModal, setFrente, setIsOpen } = useEditorUtilsContext();
   // Get Select Options
   const { data: allCardCategories } = useFetchAdmin(GET_ALL_CARD_CATEGORIES);
@@ -38,7 +40,7 @@ export default function FormCardModelEdit({ infoCard }) {
 
       const upload_res = await axios({
         method: 'POST',
-        url: 'http://localhost:1337/upload',
+        url: `${API_URL}/upload`,
         data
       });
       const input = {
@@ -127,7 +129,7 @@ export default function FormCardModelEdit({ infoCard }) {
             <S.FieldImgItem>
               <label>Imagem já carregada:</label>
               <img
-                src={`http://127.0.0.1:1337${infoCard.cardModel.example_image?.url}`}
+                src={`${API_URL}${infoCard.cardModel.example_image?.url}`}
                 alt="Example Image"
               />
             </S.FieldImgItem>

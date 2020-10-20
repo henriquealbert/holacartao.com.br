@@ -3,6 +3,8 @@ import axios from 'axios';
 import { nanoid } from 'nanoid';
 
 export default function Item4({ openItem4, editorStore }) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const { setStore, store, imageLibrary, setImageLibrary } = editorStore;
 
   // add new image from file
@@ -15,11 +17,11 @@ export default function Item4({ openItem4, editorStore }) {
     data.append('files', file);
     const upload_res = await axios({
       method: 'POST',
-      url: 'http://localhost:1337/upload',
+      url: `${API_URL}/upload`,
       data
     });
 
-    const url = `http://localhost:1337${upload_res.data[0].url}`;
+    const url = `${API_URL}${upload_res.data[0].url}`;
 
     const width =
       upload_res.data[0].width <= 50

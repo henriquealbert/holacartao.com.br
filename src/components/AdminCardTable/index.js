@@ -8,6 +8,8 @@ import DeleteCardModel from './DeleteCardModel';
 import * as S from './styled';
 
 export default function AdminCardTable() {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const { data, error } = useFetchAdmin(GET_ALL_CARD_MODELS, null, {
     revalidateOnMount: true
   });
@@ -48,9 +50,7 @@ export default function AdminCardTable() {
                 return (
                   <tr key={card.id}>
                     <td>
-                      <img
-                        src={`http://127.0.0.1:1337${card.example_image?.url}`}
-                      />
+                      <img src={`${API_URL}${card.example_image?.url}`} />
                     </td>
                     <td>{card.title}</td>
 

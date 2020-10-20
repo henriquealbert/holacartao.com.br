@@ -6,6 +6,7 @@ import { adminLogout } from '../../lib/authAdmin';
 import * as S from './styled';
 
 export default function AdminHeader() {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const { setAdmin } = useContext(AdminContext);
 
   return (
@@ -29,11 +30,7 @@ export default function AdminHeader() {
               </Link>
             </li>
             <li>
-              <a
-                href="http://localhost:1337/admin"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href={`${API_URL}/admin`} target="_blank" rel="noreferrer">
                 Opções Avançadas <S.LinkExternalIcon />
               </a>
             </li>
