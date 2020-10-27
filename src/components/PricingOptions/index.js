@@ -1,0 +1,64 @@
+import * as S from './styled';
+
+export const BasicPrice = ({ children }) => {
+  return (
+    <S.OptionItem>
+      <h4>Basic</h4>
+      <S.Border>
+        <S.BoxOption>
+          <S.Quantity>
+            100<span>cartões</span>
+          </S.Quantity>
+          <img src="/images/arrow-right.svg" alt="Arrow Right" />
+          <S.Price>
+            <span>R$</span>79,90
+          </S.Price>
+        </S.BoxOption>
+      </S.Border>
+      {children}
+    </S.OptionItem>
+  );
+};
+
+export const StandardPrice = ({ children }) => {
+  return (
+    <S.OptionItem>
+      <S.Medalha>
+        <img src="/images/medalha.svg" alt="Recomendado" />
+      </S.Medalha>
+      <h4>Standard</h4>
+      <S.Border gradient="standard">
+        <S.BoxOption>
+          <S.Quantity>
+            250<span>cartões</span>
+          </S.Quantity>
+          <img src="/images/arrow-right.svg" alt="Arrow Right" />
+          <S.Price>
+            <span>R$</span>89,90
+          </S.Price>
+        </S.BoxOption>
+      </S.Border>
+      {children}
+    </S.OptionItem>
+  );
+};
+
+export const CinquecentoPrice = ({ children }) => {
+  return (
+    <S.OptionItem>
+      <h4>Cinque­cento</h4>
+      <S.Border gradient="cinquecento">
+        <S.BoxOption>
+          <S.Quantity>
+            500<span>cartões</span>
+          </S.Quantity>
+          <img src="/images/arrow-right.svg" alt="Arrow Right" />
+          <S.Price>
+            <span>R$</span>119,90
+          </S.Price>
+        </S.BoxOption>
+      </S.Border>
+      {children}
+    </S.OptionItem>
+  );
+};

@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import Payment from '../components/Payment';
 import useScript from '../hooks/useScript';
 import { useState } from 'react';
+import Head from 'next/head';
 
 export default function Pagamento() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -21,11 +22,14 @@ export default function Pagamento() {
   }
 
   return (
-    <Layout>
-      {/* <Payment /> */}
-      {/* Inputs de informações do cliente -> enviar via api POST */}
-      <h1>Oi</h1>
-      Script status: <b>{status}</b>
-    </Layout>
+    <>
+      <Head>
+        <title>Finalize e Imprima o seu Cartão - Hola Cartão</title>
+      </Head>
+      <Layout>
+        <Payment />
+        {/* Inputs de informações do cliente -> enviar via api POST */}
+      </Layout>
+    </>
   );
 }
