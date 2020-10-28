@@ -41,7 +41,7 @@ export const RadioGroup = styled.div`
     height: 17px;
     background: #2cab31;
     position: absolute;
-    top: 5px;
+    top: 5.8px;
     left: 5px;
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;

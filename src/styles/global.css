@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
 :root {
   --black:#0E0E0D;
+  --lightBlack: #433b3b;
   --span: #db8e8e;
   --green: #acdd4f;
   --dark-green: #91C037;
