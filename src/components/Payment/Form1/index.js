@@ -2,11 +2,9 @@ import Button from '../../Button';
 
 import * as S from './styled';
 
-export default function Form1({ setMenu1, setMenu2, setMenu3 }) {
+export default function Form1({ setMenu }) {
   const handleClick = () => {
-    setMenu1(false);
-    setMenu2(true);
-    setMenu3(false);
+    setMenu('02');
   };
 
   return (

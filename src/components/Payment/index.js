@@ -10,46 +10,29 @@ import CartSidebar from './CartSidebar';
 import * as S from './styled';
 
 export default function Payment() {
-  const [menu1, setMenu1] = useState(true);
-  const [menu2, setMenu2] = useState(false);
-  const [menu3, setMenu3] = useState(false);
+  const [menu, setMenu] = useState('01');
 
   return (
     <S.Wrapper>
       <S.Container>
-        <Navbar
-          menu1={menu1}
-          menu2={menu2}
-          menu3={menu3}
-          setMenu1={setMenu1}
-          setMenu2={setMenu2}
-          setMenu3={setMenu3}
-        />
-        {menu1 ? (
+        <Navbar menu={menu} setMenu={setMenu} />
+        {menu === '01' ? (
           <S.Content>
             <h2>Escolha um pacote:</h2>
             <Pacotes />
-            <Form1
-              setMenu1={setMenu1}
-              setMenu2={setMenu2}
-              setMenu3={setMenu3}
-            />
+            <Form1 setMenu={setMenu} />
           </S.Content>
         ) : (
           ''
         )}
-        {menu2 ? (
+        {menu === '02' ? (
           <S.Content>
-            <Form2
-              setMenu1={setMenu1}
-              setMenu2={setMenu2}
-              setMenu3={setMenu3}
-            />
+            <Form2 setMenu={setMenu} />
           </S.Content>
         ) : (
           ''
         )}
-        {menu3 ? (
+        {menu === '03' ? (
           <S.Content>
             <Form3 />
           </S.Content>
