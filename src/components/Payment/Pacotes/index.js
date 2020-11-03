@@ -17,7 +17,7 @@ export default function Pacotes() {
       </S.OptionItem>
       <S.OptionItem>
         <StandardPrice>
-          <PricingRadio id="standard" value="89.90" checked />
+          <PricingRadio id="standard" value="89.90" defaultChecked />
         </StandardPrice>
       </S.OptionItem>
       <S.OptionItem>

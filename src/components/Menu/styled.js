@@ -21,23 +21,23 @@ export const MenuWrapper = styled.div`
   position: fixed;
   right: 0;
   top: 66px;
-  background: #000000;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+  background: var(--white);
   transform: translateX(110%);
   transition: all 0.5s;
   overflow-x: hidden;
   border-radius: 0 0 0 20px;
+  z-index: 50;
 
   &.open {
     transform: translateX(0);
   }
 
   li {
-    text-transform: uppercase;
-    font-weight: bold;
     text-align: center;
     padding: 0.9rem;
     text-align: right;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
   }
 
   li:last-child {
@@ -50,21 +50,20 @@ export const MenuWrapper = styled.div`
 
   li {
     a {
-      color: #fff;
+      color: var(--black);
+      font-weight: 500;
 
       &:hover {
-        color: #acdd4f;
-        border-bottom: 2px solid #acdd4f;
+        font-weight: 800;
       }
 
       &.active {
-        color: #acdd4f;
-        border-bottom: 2px solid #acdd4f;
+        font-weight: 800;
       }
     }
   }
 
-  ${media.greaterThan('medium')`
+  @media (min-width: 768px) {
     height: initial;
     width: initial;
     background: initial;
@@ -77,7 +76,10 @@ export const MenuWrapper = styled.div`
 
         li {
           text-transform: uppercase;
-          font-weight: bold;
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 23px;
+          letter-spacing: 0.02em;
         }
         li:last-child {
           border-top: none;
@@ -85,22 +87,22 @@ export const MenuWrapper = styled.div`
         }
       }
     }
-  `};
+  }
 `;
 
 export const OpenMenu = styled(Menu)`
   height: 50px;
   width: 50px;
-  background: #000;
-  color: #fff;
+  background: var(--white);
+  color: var(--black);
   border: none;
 `;
 
 export const CloseMenu = styled(CloseOutline)`
   height: 50px;
   width: 50px;
-  background: #000;
-  color: #fff;
+  background: var(--white);
+  color: var(--black);
   border: none;
 `;
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.aside`
-  background: #f6f5f5;
+  background: var(--white-2);
   max-width: 414px;
 `;
 
@@ -10,7 +10,7 @@ export const Content = styled.div`
   margin-right: 2.5rem;
   margin-top: 3.5rem;
   h2 {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -19,6 +19,7 @@ export const Content = styled.div`
     text-transform: uppercase;
     position: relative;
     padding-bottom: 4px;
+    color: var(--black);
 
     &:before {
       content: '';
@@ -39,13 +40,13 @@ export const CardInfo = styled.div`
   display: flex;
   justify-content: space-between;
   p {
-    font-family: 'Varela';
+    font-family: 'Varela', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
     letter-spacing: 0.01em;
-    color: var(--lightBlack);
+    color: var(--gray-2);
     max-width: 190px;
     position: relative;
 
@@ -57,7 +58,7 @@ export const CardInfo = styled.div`
       width: 1px;
       left: -22px;
       top: 0;
-      background: #c4c4c4;
+      background: var(--white-3);
       z-index: 1;
     }
   }
@@ -73,12 +74,13 @@ export const PriceInfo = styled.table`
     padding-right: 1rem;
     padding-bottom: 0.25rem;
     padding-top: 0.25rem;
-    font-family: 'Varela';
+    font-family: 'Varela', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.01em;
+    color: var(--gray-2);
   }
   tbody td:last-child {
     padding: 0;
@@ -91,7 +93,7 @@ export const PriceInfo = styled.table`
     height: 1px;
     width: 100%;
     bottom: 55px;
-    background: #c4c4c4;
+    background: var(--white-3);
     z-index: 1;
   }
 

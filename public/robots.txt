@@ -1,0 +1,6 @@
+User-Agent: *
+Disallow: /editor/
+Disallow: /minha-conta/
+Disallow: /admin/
+Disallow: /pagamento/
+Disallow: /obrigado/

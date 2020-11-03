@@ -21,9 +21,9 @@ export default function Menu() {
   return (
     <S.MenuContainer>
       <button onClick={handleOpen}>
-        {openMenu !== true ? <S.OpenMenu /> : <S.CloseMenu />}
+        {!openMenu ? <S.OpenMenu /> : <S.CloseMenu />}
       </button>
-      <S.MenuWrapper className={openMenu !== true ? '' : 'open'}>
+      <S.MenuWrapper className={!openMenu ? '' : 'open'}>
         <nav>
           <ul>
             <li>
@@ -38,7 +38,7 @@ export default function Menu() {
                 </a>
               </Link>
             </li>
-            {isAuthenticated !== false ? (
+            {isAuthenticated ? (
               <li>
                 <Link href="/minha-conta">
                   <a
@@ -73,7 +73,7 @@ export default function Menu() {
                 </Link>
               </li>
             )}
-            {isAuthenticated !== false ? (
+            {isAuthenticated ? (
               <li>
                 <S.LogoutMenuA
                   onClick={() => {

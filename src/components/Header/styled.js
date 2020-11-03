@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import media from 'styled-media-query';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
-  background: #000;
+  background: var(--white);
   height: 66px;
+  z-index: 100;
 `;
 
 export const HeaderContainer = styled.div`

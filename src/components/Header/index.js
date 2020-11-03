@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import Menu from '../Menu';
 
@@ -10,7 +11,14 @@ export default function Header() {
       <S.HeaderContainer>
         <Link href="/">
           <a>
-            <img src="/images/hola-cartao.png" alt="Hola Cartão" />
+            <Image
+              src="/images/hola-cartao-black.png"
+              alt="Hola Cartão"
+              width={87.5}
+              height={50}
+              loading="eager"
+              quality="100"
+            />
           </a>
         </Link>
         <Menu />

@@ -1,22 +1,32 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyles = createGlobalStyle`
 :root {
-  --black:#0E0E0D;
   --lightBlack: #433b3b;
   --span: #db8e8e;
-  --green: #acdd4f;
   --dark-green: #91C037;
   --yellow: #F8E436;
   --blue: #2863F9;
   --darker-blue: #295ADA;
   --transporte: #C2F928;
-  --red: #FB6871;
   --deliver: #28F97C;
   --grey: #C4C6C1;
   --darker-grey: #898D83;
   --lighter-grey: #E5E5E5;
   --checkout-gray: #A19898;
+
+
+  --green:#ACDD4F;
+  --green-2: #94DF3E;
+  --green-3:#00FF5F;
+  --green-4: #2CAB31;
+  --red: #F84752;
+  --white: #FCFCFC;
+  --white-2: #FAFAFA;
+  --white-3: #E6E6E6;
+  --gray: #808080;
+  --gray-2:#433B3B;
+  --black:#0E0E0D;
 
 }
 
@@ -31,15 +41,10 @@
   outline: 0;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-}
-
 body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  color: var(--black);
 }
 
 body,
@@ -56,3 +61,7 @@ ul {
 button {
   cursor: pointer;
 }
+
+`;
+
+export default GlobalStyles;

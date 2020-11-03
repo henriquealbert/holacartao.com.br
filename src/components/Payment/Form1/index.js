@@ -26,7 +26,7 @@ export default function Form1({ setMenu }) {
             <input type="doc" name="cpf" id="cpf" />
           </S.FormItem>
           <div>
-            <label htmlFor="telefone">Telefone</label>
+            <label htmlFor="telefone">Telefone com DDD</label>
             <input
               type="tel"
               pattern="[0-9]{3}-[0-9]{5}-[0-9]{4}"

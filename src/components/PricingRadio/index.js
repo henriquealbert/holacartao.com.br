@@ -1,6 +1,6 @@
 import * as S from './styled';
 
-export default function PricingRadio({ id, value, checked }) {
+export default function PricingRadio({ id, value, defaultChecked }) {
   return (
     <S.RadioGroup>
       <input
@@ -8,7 +8,7 @@ export default function PricingRadio({ id, value, checked }) {
         id={id}
         name="radio-group"
         value={value}
-        defaultChecked={checked}
+        defaultChecked={defaultChecked}
       />
       <label htmlFor={id}></label>
     </S.RadioGroup>
