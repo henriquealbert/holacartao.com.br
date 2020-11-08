@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Stage, Layer } from 'react-konva';
 import { changeDpiDataUrl } from 'changedpi';
-import { useEditorUtilsContext } from '../../Context/EditorUtilsContext';
+import { useEditorStoreFrente } from '../../Frente/Store';
 
 // Styles
 import * as S from './styled';
@@ -32,6 +32,8 @@ export default function EditorCanvaFrente({ BgId, editorStore }) {
     setSaveWithSangria
   } = editorStore;
 
+  const { setSelectedId: setSelectedIdFrente } = useEditorStoreFrente();
+
   // Configs
   const stageRef = useRef(null);
 
@@ -39,9 +41,11 @@ export default function EditorCanvaFrente({ BgId, editorStore }) {
     if (stageRef.current) {
       const stage = stageRef.current.getStage();
       const sangria = stageRef.current.getStage().findOne('#linha-sangria');
+      const layer = stageRef.current.getStage().findOne('#layer');
 
       setSaveWithSangria(() => {
         return () => {
+          setSelectedIdFrente(null);
           const dataURL = stage.toDataURL({ pixelRatio: 1.6796875 });
           const art = changeDpiDataUrl(dataURL, 300);
           return art;
@@ -53,11 +57,12 @@ export default function EditorCanvaFrente({ BgId, editorStore }) {
           sangria.remove();
           const dataURL = stage.toDataURL({ pixelRatio: 1.6796875 });
           const art = changeDpiDataUrl(dataURL, 300);
+          layer.add(sangria);
           return art;
         };
       });
     }
-  }, [setSaveWithSangria, setSaveFinalCard]);
+  }, [setSaveWithSangria, setSaveFinalCard, setSelectedIdFrente]);
 
   return (
     <S.Wrapper>
@@ -68,7 +73,7 @@ export default function EditorCanvaFrente({ BgId, editorStore }) {
         onMouseDown={checkDeselect}
         onTouchStart={checkDeselect}
       >
-        <Layer>
+        <Layer id="layer">
           <BackgroundColor store={store} BgId={BgId} />
 
           <BackgroundImage imageBG={imageBG} />

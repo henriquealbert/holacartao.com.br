@@ -20,13 +20,18 @@ export const EditorProviderFrente = ({ children }) => {
   }, [store]);
 
   const handleUndo = () => {
-    if (history.length === 1) {
-      return;
+    if (history.length > 2) {
+      const step = history.length - 3;
+      const previous = history[step];
+      setStore(previous);
+      history.pop();
     }
-    const step = history.length - 2;
-    const previous = history[step];
-    setStore(previous);
-    setHistory((prev) => prev.slice(0, step));
+    if (history.length > 1) {
+      const step = history.length - 2;
+      const previous = history[step];
+      setStore(previous);
+      history.pop();
+    }
   };
 
   // actions
@@ -174,6 +179,18 @@ export const EditorProviderFrente = ({ children }) => {
     }
   };
 
+  const resetState = () => {
+    setStore([]);
+    setHistory([]);
+    setSelectedId(null);
+    setSaveWithSangria(null);
+    setSaveFinalCard(null);
+    setText(null);
+    setImageLibrary(null);
+    setImageBG('');
+    setColorBG('');
+  };
+
   return (
     <EditorFrenteContext.Provider
       value={{
@@ -204,7 +221,8 @@ export const EditorProviderFrente = ({ children }) => {
         saveFinalCard,
         setSaveFinalCard,
         saveWithSangria,
-        setSaveWithSangria
+        setSaveWithSangria,
+        resetState
       }}
     >
       {children}

@@ -6,9 +6,13 @@ export default function OpenModalButton({ user, editorStore }) {
   const { openModal } = useEditorUtilsContext();
   const { saveFinalCard, saveWithSangria } = editorStore;
 
+  const handleClick = () => {
+    openModal(saveWithSangria(), saveFinalCard());
+  };
+
   return (
     <S.Wrapper>
-      <button onClick={() => openModal(saveWithSangria(), saveFinalCard())}>
+      <button onClick={handleClick}>
         {user ? 'Finalizado, Próximo Passo' : 'Finalizar'}
         <S.ArrowNextIcon />
       </button>

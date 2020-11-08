@@ -6,11 +6,13 @@ export default function ChangeSide({ frente, editorStore }) {
   const { changeSide } = useEditorUtilsContext();
   const { saveFinalCard, saveWithSangria } = editorStore;
 
-  console.log();
+  const handleChange = () => {
+    changeSide(saveWithSangria(), saveFinalCard());
+  };
 
   return (
     <S.ChangeSideWrapper frente={frente} id="changeSide">
-      <button onClick={() => changeSide(saveWithSangria(), saveFinalCard())}>
+      <button onClick={handleChange}>
         {frente === true ? (
           <>
             Editar Verso
