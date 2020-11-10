@@ -1,12 +1,20 @@
 import TextComponent from '../single/Text';
 
-export default function Texts({
-  store,
-  selectedId,
-  setSelectedId,
-  updateElement,
-  setText
-}) {
+export default function Texts({ editorStore }) {
+  const {
+    store,
+    selectedId,
+    setSelectedId,
+    updateElement,
+    setText,
+    setTextFontFamily,
+    setTextFontSize,
+    setTextFontDecoration,
+    setTextFontStyle,
+    setTextAlign,
+    setColor
+  } = editorStore;
+
   const txts = store.filter((element) => element.type === 'text');
 
   return (
@@ -20,6 +28,12 @@ export default function Texts({
             onSelect={() => {
               setSelectedId(text.id);
               setText(text.text);
+              setTextFontFamily(text.fontFamily);
+              setTextFontSize(text.fontSize);
+              setTextFontStyle(text.fontStyle);
+              setTextFontDecoration(text.textDecoration);
+              setTextAlign(text.align);
+              setColor(text.fill);
             }}
             onChange={(newAttrs) => {
               updateElement(text.id, newAttrs);

@@ -1,7 +1,24 @@
 import * as S from './styled';
 
 export default function Item2({ openItem2, editorStore }) {
-  const { addText, selectedId, setStore, store, text, setText } = editorStore;
+  const {
+    addText,
+    selectedId,
+    setStore,
+    store,
+    text,
+    setText,
+    textFontFamily,
+    setTextFontFamily,
+    textFontSize,
+    setTextFontSize,
+    textFontStyle,
+    setTextFontStyle,
+    textFontDecoration,
+    setTextFontDecoration,
+    textAlign,
+    setTextAlign
+  } = editorStore;
 
   // Set Bold
   const handleBold = () => {
@@ -14,6 +31,7 @@ export default function Item2({ openItem2, editorStore }) {
         const elements = store.filter((element) => element.id !== selectedId);
         elements.push(found[0]);
         setStore(elements);
+        setTextFontStyle(found[0].fontStyle);
       }
       // check if doesnt have bold
       if (fontStyle.includes('bold') === false) {
@@ -21,6 +39,7 @@ export default function Item2({ openItem2, editorStore }) {
         const elements = store.filter((element) => element.id !== selectedId);
         elements.push(found[0]);
         setStore(elements);
+        setTextFontStyle(found[0].fontStyle);
       }
     }
   };
@@ -36,6 +55,7 @@ export default function Item2({ openItem2, editorStore }) {
         const elements = store.filter((element) => element.id !== selectedId);
         elements.push(found[0]);
         setStore(elements);
+        setTextFontStyle(found[0].fontStyle);
       }
       // check if doesnt have italic
       if (fontStyle.includes('italic') === false) {
@@ -43,6 +63,7 @@ export default function Item2({ openItem2, editorStore }) {
         const elements = store.filter((element) => element.id !== selectedId);
         elements.push(found[0]);
         setStore(elements);
+        setTextFontStyle(found[0].fontStyle);
       }
     }
   };
@@ -61,6 +82,7 @@ export default function Item2({ openItem2, editorStore }) {
         const elements = store.filter((element) => element.id !== selectedId);
         elements.push(found[0]);
         setStore(elements);
+        setTextFontDecoration(found[0].textDecoration);
       }
       // check if doesnt have underline
       if (textDecoration.includes('underline') === false) {
@@ -71,6 +93,7 @@ export default function Item2({ openItem2, editorStore }) {
         const elements = store.filter((element) => element.id !== selectedId);
         elements.push(found[0]);
         setStore(elements);
+        setTextFontDecoration(found[0].textDecoration);
       }
     }
   };
@@ -99,6 +122,7 @@ export default function Item2({ openItem2, editorStore }) {
       const elements = store.filter((element) => element.id !== selectedId);
       elements.push(found[0]);
       setStore(elements);
+      setTextFontFamily(found[0].fontFamily);
     }
   };
 
@@ -110,6 +134,41 @@ export default function Item2({ openItem2, editorStore }) {
       const elements = store.filter((element) => element.id !== selectedId);
       elements.push(found[0]);
       setStore(elements);
+      setTextFontSize(found[0].fontSize);
+    }
+  };
+
+  // Change Text Align
+  const handleCenter = () => {
+    if (selectedId !== null) {
+      const found = store.filter((element) => element.id === selectedId);
+      found[0].align = 'center';
+      const elements = store.filter((element) => element.id !== selectedId);
+      elements.push(found[0]);
+      setStore(elements);
+      setTextAlign(found[0].align);
+    }
+  };
+
+  const handleLeft = () => {
+    if (selectedId !== null) {
+      const found = store.filter((element) => element.id === selectedId);
+      found[0].align = 'left';
+      const elements = store.filter((element) => element.id !== selectedId);
+      elements.push(found[0]);
+      setStore(elements);
+      setTextAlign(found[0].align);
+    }
+  };
+
+  const handleRight = () => {
+    if (selectedId !== null) {
+      const found = store.filter((element) => element.id === selectedId);
+      found[0].align = 'right';
+      const elements = store.filter((element) => element.id !== selectedId);
+      elements.push(found[0]);
+      setStore(elements);
+      setTextAlign(found[0].align);
     }
   };
 
@@ -119,9 +178,11 @@ export default function Item2({ openItem2, editorStore }) {
         <h3>Texto</h3>
         <S.AddTxt onClick={addText}>Adicionar Novo Texto</S.AddTxt>
         <S.ChangeTextWrapper>
-          <input
-            type="text"
-            placeholder="Editar Texto"
+          <textarea
+            name="textarea"
+            id="textarea"
+            cols="22"
+            rows="3"
             value={text}
             onChange={handleText}
           />
@@ -129,14 +190,32 @@ export default function Item2({ openItem2, editorStore }) {
         </S.ChangeTextWrapper>
         <h3>Estilos</h3>
         <S.TextStyle>
-          <button onClick={handleItalic}>I</button>
-          <button onClick={handleBold}>
+          <button
+            onClick={handleItalic}
+            className={textFontStyle.includes('italic') ? 'active' : ''}
+          >
+            I
+          </button>
+          <button
+            onClick={handleBold}
+            className={textFontStyle.includes('bold') ? 'active' : ''}
+          >
             <strong>B</strong>
           </button>
-          <button onClick={handleUnderline}>U</button>
+          <button
+            onClick={handleUnderline}
+            className={textFontDecoration.includes('underline') ? 'active' : ''}
+          >
+            U
+          </button>
         </S.TextStyle>
         <h3>Fonte</h3>
-        <S.SelectFont name="fonte" id="fonte" onChange={handleFontFamily}>
+        <S.SelectFont
+          name="fonte"
+          id="fonte"
+          onChange={handleFontFamily}
+          value={textFontFamily}
+        >
           <option value="Arial">Arial</option>
           <option value="Georgia">Georgia</option>
           <option value="Roboto">Roboto</option>
@@ -147,9 +226,30 @@ export default function Item2({ openItem2, editorStore }) {
           type="number"
           name="tamanho"
           id="tamanho"
-          defaultValue="24"
+          value={textFontSize}
           onChange={handleSize}
         />
+        <h3>Alinhamento</h3>
+        <S.Align>
+          <button
+            onClick={handleLeft}
+            className={textAlign.includes('left') ? 'active' : ''}
+          >
+            left
+          </button>
+          <button
+            onClick={handleCenter}
+            className={textAlign.includes('center') ? 'active' : ''}
+          >
+            center
+          </button>
+          <button
+            onClick={handleRight}
+            className={textAlign.includes('right') ? 'active' : ''}
+          >
+            right
+          </button>
+        </S.Align>
       </S.ContentWrapper>
     </S.SidebarMenuWrapper2>
   );

@@ -66,6 +66,11 @@ export const TextStyle = styled.div`
       color: #000;
     }
   }
+  .active {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    background: var(--grey);
+    color: #000;
+  }
 `;
 
 export const AddTxt = styled.button`
@@ -113,7 +118,8 @@ export const SizeFont = styled.input`
 `;
 
 export const ChangeTextWrapper = styled.div`
-  input {
+  textarea {
+    font-family: 'Roboto', sans-serif;
     border: none;
     padding: 0.5rem 1rem;
     width: 5rem;
@@ -140,3 +146,5 @@ export const ChangeTextWrapper = styled.div`
     }
   }
 `;
+
+export const Align = styled.div``;

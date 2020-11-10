@@ -7,7 +7,7 @@ export default function ModelosList({ data }) {
   const { cardCategories } = data;
 
   const [categoria, setCategoria] = useState('All');
-  const categoriesList = cardModels.filter(
+  const categoriesList = cardModels?.filter(
     (model) => model.card_category.title === categoria
   );
 
@@ -37,7 +37,7 @@ export default function ModelosList({ data }) {
           onChange={(e) => setCategoria(e.target.value)}
         >
           <option value="All">Todos os Modelos</option>
-          {cardCategories.map((category) => {
+          {cardCategories?.map((category) => {
             return (
               <option key={category.id} value={category.title}>
                 {category.title}
@@ -49,7 +49,7 @@ export default function ModelosList({ data }) {
 
       <S.ModeloGrid>
         {categoria === 'All'
-          ? cardModels.map((model) => {
+          ? cardModels?.map((model) => {
               return (
                 <S.Modelo key={model.id}>
                   <Link
@@ -68,7 +68,7 @@ export default function ModelosList({ data }) {
                 </S.Modelo>
               );
             })
-          : categoriesList.map((model) => {
+          : categoriesList?.map((model) => {
               return (
                 <S.Modelo key={model.id}>
                   <Link

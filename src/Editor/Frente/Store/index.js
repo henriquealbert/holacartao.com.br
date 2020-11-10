@@ -116,6 +116,8 @@ export const EditorProviderFrente = ({ children }) => {
       fontStyle: '',
       textDecoration: '',
       fontFamily: 'Arial',
+      align: '',
+      width: 250,
       x: 50,
       y: 50
     };
@@ -141,6 +143,8 @@ export const EditorProviderFrente = ({ children }) => {
 
   // Color BG
   const [colorBG, setColorBG] = useState('');
+  const [color, setColor] = useState('');
+  const [presetColors, setPresetColors] = useState([]);
 
   // Image BG
   const [imageBG, setImageBG] = useState('');
@@ -153,6 +157,11 @@ export const EditorProviderFrente = ({ children }) => {
 
   // Text
   const [text, setText] = useState('');
+  const [textFontFamily, setTextFontFamily] = useState('Georgia');
+  const [textFontSize, setTextFontSize] = useState(24);
+  const [textFontStyle, setTextFontStyle] = useState('');
+  const [textFontDecoration, setTextFontDecoration] = useState('');
+  const [textAlign, setTextAlign] = useState('');
 
   // Save
   const [saveFinalCard, setSaveFinalCard] = useState(null);
@@ -222,7 +231,21 @@ export const EditorProviderFrente = ({ children }) => {
         setSaveFinalCard,
         saveWithSangria,
         setSaveWithSangria,
-        resetState
+        resetState,
+        textFontFamily,
+        setTextFontFamily,
+        textFontSize,
+        setTextFontSize,
+        textFontStyle,
+        setTextFontStyle,
+        textFontDecoration,
+        setTextFontDecoration,
+        textAlign,
+        setTextAlign,
+        color,
+        setColor,
+        presetColors,
+        setPresetColors
       }}
     >
       {children}

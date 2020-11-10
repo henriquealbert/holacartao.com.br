@@ -1,11 +1,14 @@
 import StarComponent from '../single/Star';
 
-export default function Stars({
-  store,
-  selectedId,
-  setSelectedId,
-  updateElement
-}) {
+export default function Stars({ editorStore }) {
+  const {
+    store,
+    selectedId,
+    setSelectedId,
+    updateElement,
+    setColor
+  } = editorStore;
+
   const stars = store.filter((element) => element.type === 'star');
 
   return (
@@ -18,6 +21,7 @@ export default function Stars({
             isSelected={star.id === selectedId}
             onSelect={() => {
               setSelectedId(star.id);
+              setColor(star.fill);
             }}
             onChange={(newAttrs) => {
               updateElement(star.id, newAttrs);

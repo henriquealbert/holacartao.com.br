@@ -1,11 +1,8 @@
 import ImageComponent from '../single/Image';
 
-export default function Images({
-  store,
-  selectedId,
-  setSelectedId,
-  updateElement
-}) {
+export default function Images({ editorStore }) {
+  const { store, selectedId, setSelectedId, updateElement } = editorStore;
+
   const imgs = store.filter((element) => element.type === 'image');
 
   return (

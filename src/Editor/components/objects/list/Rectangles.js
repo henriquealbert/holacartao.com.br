@@ -1,11 +1,14 @@
 import RectangleComponent from '../single/Rectangle';
 
-export default function Rectangles({
-  store,
-  selectedId,
-  setSelectedId,
-  updateElement
-}) {
+export default function Rectangles({ editorStore }) {
+  const {
+    store,
+    selectedId,
+    setSelectedId,
+    updateElement,
+    setColor
+  } = editorStore;
+
   const rects = store.filter((element) => element.type === 'rect');
 
   return (
@@ -18,6 +21,7 @@ export default function Rectangles({
             isSelected={rect.id === selectedId}
             onSelect={() => {
               setSelectedId(rect.id);
+              setColor(rect.fill);
             }}
             onChange={(newAttrs) => {
               updateElement(rect.id, newAttrs);

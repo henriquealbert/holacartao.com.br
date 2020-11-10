@@ -26,7 +26,6 @@ export default function EditorCanvaFrente({ BgId, editorStore }) {
     setSelectedId,
     checkDeselect,
     updateElement,
-    setText,
     imageBG,
     setSaveFinalCard,
     setSaveWithSangria
@@ -80,49 +79,13 @@ export default function EditorCanvaFrente({ BgId, editorStore }) {
           <LinhaSangria />
 
           {/* Formas */}
-          <Rectangles
-            store={store}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-            updateElement={updateElement}
-          />
-          <Circles
-            store={store}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-            updateElement={updateElement}
-          />
-          <Polygons
-            store={store}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-            updateElement={updateElement}
-          />
-          <Icons
-            store={store}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-            updateElement={updateElement}
-          />
-          <Images
-            store={store}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-            updateElement={updateElement}
-          />
-          <Stars
-            store={store}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-            updateElement={updateElement}
-          />
-          <Texts
-            store={store}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-            updateElement={updateElement}
-            setText={setText}
-          />
+          <Rectangles editorStore={editorStore} />
+          <Circles editorStore={editorStore} />
+          <Polygons editorStore={editorStore} />
+          <Icons editorStore={editorStore} />
+          <Images editorStore={editorStore} />
+          <Stars editorStore={editorStore} />
+          <Texts editorStore={editorStore} />
         </Layer>
       </Stage>
     </S.Wrapper>

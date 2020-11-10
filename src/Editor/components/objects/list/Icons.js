@@ -1,11 +1,14 @@
 import IconComponent from '../single/Icon';
 
-export default function Icons({
-  store,
-  selectedId,
-  setSelectedId,
-  updateElement
-}) {
+export default function Icons({ editorStore }) {
+  const {
+    store,
+    selectedId,
+    setSelectedId,
+    updateElement,
+    setColor
+  } = editorStore;
+
   const icons = store.filter((element) => element.type === 'icon');
 
   return (
@@ -18,6 +21,7 @@ export default function Icons({
             isSelected={icon.id === selectedId}
             onSelect={() => {
               setSelectedId(icon.id);
+              setColor(icon.fill);
             }}
             onChange={(newAttrs) => {
               updateElement(icon.id, newAttrs);
