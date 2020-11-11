@@ -1,3 +1,5 @@
+import { fontFamilyNames } from './fonts';
+
 import * as S from './styled';
 
 export default function Item2({ openItem2, editorStore }) {
@@ -171,7 +173,7 @@ export default function Item2({ openItem2, editorStore }) {
       setTextAlign(found[0].align);
     }
   };
-
+  console.log();
   return (
     <S.SidebarMenuWrapper2 className={openItem2 !== true ? '' : 'open'}>
       <S.ContentWrapper>
@@ -216,13 +218,24 @@ export default function Item2({ openItem2, editorStore }) {
           name="fonte"
           id="fonte"
           onChange={handleFontFamily}
-          value={textFontFamily}
+          value={
+            fontFamilyNames.filter((font) => font.name === textFontFamily)[0]
+              .name
+          }
         >
-          <option value="Arial">Arial</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Roboto">Roboto</option>
-          <option value="Times New Roman">Times New Roman</option>
+          {fontFamilyNames.map((font) => {
+            return (
+              <option
+                key={font.name}
+                value={font.name}
+                style={{ fontFamily: `${font.name}` }}
+              >
+                {font.name}
+              </option>
+            );
+          })}
         </S.SelectFont>
+
         <h3>Tamanho</h3>
         <S.SizeFont
           type="number"

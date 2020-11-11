@@ -194,12 +194,14 @@ export const EditorProviderVerso = ({ children }) => {
     if (clickedOnEmpty) {
       setSelectedId(null);
       setText('');
+      setTextFontFamily('Arial');
     }
     const sangriaLines =
       e.target === e.target.getStage().findOne('#linha-sangria');
     if (sangriaLines) {
       setSelectedId(null);
       setText('');
+      setTextFontFamily('Arial');
     }
   };
 
