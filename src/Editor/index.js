@@ -4,37 +4,34 @@ import { useEditorStoreFrente } from './Frente/Store';
 import { useEditorStoreVerso } from './Verso/Store';
 import EditorFrente from './Frente';
 import EditorVerso from './Verso';
-import { nanoid } from 'nanoid';
 
-export default function EditorComponent({ data, user, add }) {
-  const { frente, setSaveCardHeader } = useEditorUtilsContext();
-  const { setStore: setStoreFrente } = useEditorStoreFrente();
-  const { setStore: setStoreVerso } = useEditorStoreVerso();
+export default function EditorComponent({ data, user }) {
+  const {
+    frente,
+    setSaveCardHeader,
+    resetUtilsState
+  } = useEditorUtilsContext();
+
+  const {
+    setStore: setStoreFrente,
+    resetState: resetStateFrente
+  } = useEditorStoreFrente();
+
+  const {
+    setStore: setStoreVerso,
+    resetState: resetStateVerso
+  } = useEditorStoreVerso();
+
+  // reset all data
+
+  useEffect(() => {
+    resetUtilsState();
+    resetStateFrente();
+    resetStateVerso();
+  }, []);
 
   // load store from the backend
   useEffect(() => {
-    if (add) {
-      const whiteBackgroundFrente = {
-        id: String(nanoid() + Date.now()),
-        type: 'bg',
-        fill: '#FFFFFF',
-        width: 640,
-        height: 360.1860465116279,
-        x: 0,
-        y: 0
-      };
-      const whiteBackgroundVerso = {
-        id: String(nanoid() + Date.now()),
-        type: 'bg',
-        fill: '#FFFFFF',
-        width: 640,
-        height: 360.1860465116279,
-        x: 0,
-        y: 0
-      };
-      setStoreFrente([whiteBackgroundFrente]);
-      setStoreVerso([whiteBackgroundVerso]);
-    }
     if (data?.cardModel) {
       setStoreFrente(data.cardModel.frontal_card);
       setStoreVerso(data.cardModel.back_card);
@@ -45,7 +42,7 @@ export default function EditorComponent({ data, user, add }) {
       setStoreVerso(data.savedCard.back_card);
       setSaveCardHeader(data.savedCard);
     }
-  }, [add, setStoreFrente, setStoreVerso, data, setSaveCardHeader]);
+  }, [setStoreFrente, setStoreVerso, data, setSaveCardHeader]);
 
   return (
     <>

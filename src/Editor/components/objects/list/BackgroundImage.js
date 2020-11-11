@@ -11,6 +11,11 @@ export default function BackgroundImage({ imageBG }) {
       y={imageBG.y}
       width={imageBG.width}
       height={imageBG.height}
+      rotation={imageBG.rotation}
+      offset={{
+        x: 320,
+        y: 180.5
+      }}
     />
   );
 }

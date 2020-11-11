@@ -26,6 +26,11 @@ export default function CardModelEdit({ data }) {
 
 export async function getServerSideProps(ctx) {
   const adminToken = authAdmin(ctx);
+  if (!adminToken) {
+    return {
+      props: {}
+    };
+  }
   const { id } = await ctx.query;
   const parsedId = id.split('_').pop();
   const data = await serverClient(adminToken).request(GET_CARD_MODEL, {

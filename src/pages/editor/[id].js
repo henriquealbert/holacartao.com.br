@@ -20,13 +20,19 @@ export default function UserEditor({ data }) {
       <Head>
         <title>Edite seu Modelo de Cartão - Hola Cartão</title>
       </Head>
-      <EditorComponent data={data} user add={false} />
+      <EditorComponent data={data} user />
     </>
   );
 }
 
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
+
+  if (!token) {
+    return {
+      props: {}
+    };
+  }
 
   if (ctx.query.saved_card) {
     const data = await serverClient(token).request(GET_SINGLE_SAVED_CARD, {

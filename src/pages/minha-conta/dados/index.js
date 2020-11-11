@@ -27,6 +27,12 @@ export default function MinhaContaDados({ initialData }) {
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
 
+  if (!token) {
+    return {
+      props: {}
+    };
+  }
+
   const user = await serverClient(token).request(GET_ME);
 
   const userID = user !== undefined ? user.me.id : -1;

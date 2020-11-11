@@ -192,19 +192,21 @@ export default function Item2({ openItem2, editorStore }) {
         <S.TextStyle>
           <button
             onClick={handleItalic}
-            className={textFontStyle.includes('italic') ? 'active' : ''}
+            className={textFontStyle?.includes('italic') ? 'active' : ''}
           >
             I
           </button>
           <button
             onClick={handleBold}
-            className={textFontStyle.includes('bold') ? 'active' : ''}
+            className={textFontStyle?.includes('bold') ? 'active' : ''}
           >
             <strong>B</strong>
           </button>
           <button
             onClick={handleUnderline}
-            className={textFontDecoration.includes('underline') ? 'active' : ''}
+            className={
+              textFontDecoration?.includes('underline') ? 'active' : ''
+            }
           >
             U
           </button>
@@ -233,19 +235,19 @@ export default function Item2({ openItem2, editorStore }) {
         <S.Align>
           <button
             onClick={handleLeft}
-            className={textAlign.includes('left') ? 'active' : ''}
+            className={textAlign?.includes('left') ? 'active' : ''}
           >
             left
           </button>
           <button
             onClick={handleCenter}
-            className={textAlign.includes('center') ? 'active' : ''}
+            className={textAlign?.includes('center') ? 'active' : ''}
           >
             center
           </button>
           <button
             onClick={handleRight}
-            className={textAlign.includes('right') ? 'active' : ''}
+            className={textAlign?.includes('right') ? 'active' : ''}
           >
             right
           </button>

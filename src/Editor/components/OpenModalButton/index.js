@@ -7,7 +7,7 @@ export default function OpenModalButton({ user, editorStore }) {
   const { saveFinalCard, saveWithSangria } = editorStore;
 
   const handleClick = () => {
-    openModal(saveWithSangria(), saveFinalCard());
+    openModal(saveWithSangria, saveFinalCard);
   };
 
   return (

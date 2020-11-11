@@ -132,3 +132,18 @@ export const ListofAllImgsBgs = styled.div`
     }
   }
 `;
+
+export const Resize = styled.div`
+  display: flex;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  label {
+    display: block;
+  }
+  input {
+    max-width: 80px;
+    padding: 0.5rem;
+    border: none;
+    margin: 0.25rem;
+  }
+`;

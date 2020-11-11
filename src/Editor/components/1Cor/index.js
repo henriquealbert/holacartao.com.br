@@ -36,7 +36,6 @@ export default function Item1({ openItem1, editorStore }) {
     );
   };
 
-  console.log(presetColors);
   return (
     <S.SidebarMenuWrapper1 className={openItem1 !== true ? '' : 'open'}>
       <S.ContentWrapperColor>

@@ -6,7 +6,14 @@ import { nanoid } from 'nanoid';
 export default function Item5({ openItem5, editorStore }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  const { setStore, store, colorBG, setColorBG, setImageBG } = editorStore;
+  const {
+    setStore,
+    store,
+    colorBG,
+    setColorBG,
+    setImageBG,
+    imageBG
+  } = editorStore;
 
   // change bg color
   const changeColorBG = () => {
@@ -34,10 +41,11 @@ export default function Item5({ openItem5, editorStore }) {
       url: url,
       id: String(nanoid() + Date.now()),
       type: 'image-bg',
-      x: 0,
-      y: 0,
+      x: 320,
+      y: 180.5,
       width: 640,
-      height: 361
+      height: 361,
+      rotation: 0
     };
     setImageBG(imgObject);
     // adding to store
@@ -52,14 +60,8 @@ export default function Item5({ openItem5, editorStore }) {
     }
   };
 
-  const deselectImage = () => {
-    setImageBG('');
-  };
-
-  // Change image based on the ones that have already been uploaded
-  const setImgBG = (id) => {
-    const clickedImg = imgsbgs.filter((element) => element.id === id);
-    setImageBG(clickedImg[0]);
+  const handleChangeInputs = (e, option) => {
+    setImageBG((prev) => ({ ...prev, [option]: Number(e.target.value) }));
   };
 
   return (
@@ -90,29 +92,64 @@ export default function Item5({ openItem5, editorStore }) {
           </label>
         </S.AddImageFundo>
 
-        <S.DeselectImgFundo>
-          <button onClick={deselectImage}>Deselecionar imagem de fundo</button>
-        </S.DeselectImgFundo>
         <S.RemoveImgFundo>
           <button onClick={removeImage}>Remover imagem de fundo</button>
         </S.RemoveImgFundo>
 
-        <S.ListofAllImgsBgs>
-          <h4>Fundos já carregados:</h4>
-          <ul>
-            {imgsbgs.length === 0 ? (
-              <small>Não há nenhuma imagem carregada.</small>
-            ) : (
-              imgsbgs?.map((imgbg) => {
-                return (
-                  <li key={imgbg.id} onClick={() => setImgBG(imgbg.id)}>
-                    <img src={imgbg.url} />
-                  </li>
-                );
-              })
-            )}
-          </ul>
-        </S.ListofAllImgsBgs>
+        <S.Resize>
+          <div>
+            <label htmlFor="altura">Altura</label>
+            <input
+              type="number"
+              name="altura"
+              id="altura"
+              value={imageBG.height || ''}
+              onChange={(e) => handleChangeInputs(e, 'height')}
+            />
+          </div>
+          <div>
+            <label htmlFor="largura">Largura</label>
+            <input
+              type="number"
+              name="largura"
+              id="largura"
+              value={imageBG.width || ''}
+              onChange={(e) => handleChangeInputs(e, 'width')}
+            />
+          </div>
+          <div>
+            <label htmlFor="x">x</label>
+            <input
+              type="number"
+              name="x"
+              id="x"
+              value={imageBG.x || ''}
+              onChange={(e) => handleChangeInputs(e, 'x')}
+            />
+          </div>
+          <div>
+            <label htmlFor="y">y</label>
+            <input
+              type="number"
+              name="y"
+              id="y"
+              value={imageBG.y || ''}
+              onChange={(e) => handleChangeInputs(e, 'y')}
+            />
+          </div>
+          <div>
+            <label htmlFor="girar">girar</label>
+            <input
+              type="number"
+              name="girar"
+              id="girar"
+              value={imageBG.rotation || ''}
+              onChange={(e) => handleChangeInputs(e, 'rotation')}
+              min="-360"
+              max="360"
+            />
+          </div>
+        </S.Resize>
       </S.ContentWrapperFundo>
     </S.SidebarMenuWrapper5>
   );

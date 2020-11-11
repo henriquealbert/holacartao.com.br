@@ -24,6 +24,13 @@ export default function MinhaContaPedidosID({ data }) {
 
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
+
+  if (!token) {
+    return {
+      props: {}
+    };
+  }
+
   const { id } = ctx.query;
   const orderID = id.replace(/2020/i, '');
 

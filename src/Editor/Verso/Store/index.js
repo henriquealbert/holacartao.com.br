@@ -4,12 +4,28 @@ import { nanoid } from 'nanoid';
 const EditorVersoContext = createContext(null);
 
 export const EditorProviderVerso = ({ children }) => {
+  const whiteBackground = {
+    id: String(nanoid() + Date.now()),
+    type: 'bg',
+    fill: '#FFFFFF',
+    width: 640,
+    height: 360.1860465116279,
+    x: 0,
+    y: 0
+  };
   // Create array of Elements
-  const [store, setStore] = useState([]);
+  const [store, setStore] = useState([whiteBackground]);
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
     setHistory((prev) => prev.concat([store]));
+  }, [store]);
+
+  useEffect(() => {
+    const imgsbg = store.filter((element) => element.type === 'image-bg');
+    if (imgsbg.length > 0) {
+      setImageBG(imgsbg[0]);
+    }
   }, [store]);
 
   const handleUndo = () => {
@@ -36,7 +52,8 @@ export const EditorProviderVerso = ({ children }) => {
       width: 50,
       height: 50,
       x: 0,
-      y: 0
+      y: 0,
+      name: 'object'
     };
     setStore([...store, newRect]);
   };
@@ -50,7 +67,8 @@ export const EditorProviderVerso = ({ children }) => {
       width: 50,
       height: 50,
       x: 25,
-      y: 25
+      y: 25,
+      name: 'object'
     };
     setStore([...store, newCircle]);
   };
@@ -64,7 +82,8 @@ export const EditorProviderVerso = ({ children }) => {
       width: 70,
       height: 70,
       x: 50,
-      y: 50
+      y: 50,
+      name: 'object'
     };
     setStore([...store, newTriangle]);
   };
@@ -78,7 +97,8 @@ export const EditorProviderVerso = ({ children }) => {
       width: 70,
       height: 70,
       x: 50,
-      y: 50
+      y: 50,
+      name: 'object'
     };
     setStore([...store, newHexagon]);
   };
@@ -94,7 +114,8 @@ export const EditorProviderVerso = ({ children }) => {
       width: 70,
       height: 70,
       x: 50,
-      y: 50
+      y: 50,
+      name: 'object'
     };
     setStore([...store, newStar]);
   };
@@ -109,8 +130,11 @@ export const EditorProviderVerso = ({ children }) => {
       fontStyle: '',
       textDecoration: '',
       fontFamily: 'Arial',
+      align: '',
+      width: 250,
       x: 50,
-      y: 50
+      y: 50,
+      name: 'object'
     };
     setStore([...store, newText]);
   };
@@ -133,7 +157,9 @@ export const EditorProviderVerso = ({ children }) => {
   // UTILS
 
   // Color BG
-  const [colorBG, setColorBG] = useState('#FFFFFF');
+  const [colorBG, setColorBG] = useState('');
+  const [color, setColor] = useState('');
+  const [presetColors, setPresetColors] = useState([]);
 
   // Image BG
   const [imageBG, setImageBG] = useState('');
@@ -146,6 +172,11 @@ export const EditorProviderVerso = ({ children }) => {
 
   // Text
   const [text, setText] = useState('');
+  const [textFontFamily, setTextFontFamily] = useState('Arial');
+  const [textFontSize, setTextFontSize] = useState(24);
+  const [textFontStyle, setTextFontStyle] = useState('');
+  const [textFontDecoration, setTextFontDecoration] = useState('');
+  const [textAlign, setTextAlign] = useState('');
 
   // Save
   const [saveFinalCard, setSaveFinalCard] = useState(null);
@@ -173,15 +204,22 @@ export const EditorProviderVerso = ({ children }) => {
   };
 
   const resetState = () => {
-    setStore([]);
+    setStore([whiteBackground]);
     setHistory([]);
     setSelectedId(null);
     setSaveWithSangria(null);
     setSaveFinalCard(null);
-    setText(null);
-    setImageLibrary(null);
+    setText('');
+    setImageLibrary([]);
     setImageBG('');
     setColorBG('');
+    setColor('');
+    setPresetColors([]);
+    setTextFontFamily('Arial');
+    setTextFontSize(24);
+    setTextFontStyle('');
+    setTextFontDecoration('');
+    setTextAlign('');
   };
 
   return (
@@ -215,7 +253,21 @@ export const EditorProviderVerso = ({ children }) => {
         setSaveFinalCard,
         saveWithSangria,
         setSaveWithSangria,
-        resetState
+        resetState,
+        textFontFamily,
+        setTextFontFamily,
+        textFontSize,
+        setTextFontSize,
+        textFontStyle,
+        setTextFontStyle,
+        textFontDecoration,
+        setTextFontDecoration,
+        textAlign,
+        setTextAlign,
+        color,
+        setColor,
+        presetColors,
+        setPresetColors
       }}
     >
       {children}

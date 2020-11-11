@@ -7,7 +7,7 @@ export default function ChangeSide({ frente, editorStore }) {
   const { saveFinalCard, saveWithSangria } = editorStore;
 
   const handleChange = () => {
-    changeSide(saveWithSangria(), saveFinalCard());
+    changeSide(saveWithSangria, saveFinalCard);
   };
 
   return (

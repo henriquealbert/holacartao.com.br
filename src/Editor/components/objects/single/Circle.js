@@ -69,6 +69,8 @@ const CircleComponent = ({
             'bottom-left',
             'bottom-right'
           ]}
+          rotationSnaps={[0, 90, 180, 270]}
+          anchorSize={Number(7)}
           boundBoxFunc={(oldBox, newBox) => {
             // limit resize
             if (newBox.width < 5 || newBox.height < 5) {

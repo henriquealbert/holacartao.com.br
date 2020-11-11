@@ -16,14 +16,19 @@ export default function CardModelAdd() {
       <Head>
         <title>Adicionar Modelo de Cartão - Admin - Hola Cartão</title>
       </Head>
-      <EditorComponent add />
+      <EditorComponent />
     </>
   );
 }
 
 export async function getServerSideProps(ctx) {
   const adminToken = authAdmin(ctx);
+  if (!adminToken) {
+    return {
+      props: {}
+    };
+  }
   return {
-    props: { adminToken } // will be passed to the page component as props
+    props: {} // will be passed to the page component as props
   };
 }

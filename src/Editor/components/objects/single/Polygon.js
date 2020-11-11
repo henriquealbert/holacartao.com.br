@@ -61,13 +61,15 @@ const PolygonComponent = ({
       {isSelected && (
         <Transformer
           ref={polygonTRRef}
-          keepRatio={true}
           enabledAnchors={[
             'top-left',
             'top-right',
             'bottom-left',
             'bottom-right'
           ]}
+          anchorSize={Number(7)}
+          padding={0}
+          rotationSnaps={[0, 90, 180, 270]}
           boundBoxFunc={(oldBox, newBox) => {
             // limit resize
             if (newBox.width < 5 || newBox.height < 5) {

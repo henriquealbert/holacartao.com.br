@@ -18,6 +18,11 @@ export default function CardModels() {
 
 export async function getServerSideProps(ctx) {
   const adminToken = authAdmin(ctx);
+  if (!adminToken) {
+    return {
+      props: {}
+    };
+  }
 
   return {
     props: {} // will be passed to the page component as props

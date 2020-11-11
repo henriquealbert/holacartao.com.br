@@ -10,6 +10,7 @@ export default function LinhaSangria() {
       strokeWidth={1}
       x={30}
       y={30}
+      name={'object'}
     />
   );
 }

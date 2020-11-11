@@ -36,6 +36,10 @@ export const EditorUtilsProvider = ({ children }) => {
   const resetUtilsState = () => {
     setFrente(true);
     setIsOpen(false);
+    setCardFrenteSangria(null);
+    setCardVersoSangria(null);
+    setCardFrenteFinal(null);
+    setCardVersoFinal(null);
     setSaveCardHeader(null);
   };
 

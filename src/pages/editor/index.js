@@ -16,13 +16,20 @@ export default function Editor() {
       <Head>
         <title>Crie seu Modelo de Cartão - Hola Cartão</title>
       </Head>
-      <EditorComponent user add />
+      <EditorComponent user />
     </>
   );
 }
 
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
+
+  if (!token) {
+    return {
+      props: {}
+    };
+  }
+
   return {
     props: {} // will be passed to the page component as props
   };

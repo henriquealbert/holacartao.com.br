@@ -41,6 +41,8 @@ const TextComponent = ({ shapeProps, isSelected, onSelect, onChange }) => {
         <Transformer
           keepRatio={true}
           ref={textTRRef}
+          anchorSize={Number(7)}
+          rotationSnaps={[0, 90, 180, 270]}
           enabledAnchors={['middle-left', 'middle-right']}
           boundBoxFunc={(oldBox, newBox) => {
             // limit resize

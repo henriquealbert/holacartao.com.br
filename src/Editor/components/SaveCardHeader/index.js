@@ -77,7 +77,7 @@ export default function SaveCardHeader() {
   return (
     <Formik
       initialValues={{
-        title: saveCardHeader?.title,
+        title: saveCardHeader?.title || '',
         frontal_card: '',
         back_card: '',
         slug: ''

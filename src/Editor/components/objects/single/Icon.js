@@ -67,6 +67,8 @@ const IconComponent = ({
             'bottom-left',
             'bottom-right'
           ]}
+          anchorSize={Number(7)}
+          rotationSnaps={[0, 90, 180, 270]}
           boundBoxFunc={(oldBox, newBox) => {
             // limit resize
             if (newBox.scaleX < 0.1 || newBox.scaleY < 0.1) {

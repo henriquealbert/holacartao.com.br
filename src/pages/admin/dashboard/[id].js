@@ -21,6 +21,11 @@ export default function AdminDashboardPedidosID({ order }) {
 
 export async function getServerSideProps(ctx) {
   const adminToken = authAdmin(ctx);
+  if (!adminToken) {
+    return {
+      props: {}
+    };
+  }
   const { id } = await ctx.query;
   const orderID = id.replace('2020', '');
 

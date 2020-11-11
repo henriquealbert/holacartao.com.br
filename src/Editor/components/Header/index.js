@@ -5,7 +5,22 @@ import Router from 'next/router';
 import * as S from './styled';
 
 export default function Header({ editorStore, user }) {
-  const { removeElement, handleUndo } = editorStore;
+  const {
+    removeElement,
+    handleUndo,
+    selectedId,
+    store,
+    setStore
+  } = editorStore;
+
+  const moveUp = () => {
+    if (selectedId === null) {
+      return;
+    }
+    console.log(selectedId);
+  };
+  const moveDown = () => {};
+
   return (
     <S.HeaderEditorWrapper>
       <S.HeaderEditorContainer>
@@ -43,6 +58,8 @@ export default function Header({ editorStore, user }) {
               <li onClick={removeElement}>
                 <S.TrashIcon />
               </li>
+              <li onClick={moveUp}>Pra Cima</li>
+              <li onClick={moveDown}>Pra Baixo</li>
             </ul>
           </S.HeaderMenuActions>
           {user ? <SaveCardHeader /> : ''}

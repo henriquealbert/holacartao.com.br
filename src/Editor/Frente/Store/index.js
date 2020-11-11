@@ -4,8 +4,17 @@ import { nanoid } from 'nanoid';
 const EditorFrenteContext = createContext(null);
 
 export const EditorProviderFrente = ({ children }) => {
+  const whiteBackground = {
+    id: String(nanoid() + Date.now()),
+    type: 'bg',
+    fill: '#FFFFFF',
+    width: 640,
+    height: 360.1860465116279,
+    x: 0,
+    y: 0
+  };
   // Create array of Elements
-  const [store, setStore] = useState([]);
+  const [store, setStore] = useState([whiteBackground]);
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
@@ -43,7 +52,8 @@ export const EditorProviderFrente = ({ children }) => {
       width: 50,
       height: 50,
       x: 0,
-      y: 0
+      y: 0,
+      name: 'object'
     };
     setStore([...store, newRect]);
   };
@@ -57,7 +67,8 @@ export const EditorProviderFrente = ({ children }) => {
       width: 50,
       height: 50,
       x: 25,
-      y: 25
+      y: 25,
+      name: 'object'
     };
     setStore([...store, newCircle]);
   };
@@ -71,7 +82,8 @@ export const EditorProviderFrente = ({ children }) => {
       width: 70,
       height: 70,
       x: 50,
-      y: 50
+      y: 50,
+      name: 'object'
     };
     setStore([...store, newTriangle]);
   };
@@ -85,7 +97,8 @@ export const EditorProviderFrente = ({ children }) => {
       width: 70,
       height: 70,
       x: 50,
-      y: 50
+      y: 50,
+      name: 'object'
     };
     setStore([...store, newHexagon]);
   };
@@ -101,7 +114,8 @@ export const EditorProviderFrente = ({ children }) => {
       width: 70,
       height: 70,
       x: 50,
-      y: 50
+      y: 50,
+      name: 'object'
     };
     setStore([...store, newStar]);
   };
@@ -119,7 +133,8 @@ export const EditorProviderFrente = ({ children }) => {
       align: '',
       width: 250,
       x: 50,
-      y: 50
+      y: 50,
+      name: 'object'
     };
     setStore([...store, newText]);
   };
@@ -157,7 +172,7 @@ export const EditorProviderFrente = ({ children }) => {
 
   // Text
   const [text, setText] = useState('');
-  const [textFontFamily, setTextFontFamily] = useState('Georgia');
+  const [textFontFamily, setTextFontFamily] = useState('Arial');
   const [textFontSize, setTextFontSize] = useState(24);
   const [textFontStyle, setTextFontStyle] = useState('');
   const [textFontDecoration, setTextFontDecoration] = useState('');
@@ -189,15 +204,22 @@ export const EditorProviderFrente = ({ children }) => {
   };
 
   const resetState = () => {
-    setStore([]);
+    setStore([whiteBackground]);
     setHistory([]);
     setSelectedId(null);
     setSaveWithSangria(null);
     setSaveFinalCard(null);
-    setText(null);
-    setImageLibrary(null);
+    setText('');
+    setImageLibrary([]);
     setImageBG('');
     setColorBG('');
+    setColor('');
+    setPresetColors([]);
+    setTextFontFamily('Arial');
+    setTextFontSize(24);
+    setTextFontStyle('');
+    setTextFontDecoration('');
+    setTextAlign('');
   };
 
   return (

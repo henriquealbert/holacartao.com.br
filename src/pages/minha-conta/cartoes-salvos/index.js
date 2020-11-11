@@ -26,6 +26,12 @@ export default function MinhaContaCartoesSalvos({ initialData }) {
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
 
+  if (!token) {
+    return {
+      props: {}
+    };
+  }
+
   const user = await serverClient(token).request(GET_ME);
 
   const savedCards = await serverClient(token).request(GET_SAVED_CARDS, {

@@ -22,7 +22,12 @@ export default function MinhaContaAjuda() {
 
 export async function getServerSideProps(ctx) {
   const token = auth(ctx);
+  if (!token) {
+    return {
+      props: {}
+    };
+  }
   return {
-    props: { token } // will be passed to the page component as props
+    props: {} // will be passed to the page component as props
   };
 }
