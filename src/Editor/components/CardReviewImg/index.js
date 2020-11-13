@@ -2,17 +2,28 @@ import { useEditorUtilsContext } from '../../Context/EditorUtilsContext';
 
 import * as S from './styled';
 
-export default function CardReviewImg() {
-  const { cardFrenteSangria, cardVersoSangria } = useEditorUtilsContext();
+export default function CardReviewImg({ user }) {
+  const {
+    cardFrenteSangria,
+    cardVersoSangria,
+    cardFrenteFinal,
+    cardVersoFinal
+  } = useEditorUtilsContext();
   return (
     <S.CardReviewImg>
       <div>
         <span>Frente</span>
-        <img src={cardFrenteSangria} alt="Cartão Frente" />
+        <img
+          src={user ? cardFrenteSangria : cardFrenteFinal}
+          alt="Cartão Frente"
+        />
       </div>
       <div>
         <span>Verso</span>
-        <img src={cardVersoSangria} alt="Cartão Verso" />
+        <img
+          src={user ? cardVersoSangria : cardVersoFinal}
+          alt="Cartão Verso"
+        />
       </div>
     </S.CardReviewImg>
   );

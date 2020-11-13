@@ -37,7 +37,7 @@ export default function BeforeSaveModal({ infoCard, user }) {
             Verifique antes de finalizar, se todos os elementos estão dentro da
             linha vermelha de segurança.
           </p>
-          <CardReviewImg />
+          <CardReviewImg user={user} />
           {user ? (
             <S.ButtonsModal>
               <button onClick={closeModal}>
