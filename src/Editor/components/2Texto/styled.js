@@ -89,18 +89,14 @@ export const AddTxt = styled.button`
   }
 `;
 
-export const SelectFont = styled.select`
-  border: none;
-  padding: 0.5rem 1rem;
+export const SelectFont = styled.div`
   margin-bottom: 1rem;
-  background: var(--darker-grey);
-  color: #fff;
-  border-radius: 0.5rem;
-  transition: all 200ms ease-in-out;
+  div[id^='font-picker'] {
+    width: 188px !important;
+  }
 
-  option {
-    background: rgba(255, 255, 255, 0.8);
-    color: #000;
+  div[id^='font-picker'].expanded ul {
+    max-height: 180px !important;
   }
 `;
 

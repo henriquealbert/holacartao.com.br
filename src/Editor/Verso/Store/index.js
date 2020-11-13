@@ -129,7 +129,7 @@ export const EditorProviderVerso = ({ children }) => {
       fontSize: 24,
       fontStyle: '',
       textDecoration: '',
-      fontFamily: 'Arial',
+      fontFamily: 'Roboto',
       align: '',
       width: 250,
       x: 50,
@@ -172,7 +172,7 @@ export const EditorProviderVerso = ({ children }) => {
 
   // Text
   const [text, setText] = useState('');
-  const [textFontFamily, setTextFontFamily] = useState('Arial');
+  const [textFontFamily, setTextFontFamily] = useState('Roboto');
   const [textFontSize, setTextFontSize] = useState(24);
   const [textFontStyle, setTextFontStyle] = useState('');
   const [textFontDecoration, setTextFontDecoration] = useState('');
@@ -194,14 +194,14 @@ export const EditorProviderVerso = ({ children }) => {
     if (clickedOnEmpty) {
       setSelectedId(null);
       setText('');
-      setTextFontFamily('Arial');
+      setTextFontFamily('Roboto');
     }
     const sangriaLines =
       e.target === e.target.getStage().findOne('#linha-sangria');
     if (sangriaLines) {
       setSelectedId(null);
       setText('');
-      setTextFontFamily('Arial');
+      setTextFontFamily('Roboto');
     }
   };
 
@@ -217,7 +217,7 @@ export const EditorProviderVerso = ({ children }) => {
     setColorBG('');
     setColor('');
     setPresetColors([]);
-    setTextFontFamily('Arial');
+    setTextFontFamily('Roboto');
     setTextFontSize(24);
     setTextFontStyle('');
     setTextFontDecoration('');

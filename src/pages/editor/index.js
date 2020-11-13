@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 
 import { auth } from '../../Contexts/AppContext';
 import LoadingEditor from '../../Editor/Loading';
-import LoadFontsComponent from '../../Editor/components/2Texto/LoadFontsComponent';
 
 const options = {
   ssr: false,
@@ -13,7 +13,9 @@ const EditorComponent = dynamic(() => import('../../Editor'), options);
 export default function Editor() {
   return (
     <>
-      <LoadFontsComponent title="Crie seu Modelo de Cartão - Hola Cartão" />
+      <Head>
+        <title>Crie seu Modelo de Cartão - Hola Cartão</title>
+      </Head>
       <EditorComponent user />
     </>
   );

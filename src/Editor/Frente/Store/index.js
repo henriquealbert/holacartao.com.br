@@ -129,7 +129,7 @@ export const EditorProviderFrente = ({ children }) => {
       fontSize: 24,
       fontStyle: '',
       textDecoration: '',
-      fontFamily: 'Arial',
+      fontFamily: 'Roboto',
       align: '',
       width: 250,
       x: 50,
@@ -162,7 +162,14 @@ export const EditorProviderFrente = ({ children }) => {
   const [presetColors, setPresetColors] = useState([]);
 
   // Image BG
-  const [imageBG, setImageBG] = useState('');
+  const [imageBG, setImageBG] = useState({
+    height: 0,
+    width: 0,
+    x: 0,
+    y: 0,
+    rotation: 0,
+    url: ''
+  });
 
   // Icons
   const [iconColor, setIconColor] = useState({ r: 0, g: 0, b: 0, a: 1 });
@@ -172,7 +179,7 @@ export const EditorProviderFrente = ({ children }) => {
 
   // Text
   const [text, setText] = useState('');
-  const [textFontFamily, setTextFontFamily] = useState('Arial');
+  const [textFontFamily, setTextFontFamily] = useState('Roboto');
   const [textFontSize, setTextFontSize] = useState(24);
   const [textFontStyle, setTextFontStyle] = useState('');
   const [textFontDecoration, setTextFontDecoration] = useState('');
@@ -194,14 +201,14 @@ export const EditorProviderFrente = ({ children }) => {
     if (clickedOnEmpty) {
       setSelectedId(null);
       setText('');
-      setTextFontFamily('Arial');
+      setTextFontFamily('Roboto');
     }
     const sangriaLines =
       e.target === e.target.getStage().findOne('#linha-sangria');
     if (sangriaLines) {
       setSelectedId(null);
       setText('');
-      setTextFontFamily('Arial');
+      setTextFontFamily('Roboto');
     }
   };
 
@@ -213,11 +220,18 @@ export const EditorProviderFrente = ({ children }) => {
     setSaveFinalCard(null);
     setText('');
     setImageLibrary([]);
-    setImageBG('');
+    setImageBG({
+      height: 0,
+      width: 0,
+      x: 0,
+      y: 0,
+      rotation: 0,
+      url: ''
+    });
     setColorBG('');
     setColor('');
     setPresetColors([]);
-    setTextFontFamily('Arial');
+    setTextFontFamily('Roboto');
     setTextFontSize(24);
     setTextFontStyle('');
     setTextFontDecoration('');

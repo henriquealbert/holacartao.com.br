@@ -61,8 +61,41 @@ export default function Item5({ openItem5, editorStore }) {
   };
 
   const handleChangeInputs = (e, option) => {
-    setImageBG((prev) => ({ ...prev, [option]: Number(e.target.value) }));
+    if (!imageBG.id) {
+      return;
+    }
+
+    const found = store.filter((element) => element.id === imageBG.id);
+
+    function updateStore() {
+      const elements = store.filter((element) => element.id !== imageBG.id);
+      elements.push(found[0]);
+      setStore(elements);
+      setImageBG(found[0]);
+    }
+
+    if (option === 'height') {
+      found[0].height = Number(e.target.value);
+      updateStore();
+    }
+    if (option === 'width') {
+      found[0].width = Number(e.target.value);
+      updateStore();
+    }
+    if (option === 'x') {
+      found[0].x = Number(e.target.value);
+      updateStore();
+    }
+    if (option === 'y') {
+      found[0].y = Number(e.target.value);
+      updateStore();
+    }
+    if (option === 'rotation') {
+      found[0].rotation = Number(e.target.value);
+      updateStore();
+    }
   };
+  console.log('store', store);
 
   return (
     <S.SidebarMenuWrapper5 className={openItem5 !== true ? '' : 'open'}>
@@ -103,7 +136,7 @@ export default function Item5({ openItem5, editorStore }) {
               type="number"
               name="altura"
               id="altura"
-              value={imageBG.height || ''}
+              value={imageBG.height}
               onChange={(e) => handleChangeInputs(e, 'height')}
             />
           </div>
@@ -113,7 +146,7 @@ export default function Item5({ openItem5, editorStore }) {
               type="number"
               name="largura"
               id="largura"
-              value={imageBG.width || ''}
+              value={imageBG.width}
               onChange={(e) => handleChangeInputs(e, 'width')}
             />
           </div>
@@ -123,7 +156,7 @@ export default function Item5({ openItem5, editorStore }) {
               type="number"
               name="x"
               id="x"
-              value={imageBG.x || ''}
+              value={imageBG.x}
               onChange={(e) => handleChangeInputs(e, 'x')}
             />
           </div>
@@ -133,7 +166,7 @@ export default function Item5({ openItem5, editorStore }) {
               type="number"
               name="y"
               id="y"
-              value={imageBG.y || ''}
+              value={imageBG.y}
               onChange={(e) => handleChangeInputs(e, 'y')}
             />
           </div>
@@ -143,7 +176,7 @@ export default function Item5({ openItem5, editorStore }) {
               type="number"
               name="girar"
               id="girar"
-              value={imageBG.rotation || ''}
+              value={imageBG.rotation}
               onChange={(e) => handleChangeInputs(e, 'rotation')}
               min="-360"
               max="360"

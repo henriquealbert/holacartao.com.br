@@ -1,4 +1,4 @@
-import { fontFamilyNames } from './fonts';
+import FontPicker from 'font-picker-react';
 
 import * as S from './styled';
 
@@ -21,6 +21,8 @@ export default function Item2({ openItem2, editorStore }) {
     textAlign,
     setTextAlign
   } = editorStore;
+
+  const GOOGLE_API = process.env.NEXT_PUBLIC_GOOGLE_FONTS_API;
 
   // Set Bold
   const handleBold = () => {
@@ -117,14 +119,14 @@ export default function Item2({ openItem2, editorStore }) {
   };
 
   // Change Font Family
-  const handleFontFamily = (e) => {
+  const handleFontFamily = (font) => {
     if (selectedId !== null) {
       const found = store.filter((element) => element.id === selectedId);
-      found[0].fontFamily = e.target.value;
+      found[0].fontFamily = font;
       const elements = store.filter((element) => element.id !== selectedId);
       elements.push(found[0]);
       setStore(elements);
-      setTextFontFamily(found[0].fontFamily);
+      setTextFontFamily(font);
     }
   };
 
@@ -173,7 +175,7 @@ export default function Item2({ openItem2, editorStore }) {
       setTextAlign(found[0].align);
     }
   };
-  console.log();
+
   return (
     <S.SidebarMenuWrapper2 className={openItem2 !== true ? '' : 'open'}>
       <S.ContentWrapper>
@@ -190,6 +192,16 @@ export default function Item2({ openItem2, editorStore }) {
           />
           <button onClick={changeText}>Alterar Texto</button>
         </S.ChangeTextWrapper>
+        <h3>Fonte</h3>
+        <S.SelectFont>
+          <FontPicker
+            apiKey={GOOGLE_API}
+            activeFontFamily={textFontFamily}
+            onChange={(nextFont) => handleFontFamily(nextFont.family)}
+            limit={300}
+            sort="popularity"
+          />
+        </S.SelectFont>
         <h3>Estilos</h3>
         <S.TextStyle>
           <button
@@ -213,28 +225,6 @@ export default function Item2({ openItem2, editorStore }) {
             U
           </button>
         </S.TextStyle>
-        <h3>Fonte</h3>
-        <S.SelectFont
-          name="fonte"
-          id="fonte"
-          onChange={handleFontFamily}
-          value={
-            fontFamilyNames.filter((font) => font.name === textFontFamily)[0]
-              .name
-          }
-        >
-          {fontFamilyNames.map((font) => {
-            return (
-              <option
-                key={font.name}
-                value={font.name}
-                style={{ fontFamily: `${font.name}` }}
-              >
-                {font.name}
-              </option>
-            );
-          })}
-        </S.SelectFont>
 
         <h3>Tamanho</h3>
         <S.SizeFont

@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic';
 import { auth } from '../../Contexts/AppContext';
+import Head from 'next/head';
 
 import serverClient from '../../graphql/serverClient';
 import GET_CARD_MODEL from '../../graphql/admin/GetCardModel';
 import GET_SINGLE_SAVED_CARD from '../../graphql/queries/GetSingleSavedCard';
-import LoadFontsComponent from '../../Editor/components/2Texto/LoadFontsComponent';
 
 import LoadingEditor from '../../Editor/Loading';
 
@@ -17,7 +17,9 @@ const EditorComponent = dynamic(() => import('../../Editor'), options);
 export default function UserEditor({ data }) {
   return (
     <>
-      <LoadFontsComponent title="Edite seu Modelo de Cartão - Hola Cartão" />
+      <Head>
+        <title>Edite seu Modelo de Cartão - Hola Cartão</title>
+      </Head>
       <EditorComponent data={data} user />
     </>
   );
