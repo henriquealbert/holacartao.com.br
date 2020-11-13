@@ -30,30 +30,54 @@ export const MyAccHelp = styled.div`
   }
 
   form {
+    max-width: 600px;
+
     p {
       font-weight: bold;
       margin-top: 2rem;
     }
-    div {
-      display: flex;
-      flex-wrap: wrap;
+  }
+`;
 
-      input,
-      textarea {
-        margin: 0.5rem 0;
-        background: #c4c4c4;
-        border-radius: 25px;
-        padding: 0.5rem 1rem;
-        border: none;
-        flex-grow: 1;
-        font-family: 'Roboto';
-        font-size: 1rem;
-      }
+export const FormGroup = styled.div`
+  display: flex;
+  width: 100%;
 
-      input:first-child {
-        margin-right: 1rem;
-      }
-    }
+  textarea {
+    margin: 0.5rem 0;
+    background: #c4c4c4;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-family: 'Roboto';
+    font-size: 1rem;
+    display: block;
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  span {
+    display: block;
+    color: #fe0e38;
+    text-align: center;
+    margin: 0;
+    font-size: 0.75rem;
+  }
+`;
+
+export const FormItem = styled.div`
+  width: 100%;
+  input {
+    margin: 0.5rem 0;
+    background: #c4c4c4;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-family: 'Roboto';
+    font-size: 1rem;
+    display: block;
+    flex-grow: 1;
+    width: 100%;
   }
 `;
 
@@ -68,6 +92,11 @@ export const buttonSubmit = styled.div`
     padding: 1rem 2rem;
     border-radius: 25px;
     font-weight: bold;
-    width: 110px;
   }
+`;
+
+export const Success = styled.p`
+  display: block;
+  color: var(--green);
+  font-weight: normal;
 `;
