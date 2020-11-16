@@ -1,5 +1,5 @@
 //Auth
-import AppContext from '../Contexts/AppContext';
+import { AppUserProvider } from '../Contexts/AppContext';
 import AdminContext from '../Contexts/AdminContext';
 import useAuth from '../hooks/useAuth';
 
@@ -10,22 +10,26 @@ import { EditorProviderVerso } from '../Editor/Verso/Store';
 
 // styles
 import GlobalStyles from '../styles/global';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from '../styles/theme';
 
 export default function App({ Component, pageProps }) {
   const { admin, setAdmin, user, setUser } = useAuth();
 
   return (
-    <AdminContext.Provider value={{ admin, isAdminAuth: !!admin, setAdmin }}>
-      <AppContext.Provider value={{ user, isAuthenticated: !!user, setUser }}>
-        <EditorUtilsProvider>
-          <EditorProviderFrente>
-            <EditorProviderVerso>
-              <GlobalStyles />
-              <Component {...pageProps} />
-            </EditorProviderVerso>
-          </EditorProviderFrente>
-        </EditorUtilsProvider>
-      </AppContext.Provider>
-    </AdminContext.Provider>
+    <ChakraProvider theme={theme}>
+      <AdminContext.Provider value={{ admin, isAdminAuth: !!admin, setAdmin }}>
+        <AppUserProvider value={{ user, isAuthenticated: !!user, setUser }}>
+          <EditorUtilsProvider>
+            <EditorProviderFrente>
+              <EditorProviderVerso>
+                <GlobalStyles />
+                <Component {...pageProps} />
+              </EditorProviderVerso>
+            </EditorProviderFrente>
+          </EditorUtilsProvider>
+        </AppUserProvider>
+      </AdminContext.Provider>
+    </ChakraProvider>
   );
 }

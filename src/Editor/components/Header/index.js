@@ -58,8 +58,8 @@ export default function Header({ editorStore, user }) {
               <li onClick={removeElement}>
                 <S.TrashIcon />
               </li>
-              <li onClick={moveUp}>Pra Cima</li>
-              <li onClick={moveDown}>Pra Baixo</li>
+              {/* <li onClick={moveUp}>Pra Cima</li>
+              <li onClick={moveDown}>Pra Baixo</li> */}
             </ul>
           </S.HeaderMenuActions>
           {user ? <SaveCardHeader /> : ''}

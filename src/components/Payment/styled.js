@@ -22,3 +22,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div``;
+
+export const BackButton = styled.button`
+  font-family: 'Montserrat';
+`;

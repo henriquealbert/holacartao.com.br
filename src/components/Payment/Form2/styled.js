@@ -39,3 +39,7 @@ export const ButtonWrapper = styled.div`
   justify-content: flex-end;
   margin-top: 2rem;
 `;
+
+export const BackButton = styled.button`
+  font-family: 'Montserrat';
+`;

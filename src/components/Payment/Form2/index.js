@@ -1,4 +1,14 @@
-import Button from '../../Button';
+import {
+  FormControl,
+  FormLabel,
+  Select,
+  Flex,
+  Input,
+  Button,
+  Box,
+  NumberInput,
+  NumberInputField
+} from '@chakra-ui/react';
 
 import * as S from './styled';
 
@@ -6,9 +16,12 @@ export default function Form2({ setMenu }) {
   const handleClick = () => {
     setMenu('03');
   };
+  const handleBack = () => {
+    setMenu('01');
+  };
   return (
     <S.Wrapper>
-      <form>
+      <Box>
         <S.FormGroup>
           <S.FormItem>
             <label htmlFor="logradouro">Logradouro (rua, avenida e etc.)</label>
@@ -49,10 +62,20 @@ export default function Form2({ setMenu }) {
             <input type="text" name="estado" id="estado" />
           </div>
         </S.FormGroup>
-      </form>
-      <S.ButtonWrapper>
-        <Button onClick={handleClick}>Próximo Passo</Button>
-      </S.ButtonWrapper>
+      </Box>
+      <Flex mb="2rem" justify="space-between">
+        <Box>
+          <S.BackButton onClick={handleBack}>
+            voltar
+            <img src="/images/arrow-checkout.svg" alt="Voltar" />
+          </S.BackButton>
+        </Box>
+        <Box>
+          <Button size="lg" onClick={handleClick}>
+            Próximo Passo
+          </Button>
+        </Box>
+      </Flex>
     </S.Wrapper>
   );
 }

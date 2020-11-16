@@ -1,6 +1,6 @@
 import * as S from './styled';
 
-export const BasicPrice = ({ children }) => {
+export const BasicPrice = () => {
   return (
     <S.OptionItem>
       <h4>Basic</h4>
@@ -15,12 +15,11 @@ export const BasicPrice = ({ children }) => {
           </S.Price>
         </S.BoxOption>
       </S.Border>
-      {children}
     </S.OptionItem>
   );
 };
 
-export const StandardPrice = ({ children }) => {
+export const StandardPrice = () => {
   return (
     <S.OptionItem>
       <S.Medalha>
@@ -38,12 +37,11 @@ export const StandardPrice = ({ children }) => {
           </S.Price>
         </S.BoxOption>
       </S.Border>
-      {children}
     </S.OptionItem>
   );
 };
 
-export const CinquecentoPrice = ({ children }) => {
+export const CinquecentoPrice = () => {
   return (
     <S.OptionItem>
       <h4>Cinque­cento</h4>
@@ -58,7 +56,6 @@ export const CinquecentoPrice = ({ children }) => {
           </S.Price>
         </S.BoxOption>
       </S.Border>
-      {children}
     </S.OptionItem>
   );
 };
