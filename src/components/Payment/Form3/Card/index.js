@@ -53,7 +53,10 @@ export default function CardComponent() {
     phoneNumber,
     transactionAmount,
     parcelas,
-    setParcelas
+    setParcelas,
+    cep,
+    logradouro,
+    streetNumber
   } = useAppContext();
 
   const handleInputFocus = ({ target }) => {
@@ -115,7 +118,12 @@ export default function CardComponent() {
         email: email,
         area_code: areaCode,
         phoneNumber: phoneNumber,
-        transactionAmount: transactionAmount
+        transactionAmount: transactionAmount,
+        address: {
+          zip_code: cep,
+          street_name: logradouro,
+          street_number: streetNumber
+        }
       };
       const data = { ...formData, ...otherData };
 
@@ -155,6 +163,37 @@ export default function CardComponent() {
         <form onSubmit={getCardToken} id="paymentForm">
           <Flex>
             <FormControl>
+              <FormLabel htmlFor="cardNumber">Número do Cartão</FormLabel>
+              <Input
+                placeholder="0000 0000 0000 0000"
+                pattern="[\d| ]{16,22}"
+                required
+                type="text"
+                id="cardNumber"
+                data-checkout="cardNumber"
+                name="cardNumber"
+                onPaste={returnFalse}
+                onCopy={returnFalse}
+                onCut={returnFalse}
+                onDrag={returnFalse}
+                onDrop={returnFalse}
+                autoComplete="off"
+                onChange={handleInputChange}
+                onFocus={handleInputFocus}
+              />
+            </FormControl>
+            <FormControl mr="2rem">
+              <FormLabel htmlFor="docType">Tipo de documento</FormLabel>
+              <Select
+                id="docType"
+                name="docType"
+                data-checkout="docType"
+                type="text"
+                value={docType}
+                onChange={handleInputChange}
+              ></Select>
+            </FormControl>
+            <FormControl>
               <FormLabel htmlFor="cardholderName">Titular do Cartão</FormLabel>
               <Input
                 id="cardholderName"
@@ -167,18 +206,8 @@ export default function CardComponent() {
                 onFocus={handleInputFocus}
               />
             </FormControl>
+
             <Flex mb="1rem">
-              <FormControl mr="2rem">
-                <FormLabel htmlFor="docType">Tipo de documento</FormLabel>
-                <Select
-                  id="docType"
-                  name="docType"
-                  data-checkout="docType"
-                  type="text"
-                  value={docType}
-                  onChange={handleInputChange}
-                ></Select>
-              </FormControl>
               <FormControl>
                 <FormLabel htmlFor="docNumber">Número do documento</FormLabel>
                 <Input
@@ -191,6 +220,8 @@ export default function CardComponent() {
                 />
               </FormControl>
             </Flex>
+          </Flex>
+          <Flex>
             <Box>
               <FormControl>
                 <FormLabel htmlFor="cardExpirationMonth">
@@ -232,28 +263,6 @@ export default function CardComponent() {
                 </Flex>
               </FormControl>
             </Box>
-          </Flex>
-          <Flex>
-            <FormControl>
-              <FormLabel htmlFor="cardNumber">Número do Cartão</FormLabel>
-              <Input
-                placeholder="0000 0000 0000 0000"
-                pattern="[\d| ]{16,22}"
-                required
-                type="text"
-                id="cardNumber"
-                data-checkout="cardNumber"
-                name="cardNumber"
-                onPaste={returnFalse}
-                onCopy={returnFalse}
-                onCut={returnFalse}
-                onDrag={returnFalse}
-                onDrop={returnFalse}
-                autoComplete="off"
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
-              />
-            </FormControl>
             <FormControl>
               <FormLabel htmlFor="securityCode">Código CVV</FormLabel>
               <Input

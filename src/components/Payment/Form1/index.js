@@ -107,7 +107,7 @@ export default function Form1({ setMenu }) {
           </FormControl>
         </Box>
       </Flex>
-      <Flex mb="2rem" justify="flex-end">
+      <Flex mb="4rem" justify="flex-end">
         <Button size="lg" onClick={handleClick}>
           Próximo Passo
         </Button>

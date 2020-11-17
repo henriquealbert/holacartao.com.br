@@ -21,7 +21,7 @@ export default function Pacotes() {
           <BasicPrice htmlFor="basic" />
           <Radio
             colorScheme="green"
-            value="79.90"
+            value="79.9"
             d="block"
             mt="0.5rem"
             id="basic"
@@ -32,7 +32,7 @@ export default function Pacotes() {
           <StandardPrice />
           <Radio
             colorScheme="green"
-            value="89.90"
+            value="89.9"
             size="lg"
             d="block"
             mt="0.5rem"
@@ -42,7 +42,7 @@ export default function Pacotes() {
           <CinquecentoPrice />
           <Radio
             colorScheme="green"
-            value="119.90"
+            value="119.9"
             size="lg"
             mt="0.5rem"
             d="block"

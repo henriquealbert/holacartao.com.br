@@ -1,8 +1,12 @@
+import { useAppContext } from '../../../Contexts/AppContext';
 import * as S from './styled';
+import { SimpleGrid, Box } from '@chakra-ui/react';
+import { formatPrice } from '../../../utils/format';
 
 export default function CartSidebar() {
+  const { transactionAmount } = useAppContext();
   return (
-    <S.Wrapper>
+    <Box bgColor="var(--white-2)" as="aside">
       <S.Content>
         <h2>Seu Carrinho</h2>
         <S.CardInfo>
@@ -13,27 +17,22 @@ export default function CartSidebar() {
           </p>
         </S.CardInfo>
         <S.PriceInfo>
-          <tbody>
-            <tr>
-              <td>Subtotal:</td>
-              <td>Standard 250un.</td>
-              <td>R$ 89,90</td>
-            </tr>
-            <tr>
-              <td>Frete:</td>
-              <td></td>
-              <td>R$ 00,00</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>TOTAL</td>
-              <td></td>
-              <td>R$ 89,90</td>
-            </tr>
-          </tfoot>
+          <SimpleGrid columns={2}>
+            <Box>
+              <p>Subtotal:</p>
+              <p>Frete:</p>
+            </Box>
+            <Box>
+              <p>{formatPrice(transactionAmount)}</p>
+              <p>R$ 0,00</p>
+            </Box>
+          </SimpleGrid>
+          <SimpleGrid columns={2} className="sidebar-cart-total">
+            <h4>TOTAL</h4>
+            <h4>{formatPrice(transactionAmount)}</h4>
+          </SimpleGrid>
         </S.PriceInfo>
       </S.Content>
-    </S.Wrapper>
+    </Box>
   );
 }

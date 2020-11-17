@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.aside`
-  background: var(--white-2);
-  max-width: 414px;
-`;
-
 export const Content = styled.div`
   margin-left: 2.5rem;
   margin-right: 2.5rem;
@@ -68,9 +63,9 @@ export const CardInfo = styled.div`
   }
 `;
 
-export const PriceInfo = styled.table`
+export const PriceInfo = styled.div`
   position: relative;
-  tbody td {
+  p {
     padding-right: 1rem;
     padding-bottom: 0.25rem;
     padding-top: 0.25rem;
@@ -82,29 +77,31 @@ export const PriceInfo = styled.table`
     letter-spacing: 0.01em;
     color: var(--gray-2);
   }
-  tbody td:last-child {
+  p:last-child {
     padding: 0;
   }
 
-  tbody:before {
+  .sidebar-cart-total:before {
     content: '';
     position: absolute;
     display: block;
     height: 1px;
-    width: 100%;
-    bottom: 55px;
+    width: 80%;
+    bottom: 45px;
     background: var(--white-3);
     z-index: 1;
   }
 
-  tfoot td {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 37px;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    padding-top: 2rem;
+  .sidebar-cart-total {
+    h4 {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 37px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      padding-top: 1.5rem;
+    }
   }
 `;

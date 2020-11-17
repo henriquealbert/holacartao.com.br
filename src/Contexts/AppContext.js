@@ -8,6 +8,24 @@ const AppContext = createContext({ isAuthenticated: false });
 export default AppContext;
 
 export const AppUserProvider = ({ children, value }) => {
+  // form1 - personal info
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [areaCode, setAreaCode] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [transactionAmount, setTransactionAmount] = useState('89.9');
+
+  //form2 - address
+  const [logradouro, setLogradouro] = useState('');
+  const [streetNumber, setStreetNumber] = useState();
+  const [cep, setCep] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [cidadeEstado, setCidadeEstado] = useState('');
+  const [referencia, setReferencia] = useState('');
+  const [complemento, setComplemento] = useState('');
+
+  // form3 - payment - credit card
   const [number, setNumber] = useState('');
   const [name, setName] = useState('');
   const [month, setMonth] = useState('');
@@ -15,14 +33,8 @@ export const AppUserProvider = ({ children, value }) => {
   const [cvc, setCvc] = useState('');
   const [bandeira, setBandeira] = useState('');
   const [focused, setFocused] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [docType, setDocType] = useState('');
   const [docNumber, setDocNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [areaCode, setAreaCode] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [transactionAmount, setTransactionAmount] = useState('89.90');
   const [parcelas, setParcelas] = useState(null);
 
   return (
@@ -60,7 +72,21 @@ export const AppUserProvider = ({ children, value }) => {
         transactionAmount,
         setTransactionAmount,
         parcelas,
-        setParcelas
+        setParcelas,
+        logradouro,
+        setLogradouro,
+        streetNumber,
+        setStreetNumber,
+        cep,
+        setCep,
+        bairro,
+        setBairro,
+        cidadeEstado,
+        setCidadeEstado,
+        referencia,
+        setReferencia,
+        complemento,
+        setComplemento
       }}
     >
       {children}

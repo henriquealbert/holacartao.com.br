@@ -61,6 +61,15 @@ const theme = extendTheme({
               borderColor: '#000'
             }
           }
+        },
+        filled: {
+          field: {
+            borderColor: '#9F9595',
+            _focus: {
+              boxShadow: '0 0 0 1px #000',
+              borderColor: '#000'
+            }
+          }
         }
       }
     },
