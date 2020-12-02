@@ -22,8 +22,12 @@ const TextComponent = ({ shapeProps, isSelected, onSelect, onChange }) => {
         ref={textRef}
         onTransform={() => {
           textRef.current.setAttrs({
-            width: textRef.current.width() * textRef.current.scaleX(),
-            scaleX: 1
+            width: Math.max(
+              textRef.current.width() * textRef.current.scaleX(),
+              20
+            ),
+            scaleX: 1,
+            scaleY: 1
           });
         }}
         {...shapeProps}
@@ -33,6 +37,25 @@ const TextComponent = ({ shapeProps, isSelected, onSelect, onChange }) => {
             ...shapeProps,
             x: e.target.x(),
             y: e.target.y()
+          });
+        }}
+        onTransformEnd={() => {
+          // transformer is changing scale of the node
+          // and NOT its width or height
+          // but in the store we have only width and height
+          // to match the data better we will reset scale on transform end
+          const node = textRef.current;
+          const scaleX = node.scaleX();
+
+          // we will reset it back
+          node.scaleX(1);
+          node.scaleY(1);
+          onChange({
+            ...shapeProps,
+            x: node.x(),
+            y: node.y(),
+            rotation: node.rotation(),
+            width: Math.max(5, node.width() * scaleX)
           });
         }}
       />
