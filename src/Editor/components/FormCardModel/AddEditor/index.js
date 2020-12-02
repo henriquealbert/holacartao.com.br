@@ -33,6 +33,9 @@ export default function FormCardModelAdd() {
     if (dataForm.card_category === '0') {
       return;
     }
+    if (!dataForm.example_image) {
+      return;
+    }
     setLoading(true);
     const data = new FormData();
     data.append('files', dataForm.example_image);
@@ -88,6 +91,7 @@ export default function FormCardModelAdd() {
                 name="title"
                 id="title"
                 placeholder="Ex: Advogado Premium"
+                required
               />
             </S.FieldItem>
             <S.FieldItem>
@@ -99,11 +103,17 @@ export default function FormCardModelAdd() {
                 onChange={(e) =>
                   setFieldValue('example_image', e.target.files[0])
                 }
+                required
               />
             </S.FieldItem>
             <S.FieldItem>
               <label htmlFor="card_category">Categoria do Modelo:</label>
-              <Field as="select" name="card_category" id="card_category">
+              <Field
+                as="select"
+                name="card_category"
+                id="card_category"
+                required
+              >
                 <option value="0">Selecione uma opção...</option>
                 {data?.cardCategories.map((category) => {
                   return (
