@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import Router from 'next/router';
 
-import client from '../../../graphql/client';
-import { useAppContext } from '../../../Contexts/AppContext';
-import MUTATION_CREATE_NEW_ORDER from '../../../graphql/mutations/createNewOrder';
-import MUTATION_CREATE_SAVED_CARD from '../../../graphql/mutations/createSavedCard';
+import client from '@/graphql/client';
+import { useAppContext } from '@/Contexts/AppContext';
+import MUTATION_CREATE_NEW_ORDER from '@/graphql/mutations/createNewOrder';
+import MUTATION_CREATE_SAVED_CARD from '@/graphql/mutations/createSavedCard';
 import { useEditorStoreFrente } from '../../Frente/Store';
 import { useEditorStoreVerso } from '../../Verso/Store';
 

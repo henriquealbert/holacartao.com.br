@@ -1,9 +1,9 @@
-import { auth } from '../../Contexts/AppContext';
+import { auth } from '@/Contexts/AppContext';
 // Components
 import Head from 'next/head';
-import Layout from '../../components/Layout';
-import MyAcc from '../../components/MyAcc';
-import MyAccLayout from '../../components/MyAccLayout';
+import Layout from '@/components/Layout';
+import MyAcc from '@/components/MyAcc';
+import MyAccLayout from '@/components/MyAccLayout';
 
 export default function MinhaConta() {
   return (

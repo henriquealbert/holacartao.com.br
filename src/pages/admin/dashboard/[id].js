@@ -1,11 +1,11 @@
-import { authAdmin } from '../../../Contexts/AdminContext';
+import { authAdmin } from '@/Contexts/AdminContext';
 
 // Components
 import Head from 'next/head';
-import serverClient from '../../../graphql/serverClient';
-import GET_SINGLE_ORDER from '../../../graphql/admin/GetSingleOrder';
-import AdminHeader from '../../../components/AdminHeader';
-import AdminSingleOrder from '../../../components/AdminSingleOrder';
+import serverClient from '@/graphql/serverClient';
+import GET_SINGLE_ORDER from '@/graphql/admin/GetSingleOrder';
+import AdminHeader from '@/components/AdminHeader';
+import AdminSingleOrder from '@/components/AdminSingleOrder';
 
 export default function AdminDashboardPedidosID({ order }) {
   return (

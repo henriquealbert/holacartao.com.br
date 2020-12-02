@@ -1,12 +1,12 @@
-import {} from '../Contexts/AppContext';
+import {} from '@/Contexts/AppContext';
 // Components
-import Layout from '../components/Layout';
-import ThankYou from '../components/ThankYou';
+import Layout from '@/components/Layout';
+import ThankYou from '@/components/ThankYou';
 import Head from 'next/head';
 import nextCookie from 'next-cookies';
-import serverClient from '../graphql/serverClient';
-import GET_ME from '../graphql/queries/GetMe';
-import GET_OBRIGADO from '../graphql/queries/GetObrigado';
+import serverClient from '@/graphql/serverClient';
+import GET_ME from '@/graphql/queries/GetMe';
+import GET_OBRIGADO from '@/graphql/queries/GetObrigado';
 
 function Obrigado({ initialData }) {
   return (

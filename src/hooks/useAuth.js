@@ -3,7 +3,7 @@ import Router from 'next/router';
 import Cookie from 'js-cookie';
 import { useFetch } from './useFetch';
 import { useFetchAdmin } from './useFetchAdmin';
-import GET_ME from '../graphql/queries/GetMe';
+import GET_ME from '@/graphql/queries/GetMe';
 
 export default function useAuth() {
   const [user, setUser] = useState(null);

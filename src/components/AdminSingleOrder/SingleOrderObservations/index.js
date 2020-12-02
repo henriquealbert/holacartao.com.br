@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import clientAdmin from '../../../graphql/clientAdmin';
-import MUTATION_SAVE_OBS from '../../../graphql/admin/MutationObs';
+import clientAdmin from '@/graphql/clientAdmin';
+import MUTATION_SAVE_OBS from '@/graphql/admin/MutationObs';
 
 import * as S from './styled';
 

@@ -1,11 +1,11 @@
 import Head from 'next/head';
 
-import serverClient from '../graphql/serverClient';
-import GET_CARD_MODELS from '../graphql/queries/GetCardModels';
+import serverClient from '@/graphql/serverClient';
+import GET_CARD_MODELS from '@/graphql/queries/GetCardModels';
 
-import Layout from '../components/Layout';
-// import StepsTwo from '../components/StepsTwo';
-import ModelosList from '../components/ModelosList';
+import Layout from '@/components/Layout';
+// import StepsTwo from '@/components/StepsTwo';
+import ModelosList from '@/components/ModelosList';
 
 export default function Modelos({ data }) {
   return (

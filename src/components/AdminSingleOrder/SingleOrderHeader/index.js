@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import MUTATION_CHANGE_STATUS from '../../../graphql/admin/MutationStatus';
-import clientAdmin from '../../../graphql/clientAdmin';
+import MUTATION_CHANGE_STATUS from '@/graphql/admin/MutationStatus';
+import clientAdmin from '@/graphql/clientAdmin';
 
-import { formatDateHour } from '../../../utils/format';
+import { formatDateHour } from '@/utils/format';
 
 import * as S from './styled';
 

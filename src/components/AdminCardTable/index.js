@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { useFetchAdmin } from '../../hooks/useFetchAdmin';
-import GET_ALL_CARD_MODELS from '../../graphql/admin/GetAllCardModels';
-import { formatDateHour } from '../../utils/format';
+import { useFetchAdmin } from '@/hooks/useFetchAdmin';
+import GET_ALL_CARD_MODELS from '@/graphql/admin/GetAllCardModels';
+import { formatDateHour } from '@/utils/format';
 import AddCardModel from './AddCardModel';
 import DeleteCardModel from './DeleteCardModel';
 

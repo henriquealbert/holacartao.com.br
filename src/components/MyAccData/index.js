@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { useFetch } from '../../hooks/useFetch';
-import GET_ME from '../../graphql/queries/GetMe';
-import GET_USER from '../../graphql/queries/GetUser';
+import { useFetch } from '@/hooks/useFetch';
+import GET_ME from '@/graphql/queries/GetMe';
+import GET_USER from '@/graphql/queries/GetUser';
 
 import * as S from './styled';
 

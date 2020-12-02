@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { useFetchAdmin } from '../../hooks/useFetchAdmin';
-import GET_SINGLE_ORDER from '../../graphql/admin/GetSingleOrder';
+import { useFetchAdmin } from '@/hooks/useFetchAdmin';
+import GET_SINGLE_ORDER from '@/graphql/admin/GetSingleOrder';
 
 import SingleOrderHeader from './SingleOrderHeader';
 import SingleOrderGrafica from './SingleOrderGrafica';

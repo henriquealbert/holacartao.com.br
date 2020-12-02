@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 
-import { useFetchAdmin } from '../../../../hooks/useFetchAdmin';
-import GET_ALL_CARD_CATEGORIES from '../../../../graphql/admin/GetAllCardCategories';
-import clientAdmin from '../../../../graphql/clientAdmin';
-import MUTATION_CREATE_CARD_MODEL from '../../../../graphql/admin/MutationCreateCardModel';
+import { useFetchAdmin } from '@/hooks/useFetchAdmin';
+import GET_ALL_CARD_CATEGORIES from '@/graphql/admin/GetAllCardCategories';
+import clientAdmin from '@/graphql/clientAdmin';
+import MUTATION_CREATE_CARD_MODEL from '@/graphql/admin/MutationCreateCardModel';
 
 import axios from 'axios';
 import Router from 'next/router';

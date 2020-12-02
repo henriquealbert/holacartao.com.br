@@ -1,10 +1,10 @@
-import { authAdmin } from '../../../Contexts/AdminContext';
-import serverClient from '../../../graphql/serverClient';
-import GET_ALL_ORDERS from '../../../graphql/admin/GetAllOrders';
+import { authAdmin } from '@/Contexts/AdminContext';
+import serverClient from '@/graphql/serverClient';
+import GET_ALL_ORDERS from '@/graphql/admin/GetAllOrders';
 
-import AdminHeader from '../../../components/AdminHeader';
-import AdminSearch from '../../../components/AdminSearch';
-import AdminTrello from '../../../components/AdminTrello';
+import AdminHeader from '@/components/AdminHeader';
+import AdminSearch from '@/components/AdminSearch';
+import AdminTrello from '@/components/AdminTrello';
 
 import Head from 'next/head';
 

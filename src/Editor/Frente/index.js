@@ -1,8 +1,8 @@
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
-import Canva from '../components/Canva';
-import { OiEditor, WarningsEditor, FrenteEditor } from '../components/Infos';
-import ChangeSide from '../components/ChangeSide';
+import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+import Canva from '@/components/Canva';
+import { OiEditor, WarningsEditor, FrenteEditor } from '@/components/Infos';
+import ChangeSide from '@/components/ChangeSide';
 import { useEditorStoreFrente } from './Store';
 
 import * as S from './styled';

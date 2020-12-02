@@ -1,4 +1,4 @@
-import { formatDateHour } from '../../../utils/format';
+import { formatDateHour } from '@/utils/format';
 
 import * as S from './styled';
 

@@ -1,8 +1,8 @@
 // Utils
 import Link from 'next/link';
 import React, { useState, useContext } from 'react';
-import { login } from '../../lib/auth';
-import AppContext from '../../Contexts/AppContext';
+import { login } from '@/lib/auth';
+import AppContext from '@/Contexts/AppContext';
 
 // Components
 import { ErrorMessage, Formik, Form, Field } from 'formik';

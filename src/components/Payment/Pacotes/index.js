@@ -4,7 +4,7 @@ import {
   CinquecentoPrice
 } from '../../PricingOptions';
 import { Radio, RadioGroup, Flex, Box } from '@chakra-ui/react';
-import { useAppContext } from '../../../Contexts/AppContext';
+import { useAppContext } from '@/Contexts/AppContext';
 
 export default function Pacotes() {
   const { transactionAmount, setTransactionAmount } = useAppContext();

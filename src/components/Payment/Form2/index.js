@@ -9,8 +9,8 @@ import {
   NumberInput,
   NumberInputField
 } from '@chakra-ui/react';
-import { useAppContext } from '../../../Contexts/AppContext';
-import { formatCEP } from '../../../utils/format';
+import { useAppContext } from '@/Contexts/AppContext';
+import { formatCEP } from '@/utils/format';
 
 import * as S from './styled';
 

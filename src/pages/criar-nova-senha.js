@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Layout from '../components/Layout';
-import FormRecoveryPass from '../components/FormRecoveryPass';
+import Layout from '@/components/Layout';
+import FormRecoveryPass from '@/components/FormRecoveryPass';
 
 export default function CreateNewPass({ query }) {
   return (

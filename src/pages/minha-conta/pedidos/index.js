@@ -1,12 +1,12 @@
-import { auth } from '../../../Contexts/AppContext';
+import { auth } from '@/Contexts/AppContext';
 // Components
 import Head from 'next/head';
-import Layout from '../../../components/Layout';
-import MyAccOrders from '../../../components/MyAccOrders';
-import MyAccLayout from '../../../components/MyAccLayout';
-import serverClient from '../../../graphql/serverClient';
-import GET_ME from '../../../graphql/queries/GetMe';
-import GET_ORDERS from '../../../graphql/queries/GetOrders';
+import Layout from '@/components/Layout';
+import MyAccOrders from '@/components/MyAccOrders';
+import MyAccLayout from '@/components/MyAccLayout';
+import serverClient from '@/graphql/serverClient';
+import GET_ME from '@/graphql/queries/GetMe';
+import GET_ORDERS from '@/graphql/queries/GetOrders';
 
 export default function MinhaContaPedidos({ initialData }) {
   return (

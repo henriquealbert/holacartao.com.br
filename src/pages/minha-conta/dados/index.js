@@ -1,13 +1,13 @@
-import { auth } from '../../../Contexts/AppContext';
+import { auth } from '@/Contexts/AppContext';
 
 // Components
 import Head from 'next/head';
-import Layout from '../../../components/Layout';
-import MyAccData from '../../../components/MyAccData';
-import MyAccLayout from '../../../components/MyAccLayout';
-import serverClient from '../../../graphql/serverClient';
-import GET_ME from '../../../graphql/queries/GetMe';
-import GET_USER from '../../../graphql/queries/GetUser';
+import Layout from '@/components/Layout';
+import MyAccData from '@/components/MyAccData';
+import MyAccLayout from '@/components/MyAccLayout';
+import serverClient from '@/graphql/serverClient';
+import GET_ME from '@/graphql/queries/GetMe';
+import GET_USER from '@/graphql/queries/GetUser';
 
 export default function MinhaContaDados({ initialData }) {
   return (

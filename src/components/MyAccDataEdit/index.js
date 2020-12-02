@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react';
-import client from '../../graphql/client';
-import changePass from '../../graphql/mutations/changePass';
-import { logout } from '../../lib/auth';
-import AppContext from '../../Contexts/AppContext';
+import client from '@/graphql/client';
+import changePass from '@/graphql/mutations/changePass';
+import { logout } from '@/lib/auth';
+import AppContext from '@/Contexts/AppContext';
 
 import * as S from './styled';
 

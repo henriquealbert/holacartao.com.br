@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import SearchInput, { createFilter } from 'react-search-input';
 import { useState } from 'react';
-import { useFetchAdmin } from '../../hooks/useFetchAdmin';
-import GET_ALL_ORDERS from '../../graphql/admin/GetAllOrders';
+import { useFetchAdmin } from '@/hooks/useFetchAdmin';
+import GET_ALL_ORDERS from '@/graphql/admin/GetAllOrders';
 
 import * as S from './styled';
 

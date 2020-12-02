@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import React, { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { registerUser } from '../../lib/auth';
-import AppContext from '../../Contexts/AppContext';
+import { registerUser } from '@/lib/auth';
+import AppContext from '@/Contexts/AppContext';
 
 // Components
 import { ErrorMessage, Formik, Form, Field } from 'formik';

@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import client from '../../../graphql/client';
-import MUTATION_CREATE_SAVED_CARD from '../../../graphql/mutations/createSavedCard';
-import MUTATION_UPDATE_SAVED_CARD from '../../../graphql/mutations/updateSavedCard';
+import client from '@/graphql/client';
+import MUTATION_CREATE_SAVED_CARD from '@/graphql/mutations/createSavedCard';
+import MUTATION_UPDATE_SAVED_CARD from '@/graphql/mutations/updateSavedCard';
 import { useEditorStoreFrente } from '../../Frente/Store';
 import { useEditorStoreVerso } from '../../Verso/Store';
 import { useEditorUtilsContext } from '../../Context/EditorUtilsContext';
-import { useAppContext } from '../../../Contexts/AppContext';
+import { useAppContext } from '@/Contexts/AppContext';
 
 import * as S from './styled';
 

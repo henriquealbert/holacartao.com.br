@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useContext } from 'react';
-import AdminContext from '../../Contexts/AdminContext';
-import { adminLogout } from '../../lib/authAdmin';
+import AdminContext from '@/Contexts/AdminContext';
+import { adminLogout } from '@/lib/authAdmin';
 
 import * as S from './styled';
 

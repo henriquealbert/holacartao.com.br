@@ -1,8 +1,8 @@
-import client from '../../graphql/client';
+import client from '@/graphql/client';
 import { ErrorMessage, Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import MUTATION_FORGOT_PASS from '../../graphql/mutations/forgotPassword';
+import MUTATION_FORGOT_PASS from '@/graphql/mutations/forgotPassword';
 
 import * as S from './styled';
 

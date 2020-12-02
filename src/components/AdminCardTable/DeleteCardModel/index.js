@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
-import MUTATION_DELETE_CARD_MODEL from '../../../graphql/admin/MutationDeleteCardModel';
-import clientAdmin from '../../../graphql/clientAdmin';
+import MUTATION_DELETE_CARD_MODEL from '@/graphql/admin/MutationDeleteCardModel';
+import clientAdmin from '@/graphql/clientAdmin';
 import Router from 'next/router';
 
 import * as S from './styled';

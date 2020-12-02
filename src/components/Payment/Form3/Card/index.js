@@ -1,6 +1,6 @@
 import Card from 'react-credit-cards';
-import { useAppContext } from '../../../../Contexts/AppContext';
-import useScript from '../../../../hooks/useScript';
+import { useAppContext } from '@/Contexts/AppContext';
+import useScript from '@/hooks/useScript';
 import { useState } from 'react';
 import axios from 'axios';
 import Router from 'next/router';

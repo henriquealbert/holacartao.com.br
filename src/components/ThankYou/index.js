@@ -1,8 +1,8 @@
 import * as S from './styled';
 import Link from 'next/link';
-import { useFetch } from '../../hooks/useFetch';
-import GET_ME from '../../graphql/queries/GetMe';
-import GET_OBRIGADO from '../../graphql/queries/GetObrigado';
+import { useFetch } from '@/hooks/useFetch';
+import GET_ME from '@/graphql/queries/GetMe';
+import GET_OBRIGADO from '@/graphql/queries/GetObrigado';
 
 export default function ThankYou({ initialData }) {
   // Get User ID

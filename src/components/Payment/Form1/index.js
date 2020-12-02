@@ -9,7 +9,7 @@ import {
   NumberInputField
 } from '@chakra-ui/react';
 
-import { useAppContext } from '../../../Contexts/AppContext';
+import { useAppContext } from '@/Contexts/AppContext';
 
 export default function Form1({ setMenu }) {
   const handleClick = () => {

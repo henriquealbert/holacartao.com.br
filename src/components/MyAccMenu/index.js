@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
-import { logout } from '../../lib/auth';
-import AppContext from '../../Contexts/AppContext';
+import { logout } from '@/lib/auth';
+import AppContext from '@/Contexts/AppContext';
 
 import * as S from './styled';
 

@@ -1,10 +1,10 @@
-import { auth } from '../../../Contexts/AppContext';
+import { auth } from '@/Contexts/AppContext';
 
 // Components
 import Head from 'next/head';
-import Layout from '../../../components/Layout';
-import MyAccDataEdit from '../../../components/MyAccDataEdit';
-import MyAccLayout from '../../../components/MyAccLayout';
+import Layout from '@/components/Layout';
+import MyAccDataEdit from '@/components/MyAccDataEdit';
+import MyAccLayout from '@/components/MyAccLayout';
 
 export default function MinhaContaDadosEdit() {
   return (

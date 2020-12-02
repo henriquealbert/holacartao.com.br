@@ -7,7 +7,7 @@ import {
   formatCEP,
   formatPhone,
   formatPrice
-} from '../../utils/format';
+} from '@/utils/format';
 
 // Styles
 import * as S from './styled';

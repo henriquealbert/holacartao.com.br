@@ -1,11 +1,11 @@
 // Utils
 import Link from 'next/link';
-import { formatDate, formatStatus, formatPrice } from '../../utils/format';
+import { formatDate, formatStatus, formatPrice } from '@/utils/format';
 
 // API
-import { useFetch } from '../../hooks/useFetch';
-import GET_ME from '../../graphql/queries/GetMe';
-import GET_ORDERS from '../../graphql/queries/GetOrders';
+import { useFetch } from '@/hooks/useFetch';
+import GET_ME from '@/graphql/queries/GetMe';
+import GET_ORDERS from '@/graphql/queries/GetOrders';
 
 // Styles
 import * as S from './styled';

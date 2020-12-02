@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Layout from '../components/Layout';
-import FormLostPass from '../components/FormLostPass';
+import Layout from '@/components/Layout';
+import FormLostPass from '@/components/FormLostPass';
 
 export default function FogotPass() {
   return (

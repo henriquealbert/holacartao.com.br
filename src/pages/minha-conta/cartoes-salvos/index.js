@@ -1,12 +1,12 @@
-import { auth } from '../../../Contexts/AppContext';
+import { auth } from '@/Contexts/AppContext';
 // Components
 import Head from 'next/head';
-import Layout from '../../../components/Layout';
-import MyAccSavedCards from '../../../components/MyAccSavedCards';
-import MyAccLayout from '../../../components/MyAccLayout';
-import serverClient from '../../../graphql/serverClient';
-import GET_ME from '../../../graphql/queries/GetMe';
-import GET_SAVED_CARDS from '../../../graphql/queries/GetSavedCards';
+import Layout from '@/components/Layout';
+import MyAccSavedCards from '@/components/MyAccSavedCards';
+import MyAccLayout from '@/components/MyAccLayout';
+import serverClient from '@/graphql/serverClient';
+import GET_ME from '@/graphql/queries/GetMe';
+import GET_SAVED_CARDS from '@/graphql/queries/GetSavedCards';
 
 export default function MinhaContaCartoesSalvos({ initialData }) {
   return (

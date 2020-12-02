@@ -1,18 +1,18 @@
 import dynamic from 'next/dynamic';
-import { auth } from '../../Contexts/AppContext';
+import { auth } from '@/Contexts/AppContext';
 import Head from 'next/head';
 
-import serverClient from '../../graphql/serverClient';
-import GET_CARD_MODEL from '../../graphql/admin/GetCardModel';
-import GET_SINGLE_SAVED_CARD from '../../graphql/queries/GetSingleSavedCard';
+import serverClient from '@/graphql/serverClient';
+import GET_CARD_MODEL from '@/graphql/admin/GetCardModel';
+import GET_SINGLE_SAVED_CARD from '@/graphql/queries/GetSingleSavedCard';
 
-import LoadingEditor from '../../Editor/Loading';
+import LoadingEditor from '@/Editor/Loading';
 
 const options = {
   ssr: false,
   loading: LoadingEditor
 };
-const EditorComponent = dynamic(() => import('../../Editor'), options);
+const EditorComponent = dynamic(() => import('@/Editor'), options);
 
 export default function UserEditor({ data }) {
   return (

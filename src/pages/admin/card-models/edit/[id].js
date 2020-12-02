@@ -1,16 +1,16 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-import { authAdmin } from '../../../../Contexts/AdminContext';
-import serverClient from '../../../../graphql/serverClient';
-import GET_CARD_MODEL from '../../../../graphql/admin/GetCardModel';
-import LoadingEditor from '../../../../Editor/Loading';
+import { authAdmin } from '@/Contexts/AdminContext';
+import serverClient from '@/graphql/serverClient';
+import GET_CARD_MODEL from '@/graphql/admin/GetCardModel';
+import LoadingEditor from '@/Editor/Loading';
 
 const options = {
   ssr: false,
   loading: LoadingEditor
 };
-const EditorComponent = dynamic(() => import('../../../../Editor'), options);
+const EditorComponent = dynamic(() => import('@/Editor'), options);
 
 export default function CardModelEdit({ data }) {
   return (

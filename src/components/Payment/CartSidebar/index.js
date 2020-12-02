@@ -1,7 +1,7 @@
-import { useAppContext } from '../../../Contexts/AppContext';
+import { useAppContext } from '@/Contexts/AppContext';
 import * as S from './styled';
 import { SimpleGrid, Box } from '@chakra-ui/react';
-import { formatPrice } from '../../../utils/format';
+import { formatPrice } from '@/utils/format';
 
 export default function CartSidebar() {
   const { transactionAmount } = useAppContext();

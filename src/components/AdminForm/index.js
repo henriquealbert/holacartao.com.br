@@ -1,8 +1,8 @@
 // Utils
 import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { adminLogin } from '../../lib/authAdmin';
-import AdminContext from '../../Contexts/AdminContext';
+import { adminLogin } from '@/lib/authAdmin';
+import AdminContext from '@/Contexts/AdminContext';
 
 // Components
 import { ErrorMessage, Formik, Form, Field } from 'formik';

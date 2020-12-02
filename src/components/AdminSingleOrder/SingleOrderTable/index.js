@@ -4,7 +4,7 @@ import {
   formatCPF,
   formatPayment,
   formatPhone
-} from '../../../utils/format';
+} from '@/utils/format';
 
 import * as S from './styled';
 

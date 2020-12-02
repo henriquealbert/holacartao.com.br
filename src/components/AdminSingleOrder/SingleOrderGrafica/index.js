@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import MUTATION_GRAFICA from '../../../graphql/admin/MutationStatus';
-import clientAdmin from '../../../graphql/clientAdmin';
+import MUTATION_GRAFICA from '@/graphql/admin/MutationStatus';
+import clientAdmin from '@/graphql/clientAdmin';
 import { Formik, Form, Field } from 'formik';
 import CardImgs from '../CardImgs';
 
