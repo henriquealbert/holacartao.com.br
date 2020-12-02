@@ -60,42 +60,52 @@ export default function Item5({ openItem5, editorStore }) {
     }
   };
 
-  const handleChangeInputs = (e, option) => {
+  const handleChangeInputs = (value, option) => {
     if (!imageBG.id) {
       return;
     }
 
-    const found = store.filter((element) => element.id === imageBG.id);
-
-    function updateStore() {
+    if (option === 'height') {
+      const found = store.filter((element) => element.id === imageBG.id);
+      found[0].height = Number(value);
       const elements = store.filter((element) => element.id !== imageBG.id);
       elements.push(found[0]);
       setStore(elements);
       setImageBG(found[0]);
     }
-
-    if (option === 'height') {
-      found[0].height = Number(e.target.value);
-      updateStore();
-    }
     if (option === 'width') {
-      found[0].width = Number(e.target.value);
-      updateStore();
+      const found = store.filter((element) => element.id === imageBG.id);
+      found[0].width = Number(value);
+      const elements = store.filter((element) => element.id !== imageBG.id);
+      elements.push(found[0]);
+      setStore(elements);
+      setImageBG(found[0]);
     }
     if (option === 'x') {
-      found[0].x = Number(e.target.value);
-      updateStore();
+      const found = store.filter((element) => element.id === imageBG.id);
+      found[0].x = Number(value);
+      const elements = store.filter((element) => element.id !== imageBG.id);
+      elements.push(found[0]);
+      setStore(elements);
+      setImageBG(found[0]);
     }
     if (option === 'y') {
-      found[0].y = Number(e.target.value);
-      updateStore();
+      const found = store.filter((element) => element.id === imageBG.id);
+      found[0].y = Number(value);
+      const elements = store.filter((element) => element.id !== imageBG.id);
+      elements.push(found[0]);
+      setStore(elements);
+      setImageBG(found[0]);
     }
     if (option === 'rotation') {
-      found[0].rotation = Number(e.target.value);
-      updateStore();
+      const found = store.filter((element) => element.id === imageBG.id);
+      found[0].rotation = Number(value);
+      const elements = store.filter((element) => element.id !== imageBG.id);
+      elements.push(found[0]);
+      setStore(elements);
+      setImageBG(found[0]);
     }
   };
-  console.log('store', store);
 
   return (
     <S.SidebarMenuWrapper5 className={openItem5 !== true ? '' : 'open'}>
@@ -137,7 +147,9 @@ export default function Item5({ openItem5, editorStore }) {
               name="altura"
               id="altura"
               value={imageBG.height}
-              onChange={(e) => handleChangeInputs(e, 'height')}
+              onChange={({ target }) =>
+                handleChangeInputs(target.value, 'height')
+              }
             />
           </div>
           <div>
@@ -147,7 +159,9 @@ export default function Item5({ openItem5, editorStore }) {
               name="largura"
               id="largura"
               value={imageBG.width}
-              onChange={(e) => handleChangeInputs(e, 'width')}
+              onChange={({ target }) =>
+                handleChangeInputs(target.value, 'width')
+              }
             />
           </div>
           <div>
@@ -157,7 +171,7 @@ export default function Item5({ openItem5, editorStore }) {
               name="x"
               id="x"
               value={imageBG.x}
-              onChange={(e) => handleChangeInputs(e, 'x')}
+              onChange={({ target }) => handleChangeInputs(target.value, 'x')}
             />
           </div>
           <div>
@@ -167,7 +181,7 @@ export default function Item5({ openItem5, editorStore }) {
               name="y"
               id="y"
               value={imageBG.y}
-              onChange={(e) => handleChangeInputs(e, 'y')}
+              onChange={({ target }) => handleChangeInputs(target.value, 'y')}
             />
           </div>
           <div>
@@ -177,7 +191,9 @@ export default function Item5({ openItem5, editorStore }) {
               name="girar"
               id="girar"
               value={imageBG.rotation}
-              onChange={(e) => handleChangeInputs(e, 'rotation')}
+              onChange={({ target }) =>
+                handleChangeInputs(target.value, 'rotation')
+              }
               min="-360"
               max="360"
             />
