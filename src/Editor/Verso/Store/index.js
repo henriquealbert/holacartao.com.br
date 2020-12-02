@@ -182,7 +182,7 @@ export const EditorProviderVerso = ({ children }) => {
   const [saveFinalCard, setSaveFinalCard] = useState(null);
 
   // Canva com Sangria
-  const [saveWithSangria, setSaveWithSangria] = useState(null);
+  const [saveWithSangria, setSaveWithSangria] = useState();
 
   // Selections
   const [selectedId, setSelectedId] = useState(null);
@@ -209,8 +209,6 @@ export const EditorProviderVerso = ({ children }) => {
     setStore([whiteBackground]);
     setHistory([]);
     setSelectedId(null);
-    setSaveWithSangria(null);
-    setSaveFinalCard(null);
     setText('');
     setImageLibrary([]);
     setImageBG('');

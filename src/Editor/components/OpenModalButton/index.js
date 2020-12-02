@@ -6,8 +6,8 @@ export default function OpenModalButton({ user, editorStore }) {
   const { openModal } = useEditorUtilsContext();
   const { saveFinalCard, saveWithSangria } = editorStore;
 
-  const handleClick = () => {
-    openModal(saveWithSangria, saveFinalCard);
+  const handleClick = async () => {
+    await openModal(saveWithSangria(), saveFinalCard());
   };
 
   return (

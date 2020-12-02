@@ -6,8 +6,8 @@ export default function ChangeSide({ frente, editorStore }) {
   const { changeSide } = useEditorUtilsContext();
   const { saveFinalCard, saveWithSangria } = editorStore;
 
-  const handleChange = () => {
-    changeSide(saveWithSangria, saveFinalCard);
+  const handleChange = async () => {
+    await changeSide(saveWithSangria(), saveFinalCard());
   };
 
   return (

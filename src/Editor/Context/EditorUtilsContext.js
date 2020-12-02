@@ -6,14 +6,9 @@ export const EditorUtilsProvider = ({ children }) => {
   // Card Sides
   const [frente, setFrente] = useState(true);
 
-  const [cardFrenteSangria, setCardFrenteSangria] = useState(null);
-  const [cardVersoSangria, setCardVersoSangria] = useState(null);
-  const [cardFrenteFinal, setCardFrenteFinal] = useState(null);
-  const [cardVersoFinal, setCardVersoFinal] = useState(null);
-
   const changeSide = (sangria, final) => {
-    setCardFrenteSangria(sangria);
-    setCardFrenteFinal(final);
+    localStorage.setItem('frenteSangria', sangria);
+    localStorage.setItem('frenteFinal', final);
     setFrente(!frente);
   };
 
@@ -21,10 +16,10 @@ export const EditorUtilsProvider = ({ children }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = (sangria, final) => {
-    setCardVersoSangria(sangria);
-    setCardVersoFinal(final);
+    localStorage.setItem('versoSangria', sangria);
+    localStorage.setItem('versoFinal', final);
 
-    setIsOpen(true);
+    setIsOpen(!modalIsOpen);
   };
 
   const closeModal = () => {
@@ -36,10 +31,6 @@ export const EditorUtilsProvider = ({ children }) => {
   const resetUtilsState = () => {
     setFrente(true);
     setIsOpen(false);
-    setCardFrenteSangria(null);
-    setCardVersoSangria(null);
-    setCardFrenteFinal(null);
-    setCardVersoFinal(null);
     setSaveCardHeader(null);
   };
 
@@ -55,11 +46,7 @@ export const EditorUtilsProvider = ({ children }) => {
         closeModal,
         saveCardHeader,
         setSaveCardHeader,
-        resetUtilsState,
-        cardFrenteSangria,
-        cardVersoSangria,
-        cardFrenteFinal,
-        cardVersoFinal
+        resetUtilsState
       }}
     >
       {children}
