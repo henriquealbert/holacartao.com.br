@@ -108,10 +108,11 @@ export const auth = (ctx) => {
   // If there's no token, it means the user is not logged in.
   if (!token) {
     if (typeof window === 'undefined') {
-      ctx.res.writeHead(302, {
-        Location: `/login/?redirected=true&url=${ctx.query.url}${card}${savedCard}`
-      });
-      ctx.res.end();
+      ctx.res.statusCode = 302;
+      ctx.res.setHeader(
+        'Location',
+        `/login/?redirected=true&url=${ctx.query.url}${card}${savedCard}`
+      );
     } else {
       Router.push(
         `/login/?redirected=true&url=${ctx.query.url}${card}${savedCard}`

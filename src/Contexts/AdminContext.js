@@ -14,8 +14,8 @@ export const authAdmin = (ctx) => {
   // If there's no adminToken, it means the user is not logged in.
   if (!adminToken) {
     if (typeof window === 'undefined') {
-      ctx.res.writeHead(302, { Location: '/admin?redirected=true' });
-      ctx.res.end();
+      ctx.res.statusCode = 302;
+      ctx.res.setHeader('Location', '/admin?redirected=true');
     } else {
       Router.push('/admin?redirected=true');
     }
