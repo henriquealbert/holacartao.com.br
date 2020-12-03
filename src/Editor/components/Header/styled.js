@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Save } from '@styled-icons/boxicons-solid/';
 
 export const SaveIcon = styled(Save)`

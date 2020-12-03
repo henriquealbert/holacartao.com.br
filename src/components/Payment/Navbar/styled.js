@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Wrapper = styled.nav`
   margin: 3.5rem 0 2rem;

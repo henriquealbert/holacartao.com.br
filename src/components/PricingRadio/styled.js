@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const RadioGroup = styled.div`
   margin: 0.5rem auto 1rem;

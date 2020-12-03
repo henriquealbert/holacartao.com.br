@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const ThankYouWrapper = styled.section`
   margin: 4rem auto;

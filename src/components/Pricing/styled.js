@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const PricingWrapper = styled.section`
   margin: 4rem 0 1rem 0;

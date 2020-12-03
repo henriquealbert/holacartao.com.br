@@ -1,5 +1,5 @@
 import { Link as ScrollLink } from 'react-scroll';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const HeroWrapper = styled.section`
   margin: 2rem auto 0.5rem auto;

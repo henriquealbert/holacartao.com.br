@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import media from 'styled-media-query';
 import { Menu } from '@styled-icons/entypo/Menu';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';

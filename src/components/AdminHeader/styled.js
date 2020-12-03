@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ShutDown } from '@styled-icons/remix-line/ShutDown';
 import { LinkExternal } from '@styled-icons/boxicons-regular/LinkExternal';
 

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { RightArrowAlt } from '@styled-icons/boxicons-regular/RightArrowAlt';
 
 export const Wrapper = styled.div`

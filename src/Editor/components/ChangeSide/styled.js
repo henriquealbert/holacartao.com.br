@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { RotateLeft, RotateRight } from '@styled-icons/boxicons-regular';
 
 export const ChangeSideWrapper = styled.div`

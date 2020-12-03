@@ -108,7 +108,11 @@ export default function SaveCardHeader() {
               <ErrorMessage
                 component="span"
                 name="title"
-                style={{ color: 'red', fontSize: '12px', marginLeft: '2rem' }}
+                style={{
+                  color: 'red',
+                  fontSize: '12px',
+                  marginLeft: '2rem'
+                }}
               />
             </Box>
             <S.ActionButton type="submit">

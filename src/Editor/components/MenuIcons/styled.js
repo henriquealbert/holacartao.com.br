@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ColorFill, ImageAdd, Shapes } from '@styled-icons/boxicons-solid';
 import { Texture } from '@styled-icons/material/Texture';
 import { Text } from '@styled-icons/evaicons-solid/Text';

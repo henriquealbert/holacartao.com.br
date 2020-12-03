@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
 
 export const OrderContainer = styled.section`

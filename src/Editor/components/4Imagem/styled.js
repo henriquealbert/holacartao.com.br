@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { CloudUpload } from '@styled-icons/boxicons-regular/CloudUpload';
 
 export const SidebarMenuWrapper4 = styled.div`

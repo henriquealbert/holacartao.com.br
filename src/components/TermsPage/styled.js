@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { File } from '@styled-icons/boxicons-regular/File';
 
 export const TermsWrapper = styled.section`

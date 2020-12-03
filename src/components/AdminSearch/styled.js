@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { SearchAlt2 } from '@styled-icons/boxicons-regular/SearchAlt2';
 
 export const SeachWrapper = styled.div`

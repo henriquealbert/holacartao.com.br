@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const SidebarMenuWrapper1 = styled.div`
   display: flex;
