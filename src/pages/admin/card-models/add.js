@@ -1,14 +1,14 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-import { authAdmin } from '.@/Contexts/AdminContext';
-import LoadingEditor from '.@/Editor/Loading';
+import { authAdmin } from '@/Contexts/AdminContext';
+import LoadingEditor from '@/Editor/Loading';
 
 const options = {
   ssr: false,
   loading: LoadingEditor
 };
-const EditorComponent = dynamic(() => import('.@/Editor'), options);
+const EditorComponent = dynamic(() => import('@/Editor/index'), options);
 
 export default function CardModelAdd() {
   return (

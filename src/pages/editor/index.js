@@ -8,7 +8,7 @@ const options = {
   ssr: false,
   loading: LoadingEditor
 };
-const EditorComponent = dynamic(() => import('@/Editor'), options);
+const EditorComponent = dynamic(() => import('@/Editor/index'), options);
 
 export default function Editor() {
   return (

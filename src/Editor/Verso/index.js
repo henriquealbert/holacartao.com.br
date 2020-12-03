@@ -1,10 +1,14 @@
-import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
-import Canva from '@/components/Canva';
-import OpenModalButton from '@/components/OpenModalButton';
-import { InfoVerso, WarningsEditor, VersoEditor } from '@/components/Infos';
-import ChangeSide from '@/components/ChangeSide';
-import BeforeSaveModal from '@/components/BeforeSaveModal';
+import Header from '@/Editor/components/Header';
+import Sidebar from '@/Editor/components/Sidebar';
+import Canva from '@/Editor/components/Canva';
+import OpenModalButton from '@/Editor/components/OpenModalButton';
+import {
+  InfoVerso,
+  WarningsEditor,
+  VersoEditor
+} from '@/Editor/components/Infos';
+import ChangeSide from '@/Editor/components/ChangeSide';
+import BeforeSaveModal from '@/Editor/components/BeforeSaveModal';
 
 import { useEditorStoreVerso } from './Store';
 
