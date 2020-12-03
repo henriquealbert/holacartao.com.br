@@ -1,14 +1,14 @@
 import {} from '@/Contexts/AppContext';
 // Components
 import Layout from '@/components/Layout';
-import ThankYou from '@/components/ThankYou';
 import Head from 'next/head';
 import nextCookie from 'next-cookies';
-import serverClient from '@/graphql/serverClient';
-import GET_ME from '@/graphql/queries/GetMe';
-import GET_OBRIGADO from '@/graphql/queries/GetObrigado';
+// import ThankYou from '@/components/ThankYou';
+// import serverClient from '@/graphql/serverClient';
+// import GET_ME from '@/graphql/queries/GetMe';
+// import GET_OBRIGADO from '@/graphql/queries/GetObrigado';
 
-function Obrigado({ initialData }) {
+function Obrigado() {
   return (
     <>
       <Head>
@@ -24,6 +24,12 @@ function Obrigado({ initialData }) {
 
 export async function getServerSideProps(ctx) {
   const { token } = nextCookie(ctx);
+
+  if (!token) {
+    return {
+      props: {}
+    };
+  }
 
   // const user = await serverClient(token).request(GET_ME);
 

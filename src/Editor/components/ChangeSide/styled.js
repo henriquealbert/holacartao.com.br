@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { RotateLeft, RotateRight } from '@styled-icons/boxicons-regular';
+import { RotateLeft, RotateRight } from '@emotion-icons/boxicons-regular';
 
 export const ChangeSideWrapper = styled.div`
   margin-top: 1.5rem;

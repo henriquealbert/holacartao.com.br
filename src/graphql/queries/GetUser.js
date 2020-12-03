@@ -1,4 +1,6 @@
-const GET_USER = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_USER = gql`
   query User($id: ID!) {
     user(id: $id) {
       username

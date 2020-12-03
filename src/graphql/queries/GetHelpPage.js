@@ -1,4 +1,6 @@
-const GET_HELP_PAGE = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_HELP_PAGE = gql`
   query HelpPage {
     centralDeAjuda {
       id

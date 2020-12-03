@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Menu } from '@styled-icons/entypo/Menu';
-import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
+import { Menu } from '@emotion-icons/entypo/Menu';
+import { CloseOutline } from '@emotion-icons/evaicons-outline/CloseOutline';
 
 export const MenuContainer = styled.div`
   button {

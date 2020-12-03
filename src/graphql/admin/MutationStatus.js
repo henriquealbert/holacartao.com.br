@@ -1,4 +1,6 @@
-const MUTATION_CHANGE_STATUS = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const MUTATION_CHANGE_STATUS = gql`
   mutation ChangeStatus($input: updateOrderInput) {
     updateOrder(input: $input) {
       order {

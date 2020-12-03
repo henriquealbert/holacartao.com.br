@@ -16,5 +16,5 @@ const PrimaryButton = ({ href, children }) => {
 export default PrimaryButton;
 
 PrimaryButton.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };

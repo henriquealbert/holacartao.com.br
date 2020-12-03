@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { ShutDown } from '@styled-icons/remix-line/ShutDown';
-import { LinkExternal } from '@styled-icons/boxicons-regular/LinkExternal';
+import { ShutDown } from '@emotion-icons/remix-line/ShutDown';
+import { LinkExternal } from '@emotion-icons/boxicons-regular/LinkExternal';
 
 export const HeaderWrapper = styled.header`
   width: 100%;

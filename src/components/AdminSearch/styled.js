@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { SearchAlt2 } from '@styled-icons/boxicons-regular/SearchAlt2';
+import { SearchAlt2 } from '@emotion-icons/boxicons-regular/SearchAlt2';
 
 export const SeachWrapper = styled.div`
   margin: 2rem;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { InstagramAlt } from '@styled-icons/boxicons-logos';
+import { InstagramAlt } from '@emotion-icons/boxicons-logos';
 
 export const Container = styled.footer`
   background: var(--black);

@@ -1,4 +1,6 @@
-const GET_CARD_MODEL = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_CARD_MODEL = gql`
   query LoadCardModel($id: ID!) {
     cardModel(id: $id) {
       id

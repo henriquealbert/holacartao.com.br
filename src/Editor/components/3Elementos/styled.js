@@ -4,9 +4,9 @@ import {
   Circle,
   Envelope as EnvelopeSolid,
   Phone
-} from '@styled-icons/boxicons-solid';
-import { Triangle } from '@styled-icons/ionicons-solid/Triangle';
-import { HexagonFill, StarFill } from '@styled-icons/bootstrap';
+} from '@emotion-icons/boxicons-solid';
+import { Triangle } from '@emotion-icons/ionicons-solid/Triangle';
+import { HexagonFill, StarFill } from '@emotion-icons/bootstrap';
 import {
   Globe,
   Envelope,
@@ -17,7 +17,7 @@ import {
   Map as MapIcon,
   At,
   Home
-} from '@styled-icons/boxicons-regular';
+} from '@emotion-icons/boxicons-regular';
 import {
   Whatsapp,
   Skype,
@@ -29,7 +29,7 @@ import {
   FacebookSquare,
   Twitter,
   Youtube
-} from '@styled-icons/boxicons-logos/';
+} from '@emotion-icons/boxicons-logos/';
 
 export const SidebarMenuWrapper3 = styled.div`
   display: flex;

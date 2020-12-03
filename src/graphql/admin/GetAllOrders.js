@@ -1,4 +1,6 @@
-const GET_ALL_ORDERS = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_ALL_ORDERS = gql`
   query AllOrders {
     orders {
       id

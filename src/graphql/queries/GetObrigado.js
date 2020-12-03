@@ -1,4 +1,6 @@
-const GET_OBRIGADO = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_OBRIGADO = gql`
   query Obrigado($id: ID!) {
     user(id: $id) {
       id

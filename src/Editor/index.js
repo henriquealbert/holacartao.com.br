@@ -28,6 +28,7 @@ export default function EditorComponent({ data, user }) {
     resetUtilsState();
     resetStateFrente();
     resetStateVerso();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // load store from the backend

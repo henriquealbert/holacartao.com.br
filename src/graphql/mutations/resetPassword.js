@@ -1,4 +1,6 @@
-const MUTATION_RESET_PASS = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const MUTATION_RESET_PASS = gql`
   mutation ResetPassword(
     $code: String!
     $password: String!

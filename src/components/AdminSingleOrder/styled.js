@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
+import { ArrowBack } from '@emotion-icons/boxicons-regular/ArrowBack';
 
 export const OrderContainer = styled.section`
   width: 95%;

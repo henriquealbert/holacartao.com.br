@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Envelope, HelpCircle } from '@styled-icons/boxicons-solid';
+import { Envelope, HelpCircle } from '@emotion-icons/boxicons-solid';
 import { Link as ScrollLink } from 'react-scroll';
 
 export const HelpPageWrapper = styled.section`

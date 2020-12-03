@@ -1,4 +1,6 @@
-const GET_ME = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_ME = gql`
   query ME {
     me {
       id

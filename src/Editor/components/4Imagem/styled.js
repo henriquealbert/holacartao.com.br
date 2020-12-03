@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { CloudUpload } from '@styled-icons/boxicons-regular/CloudUpload';
+import { CloudUpload } from '@emotion-icons/boxicons-regular/CloudUpload';
 
 export const SidebarMenuWrapper4 = styled.div`
   display: flex;

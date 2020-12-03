@@ -1,4 +1,6 @@
-const MUTATION_GRAFICA = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const MUTATION_GRAFICA = gql`
   mutation SaveorEditGrafica($input: updateOrderInput) {
     updateOrder(input: $input) {
       order {

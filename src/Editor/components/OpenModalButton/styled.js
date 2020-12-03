@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { RightArrowAlt } from '@styled-icons/boxicons-regular/RightArrowAlt';
+import { RightArrowAlt } from '@emotion-icons/boxicons-regular/RightArrowAlt';
 
 export const Wrapper = styled.div`
   width: 95%;

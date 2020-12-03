@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { File } from '@styled-icons/boxicons-regular/File';
+import { File } from '@emotion-icons/boxicons-regular/File';
 
 export const TermsWrapper = styled.section`
   margin: 5rem auto;

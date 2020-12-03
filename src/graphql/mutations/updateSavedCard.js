@@ -1,4 +1,6 @@
-const MUTATION_UPDATE_SAVED_CARD = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const MUTATION_UPDATE_SAVED_CARD = gql`
   mutation UpdateSavedCard($input: updateSavedCardInput!) {
     updateSavedCard(input: $input) {
       savedCard {

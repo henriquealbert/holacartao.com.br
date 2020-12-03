@@ -1,4 +1,6 @@
-const Create_New_Saved_Card = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const Create_New_Saved_Card = gql`
   mutation SaveUserModelCard {
     createSavedCard {
       savedCard {

@@ -1,4 +1,6 @@
-const GET_TERMS = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_TERMS = gql`
   query TermsPage {
     termosEPolitica {
       id

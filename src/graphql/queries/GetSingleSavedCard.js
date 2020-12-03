@@ -1,4 +1,6 @@
-const GET_SINGLE_SAVED_CARD = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_SINGLE_SAVED_CARD = gql`
   query SavedCard($id: ID!) {
     savedCard(id: $id) {
       id

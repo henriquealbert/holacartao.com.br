@@ -22,12 +22,12 @@ export default function MyAccHelp() {
     setLoading(true);
     axios
       .post('http://localhost:1337/central-de-ajuda/sendHelp', data)
-      .then((res) => {
+      .then(() => {
         setLoading(false);
         setSuccess(true);
         resetForm();
       })
-      .catch((error) => {
+      .catch(() => {
         setLoading(false);
       });
   };

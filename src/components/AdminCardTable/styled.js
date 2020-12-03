@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Edit } from '@styled-icons/boxicons-solid/';
+import { Edit } from '@emotion-icons/boxicons-solid/';
 
 export const AdminCardTableWrapper = styled.div`
   margin: 0 auto;

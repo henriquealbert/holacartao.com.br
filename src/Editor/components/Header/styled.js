@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Save } from '@styled-icons/boxicons-solid/';
+import { Save } from '@emotion-icons/boxicons-solid/';
 
 export const SaveIcon = styled(Save)`
   color: #171923;

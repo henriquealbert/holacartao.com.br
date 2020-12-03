@@ -1,4 +1,6 @@
-const MUTATION_SAVE_OBS = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const MUTATION_SAVE_OBS = gql`
   mutation SaveObs($input: createObservationInput) {
     createObservation(input: $input) {
       observation {

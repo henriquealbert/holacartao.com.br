@@ -1,4 +1,6 @@
-const GET_SINGLE_ORDER = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_SINGLE_ORDER = gql`
   query SingleOrder($id: ID!) {
     order(id: $id) {
       id

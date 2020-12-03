@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { ColorFill, ImageAdd, Shapes } from '@styled-icons/boxicons-solid';
-import { Texture } from '@styled-icons/material/Texture';
-import { Text } from '@styled-icons/evaicons-solid/Text';
+import { ColorFill, ImageAdd, Shapes } from '@emotion-icons/boxicons-solid';
+import { Texture } from '@emotion-icons/material/Texture';
+import { Text } from '@emotion-icons/evaicons-solid/Text';
 
 export const EditorSidebar = styled.div`
   background: #000000;

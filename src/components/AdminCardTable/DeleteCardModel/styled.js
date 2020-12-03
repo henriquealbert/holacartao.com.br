@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Trash } from '@styled-icons/boxicons-solid/';
+import { Trash } from '@emotion-icons/boxicons-solid/';
 
 export const DeleteIcon = styled(Trash)`
   width: 1.4rem;

@@ -1,4 +1,6 @@
-const GET_ORDERS = /* GraphQL */ `
+import { gql } from 'graphql-request';
+
+const GET_ORDERS = gql`
   query Orders($id: ID!) {
     user(id: $id) {
       orders {
