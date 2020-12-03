@@ -9,7 +9,7 @@ import { EditorProviderFrente } from '@/Editor/Frente/Store';
 import { EditorProviderVerso } from '@/Editor/Verso/Store';
 
 // styles
-import GlobalStyles from '@/styles/global';
+import { GlobalStyles } from '@/styles/global';
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from '@/styles/theme';
 

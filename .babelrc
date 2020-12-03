@@ -1,19 +1,14 @@
 {
-  "plugins": [
+  "presets": [
     [
-      "babel-plugin-styled-components",
+      "next/babel",
       {
-        "ssr": true,
-        "displayName": true
-      }
-    ],
-    [
-      "@babel/plugin-proposal-decorators",
-      {
-        "legacy": true
+        "preset-react": {
+          "runtime": "automatic",
+          "importSource": "@emotion/react"
+        }
       }
     ]
   ],
-
-  "presets": ["next/babel"]
+  "plugins": ["@emotion/babel-plugin"]
 }

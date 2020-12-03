@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import media from 'styled-media-query';
 import { Menu } from '@styled-icons/entypo/Menu';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 
@@ -8,11 +7,11 @@ export const MenuContainer = styled.div`
     border: none;
     transition: all 1s;
   }
-  ${media.greaterThan('medium')`
+  @media (min-width: 768px) {
     button {
       display: none;
     }
-  `}
+  }
 `;
 
 export const MenuWrapper = styled.div`

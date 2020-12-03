@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import media from 'styled-media-query';
 import { Link as ScrollLink } from 'react-scroll';
 
 export const Wrapper = styled.section`
@@ -46,9 +45,9 @@ export const ItemList = styled.div`
     font-size: 1.125rem;
   }
 
-  ${media.greaterThan('small')`
-  width: 440px;
-`}
+  @media (max-width: 450px) {
+    width: 440px;
+  }
 `;
 
 export const Frete = styled.div`

@@ -1,67 +1,43 @@
-import { createGlobalStyle } from 'styled-components';
+import { css, Global } from '@emotion/react';
 
-const GlobalStyles = createGlobalStyle`
-:root {
-  --lightBlack: #433b3b;
-  --span: #db8e8e;
-  --dark-green: #91C037;
-  --yellow: #F8E436;
-  --blue: #2863F9;
-  --darker-blue: #295ADA;
-  --transporte: #C2F928;
-  --deliver: #28F97C;
-  --grey: #C4C6C1;
-  --darker-grey: #898D83;
-  --lighter-grey: #E5E5E5;
-  --checkout-gray: #A19898;
+export const GlobalStyles = (
+  <Global
+    styles={css`
+      :root {
+        --lightBlack: #433b3b;
+        --span: #db8e8e;
+        --dark-green: #91c037;
+        --yellow: #f8e436;
+        --blue: #2863f9;
+        --darker-blue: #295ada;
+        --transporte: #c2f928;
+        --deliver: #28f97c;
+        --grey: #c4c6c1;
+        --darker-grey: #898d83;
+        --lighter-grey: #e5e5e5;
+        --checkout-gray: #a19898;
 
+        --green: #acdd4f;
+        --green-2: #94df3e;
+        --green-3: #00ff5f;
+        --green-4: #2cab31;
+        --red: #f84752;
+        --white: #fcfcfc;
+        --white-2: #fafafa;
+        --white-3: #e6e6e6;
+        --gray: #808080;
+        --gray-2: #433b3b;
+        --black: #0e0e0d;
+      }
 
-  --green:#ACDD4F;
-  --green-2: #94DF3E;
-  --green-3:#00FF5F;
-  --green-4: #2CAB31;
-  --red: #F84752;
-  --white: #FCFCFC;
-  --white-2: #FAFAFA;
-  --white-3: #E6E6E6;
-  --gray: #808080;
-  --gray-2:#433B3B;
-  --black:#0E0E0D;
-
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  box-sizing: border-box;
-}
-
-*:focus {
-  outline: 0;
-}
-
-body {
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  color: var(--black);
-}
-
-body,
-button {
-  font: 16px 'Roboto', sans-serif;
-}
-
-a {
-  text-decoration: none;
-}
-ul {
-  list-style: none;
-}
-button {
-  cursor: pointer;
-}
-
-`;
-
-export default GlobalStyles;
+      html,
+      body {
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        color: var(--black);
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+      }
+    `}
+  />
+);
