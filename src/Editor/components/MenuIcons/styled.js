@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { ColorFill, ImageAdd, Shapes } from '@emotion-icons/boxicons-solid';
-import { Texture } from '@emotion-icons/material/Texture';
-import { Text } from '@emotion-icons/evaicons-solid/Text';
+import { BiColorFill, BiImageAdd, BiText } from 'react-icons/bi';
+import { FaShapes } from 'react-icons/fa';
+import { MdTexture } from 'react-icons/md';
 
 export const EditorSidebar = styled.div`
   background: #000000;
@@ -32,7 +32,7 @@ export const EditorSidebar = styled.div`
   }
 `;
 
-export const ColorIcon = styled(ColorFill)`
+export const ColorIcon = styled(BiColorFill)`
   width: 40px;
   height: 40px;
   color: #fff;
@@ -45,7 +45,7 @@ export const ColorIcon = styled(ColorFill)`
   }
 `;
 
-export const FundoIcon = styled(Texture)`
+export const FundoIcon = styled(MdTexture)`
   width: 40px;
   height: 40px;
   color: #fff;
@@ -58,7 +58,7 @@ export const FundoIcon = styled(Texture)`
   }
 `;
 
-export const ImageAddIcon = styled(ImageAdd)`
+export const ImageAddIcon = styled(BiImageAdd)`
   width: 40px;
   height: 40px;
   color: #fff;
@@ -71,7 +71,7 @@ export const ImageAddIcon = styled(ImageAdd)`
   }
 `;
 
-export const TextIcon = styled(Text)`
+export const TextIcon = styled(BiText)`
   width: 40px;
   height: 40px;
   color: #fff;
@@ -84,7 +84,7 @@ export const TextIcon = styled(Text)`
   }
 `;
 
-export const ShapesIcon = styled(Shapes)`
+export const ShapesIcon = styled(FaShapes)`
   width: 40px;
   height: 40px;
   color: #fff;

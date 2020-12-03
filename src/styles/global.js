@@ -1,6 +1,6 @@
 import { css, Global } from '@emotion/react';
 
-export const GlobalStyles = (
+export const globalStyles = (
   <Global
     styles={css`
       :root {

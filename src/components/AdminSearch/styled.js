@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { SearchAlt2 } from '@emotion-icons/boxicons-regular/SearchAlt2';
+import { BiSearchAlt2 } from 'react-icons/bi';
 
 export const SeachWrapper = styled.div`
   margin: 2rem;
@@ -7,7 +7,7 @@ export const SeachWrapper = styled.div`
   position: relative;
 `;
 
-export const SearchIcon = styled(SearchAlt2)`
+export const SearchIcon = styled(BiSearchAlt2)`
   width: 20px;
   height: 20px;
   margin-right: 0.25rem;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { CloudUpload } from '@emotion-icons/boxicons-regular/CloudUpload';
+import { BiCloudUpload } from 'react-icons/bi';
 
 export const SidebarMenuWrapper5 = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ export const SidebarMenuWrapper5 = styled.div`
   }
 `;
 
-export const UploadIconBG = styled(CloudUpload)`
+export const UploadIconBG = styled(BiCloudUpload)`
   width: 1.5rem;
   height: 1.5rem;
   color: #fff;

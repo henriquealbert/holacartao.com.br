@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { Save } from '@emotion-icons/boxicons-solid/';
+import { BiSave } from 'react-icons/bi';
 
-export const SaveIcon = styled(Save)`
+export const SaveIcon = styled(BiSave)`
   color: #171923;
   width: 20px;
   height: 20px;

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Menu } from '@emotion-icons/entypo/Menu';
-import { CloseOutline } from '@emotion-icons/evaicons-outline/CloseOutline';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdClose } from 'react-icons/md';
 
 export const MenuContainer = styled.div`
   button {
@@ -89,7 +89,7 @@ export const MenuWrapper = styled.div`
   }
 `;
 
-export const OpenMenu = styled(Menu)`
+export const OpenMenu = styled(GiHamburgerMenu)`
   height: 50px;
   width: 50px;
   background: var(--white);
@@ -97,7 +97,7 @@ export const OpenMenu = styled(Menu)`
   border: none;
 `;
 
-export const CloseMenu = styled(CloseOutline)`
+export const CloseMenu = styled(MdClose)`
   height: 50px;
   width: 50px;
   background: var(--white);

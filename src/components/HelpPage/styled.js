@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { Envelope, HelpCircle } from '@emotion-icons/boxicons-solid';
+import { IoMdHelpCircle } from 'react-icons/io';
+import { FaEnvelope } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 
 export const HelpPageWrapper = styled.section`
@@ -52,14 +53,14 @@ export const FAQLinkItem = styled(ScrollLink)`
   }
 `;
 
-export const EnvelopeIcon = styled(Envelope)`
+export const EnvelopeIcon = styled(FaEnvelope)`
   width: 35px;
   height: 35px;
   color: var(--green);
   margin-right: 1rem;
 `;
 
-export const HelpIcon = styled(HelpCircle)`
+export const HelpIcon = styled(IoMdHelpCircle)`
   width: 35px;
   height: 35px;
   color: var(--green);

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ArrowBack } from '@emotion-icons/boxicons-regular/ArrowBack';
+import { BiArrowBack } from 'react-icons/bi';
 
 export const OrderContainer = styled.section`
   width: 95%;
@@ -11,7 +11,7 @@ export const OrderContent = styled.div`
   margin: 1rem auto;
 `;
 
-export const ArrowBackIcon = styled(ArrowBack)`
+export const ArrowBackIcon = styled(BiArrowBack)`
   width: 2rem;
   height: 2rem;
   display: block;

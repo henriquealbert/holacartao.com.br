@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { File } from '@emotion-icons/boxicons-regular/File';
+import { BsFileEarmarkText } from 'react-icons/bs';
 
 export const TermsWrapper = styled.section`
   margin: 5rem auto;
@@ -40,7 +40,7 @@ export const TermsWrapper = styled.section`
   }
 `;
 
-export const FileIcon = styled(File)`
+export const FileIcon = styled(BsFileEarmarkText)`
   width: 35px;
   height: 35px;
   color: var(--green);

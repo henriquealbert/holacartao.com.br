@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { InstagramAlt } from '@emotion-icons/boxicons-logos';
+import { AiFillInstagram } from 'react-icons/ai';
 
 export const Container = styled.footer`
   background: var(--black);
@@ -94,7 +94,7 @@ export const ImageWrapper = styled.div`
   }
 `;
 
-export const Instagram = styled(InstagramAlt)`
+export const Instagram = styled(AiFillInstagram)`
   width: 35px;
   height: 35px;
   color: var(--white);

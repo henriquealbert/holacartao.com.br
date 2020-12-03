@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { Trash } from '@emotion-icons/boxicons-solid/';
+import { BsFillTrashFill } from 'react-icons/bs';
 
-export const DeleteIcon = styled(Trash)`
+export const DeleteIcon = styled(BsFillTrashFill)`
   width: 1.4rem;
   height: 1.4rem;
   color: red;

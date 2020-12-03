@@ -1,35 +1,36 @@
 import styled from '@emotion/styled';
 import {
-  Square,
-  Circle,
-  Envelope as EnvelopeSolid,
-  Phone
-} from '@emotion-icons/boxicons-solid';
-import { Triangle } from '@emotion-icons/ionicons-solid/Triangle';
-import { HexagonFill, StarFill } from '@emotion-icons/bootstrap';
+  BsOctagonFill,
+  BsStarFill,
+  BsFillTriangleFill,
+  BsSquareFill,
+  BsCircleFill
+} from 'react-icons/bs';
 import {
-  Globe,
-  Envelope,
-  Mobile,
-  PaperPlane,
-  UserCircle,
-  Directions,
-  Map as MapIcon,
-  At,
-  Home
-} from '@emotion-icons/boxicons-regular';
+  FaEnvelope,
+  FaWhatsapp,
+  FaSkype,
+  FaLinkedin,
+  FaInstagramSquare,
+  FaInstagram,
+  FaFacebookSquare,
+  FaFacebook,
+  FaFacebookF,
+  FaTwitter,
+  FaYoutube
+} from 'react-icons/fa';
 import {
-  Whatsapp,
-  Skype,
-  LinkedinSquare,
-  Instagram,
-  InstagramAlt,
-  FacebookCircle,
-  Facebook,
-  FacebookSquare,
-  Twitter,
-  Youtube
-} from '@emotion-icons/boxicons-logos/';
+  BiEnvelope,
+  BiGlobe,
+  BiMobile,
+  BiPaperPlane,
+  BiUserCircle,
+  BiDirections,
+  BiMap,
+  BiAt,
+  BiHome
+} from 'react-icons/bi';
+import { AiFillPhone } from 'react-icons/ai';
 
 export const SidebarMenuWrapper3 = styled.div`
   display: flex;
@@ -73,9 +74,11 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const SquareIcon = styled(Square)`
-  width: 50px;
-  height: 50px;
+export const SquareIcon = styled(BsSquareFill)`
+  margin: 2px;
+  width: 33px;
+  display: inline-block;
+  height: 33px;
   color: var(--darker-grey);
   cursor: pointer;
   transition: all 200ms ease-in-out;
@@ -85,9 +88,11 @@ export const SquareIcon = styled(Square)`
   }
 `;
 
-export const CircleIcon = styled(Circle)`
-  width: 50px;
-  height: 50px;
+export const CircleIcon = styled(BsCircleFill)`
+  margin: 2px;
+  width: 33px;
+  display: inline-block;
+  height: 33px;
   color: var(--darker-grey);
   cursor: pointer;
   transition: all 200ms ease-in-out;
@@ -97,9 +102,11 @@ export const CircleIcon = styled(Circle)`
   }
 `;
 
-export const TriangleIcon = styled(Triangle)`
-  width: 50px;
-  height: 50px;
+export const TriangleIcon = styled(BsFillTriangleFill)`
+  margin: 2px;
+  width: 33px;
+  display: inline-block;
+  height: 33px;
   color: var(--darker-grey);
   cursor: pointer;
   transition: all 200ms ease-in-out;
@@ -109,9 +116,11 @@ export const TriangleIcon = styled(Triangle)`
   }
 `;
 
-export const HexagonFillIcon = styled(HexagonFill)`
-  width: 50px;
-  height: 50px;
+export const HexagonFillIcon = styled(BsOctagonFill)`
+  margin: 2px;
+  width: 33px;
+  display: inline-block;
+  height: 33px;
   color: var(--darker-grey);
   cursor: pointer;
   transition: all 200ms ease-in-out;
@@ -121,9 +130,11 @@ export const HexagonFillIcon = styled(HexagonFill)`
   }
 `;
 
-export const StarFillIcon = styled(StarFill)`
-  width: 50px;
-  height: 50px;
+export const StarFillIcon = styled(BsStarFill)`
+  margin: 2px;
+  width: 33px;
+  display: inline-block;
+  height: 33px;
   color: var(--darker-grey);
   cursor: pointer;
   transition: all 200ms ease-in-out;
@@ -133,7 +144,8 @@ export const StarFillIcon = styled(StarFill)`
   }
 `;
 
-export const GlobeIcon = styled(Globe)`
+export const GlobeIcon = styled(BiGlobe)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -146,7 +158,8 @@ export const GlobeIcon = styled(Globe)`
   }
 `;
 
-export const EnvelopeIcon = styled(Envelope)`
+export const EnvelopeIcon = styled(BiEnvelope)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -159,7 +172,8 @@ export const EnvelopeIcon = styled(Envelope)`
   }
 `;
 
-export const EnvelopeSolidIcon = styled(EnvelopeSolid)`
+export const EnvelopeSolidIcon = styled(FaEnvelope)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -172,7 +186,23 @@ export const EnvelopeSolidIcon = styled(EnvelopeSolid)`
   }
 `;
 
-export const PhoneIcon = styled(Phone)`
+export const PhoneIcon = styled(AiFillPhone)`
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  color: var(--darker-grey);
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  margin: 0.3rem;
+  rotate: rotate(90deg);
+
+  &:hover {
+    color: var(--grey);
+  }
+`;
+
+export const MobileIcon = styled(BiMobile)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -185,7 +215,8 @@ export const PhoneIcon = styled(Phone)`
   }
 `;
 
-export const MobileIcon = styled(Mobile)`
+export const PaperPlaneIcon = styled(BiPaperPlane)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -198,7 +229,8 @@ export const MobileIcon = styled(Mobile)`
   }
 `;
 
-export const PaperPlaneIcon = styled(PaperPlane)`
+export const UserCircleIcon = styled(BiUserCircle)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -211,7 +243,8 @@ export const PaperPlaneIcon = styled(PaperPlane)`
   }
 `;
 
-export const UserCircleIcon = styled(UserCircle)`
+export const DirectionsIcon = styled(BiDirections)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -224,7 +257,8 @@ export const UserCircleIcon = styled(UserCircle)`
   }
 `;
 
-export const DirectionsIcon = styled(Directions)`
+export const MapIconIcon = styled(BiMap)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -237,7 +271,8 @@ export const DirectionsIcon = styled(Directions)`
   }
 `;
 
-export const MapIconIcon = styled(MapIcon)`
+export const WhatsappIcon = styled(FaWhatsapp)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -250,7 +285,8 @@ export const MapIconIcon = styled(MapIcon)`
   }
 `;
 
-export const WhatsappIcon = styled(Whatsapp)`
+export const SkypeIcon = styled(FaSkype)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -263,7 +299,8 @@ export const WhatsappIcon = styled(Whatsapp)`
   }
 `;
 
-export const SkypeIcon = styled(Skype)`
+export const LinkedinSquareIcon = styled(FaLinkedin)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -276,7 +313,8 @@ export const SkypeIcon = styled(Skype)`
   }
 `;
 
-export const LinkedinSquareIcon = styled(LinkedinSquare)`
+export const InstagramIcon = styled(FaInstagram)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -289,7 +327,8 @@ export const LinkedinSquareIcon = styled(LinkedinSquare)`
   }
 `;
 
-export const InstagramIcon = styled(Instagram)`
+export const InstagramAltIcon = styled(FaInstagramSquare)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -302,7 +341,8 @@ export const InstagramIcon = styled(Instagram)`
   }
 `;
 
-export const InstagramAltIcon = styled(InstagramAlt)`
+export const FacebookCircleIcon = styled(FaFacebook)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -315,7 +355,8 @@ export const InstagramAltIcon = styled(InstagramAlt)`
   }
 `;
 
-export const FacebookCircleIcon = styled(FacebookCircle)`
+export const FacebookIcon = styled(FaFacebookF)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -328,7 +369,8 @@ export const FacebookCircleIcon = styled(FacebookCircle)`
   }
 `;
 
-export const FacebookIcon = styled(Facebook)`
+export const FacebookSquareIcon = styled(FaFacebookSquare)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -341,7 +383,8 @@ export const FacebookIcon = styled(Facebook)`
   }
 `;
 
-export const FacebookSquareIcon = styled(FacebookSquare)`
+export const TwitterIcon = styled(FaTwitter)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -354,7 +397,8 @@ export const FacebookSquareIcon = styled(FacebookSquare)`
   }
 `;
 
-export const TwitterIcon = styled(Twitter)`
+export const YoutubeIcon = styled(FaYoutube)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -367,7 +411,8 @@ export const TwitterIcon = styled(Twitter)`
   }
 `;
 
-export const YoutubeIcon = styled(Youtube)`
+export const HomeIcon = styled(BiHome)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);
@@ -380,20 +425,8 @@ export const YoutubeIcon = styled(Youtube)`
   }
 `;
 
-export const HomeIcon = styled(Home)`
-  width: 30px;
-  height: 30px;
-  color: var(--darker-grey);
-  cursor: pointer;
-  transition: all 200ms ease-in-out;
-  margin: 0.3rem;
-
-  &:hover {
-    color: var(--grey);
-  }
-`;
-
-export const AtIcon = styled(At)`
+export const AtIcon = styled(BiAt)`
+  display: inline-block;
   width: 30px;
   height: 30px;
   color: var(--darker-grey);

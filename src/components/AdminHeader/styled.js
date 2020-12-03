@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { ShutDown } from '@emotion-icons/remix-line/ShutDown';
-import { LinkExternal } from '@emotion-icons/boxicons-regular/LinkExternal';
+import { RiShutDownLine } from 'react-icons/ri';
+import { BiLinkExternal } from 'react-icons/bi';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
@@ -51,7 +51,7 @@ export const Profile = styled.div`
   }
 `;
 
-export const IconLogout = styled(ShutDown)`
+export const IconLogout = styled(RiShutDownLine)`
   width: 50px;
   height: 50px;
   color: #fff;
@@ -89,7 +89,7 @@ export const AdminHeaderMenu = styled.ul`
   }
 `;
 
-export const LinkExternalIcon = styled(LinkExternal)`
+export const LinkExternalIcon = styled(BiLinkExternal)`
   width: 1rem;
   height: 1rem;
   color: #000;

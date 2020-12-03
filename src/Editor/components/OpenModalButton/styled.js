@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { RightArrowAlt } from '@emotion-icons/boxicons-regular/RightArrowAlt';
+import { BiRightArrowAlt } from 'react-icons/bi';
 
 export const Wrapper = styled.div`
   width: 95%;
@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const ArrowNextIcon = styled(RightArrowAlt)`
+export const ArrowNextIcon = styled(BiRightArrowAlt)`
   width: 1.5rem;
   height: 1.5rem;
   color: #000;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { RotateLeft, RotateRight } from '@emotion-icons/boxicons-regular';
+import { BiRotateLeft, BiRotateRight } from 'react-icons/bi';
 
 export const ChangeSideWrapper = styled.div`
   margin-top: 1.5rem;
@@ -19,14 +19,14 @@ export const ChangeSideWrapper = styled.div`
   }
 `;
 
-export const VersoIcon = styled(RotateLeft)`
+export const VersoIcon = styled(BiRotateLeft)`
   width: 1.5rem;
   height: 1.5rem;
   color: #000;
   margin-left: 0.25rem;
 `;
 
-export const FrenteIcon = styled(RotateRight)`
+export const FrenteIcon = styled(BiRotateRight)`
   width: 1.5rem;
   height: 1.5rem;
   color: #000;

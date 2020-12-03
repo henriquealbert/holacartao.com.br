@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Edit } from '@emotion-icons/boxicons-solid/';
+import { BiEdit } from 'react-icons/bi';
 
 export const AdminCardTableWrapper = styled.div`
   margin: 0 auto;
@@ -70,7 +70,7 @@ export const TableCards = styled.div`
   }
 `;
 
-export const EditIcon = styled(Edit)`
+export const EditIcon = styled(BiEdit)`
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 0.5rem;
