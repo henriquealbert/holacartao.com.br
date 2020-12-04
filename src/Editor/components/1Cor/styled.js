@@ -1,43 +1,39 @@
 import styled from '@emotion/styled';
 
-export const SidebarMenuWrapper1 = styled.div`
+export const Wrapper = styled.div`
   display: flex;
-  background: #e5e5e5;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  background: #eeeeee;
+  border-radius: 10px;
   transform: translateX(-200%);
   transition: all 350ms ease-in-out;
   overflow-x: hidden;
-  justify-content: center;
-  align-items: center;
   visibility: hidden;
   position: absolute;
   top: auto;
   bottom: auto;
-  left: 95px;
-  width: 252px;
+  width: 316px;
+  margin-left: 80px;
 
   &.open {
     transform: translateX(0%);
     visibility: visible;
   }
-
-  input {
-    border-radius: 4px;
-  }
 `;
 
-export const ContentWrapperColor = styled.div`
-  width: 100%;
-  padding: 1rem;
+export const Content = styled.div`
+  padding: 24px;
 
-  .chrome-picker {
-    box-shadow: none !important;
+  .sketch-picker {
+    max-width: 250px;
   }
 
-  h3 {
-    text-align: left;
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+  p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #6a6666;
+    margin-bottom: 18px;
   }
 `;

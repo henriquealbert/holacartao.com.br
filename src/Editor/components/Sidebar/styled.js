@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 export const SidebarContainer = styled.aside`
   display: flex;
   position: fixed;
-  top: 18%;
+  margin-top: 28px;
+  margin-left: 50px;
 `;
 
 export const MenuToolsContainer = styled.div`

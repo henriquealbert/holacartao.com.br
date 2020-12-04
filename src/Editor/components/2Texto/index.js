@@ -2,7 +2,7 @@ import FontPicker from 'font-picker-react';
 
 import * as S from './styled';
 
-export default function Item2({ openItem2, editorStore }) {
+export default function Item2({ openMenu, editorStore }) {
   const {
     addText,
     selectedId,
@@ -177,7 +177,7 @@ export default function Item2({ openItem2, editorStore }) {
   };
 
   return (
-    <S.SidebarMenuWrapper2 className={openItem2 !== true ? '' : 'open'}>
+    <S.SidebarMenuWrapper2 className={openMenu === 'texto' ? 'open' : ''}>
       <S.ContentWrapper>
         <h3>Texto</h3>
         <S.AddTxt onClick={addText}>Adicionar Novo Texto</S.AddTxt>

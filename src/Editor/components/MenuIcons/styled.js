@@ -1,98 +1,29 @@
 import styled from '@emotion/styled';
-import { BiColorFill, BiImageAdd, BiText } from 'react-icons/bi';
-import { FaShapes } from 'react-icons/fa';
-import { MdTexture } from 'react-icons/md';
 
-export const EditorSidebar = styled.div`
-  background: #000000;
-  border-radius: 0px 10px 10px 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  z-index: 2;
-  position: relative;
+export const ButtonItem = styled.button`
+  width: 90px;
+  height: 90px;
+  background: #ffffff;
+  box-shadow: ${(props) =>
+    props.active
+      ? 'inset 2px 2px 5px rgba(0, 0, 0, 0.15)'
+      : '0px 2px 2px rgba(0, 0, 0, 0.15)'};
+  border-radius: 20px;
+  outline: rgba(0, 0, 0, 0.05);
+  margin-bottom: ${(props) => props.marginBottom};
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 0;
+  p {
+    padding-top: 11px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: ${(props) => (props.active ? '#1DB954' : '')};
+  }
 
-    li {
-      display: flex;
-      flex-direction: column;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.7rem;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 1rem;
-    }
-  }
-`;
-
-export const ColorIcon = styled(BiColorFill)`
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  cursor: pointer;
-  &:hover {
-    color: #33df6e;
-  }
-  &.active {
-    color: #33df6e;
-  }
-`;
-
-export const FundoIcon = styled(MdTexture)`
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  cursor: pointer;
-  &:hover {
-    color: #33df6e;
-  }
-  &.active {
-    color: #33df6e;
-  }
-`;
-
-export const ImageAddIcon = styled(BiImageAdd)`
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  cursor: pointer;
-  &:hover {
-    color: #33df6e;
-  }
-  &.active {
-    color: #33df6e;
-  }
-`;
-
-export const TextIcon = styled(BiText)`
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  cursor: pointer;
-  &:hover {
-    color: #33df6e;
-  }
-  &.active {
-    color: #33df6e;
-  }
-`;
-
-export const ShapesIcon = styled(FaShapes)`
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  cursor: pointer;
-  &:hover {
-    color: #33df6e;
-  }
-  &.active {
-    color: #33df6e;
+  svg {
+    color: ${(props) => (props.active ? '#1DB954' : '')};
   }
 `;

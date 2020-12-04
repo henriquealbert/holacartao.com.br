@@ -1,7 +1,7 @@
 import * as S from './styled';
 import { SketchPicker } from 'react-color';
 
-export default function Item1({ openItem1, editorStore }) {
+export default function Item1({ openMenu, editorStore }) {
   const {
     selectedId,
     store,
@@ -37,9 +37,9 @@ export default function Item1({ openItem1, editorStore }) {
   };
 
   return (
-    <S.SidebarMenuWrapper1 className={openItem1 !== true ? '' : 'open'}>
-      <S.ContentWrapperColor>
-        <h3>Cor do Elemento ou Texto</h3>
+    <S.Wrapper className={openMenu === 'cor' ? 'open' : ''}>
+      <S.Content>
+        <p>Cor do Elemento ou Texto</p>
         <SketchPicker
           color={color}
           value={color}
@@ -50,8 +50,9 @@ export default function Item1({ openItem1, editorStore }) {
           }}
           onChangeComplete={handleChangeComplete}
           presetColors={presetColors}
+          width="100%"
         />
-      </S.ContentWrapperColor>
-    </S.SidebarMenuWrapper1>
+      </S.Content>
+    </S.Wrapper>
   );
 }

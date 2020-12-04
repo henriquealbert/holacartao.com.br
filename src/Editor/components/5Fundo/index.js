@@ -3,7 +3,7 @@ import { SketchPicker } from 'react-color';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
 
-export default function Item5({ openItem5, editorStore }) {
+export default function Item5({ openMenu, editorStore }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const {
@@ -108,7 +108,7 @@ export default function Item5({ openItem5, editorStore }) {
   };
 
   return (
-    <S.SidebarMenuWrapper5 className={openItem5 !== true ? '' : 'open'}>
+    <S.SidebarMenuWrapper5 className={openMenu === 'fundo' ? 'open' : ''}>
       <S.ContentWrapperFundo>
         <h3>Cor de Fundo</h3>
 

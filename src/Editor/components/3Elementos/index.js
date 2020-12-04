@@ -4,7 +4,7 @@ import * as Icon from './iconsList';
 
 import * as S from './styled';
 
-export default function Item3({ openItem3, editorStore }) {
+export default function Item3({ openMenu, editorStore }) {
   // Context
   const {
     addRect,
@@ -22,7 +22,7 @@ export default function Item3({ openItem3, editorStore }) {
   };
 
   return (
-    <S.SidebarMenuWrapper3 className={openItem3 !== true ? '' : 'open'}>
+    <S.SidebarMenuWrapper3 className={openMenu === 'elementos' ? 'open' : ''}>
       <S.ContentWrapper>
         <h3>Formas</h3>
         <S.SquareIcon onClick={addRect} />

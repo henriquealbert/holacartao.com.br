@@ -2,7 +2,7 @@ import * as S from './styled';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
 
-export default function Item4({ openItem4, editorStore }) {
+export default function Item4({ openMenu, editorStore }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const { setStore, store, imageLibrary, setImageLibrary } = editorStore;
@@ -55,7 +55,7 @@ export default function Item4({ openItem4, editorStore }) {
   };
 
   return (
-    <S.SidebarMenuWrapper4 className={openItem4 !== true ? '' : 'open'}>
+    <S.SidebarMenuWrapper4 className={openMenu === 'imagem' ? 'open' : ''}>
       <S.ContentWrapper4>
         <h3>Imagem</h3>
         <S.AddImg>
