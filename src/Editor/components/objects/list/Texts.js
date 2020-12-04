@@ -12,7 +12,8 @@ export default function Texts({ editorStore }) {
     setTextFontDecoration,
     setTextFontStyle,
     setTextAlign,
-    setColor
+    setColor,
+    setTextLetterSpacing
   } = editorStore;
 
   const txts = store.filter((element) => element.type === 'text');
@@ -34,6 +35,7 @@ export default function Texts({ editorStore }) {
               setTextFontDecoration(text.textDecoration);
               setTextAlign(text.align);
               setColor(text.fill);
+              setTextLetterSpacing(text.letterSpacing);
             }}
             onChange={(newAttrs) => {
               updateElement(text.id, newAttrs);
