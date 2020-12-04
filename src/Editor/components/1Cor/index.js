@@ -1,5 +1,6 @@
 import * as S from './styled';
 import { SketchPicker } from 'react-color';
+import { Box, Text } from '@chakra-ui/react';
 
 export default function Item1({ openMenu, editorStore }) {
   const {
@@ -38,8 +39,16 @@ export default function Item1({ openMenu, editorStore }) {
 
   return (
     <S.Wrapper className={openMenu === 'cor' ? 'open' : ''}>
-      <S.Content>
-        <p>Cor do Elemento ou Texto</p>
+      <Box p="24px">
+        <Text
+          color="#6A6666"
+          fontFamily="Roboto"
+          fontSize="14px"
+          fontWeight="bold"
+          mb="12px"
+        >
+          Cor do elemento ou texto
+        </Text>
         <SketchPicker
           color={color}
           value={color}
@@ -52,7 +61,7 @@ export default function Item1({ openMenu, editorStore }) {
           presetColors={presetColors}
           width="100%"
         />
-      </S.Content>
+      </Box>
     </S.Wrapper>
   );
 }

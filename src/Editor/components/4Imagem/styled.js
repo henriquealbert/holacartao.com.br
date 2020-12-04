@@ -38,6 +38,8 @@ export const AddImg = styled.form`
     font-family: 'Roboto';
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 16px;
+    line-height: 1;
 
     &:hover {
       box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);

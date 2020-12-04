@@ -18,22 +18,7 @@ export const Wrapper = styled.div`
     transform: translateX(0%);
     visibility: visible;
   }
-`;
-
-export const Content = styled.div`
-  padding: 24px;
-
   .sketch-picker {
     max-width: 250px;
-  }
-
-  p {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 16px;
-    color: #6a6666;
-    margin-bottom: 18px;
   }
 `;
