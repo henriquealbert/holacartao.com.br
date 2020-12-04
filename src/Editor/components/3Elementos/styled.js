@@ -27,24 +27,6 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const ContentWrapper = styled.div`
-  width: 100%;
-  padding: 1rem;
-
-  h3 {
-    text-align: left;
-    font-size: 1.25rem;
-    margin-bottom: 0.25rem;
-  }
-
-  h4 {
-    text-align: left;
-    font-size: 1.25rem;
-    margin-bottom: 0.25rem;
-    margin-top: 1rem;
-  }
-`;
-
 export const SquareIcon = styled(BsSquareFill)`
   margin: 2px;
   width: 33px;

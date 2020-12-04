@@ -35,7 +35,7 @@ export default function Item3({ openMenu, editorStore }) {
 
   return (
     <S.Wrapper className={openMenu === 'elementos' ? 'open' : ''}>
-      <S.ContentWrapper>
+      <Box p="24px">
         <Text
           color="#6A6666"
           fontFamily="Roboto"
@@ -87,7 +87,7 @@ export default function Item3({ openMenu, editorStore }) {
             })
           )}
         </Box>
-      </S.ContentWrapper>
+      </Box>
     </S.Wrapper>
   );
 }
