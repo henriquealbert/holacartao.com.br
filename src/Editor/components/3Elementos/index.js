@@ -1,8 +1,7 @@
 import { Box, Icon, Text } from '@chakra-ui/react';
 
-import GET_ICONS_LIST from '@/graphql/queries/GetIconsList';
-import { useFetch } from '@/hooks/useFetch';
 import * as S from './styled';
+import useSWR from 'swr';
 
 export default function Item3({ openMenu, editorStore }) {
   const {
@@ -15,7 +14,7 @@ export default function Item3({ openMenu, editorStore }) {
     store
   } = editorStore;
   // get icons list
-  const { data, error } = useFetch(GET_ICONS_LIST);
+  const { data, error } = useSWR('https://api.holacartao.com.br/icons');
 
   // format each icon to add the props that we need on store
   const formatedIconList = data?.icons.map((icon) => ({
