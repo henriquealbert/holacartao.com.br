@@ -55,7 +55,7 @@ export default function Header({ editorStore, user }) {
               fill="currentColor"
             />
           </Icon>
-          defazer
+          desfazer
         </S.ActionButton>
         <S.ActionButton marginLeft="3rem" onClick={removeElement}>
           <Icon viewBox="0 0 27 27" w={7} h={7}>
