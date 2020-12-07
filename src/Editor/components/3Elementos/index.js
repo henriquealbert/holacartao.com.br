@@ -17,7 +17,7 @@ export default function Item3({ openMenu, editorStore }) {
   const { data, error } = useSWR('https://api.holacartao.com.br/icons');
 
   // format each icon to add the props that we need on store
-  const formatedIconList = data?.icons.map((icon) => ({
+  const formatedIconList = data?.map((icon) => ({
     ...icon,
     type: 'icon',
     fill: '#898D83',
