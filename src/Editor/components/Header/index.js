@@ -16,6 +16,7 @@ export default function Header({ editorStore, user }) {
       p="1rem 50px"
       justifyContent="space-between"
       alignItems="center"
+      mb="28px"
     >
       <Flex>
         <NextLink href="/">

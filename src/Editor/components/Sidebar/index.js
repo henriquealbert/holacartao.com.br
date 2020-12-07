@@ -12,7 +12,7 @@ export default function Sidebar({ editorStore }) {
   const [openMenu, setOpenMenu] = useState('');
 
   return (
-    <Flex as="aside" position="fixed" mt="28px" ml="50px">
+    <Flex as="aside">
       <MenuIcons openMenu={openMenu} setOpenMenu={setOpenMenu} />
 
       <Box>

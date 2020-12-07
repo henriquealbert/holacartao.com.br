@@ -13,15 +13,6 @@ export const InfosWrapper = styled.div`
   }
 `;
 
-export const WarningsEditor = styled.div`
-  grid-column: 2/3;
-  grid-row: 1/2;
-  margin-bottom: 1rem;
-  p {
-    color: var(--darker-grey);
-  }
-`;
-
 export const SidesWrapper = styled.div`
   p {
     color: var(--darker-grey);

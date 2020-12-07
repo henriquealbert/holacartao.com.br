@@ -1,21 +1,8 @@
 import styled from '@emotion/styled';
 
-export const EditorWrapper = styled.main`
-  background: rgba(0, 0, 0, 0.01);
-  height: 100vh;
-`;
-
-export const Container = styled.div`
-  width: 80%;
-  display: flex;
-  margin: 0 auto;
-  padding-top: 70px;
-`;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   justify-content: center;
   align-items: center;
   position: relative;

@@ -1,12 +1,10 @@
+import { Box, Flex } from '@chakra-ui/react';
+
 import Header from '@/Editor/components/Header';
 import Sidebar from '@/Editor/components/Sidebar';
 import Canva from '@/Editor/components/Canva';
 import OpenModalButton from '@/Editor/components/OpenModalButton';
-import {
-  InfoVerso,
-  WarningsEditor,
-  VersoEditor
-} from '@/Editor/components/Infos';
+import { VersoEditor } from '@/Editor/components/Infos';
 import ChangeSide from '@/Editor/components/ChangeSide';
 import BeforeSaveModal from '@/Editor/components/BeforeSaveModal';
 
@@ -18,22 +16,21 @@ export default function EditorVerso({ infoCard, user }) {
   const storeVerso = useEditorStoreVerso();
 
   return (
-    <S.EditorWrapper>
+    <Box as="main" bg="rgba(0, 0, 0, 0.01)" h="100vh">
       <Header editorStore={storeVerso} user={user} />
-      <Sidebar editorStore={storeVerso} />
 
-      <S.Container>
-        <InfoVerso />
+      <Flex justifyContent="space-between" mx="50px">
+        <Sidebar editorStore={storeVerso} />
+
         <S.Wrapper>
-          <WarningsEditor />
           <VersoEditor />
           <Canva editorStore={storeVerso} BgId={'bg-verso'} />
           <ChangeSide editorStore={storeVerso} />
-        </S.Wrapper>
-      </S.Container>
 
-      <OpenModalButton user={user} editorStore={storeVerso} />
-      <BeforeSaveModal infoCard={infoCard} user={user} />
-    </S.EditorWrapper>
+          <OpenModalButton user={user} editorStore={storeVerso} />
+          <BeforeSaveModal infoCard={infoCard} user={user} />
+        </S.Wrapper>
+      </Flex>
+    </Box>
   );
 }
