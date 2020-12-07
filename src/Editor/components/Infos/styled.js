@@ -17,7 +17,7 @@ export const SidesWrapper = styled.div`
   p {
     color: var(--darker-grey);
     position: absolute;
-    top: 4.5rem;
+    top: 5.75rem;
     left: -3rem;
     transform: rotate(-90deg);
     font-size: 1.25rem;

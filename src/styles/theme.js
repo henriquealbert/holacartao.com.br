@@ -15,6 +15,13 @@ const theme = extendTheme({
     }
   },
   components: {
+    Modal: {
+      baseStyle: {
+        overlay: {
+          bg: 'blackAlpha.800'
+        }
+      }
+    },
     Textarea: {
       variants: {
         primary: {
@@ -95,19 +102,21 @@ const theme = extendTheme({
       variants: {
         outline: {
           field: {
-            borderColor: '#9F9595',
+            borderColor: 'gray.600',
+            borderRadius: '20px',
             _focus: {
-              boxShadow: '0 0 0 1px #000',
-              borderColor: '#000'
+              boxShadow: '0 0 0 3px rgba(23, 171, 75, 0.6)',
+              borderColor: 'brand.400'
             }
           }
         },
         filled: {
           field: {
-            borderColor: '#9F9595',
+            borderColor: 'gray.600',
+            borderRadius: '20px',
             _focus: {
-              boxShadow: '0 0 0 1px #000',
-              borderColor: '#000'
+              boxShadow: '0 0 0 3px rgba(23, 171, 75, 0.6)',
+              borderColor: 'brand.400'
             }
           }
         }
@@ -117,10 +126,10 @@ const theme = extendTheme({
       variants: {
         outline: {
           field: {
-            borderColor: '#9F9595',
+            borderColor: 'gray.600',
             _focus: {
-              boxShadow: '0 0 0 1px #000',
-              borderColor: '#000'
+              boxShadow: '0 0 0 3px rgba(23, 171, 75, 0.6)',
+              borderColor: 'brand.400'
             }
           }
         },
@@ -136,10 +145,11 @@ const theme = extendTheme({
       variants: {
         outline: {
           field: {
-            borderColor: '#9F9595',
+            borderColor: 'gray.600',
+            borderRadius: '20px',
             _focus: {
-              boxShadow: '0 0 0 1px #000',
-              borderColor: '#000'
+              boxShadow: '0 0 0 3px rgba(23, 171, 75, 0.6)',
+              borderColor: 'brand.400'
             }
           }
         }

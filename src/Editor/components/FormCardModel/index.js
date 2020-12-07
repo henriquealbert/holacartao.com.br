@@ -1,13 +1,13 @@
 import FormCardModelAdd from './AddEditor';
 import FormCardModelEdit from './EditEditor';
 
-export default function FormCardModel({ infoCard }) {
+export default function FormCardModel({ infoCard, onClose }) {
   return (
     <>
       {infoCard === undefined ? (
-        <FormCardModelAdd />
+        <FormCardModelAdd onClose={onClose} />
       ) : (
-        <FormCardModelEdit infoCard={infoCard} />
+        <FormCardModelEdit infoCard={infoCard} onClose={onClose} />
       )}
     </>
   );

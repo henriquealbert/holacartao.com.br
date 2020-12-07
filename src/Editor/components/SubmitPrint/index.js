@@ -9,7 +9,7 @@ import MUTATION_CREATE_SAVED_CARD from '@/graphql/mutations/createSavedCard';
 import { useEditorStoreFrente } from '../../Frente/Store';
 import { useEditorStoreVerso } from '../../Verso/Store';
 
-import * as S from './styled';
+import { Button } from '@chakra-ui/react';
 
 export default function SubmitPrint() {
   const [loading, setLoading] = useState(false);
@@ -76,8 +76,15 @@ export default function SubmitPrint() {
   };
 
   return (
-    <S.Button onClick={handleClick} disabled={loading}>
-      {loading ? 'Carregando...' : 'Tudo certo, imprimir!'}
-    </S.Button>
+    <Button
+      variant="primary"
+      onClick={handleClick}
+      isLoading={loading}
+      loadingText="Carregando..."
+      size="lg"
+      m="0 auto"
+    >
+      Finalizar
+    </Button>
   );
 }

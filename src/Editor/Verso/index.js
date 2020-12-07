@@ -3,8 +3,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import Header from '@/Editor/components/Header';
 import Sidebar from '@/Editor/components/Sidebar';
 import Canva from '@/Editor/components/Canva';
-import OpenModalButton from '@/Editor/components/OpenModalButton';
-import { VersoEditor } from '@/Editor/components/Infos';
+import { InfoEditor, VersoEditor } from '@/Editor/components/Infos';
 import ChangeSide from '@/Editor/components/ChangeSide';
 import BeforeSaveModal from '@/Editor/components/BeforeSaveModal';
 
@@ -22,13 +21,21 @@ export default function EditorVerso({ infoCard, user }) {
       <Flex justifyContent="space-between" mx="50px">
         <Sidebar editorStore={storeVerso} />
 
-        <S.Wrapper>
-          <VersoEditor />
-          <Canva editorStore={storeVerso} BgId={'bg-verso'} />
-          <ChangeSide editorStore={storeVerso} />
+        <InfoEditor />
 
-          <OpenModalButton user={user} editorStore={storeVerso} />
-          <BeforeSaveModal infoCard={infoCard} user={user} />
+        <S.Wrapper>
+          <Box>
+            <VersoEditor />
+            <Canva editorStore={storeVerso} BgId={'bg-verso'} />
+            <ChangeSide editorStore={storeVerso} />
+          </Box>
+          <Flex alignSelf="flex-end">
+            <BeforeSaveModal
+              infoCard={infoCard}
+              user={user}
+              editorStore={storeVerso}
+            />
+          </Flex>
         </S.Wrapper>
       </Flex>
     </Box>
