@@ -131,6 +131,7 @@ export const EditorProviderVerso = ({ children }) => {
       textDecoration: '',
       fontFamily: 'Roboto',
       align: '',
+      letterSpacing: 0,
       width: 250,
       x: 50,
       y: 50,
@@ -177,6 +178,7 @@ export const EditorProviderVerso = ({ children }) => {
   const [textFontStyle, setTextFontStyle] = useState('');
   const [textFontDecoration, setTextFontDecoration] = useState('');
   const [textAlign, setTextAlign] = useState('');
+  const [textLetterSpacing, setTextLetterSpacing] = useState(0);
 
   // Save
   const [saveFinalCard, setSaveFinalCard] = useState(null);
@@ -220,6 +222,7 @@ export const EditorProviderVerso = ({ children }) => {
     setTextFontStyle('');
     setTextFontDecoration('');
     setTextAlign('');
+    setTextLetterSpacing(0);
   };
 
   return (
@@ -267,7 +270,9 @@ export const EditorProviderVerso = ({ children }) => {
         color,
         setColor,
         presetColors,
-        setPresetColors
+        setPresetColors,
+        textLetterSpacing,
+        setTextLetterSpacing
       }}
     >
       {children}

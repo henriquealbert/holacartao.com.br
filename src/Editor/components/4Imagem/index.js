@@ -1,8 +1,9 @@
 import * as S from './styled';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
+import { Box, Flex, Img, Text } from '@chakra-ui/react';
 
-export default function Item4({ openItem4, editorStore }) {
+export default function Item4({ openMenu, editorStore }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const { setStore, store, imageLibrary, setImageLibrary } = editorStore;
@@ -55,9 +56,17 @@ export default function Item4({ openItem4, editorStore }) {
   };
 
   return (
-    <S.SidebarMenuWrapper4 className={openItem4 !== true ? '' : 'open'}>
-      <S.ContentWrapper4>
-        <h3>Imagem</h3>
+    <S.SidebarMenuWrapper4 className={openMenu === 'imagem' ? 'open' : ''}>
+      <Box p="24px">
+        <Text
+          color="#6A6666"
+          fontFamily="Roboto"
+          fontSize="14px"
+          fontWeight="bold"
+          mb="8px"
+        >
+          Imagens
+        </Text>
         <S.AddImg>
           <label htmlFor="images-upload">
             <S.UploadIcon />
@@ -70,25 +79,48 @@ export default function Item4({ openItem4, editorStore }) {
             onChange={addImage}
           />
         </S.AddImg>
-        <p>Para logos, utilize imagens PNG com fundo transparente.</p>
+        <Text
+          color="gray.600"
+          fontFamily="Roboto"
+          fontSize="12px"
+          textAlign="center"
+        >
+          Para logos, utilize imagens PNG com fundo transparente.
+        </Text>
 
-        <S.ListofAllImgsUploaded>
-          <h4>Imagens carregadas:</h4>
-          <ul>
+        <Box>
+          <Text
+            color="#6A6666"
+            fontFamily="Roboto"
+            fontSize="14px"
+            fontWeight="bold"
+            mb="8px"
+            mt="1rem"
+          >
+            Imagens Carregadas
+          </Text>
+          <Flex>
             {imageLibrary.length === 0 ? (
-              <small>Você não fez upload de nenhuma imagem.</small>
+              <Text color="gray.400" fontSize="12px">
+                Você não fez upload de nenhuma imagem.
+              </Text>
             ) : (
               imageLibrary.map((img) => {
                 return (
-                  <li key={img.id} onClick={() => addImgUploaded(img)}>
-                    <img src={img.url} />
-                  </li>
+                  <Box
+                    as="button"
+                    key={img.id}
+                    onClick={() => addImgUploaded(img)}
+                    maxW="100px"
+                  >
+                    <Img src={img.url} borderRadius="4px" />
+                  </Box>
                 );
               })
             )}
-          </ul>
-        </S.ListofAllImgsUploaded>
-      </S.ContentWrapper4>
+          </Flex>
+        </Box>
+      </Box>
     </S.SidebarMenuWrapper4>
   );
 }

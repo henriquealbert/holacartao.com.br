@@ -3,40 +3,21 @@ import { BiCloudUpload } from 'react-icons/bi';
 
 export const SidebarMenuWrapper4 = styled.div`
   display: flex;
-  background: #e5e5e5;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  background: #eeeeee;
+  border-radius: 10px;
   transform: translateX(-200%);
   transition: all 350ms ease-in-out;
   overflow-x: hidden;
-  justify-content: center;
-  align-items: center;
   visibility: hidden;
   position: absolute;
   top: auto;
   bottom: auto;
-  left: 95px;
-  width: 220px;
+  width: 316px;
+  margin-left: 80px;
 
   &.open {
     transform: translateX(0%);
     visibility: visible;
-  }
-`;
-
-export const ContentWrapper4 = styled.div`
-  width: 100%;
-  padding: 1rem;
-
-  h3 {
-    text-align: left;
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    font-size: 0.85rem;
-    color: var(--darker-grey);
   }
 `;
 
@@ -49,20 +30,20 @@ export const AddImg = styled.form`
     display: inline-block;
     text-align: center;
     padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-    background: var(--darker-grey);
+    background: #1db954;
     color: #fff;
-    border-radius: 0.5rem;
+    border-radius: 20px;
     transition: all 200ms ease-in-out;
     cursor: pointer;
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1;
 
     &:hover {
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-      background: var(--grey);
-      color: #000;
-      svg {
-        color: #000;
-      }
+      box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
+      background: #17ab4b;
     }
   }
 `;
@@ -72,6 +53,8 @@ export const UploadIcon = styled(BiCloudUpload)`
   height: 1.5rem;
   color: #fff;
   transition: all 200ms ease-in-out;
+  display: inline-block;
+  margin-right: 0.25rem;
 `;
 
 export const ListofAllImgsUploaded = styled.div`

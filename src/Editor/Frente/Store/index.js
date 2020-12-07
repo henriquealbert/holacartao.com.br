@@ -131,6 +131,7 @@ export const EditorProviderFrente = ({ children }) => {
       textDecoration: '',
       fontFamily: 'Roboto',
       align: '',
+      letterSpacing: 0,
       width: 250,
       x: 50,
       y: 50,
@@ -184,6 +185,7 @@ export const EditorProviderFrente = ({ children }) => {
   const [textFontStyle, setTextFontStyle] = useState('');
   const [textFontDecoration, setTextFontDecoration] = useState('');
   const [textAlign, setTextAlign] = useState('');
+  const [textLetterSpacing, setTextLetterSpacing] = useState(0);
 
   // Save
   const [saveFinalCard, setSaveFinalCard] = useState(null);
@@ -202,6 +204,9 @@ export const EditorProviderFrente = ({ children }) => {
       setSelectedId(null);
       setText('');
       setTextFontFamily('Roboto');
+      setTextFontStyle('');
+      setTextFontDecoration('');
+      setTextAlign('');
     }
     const sangriaLines =
       e.target === e.target.getStage().findOne('#linha-sangria');
@@ -209,6 +214,9 @@ export const EditorProviderFrente = ({ children }) => {
       setSelectedId(null);
       setText('');
       setTextFontFamily('Roboto');
+      setTextFontStyle('');
+      setTextFontDecoration('');
+      setTextAlign('');
     }
   };
 
@@ -234,6 +242,7 @@ export const EditorProviderFrente = ({ children }) => {
     setTextFontStyle('');
     setTextFontDecoration('');
     setTextAlign('');
+    setTextLetterSpacing(0);
   };
 
   return (
@@ -281,7 +290,9 @@ export const EditorProviderFrente = ({ children }) => {
         color,
         setColor,
         presetColors,
-        setPresetColors
+        setPresetColors,
+        textLetterSpacing,
+        setTextLetterSpacing
       }}
     >
       {children}

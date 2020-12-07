@@ -1,11 +1,10 @@
-import { nanoid } from 'nanoid';
+import { Box, Icon, Text } from '@chakra-ui/react';
 
-import * as Icon from './iconsList';
-
+import GET_ICONS_LIST from '@/graphql/queries/GetIconsList';
+import { useFetch } from '@/hooks/useFetch';
 import * as S from './styled';
 
-export default function Item3({ openItem3, editorStore }) {
-  // Context
+export default function Item3({ openMenu, editorStore }) {
   const {
     addRect,
     addCircle,
@@ -15,43 +14,80 @@ export default function Item3({ openItem3, editorStore }) {
     setStore,
     store
   } = editorStore;
+  // get icons list
+  const { data, error } = useFetch(GET_ICONS_LIST);
 
-  const addIcon = (Icon) => {
-    const newIcon = { ...Icon, id: String(nanoid() + Date.now()) };
-    setStore([...store, newIcon]);
+  // format each icon to add the props that we need on store
+  const formatedIconList = data?.icons.map((icon) => ({
+    ...icon,
+    type: 'icon',
+    fill: '#898D83',
+    x: 22,
+    y: 22,
+    scaleX: 3,
+    scaleY: 3
+  }));
+
+  // add icon to canvas
+  const addIcon = (icon) => {
+    setStore([...store, icon]);
   };
 
   return (
-    <S.SidebarMenuWrapper3 className={openItem3 !== true ? '' : 'open'}>
-      <S.ContentWrapper>
-        <h3>Formas</h3>
+    <S.Wrapper className={openMenu === 'elementos' ? 'open' : ''}>
+      <Box p="24px">
+        <Text
+          color="#6A6666"
+          fontFamily="Roboto"
+          fontSize="14px"
+          fontWeight="bold"
+          mb="8px"
+        >
+          Formas
+        </Text>
         <S.SquareIcon onClick={addRect} />
         <S.CircleIcon onClick={addCircle} />
         <S.TriangleIcon onClick={addTriangle} />
         <S.HexagonFillIcon onClick={addHexagon} />
         <S.StarFillIcon onClick={addStar} />
-        <h4>Ícones</h4>
-        <S.GlobeIcon onClick={() => addIcon(Icon.newGlobe)} />
-        <S.DirectionsIcon onClick={() => addIcon(Icon.newDirections)} />
-        <S.UserCircleIcon onClick={() => addIcon(Icon.newUserCircle)} />
-        <S.MapIconIcon onClick={() => addIcon(Icon.newMap)} />
-        <S.MobileIcon onClick={() => addIcon(Icon.newMobile)} />
-        <S.PaperPlaneIcon onClick={() => addIcon(Icon.newPaperPlane)} />
-        <S.EnvelopeIcon onClick={() => addIcon(Icon.newEnvelope)} />
-        <S.InstagramIcon onClick={() => addIcon(Icon.newInstagram)} />
-        <S.InstagramAltIcon onClick={() => addIcon(Icon.newInstagramAlt)} />
-        <S.FacebookCircleIcon onClick={() => addIcon(Icon.newFacebookCircle)} />
-        <S.FacebookIcon onClick={() => addIcon(Icon.newFacebook)} />
-        <S.FacebookSquareIcon onClick={() => addIcon(Icon.newFacebookSquare)} />
-        <S.LinkedinSquareIcon onClick={() => addIcon(Icon.newLinkedinSquare)} />
-        <S.SkypeIcon onClick={() => addIcon(Icon.newSkype)} />
-        <S.TwitterIcon onClick={() => addIcon(Icon.newTwitter)} />
-        <S.WhatsappIcon onClick={() => addIcon(Icon.newWhatsapp)} />
-        <S.YoutubeIcon onClick={() => addIcon(Icon.newYoutube)} />
-        <S.PhoneIcon onClick={() => addIcon(Icon.newPhone)} />
-        <S.HomeIcon onClick={() => addIcon(Icon.newHome)} />
-        <S.AtIcon onClick={() => addIcon(Icon.newAt)} />
-      </S.ContentWrapper>
-    </S.SidebarMenuWrapper3>
+        <Text
+          color="#6A6666"
+          fontFamily="Roboto"
+          fontSize="14px"
+          fontWeight="bold"
+          mb="8px"
+          mt={4}
+        >
+          Ícones
+        </Text>
+        <Box>
+          {error ? (
+            <Box>
+              <Text color="red.500">Erro ao tentar carregar ícones.</Text>
+            </Box>
+          ) : (
+            formatedIconList?.map((icon) => {
+              return (
+                <Box
+                  as="button"
+                  key={icon.id}
+                  h="50px"
+                  onClick={() => addIcon(icon)}
+                  id={icon.name}
+                >
+                  <Icon color={icon.fill} boxSize="2rem">
+                    {icon.paths.map((path) => {
+                      return (
+                        <path key={path.id} fill="currentColor" d={path.data} />
+                      );
+                    })}
+                  </Icon>
+                </Box>
+              );
+            })
+          )}
+        </Box>
+      </Box>
+    </S.Wrapper>
   );
 }
