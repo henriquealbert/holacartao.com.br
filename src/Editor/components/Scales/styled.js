@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div``;
+
+export const Content = styled.div`
   position: absolute;
   border-bottom: 2px solid #c4c4c4;
   top: -55px;
