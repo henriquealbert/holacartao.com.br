@@ -16,28 +16,30 @@ export default function EditorVerso({ infoCard, user }) {
 
   return (
     <Box as="main" bg="rgba(0, 0, 0, 0.01)" h="100vh">
-      <Header editorStore={storeVerso} user={user} />
+      <Box maxW="90%" m="0 auto">
+        <Header editorStore={storeVerso} user={user} />
 
-      <Flex justifyContent="space-between" mx="50px">
-        <Sidebar editorStore={storeVerso} />
+        <Flex justifyContent="space-between">
+          <Sidebar editorStore={storeVerso} />
 
-        <InfoEditor />
+          <InfoEditor />
 
-        <S.Wrapper>
-          <Box>
-            <VersoEditor />
-            <Canva editorStore={storeVerso} BgId={'bg-verso'} />
-            <ChangeSide editorStore={storeVerso} />
-          </Box>
-          <Flex alignSelf="flex-end">
-            <BeforeSaveModal
-              infoCard={infoCard}
-              user={user}
-              editorStore={storeVerso}
-            />
-          </Flex>
-        </S.Wrapper>
-      </Flex>
+          <S.Wrapper>
+            <Box>
+              <VersoEditor />
+              <Canva editorStore={storeVerso} BgId={'bg-verso'} />
+              <ChangeSide editorStore={storeVerso} />
+            </Box>
+            <Flex alignSelf="flex-end" mr="-100px">
+              <BeforeSaveModal
+                infoCard={infoCard}
+                user={user}
+                editorStore={storeVerso}
+              />
+            </Flex>
+          </S.Wrapper>
+        </Flex>
+      </Box>
     </Box>
   );
 }

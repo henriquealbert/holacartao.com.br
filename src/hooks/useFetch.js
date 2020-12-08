@@ -5,8 +5,8 @@ import { GraphQLClient } from 'graphql-request';
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL_GRAPHQL || 'http://localhost:1337/graphql';
 
-export function useFetch(query, variables, options) {
-  const token = Cookie.get('token');
+export function useFetch(query, variables, options, serverToken) {
+  const token = serverToken ? serverToken : Cookie.get('token');
 
   const client = new GraphQLClient(API_URL, {
     headers: {

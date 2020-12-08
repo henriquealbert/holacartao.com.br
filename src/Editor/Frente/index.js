@@ -14,19 +14,21 @@ export default function EditorFrente({ user }) {
 
   return (
     <Box as="main" bg="rgba(0, 0, 0, 0.01)" h="100vh">
-      <Header editorStore={storeFrente} user={user} />
+      <Box maxW="90%" m="0 auto">
+        <Header editorStore={storeFrente} user={user} />
 
-      <Flex justifyContent="space-between" mx="50px">
-        <Sidebar editorStore={storeFrente} />
+        <Flex justifyContent="space-between">
+          <Sidebar editorStore={storeFrente} />
 
-        <InfoEditor />
+          <InfoEditor />
 
-        <S.Wrapper>
-          <FrenteEditor />
-          <Canva editorStore={storeFrente} BgId={'bg-frente'} />
-          <ChangeSide frente={true} editorStore={storeFrente} />
-        </S.Wrapper>
-      </Flex>
+          <S.Wrapper>
+            <FrenteEditor />
+            <Canva editorStore={storeFrente} BgId={'bg-frente'} />
+            <ChangeSide frente={true} editorStore={storeFrente} />
+          </S.Wrapper>
+        </Flex>
+      </Box>
     </Box>
   );
 }

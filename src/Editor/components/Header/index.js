@@ -13,7 +13,7 @@ export default function Header({ editorStore, user }) {
   return (
     <Flex
       as="header"
-      p="1rem 50px"
+      py="1rem"
       justifyContent="space-between"
       alignItems="center"
       mb="28px"
