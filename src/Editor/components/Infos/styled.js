@@ -13,11 +13,23 @@ export const InfosWrapper = styled.div`
   }
 `;
 
-export const SidesWrapper = styled.div`
+export const SideFrente = styled.div`
   p {
     color: var(--darker-grey);
     position: absolute;
     top: 5.75rem;
+    left: -3rem;
+    transform: rotate(-90deg);
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+`;
+
+export const SideVerso = styled.div`
+  p {
+    color: var(--darker-grey);
+    position: absolute;
+    top: 1rem;
     left: -3rem;
     transform: rotate(-90deg);
     font-size: 1.25rem;

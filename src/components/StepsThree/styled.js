@@ -18,7 +18,7 @@ export const StepItem = styled.div`
   width: 4rem;
   height: 4rem;
 
-  span:first-child {
+  span:first-of-type {
     font-weight: 900;
     font-size: 3rem;
   }
@@ -39,7 +39,7 @@ export const StepItemInactive = styled.div`
     margin: 3rem 0;
   }
 
-  span:first-child {
+  span:first-of-type {
     font-weight: 900;
     font-size: 1.5rem;
     color: #a19898;

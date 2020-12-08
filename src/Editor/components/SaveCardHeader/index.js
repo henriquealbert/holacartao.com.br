@@ -108,13 +108,7 @@ export default function SaveCardHeader() {
       {() => (
         <Form>
           <Flex>
-            <Field
-              name="title"
-              id="title"
-              type="text"
-              placeholder="Ex. Modelo Sem Título"
-              disabled={disable}
-            >
+            <Field name="title" id="title" type="text" disabled={disable}>
               {({ field }) => (
                 <Box>
                   <Input
@@ -122,6 +116,7 @@ export default function SaveCardHeader() {
                     borderRadius="30px"
                     display="block"
                     mr="2rem"
+                    placeholder="Ex. Modelo Sem Título"
                     {...field}
                   />
                   <ErrorMessage

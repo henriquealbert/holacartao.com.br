@@ -11,9 +11,9 @@ export default function ChangeSide({ frente, editorStore }) {
   };
 
   return (
-    <S.ChangeSideWrapper frente={frente} id="changeSide">
+    <S.ChangeSideWrapper id="changeSide">
       <button onClick={handleChange}>
-        {frente === true ? (
+        {frente ? (
           <>
             Editar Verso
             <S.VersoIcon />

@@ -13,7 +13,7 @@ export const SidebarMenuWrapper4 = styled.div`
   top: auto;
   bottom: auto;
   width: 316px;
-  margin-left: 80px;
+  margin-left: 1rem;
 
   &.open {
     transform: translateX(0%);

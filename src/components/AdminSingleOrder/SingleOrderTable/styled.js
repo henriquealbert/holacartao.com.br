@@ -12,7 +12,7 @@ export const OrderTable = styled.table`
       padding: 1rem;
     }
 
-    td:first-child {
+    td:first-of-type {
       padding-right: 0.5rem;
       font-weight: bold;
     }

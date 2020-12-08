@@ -3,7 +3,9 @@ import { BiRotateLeft, BiRotateRight } from 'react-icons/bi';
 
 export const ChangeSideWrapper = styled.div`
   margin-top: 1.5rem;
-  align-self: ${(props) => (props.frente ? 'flex-end' : 'flex-start')};
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 
   button {
     border: none;

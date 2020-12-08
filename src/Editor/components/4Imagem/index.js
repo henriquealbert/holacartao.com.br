@@ -57,7 +57,7 @@ export default function Item4({ openMenu, editorStore }) {
 
   return (
     <S.SidebarMenuWrapper4 className={openMenu === 'imagem' ? 'open' : ''}>
-      <Box p="24px">
+      <Box p="12px 24px">
         <Text
           color="#6A6666"
           fontFamily="Roboto"

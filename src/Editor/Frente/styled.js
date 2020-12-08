@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-right: 100px;
+  margin-right: 50px;
 
   animation: flip-in-ver-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 

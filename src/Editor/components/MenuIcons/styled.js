@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const ButtonItem = styled.button`
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   background: #ffffff;
   box-shadow: ${(props) =>
     props.active
@@ -17,7 +17,7 @@ export const ButtonItem = styled.button`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 16px;
     text-align: center;
     color: ${(props) => (props.active ? '#1DB954' : '')};

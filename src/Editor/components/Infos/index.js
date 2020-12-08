@@ -20,16 +20,16 @@ export function InfoEditor() {
 
 export function FrenteEditor() {
   return (
-    <S.SidesWrapper>
+    <S.SideFrente>
       <p>Frente</p>
-    </S.SidesWrapper>
+    </S.SideFrente>
   );
 }
 
 export function VersoEditor() {
   return (
-    <S.SidesWrapper>
+    <S.SideVerso>
       <p>Verso</p>
-    </S.SidesWrapper>
+    </S.SideVerso>
   );
 }

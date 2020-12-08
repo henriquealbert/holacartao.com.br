@@ -15,7 +15,7 @@ export default function EditorVerso({ infoCard, user }) {
   const storeVerso = useEditorStoreVerso();
 
   return (
-    <Box as="main" bg="rgba(0, 0, 0, 0.01)" h="100vh">
+    <Box as="main" bg="rgba(0, 0, 0, 0.01)" minH="100vh">
       <Box maxW="90%" m="0 auto">
         <Header editorStore={storeVerso} user={user} />
 
@@ -30,7 +30,7 @@ export default function EditorVerso({ infoCard, user }) {
               <Canva editorStore={storeVerso} BgId={'bg-verso'} />
               <ChangeSide editorStore={storeVerso} />
             </Box>
-            <Flex alignSelf="flex-end" mr="-100px">
+            <Flex alignSelf="flex-end" mr="-42px" mt="2rem">
               <BeforeSaveModal
                 infoCard={infoCard}
                 user={user}

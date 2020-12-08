@@ -23,7 +23,7 @@ export const OrderGrafica = styled.div`
         background: #4d4d4d;
       }
     }
-    button:first-child {
+    button:first-of-type {
       margin-right: 0.5rem;
     }
   }

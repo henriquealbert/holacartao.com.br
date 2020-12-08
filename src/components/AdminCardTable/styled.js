@@ -35,7 +35,7 @@ export const TableCards = styled.div`
         background: #e0e0e0;
       }
 
-      th:first-child {
+      th:first-of-type {
         border-radius: 1rem 0 0 0;
       }
 

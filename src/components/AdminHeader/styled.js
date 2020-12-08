@@ -65,7 +65,7 @@ export const AdminHeaderMenu = styled.ul`
   display: flex;
   margin-left: 2rem;
 
-  li:first-child {
+  li:first-of-type {
     margin-right: 1rem;
   }
 

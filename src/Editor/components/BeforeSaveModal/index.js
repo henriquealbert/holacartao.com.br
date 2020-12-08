@@ -83,21 +83,5 @@ export default function BeforeSaveModal({ infoCard, user, editorStore }) {
         </ModalContent>
       </Modal>
     </>
-
-    // <S.BeforeSaveModalWrapper>
-    //   <Modal
-    //     isOpen={modalIsOpen}
-    //     style={customStyles}
-    //     onRequestClose={closeModal}
-    //   >
-    //     <S.ModalContent>
-    //       <p>
-    //         Verifique antes de finalizar, se todos os elementos estão dentro da
-    //         linha vermelha de segurança.
-    //       </p>
-
-    //     </S.ModalContent>
-    //   </Modal>
-    // </S.BeforeSaveModalWrapper>
   );
 }

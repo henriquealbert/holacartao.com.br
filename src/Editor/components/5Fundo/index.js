@@ -124,7 +124,7 @@ export default function Item5({ openMenu, editorStore }) {
 
   return (
     <S.SidebarMenuWrapper5 className={openMenu === 'fundo' ? 'open' : ''}>
-      <Box p="24px">
+      <Box p="12px 24px">
         <Text
           color="#6A6666"
           fontFamily="Roboto"

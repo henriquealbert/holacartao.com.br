@@ -1,7 +1,6 @@
 import NextLink from 'next/link';
-import NextImage from 'next/image';
 import Router from 'next/router';
-import { Flex, Icon } from '@chakra-ui/react';
+import { Flex, Icon, Img } from '@chakra-ui/react';
 
 import SaveCardHeader from '../SaveCardHeader';
 
@@ -21,14 +20,7 @@ export default function Header({ editorStore, user }) {
       <Flex>
         <NextLink href="/">
           <a>
-            <NextImage
-              src="/static/logo-black.png"
-              alt="Logo Hola Cartão Black"
-              width={90}
-              height={51.28}
-              loading="eager"
-              quality="100"
-            />
+            <Img src="/static/logo.png" alt="Logo Hola Cartão" maxW="90px" />
           </a>
         </NextLink>
         <S.ActionButton
