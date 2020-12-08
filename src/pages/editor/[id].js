@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
-import { auth } from '@/Contexts/AppContext';
 import Head from 'next/head';
 
+import { auth } from '@/Contexts/AppContext';
 import serverClient from '@/graphql/serverClient';
 import GET_CARD_MODEL from '@/graphql/admin/GetCardModel';
 import GET_SINGLE_SAVED_CARD from '@/graphql/queries/GetSingleSavedCard';

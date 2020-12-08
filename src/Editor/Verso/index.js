@@ -1,12 +1,9 @@
+import { Box, Flex } from '@chakra-ui/react';
+
 import Header from '@/Editor/components/Header';
 import Sidebar from '@/Editor/components/Sidebar';
 import Canva from '@/Editor/components/Canva';
-import OpenModalButton from '@/Editor/components/OpenModalButton';
-import {
-  InfoVerso,
-  WarningsEditor,
-  VersoEditor
-} from '@/Editor/components/Infos';
+import { InfoEditor, VersoEditor } from '@/Editor/components/Infos';
 import ChangeSide from '@/Editor/components/ChangeSide';
 import BeforeSaveModal from '@/Editor/components/BeforeSaveModal';
 
@@ -18,22 +15,31 @@ export default function EditorVerso({ infoCard, user }) {
   const storeVerso = useEditorStoreVerso();
 
   return (
-    <S.EditorWrapper>
-      <Header editorStore={storeVerso} user={user} />
-      <Sidebar editorStore={storeVerso} />
+    <Box as="main" bg="rgba(0, 0, 0, 0.01)" h="100vh">
+      <Box maxW="90%" m="0 auto">
+        <Header editorStore={storeVerso} user={user} />
 
-      <S.Container>
-        <InfoVerso />
-        <S.Wrapper>
-          <WarningsEditor />
-          <VersoEditor />
-          <Canva editorStore={storeVerso} BgId={'bg-verso'} />
-          <ChangeSide editorStore={storeVerso} />
-        </S.Wrapper>
-      </S.Container>
+        <Flex justifyContent="space-between">
+          <Sidebar editorStore={storeVerso} />
 
-      <OpenModalButton user={user} editorStore={storeVerso} />
-      <BeforeSaveModal infoCard={infoCard} user={user} />
-    </S.EditorWrapper>
+          <InfoEditor />
+
+          <S.Wrapper>
+            <Box>
+              <VersoEditor />
+              <Canva editorStore={storeVerso} BgId={'bg-verso'} />
+              <ChangeSide editorStore={storeVerso} />
+            </Box>
+            <Flex alignSelf="flex-end" mr="-100px">
+              <BeforeSaveModal
+                infoCard={infoCard}
+                user={user}
+                editorStore={storeVerso}
+              />
+            </Flex>
+          </S.Wrapper>
+        </Flex>
+      </Box>
+    </Box>
   );
 }

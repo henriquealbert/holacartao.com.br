@@ -1,39 +1,20 @@
+import { Box, Img, Text } from '@chakra-ui/react';
 import * as S from './styled';
 
-export function OiEditor() {
+export function InfoEditor() {
   return (
-    <S.InfosWrapper>
-      <h2>Oi, vamos começar?</h2>
-      <p>
-        Hora de editar seu cartão! Para começar, clique nos ícones na barra ao
-        lado.
-      </p>
-      <img src="/images/arrow-left.svg" alt="Arrow Left" />
-    </S.InfosWrapper>
-  );
-}
-
-export function InfoVerso() {
-  return (
-    <S.InfosWrapper>
-      <h2>Edite o Verso do seu Cartão!</h2>
-      <p>
-        Hora de editar o verso do seu cartão! Para começar, clique nos ícones na
-        barra ao lado.
-      </p>
-      <img src="/images/arrow-left.svg" alt="Arrow Left" />
-    </S.InfosWrapper>
-  );
-}
-
-export function WarningsEditor() {
-  return (
-    <S.WarningsEditor>
-      <p>
-        *Mantenha suas informações dentro da linha <strong>vermelha</strong>.
-      </p>
-      <p>**Arraste os itens dentro da imagem abaixo para organizar.</p>
-    </S.WarningsEditor>
+    <Box textAlign="center" my="auto">
+      <Text
+        color="gray.500"
+        w="180px"
+        letterSpacing="0.02em"
+        mb="1rem"
+        fontSize="18px"
+      >
+        Para começar clique nos botões ao lado.
+      </Text>
+      <Img src="/static/arrow-left.svg" alt="Arrow Left" m="0 auto" />
+    </Box>
   );
 }
 

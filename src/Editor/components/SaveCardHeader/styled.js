@@ -24,4 +24,8 @@ export const ActionButton = styled.button`
       color: #2d3748;
     }
   }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;

@@ -1,11 +1,9 @@
+import { Box, Flex } from '@chakra-ui/react';
+
 import Header from '@/Editor/components/Header';
 import Sidebar from '@/Editor/components/Sidebar';
 import Canva from '@/Editor/components/Canva';
-import {
-  OiEditor,
-  WarningsEditor,
-  FrenteEditor
-} from '@/Editor/components/Infos';
+import { InfoEditor, FrenteEditor } from '@/Editor/components/Infos';
 import ChangeSide from '@/Editor/components/ChangeSide';
 import { useEditorStoreFrente } from './Store';
 
@@ -15,19 +13,22 @@ export default function EditorFrente({ user }) {
   const storeFrente = useEditorStoreFrente();
 
   return (
-    <S.EditorWrapper>
-      <Header editorStore={storeFrente} user={user} />
-      <Sidebar editorStore={storeFrente} />
+    <Box as="main" bg="rgba(0, 0, 0, 0.01)" h="100vh">
+      <Box maxW="90%" m="0 auto">
+        <Header editorStore={storeFrente} user={user} />
 
-      <S.Container>
-        <OiEditor />
-        <S.Wrapper>
-          <WarningsEditor />
-          <FrenteEditor />
-          <Canva editorStore={storeFrente} BgId={'bg-frente'} />
-          <ChangeSide frente={true} editorStore={storeFrente} />
-        </S.Wrapper>
-      </S.Container>
-    </S.EditorWrapper>
+        <Flex justifyContent="space-between">
+          <Sidebar editorStore={storeFrente} />
+
+          <InfoEditor />
+
+          <S.Wrapper>
+            <FrenteEditor />
+            <Canva editorStore={storeFrente} BgId={'bg-frente'} />
+            <ChangeSide frente={true} editorStore={storeFrente} />
+          </S.Wrapper>
+        </Flex>
+      </Box>
+    </Box>
   );
 }

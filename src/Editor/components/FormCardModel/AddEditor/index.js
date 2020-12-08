@@ -1,27 +1,32 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
+import axios from 'axios';
+import Router from 'next/router';
+import { nanoid } from 'nanoid';
+import {
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Icon,
+  Input,
+  Select
+} from '@chakra-ui/react';
+import { ChevronLeftIcon } from '@chakra-ui/icons';
 
 import { useFetchAdmin } from '@/hooks/useFetchAdmin';
 import GET_ALL_CARD_CATEGORIES from '@/graphql/admin/GetAllCardCategories';
 import clientAdmin from '@/graphql/clientAdmin';
 import MUTATION_CREATE_CARD_MODEL from '@/graphql/admin/MutationCreateCardModel';
-
-import axios from 'axios';
-import Router from 'next/router';
-import { nanoid } from 'nanoid';
-
 import { useEditorStoreFrente } from '../../../Frente/Store';
 import { useEditorStoreVerso } from '../../../Verso/Store';
-import { useEditorUtilsContext } from '../../../Context/EditorUtilsContext';
 
-import * as S from './styled';
-
-export default function FormCardModelAdd() {
+export default function FormCardModelAdd({ onClose }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  const { closeModal, setFrente, setIsOpen } = useEditorUtilsContext();
   // Get Select Options
-  const { data } = useFetchAdmin(GET_ALL_CARD_CATEGORIES);
+  const { data: allCardCategories } = useFetchAdmin(GET_ALL_CARD_CATEGORIES);
+
   // Get Stores to save
   const { store: frenteStore } = useEditorStoreFrente();
   const { store: versoStore } = useEditorStoreVerso();
@@ -30,7 +35,7 @@ export default function FormCardModelAdd() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (dataForm, { resetForm }) => {
-    if (dataForm.card_category === '0') {
+    if (!dataForm.card_category) {
       return;
     }
     if (!dataForm.example_image) {
@@ -57,13 +62,12 @@ export default function FormCardModelAdd() {
           slug: String(nanoid())
         }
       };
+      console.log('input', input);
       const res = await clientAdmin.request(MUTATION_CREATE_CARD_MODEL, {
         input
       });
       if (res) {
         resetForm();
-        setFrente(true);
-        setIsOpen(false);
         setLoading(false);
         Router.push('/admin/card-models/');
       }
@@ -82,20 +86,22 @@ export default function FormCardModelAdd() {
       onSubmit={handleSubmit}
     >
       {({ setFieldValue }) => (
-        <Form>
-          <S.FormSave>
-            <S.FieldItem>
-              <label htmlFor="title">Nome do Modelo:</label>
-              <Field
-                type="text"
-                name="title"
-                id="title"
-                placeholder="Ex: Advogado Premium"
-                required
-              />
-            </S.FieldItem>
-            <S.FieldItem>
-              <label htmlFor="example_image">Imagem de Exemplo:</label>
+        <Form
+          style={{
+            width: '100%'
+          }}
+        >
+          <Flex justifyContent="space-between">
+            <FormControl maxW="250px">
+              <FormLabel htmlFor="title">Nome do Modelo:</FormLabel>
+              <Field type="text" name="title" id="title" required>
+                {({ field }) => (
+                  <Input {...field} placeholder="Ex: Advogado Premium" />
+                )}
+              </Field>
+            </FormControl>
+            <FormControl maxW="250px">
+              <FormLabel htmlFor="example_image">Imagem de Exemplo:</FormLabel>
               <input
                 type="file"
                 name="example_image"
@@ -105,35 +111,46 @@ export default function FormCardModelAdd() {
                 }
                 required
               />
-            </S.FieldItem>
-            <S.FieldItem>
-              <label htmlFor="card_category">Categoria do Modelo:</label>
-              <Field
-                as="select"
+            </FormControl>
+            <FormControl maxW="250px">
+              <FormLabel htmlFor="card_category">
+                Categoria do Modelo:
+              </FormLabel>
+              <Select
                 name="card_category"
                 id="card_category"
-                required
+                isRequired
+                placeholder="Selecione uma opção..."
+                onChange={(e) => setFieldValue('card_category', e.target.value)}
               >
-                <option value="0">Selecione uma opção...</option>
-                {data?.cardCategories.map((category) => {
+                {allCardCategories?.cardCategories.map((category) => {
                   return (
                     <option key={category.id} value={category.id}>
                       {category.title}
                     </option>
                   );
                 })}
-              </Field>
-            </S.FieldItem>
-          </S.FormSave>
-
-          <S.BtnsForm>
-            <S.ButtonBack onClick={closeModal}>
-              Voltar para a Edição
-            </S.ButtonBack>
-            <S.BtnSave type="submit">
-              {loading ? 'Salvando... ' : 'Salvar Modelo'}
-            </S.BtnSave>
-          </S.BtnsForm>
+              </Select>
+            </FormControl>
+          </Flex>
+          <Flex justifyContent="space-between" mt="3rem">
+            <Button
+              variant="link"
+              onClick={onClose}
+              color="gray.900"
+              fontWeight="bold"
+            >
+              <Icon as={ChevronLeftIcon} w={6} h={6} /> Voltar
+            </Button>
+            <Button
+              variant="primary"
+              type="submit"
+              isLoading={loading}
+              loadingText="Salvando..."
+            >
+              Salvar Modelo
+            </Button>
+          </Flex>
         </Form>
       )}
     </Formik>

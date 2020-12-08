@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Stage, Layer, Group } from 'react-konva';
 import { changeDpiDataUrl } from 'changedpi';
+import { Box } from '@chakra-ui/react';
 import Konva from 'konva';
-
-// Styles
-import * as S from './styled';
 
 // Components
 import BackgroundColor from '../objects/list/BackgroundColor';
@@ -18,6 +16,7 @@ import Icons from '../objects/list/Icons';
 import Images from '../objects/list/Images';
 import Stars from '../objects/list/Stars';
 import Texts from '../objects/list/Texts';
+import Scales from '../Scales';
 
 export default function EditorCanvaFrente({ BgId, editorStore }) {
   const {
@@ -301,7 +300,8 @@ export default function EditorCanvaFrente({ BgId, editorStore }) {
   }, []);
 
   return (
-    <S.Wrapper>
+    <Box boxShadow="0px 0px 10px 1px rgba(0, 0, 0, 0.2)" position="relative">
+      <Scales />
       <Stage
         width={640}
         height={360.1860465116279}
@@ -328,6 +328,6 @@ export default function EditorCanvaFrente({ BgId, editorStore }) {
           </Group>
         </Layer>
       </Stage>
-    </S.Wrapper>
+    </Box>
   );
 }

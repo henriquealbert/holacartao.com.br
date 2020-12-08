@@ -1,55 +1,103 @@
-import Modal from 'react-modal';
-import { useEditorUtilsContext } from '../../Context/EditorUtilsContext';
+import { ChevronLeftIcon } from '@chakra-ui/icons';
+import {
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  useDisclosure,
+  ModalCloseButton,
+  ModalFooter,
+  Text,
+  Icon
+} from '@chakra-ui/react';
 
 import CardReviewImg from '../CardReviewImg';
 import FormCardModel from '../FormCardModel';
 import SubmitPrint from '../SubmitPrint';
 
-import * as S from './styled';
+export default function BeforeSaveModal({ infoCard, user, editorStore }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-Modal.setAppElement('#__next');
-
-const customStyles = {
-  overlay: { backgroundColor: 'rgba(0, 0, 0, 0.75)' },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    padding: '0'
-  }
-};
-
-export default function BeforeSaveModal({ infoCard, user }) {
-  const { modalIsOpen, closeModal } = useEditorUtilsContext();
+  const { saveFinalCard, saveWithSangria } = editorStore;
+  const handleClick = () => {
+    localStorage.setItem('versoSangria', saveWithSangria());
+    localStorage.setItem('versoFinal', saveFinalCard());
+    onOpen();
+  };
 
   return (
-    <S.BeforeSaveModalWrapper>
+    <>
+      <Button variant="primary" onClick={handleClick} size="lg">
+        {user ? 'Pronto! Imprimir Cartão' : 'Finalizar Modelo'}
+      </Button>
       <Modal
-        isOpen={modalIsOpen}
-        style={customStyles}
-        onRequestClose={closeModal}
+        onClose={onClose}
+        isOpen={isOpen}
+        isCentered
+        closeOnEsc={false}
+        closeOnOverlayClick={false}
+        size="full"
       >
-        <S.ModalContent>
-          <p>
-            Verifique antes de finalizar, se todos os elementos estão dentro da
-            linha vermelha de segurança.
-          </p>
-          <CardReviewImg user={user} />
-          {user ? (
-            <S.ButtonsModal>
-              <button onClick={closeModal}>
-                {'<-'} Tá ruim, volta pra edição
-              </button>
-              <SubmitPrint />
-            </S.ButtonsModal>
-          ) : (
-            <FormCardModel infoCard={infoCard} />
-          )}
-        </S.ModalContent>
+        <ModalOverlay />
+        <ModalContent maxW="80%" h="auto" pb="40px">
+          <ModalHeader>Revise seu cartão antes de imprimir</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <CardReviewImg user={user} />
+            {user ? (
+              <>
+                <Text
+                  textAlign="center"
+                  fontSize="14px"
+                  fontWeight="bold"
+                  mt="2rem"
+                >
+                  Verifique antes de finalizar se todos os elementos estão
+                  dentro da linha vermelha de segurança.
+                </Text>
+                <Text textAlign="center" fontSize="14px">
+                  A linha vermelha NÃO aparecerá no seu cartão de visita.
+                </Text>
+              </>
+            ) : null}
+          </ModalBody>
+          <ModalFooter justifyContent="space-between">
+            {user ? (
+              <>
+                <Button
+                  variant="link"
+                  onClick={onClose}
+                  color="gray.900"
+                  fontWeight="bold"
+                >
+                  <Icon as={ChevronLeftIcon} w={6} h={6} /> Voltar
+                </Button>
+                <SubmitPrint />
+              </>
+            ) : (
+              <FormCardModel infoCard={infoCard} onClose={onClose} />
+            )}
+          </ModalFooter>
+        </ModalContent>
       </Modal>
-    </S.BeforeSaveModalWrapper>
+    </>
+
+    // <S.BeforeSaveModalWrapper>
+    //   <Modal
+    //     isOpen={modalIsOpen}
+    //     style={customStyles}
+    //     onRequestClose={closeModal}
+    //   >
+    //     <S.ModalContent>
+    //       <p>
+    //         Verifique antes de finalizar, se todos os elementos estão dentro da
+    //         linha vermelha de segurança.
+    //       </p>
+
+    //     </S.ModalContent>
+    //   </Modal>
+    // </S.BeforeSaveModalWrapper>
   );
 }

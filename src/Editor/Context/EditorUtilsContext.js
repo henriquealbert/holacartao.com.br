@@ -12,25 +12,10 @@ export const EditorUtilsProvider = ({ children }) => {
     setFrente(!frente);
   };
 
-  // Modal Before Save
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  const openModal = (sangria, final) => {
-    localStorage.setItem('versoSangria', sangria);
-    localStorage.setItem('versoFinal', final);
-
-    setIsOpen(!modalIsOpen);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
   const [saveCardHeader, setSaveCardHeader] = useState(null);
 
   const resetUtilsState = () => {
     setFrente(true);
-    setIsOpen(false);
     setSaveCardHeader(null);
   };
 
@@ -40,10 +25,6 @@ export const EditorUtilsProvider = ({ children }) => {
         changeSide,
         frente,
         setFrente,
-        modalIsOpen,
-        openModal,
-        setIsOpen,
-        closeModal,
         saveCardHeader,
         setSaveCardHeader,
         resetUtilsState

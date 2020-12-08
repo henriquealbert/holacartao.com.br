@@ -24,6 +24,7 @@ export const VersoIcon = styled(BiRotateLeft)`
   height: 1.5rem;
   color: #000;
   margin-left: 0.25rem;
+  display: inline-block;
 `;
 
 export const FrenteIcon = styled(BiRotateRight)`
@@ -31,4 +32,5 @@ export const FrenteIcon = styled(BiRotateRight)`
   height: 1.5rem;
   color: #000;
   margin-left: 0.25rem;
+  display: inline-block;
 `;

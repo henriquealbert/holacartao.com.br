@@ -13,9 +13,10 @@ export default function Header({ editorStore, user }) {
   return (
     <Flex
       as="header"
-      p="1rem 50px"
+      py="1rem"
       justifyContent="space-between"
       alignItems="center"
+      mb="28px"
     >
       <Flex>
         <NextLink href="/">
@@ -55,7 +56,7 @@ export default function Header({ editorStore, user }) {
               fill="currentColor"
             />
           </Icon>
-          defazer
+          desfazer
         </S.ActionButton>
         <S.ActionButton marginLeft="3rem" onClick={removeElement}>
           <Icon viewBox="0 0 27 27" w={7} h={7}>
