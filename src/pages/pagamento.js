@@ -1,8 +1,18 @@
+import Head from 'next/head';
+import { useEffect } from 'react';
+
 import Layout from '@/components/Layout';
 import Payment from '@/components/Payment';
-import Head from 'next/head';
+import { useAppContext } from '@/Contexts/AppContext';
 
 export default function Pagamento() {
+  const { resetCheckoutState } = useAppContext();
+
+  // reset form before initialize
+  useEffect(() => {
+    resetCheckoutState();
+  }, []);
+
   return (
     <>
       <Head>

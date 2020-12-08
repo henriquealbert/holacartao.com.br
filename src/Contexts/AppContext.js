@@ -12,8 +12,8 @@ export const AppUserProvider = ({ children, value }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [areaCode, setAreaCode] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
+  const [areaCode, setAreaCode] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [transactionAmount, setTransactionAmount] = useState('89.9');
 
   //form2 - address
@@ -35,7 +35,33 @@ export const AppUserProvider = ({ children, value }) => {
   const [focused, setFocused] = useState('');
   const [docType, setDocType] = useState('');
   const [docNumber, setDocNumber] = useState('');
-  const [parcelas, setParcelas] = useState(null);
+  const [parcelas, setParcelas] = useState('');
+
+  function resetCheckoutState() {
+    console.log('rodou');
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setAreaCode('');
+    setPhoneNumber('');
+    setLogradouro('');
+    setStreetNumber('');
+    setCep('');
+    setBairro('');
+    setCidadeEstado('');
+    setReferencia('');
+    setComplemento('');
+    setNumber('');
+    setName('');
+    setMonth('');
+    setYear('');
+    setCvc('');
+    setBandeira('');
+    setFocused('');
+    setDocType('');
+    setDocNumber('');
+    setParcelas('');
+  }
 
   return (
     <AppContext.Provider
@@ -86,7 +112,8 @@ export const AppUserProvider = ({ children, value }) => {
         referencia,
         setReferencia,
         complemento,
-        setComplemento
+        setComplemento,
+        resetCheckoutState
       }}
     >
       {children}

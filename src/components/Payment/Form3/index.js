@@ -1,3 +1,4 @@
+import { Button, Img } from '@chakra-ui/react';
 import {
   Accordion,
   AccordionItem,
@@ -10,7 +11,10 @@ import CardComponent from './Card';
 
 import * as S from './styled';
 
-export default function Form3() {
+export default function Form3({ setMenu }) {
+  const handleBack = () => {
+    setMenu('02');
+  };
   return (
     <S.Wrapper>
       <Accordion allowZeroExpanded>
@@ -36,6 +40,20 @@ export default function Form3() {
           <AccordionItemPanel>Teste</AccordionItemPanel>
         </AccordionItem>
       </Accordion>
+      <Button
+        bg="none"
+        _hover={{ bg: 'none', textDecoration: 'underline' }}
+        textTransform="lowercase"
+        fontSize="13px"
+        fontFamily="Montserrat"
+        onClick={handleBack}
+        type="button"
+        display="block"
+        mt="2rem"
+      >
+        voltar
+        <Img src="/images/arrow-checkout.svg" alt="Voltar" />
+      </Button>
     </S.Wrapper>
   );
 }

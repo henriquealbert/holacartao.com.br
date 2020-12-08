@@ -56,7 +56,8 @@ export default function CardComponent() {
     setParcelas,
     cep,
     logradouro,
-    streetNumber
+    streetNumber,
+    resetCheckoutState
   } = useAppContext();
 
   const handleInputFocus = ({ target }) => {
@@ -136,6 +137,7 @@ export default function CardComponent() {
           });
           setLoading(false);
           setDoSubmit(false);
+          resetCheckoutState();
         })
         .catch((err) => {
           alert(err.message);
