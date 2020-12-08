@@ -12,6 +12,7 @@ import {
   Input,
   Select
 } from '@chakra-ui/react';
+import { ChevronLeftIcon } from '@chakra-ui/icons';
 
 import { useFetchAdmin } from '@/hooks/useFetchAdmin';
 import GET_ALL_CARD_CATEGORIES from '@/graphql/admin/GetAllCardCategories';
@@ -19,13 +20,13 @@ import clientAdmin from '@/graphql/clientAdmin';
 import MUTATION_CREATE_CARD_MODEL from '@/graphql/admin/MutationCreateCardModel';
 import { useEditorStoreFrente } from '../../../Frente/Store';
 import { useEditorStoreVerso } from '../../../Verso/Store';
-import { ChevronLeftIcon } from '@chakra-ui/icons';
 
 export default function FormCardModelAdd({ onClose }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   // Get Select Options
-  const { data } = useFetchAdmin(GET_ALL_CARD_CATEGORIES);
+  const { data: allCardCategories } = useFetchAdmin(GET_ALL_CARD_CATEGORIES);
+
   // Get Stores to save
   const { store: frenteStore } = useEditorStoreFrente();
   const { store: versoStore } = useEditorStoreVerso();
@@ -122,7 +123,7 @@ export default function FormCardModelAdd({ onClose }) {
                 placeholder="Selecione uma opção..."
                 onChange={(e) => setFieldValue('card_category', e.target.value)}
               >
-                {data?.cardCategories.map((category) => {
+                {allCardCategories?.cardCategories.map((category) => {
                   return (
                     <option key={category.id} value={category.id}>
                       {category.title}
