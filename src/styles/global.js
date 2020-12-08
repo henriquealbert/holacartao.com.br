@@ -38,6 +38,9 @@ export const globalStyles = (
         font-size: 16px;
         font-family: 'Roboto', sans-serif;
       }
+      ul {
+        list-style: none;
+      }
     `}
   />
 );

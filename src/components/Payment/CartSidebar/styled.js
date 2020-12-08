@@ -4,6 +4,7 @@ export const Content = styled.div`
   margin-left: 2.5rem;
   margin-right: 2.5rem;
   margin-top: 3.5rem;
+
   h2 {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;

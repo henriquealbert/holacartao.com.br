@@ -6,7 +6,12 @@ import { formatPrice } from '@/utils/format';
 export default function CartSidebar() {
   const { transactionAmount } = useAppContext();
   return (
-    <Box bgColor="var(--white-2)" as="aside">
+    <Box
+      bgColor="var(--white-2)"
+      as="aside"
+      maxW="415px"
+      justifySelf="flex-end"
+    >
       <S.Content>
         <h2>Seu Carrinho</h2>
         <S.CardInfo>

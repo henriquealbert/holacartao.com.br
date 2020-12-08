@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import Layout from '@/components/Layout';
 import Payment from '@/components/Payment';
 import Head from 'next/head';

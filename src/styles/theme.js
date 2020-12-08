@@ -48,18 +48,6 @@ const theme = extendTheme({
         }
       },
       variants: {
-        solid: {
-          bg:
-            'linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0) 100%), #050505;',
-          color: 'white',
-          _hover: {
-            bg:
-              'linear-gradient(180deg, rgba(252, 252, 252, 0.5) 13.54%, rgba(255, 255, 255, 0) 100%), #0E0E0D;'
-          },
-          _focus: {
-            boxShadow: '0 0 0 3px rgba(23, 171, 75, 0.6)'
-          }
-        },
         primary: {
           bg: 'brand.200',
           color: 'white',
@@ -127,6 +115,7 @@ const theme = extendTheme({
         outline: {
           field: {
             borderColor: 'gray.600',
+            borderRadius: '20px',
             _focus: {
               boxShadow: '0 0 0 3px rgba(23, 171, 75, 0.6)',
               borderColor: 'brand.400'
