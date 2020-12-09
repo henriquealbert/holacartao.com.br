@@ -66,3 +66,16 @@ export function formatStatus(status) {
       : '';
   return updatedStatus;
 }
+
+export function formatDocNumber(docNumber) {
+  const value = String(docNumber);
+
+  if (docNumber.length <= 11) {
+    return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4');
+  } else {
+    return value.replace(
+      /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g,
+      '$1.$2.$3/$4-$5'
+    );
+  }
+}

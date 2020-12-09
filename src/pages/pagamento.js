@@ -11,6 +11,7 @@ export default function Pagamento() {
   // reset form before initialize
   useEffect(() => {
     resetCheckoutState();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

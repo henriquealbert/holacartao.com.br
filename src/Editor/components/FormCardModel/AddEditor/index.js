@@ -62,7 +62,6 @@ export default function FormCardModelAdd({ onClose }) {
           slug: String(nanoid())
         }
       };
-      console.log('input', input);
       const res = await clientAdmin.request(MUTATION_CREATE_CARD_MODEL, {
         input
       });

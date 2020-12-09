@@ -38,7 +38,6 @@ export const AppUserProvider = ({ children, value }) => {
   const [parcelas, setParcelas] = useState('');
 
   function resetCheckoutState() {
-    console.log('rodou');
     setFirstName('');
     setLastName('');
     setEmail('');

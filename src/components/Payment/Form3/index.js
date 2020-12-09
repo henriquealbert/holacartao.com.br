@@ -1,3 +1,4 @@
+import useScript from '@/hooks/useScript';
 import { Button, Img } from '@chakra-ui/react';
 import {
   Accordion,
@@ -6,8 +7,10 @@ import {
   AccordionItemButton,
   AccordionItemPanel
 } from 'react-accessible-accordion';
+import Boleto from './Boleto';
 
 import CardComponent from './Card';
+import { guessPaymentMethod } from './Card/utils';
 
 import * as S from './styled';
 
@@ -15,6 +18,18 @@ export default function Form3({ setMenu }) {
   const handleBack = () => {
     setMenu('02');
   };
+
+  // Mercado Pago Scripts
+  const PUBLIC_KEY = process.env.NEXT_PUBLIC_MERCADOPAGO;
+  useScript('https://www.mercadopago.com/v2/security.js');
+  const status = useScript(
+    'https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js'
+  );
+  if (status === 'ready') {
+    window.Mercadopago.setPublishableKey(PUBLIC_KEY);
+    window.Mercadopago.getIdentificationTypes();
+    guessPaymentMethod();
+  }
   return (
     <S.Wrapper>
       <Accordion allowZeroExpanded>
@@ -37,7 +52,9 @@ export default function Form3({ setMenu }) {
               <p>O pagamento será aprovado em até 3 dias úteis.</p>
             </AccordionItemButton>
           </AccordionItemHeading>
-          <AccordionItemPanel>Teste</AccordionItemPanel>
+          <AccordionItemPanel>
+            <Boleto />
+          </AccordionItemPanel>
         </AccordionItem>
       </Accordion>
       <Button
@@ -50,6 +67,7 @@ export default function Form3({ setMenu }) {
         type="button"
         display="block"
         mt="2rem"
+        mb="5rem"
       >
         voltar
         <Img src="/images/arrow-checkout.svg" alt="Voltar" />
