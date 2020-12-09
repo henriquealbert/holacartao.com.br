@@ -74,46 +74,37 @@ export function formatFormData(form) {
   return obj;
 }
 
-export function formatInputFocus(target, setFocused) {
-  if (target.id === 'cardholderName') {
+export function formatInputFocus(e, setFocused) {
+  if (e.target.id === 'cardholderName') {
     setFocused('name');
-  } else if (target.id === 'cardNumber') {
+  } else if (e.target.id === 'cardNumber') {
     setFocused('number');
-  } else if (target.id === 'securityCode') {
+  } else if (e.target.id === 'securityCode') {
     setFocused('cvc');
-  } else if (target.id === 'cardExpirationMonth') {
+  } else if (e.target.id === 'cardExpirationMonth') {
     setFocused('expiry');
-  } else if (target.id === 'cardExpirationYear') {
+  } else if (e.target.id === 'cardExpirationYear') {
     setFocused('expiry');
   }
 }
 
 export function formatInputChange(
-  target,
-  setNumber,
+  e,
   setCvc,
   setName,
-  setMonth,
   setYear,
   setDocType,
   setDocNumber
 ) {
-  if (target.id === 'cardNumber') {
-    guessPaymentMethod(target.value);
-    setNumber(target.value);
-  } else if (target.id === 'securityCode') {
-    target.value = formatCVC(target.value);
-    setCvc(target.value);
-  } else if (target.id === 'cardholderName') {
-    setName(target.value);
-  } else if (target.id === 'cardExpirationMonth') {
-    setMonth(target.value);
-  } else if (target.id === 'cardExpirationYear') {
-    setYear(target.value);
-  } else if (target.id === 'docType') {
-    setDocType(target.value);
-  } else if (target.id === 'docNumber') {
-    const formattedDoc = formatDocNumber(target.value);
+  if (e.target.id === 'securityCode') {
+    e.target.value = formatCVC(e.target.value);
+    setCvc(e.target.value);
+  } else if (e.target.id === 'cardholderName') {
+    setName(e.target.value);
+  } else if (e.target.id === 'docType') {
+    setDocType(e.target.value);
+  } else if (e.target.id === 'docNumber') {
+    const formattedDoc = formatDocNumber(e.target.value);
     setDocNumber(formattedDoc);
     formattedDoc.length <= 14 ? setDocType('CPF') : setDocType('CNPJ');
   }
@@ -152,7 +143,7 @@ function setPaymentMethod(status, response) {
       );
     }
   } else {
-    alert(`payment method info error: ${response}`);
+    alert('Número de cartão inválido.');
   }
 }
 
@@ -176,7 +167,7 @@ function setIssuers(status, response) {
       issuerSelect.value
     );
   } else {
-    alert(`issuers method info error: ${response}`);
+    alert('Número de cartão inválido.');
   }
 }
 
@@ -201,6 +192,6 @@ function setInstallments(status, response) {
       document.getElementById('installments').appendChild(opt);
     });
   } else {
-    alert(`installments method info error: ${response}`);
+    alert('Número de cartão inválido.');
   }
 }

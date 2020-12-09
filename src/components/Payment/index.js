@@ -10,7 +10,7 @@ import CartSidebar from './CartSidebar';
 import * as S from './styled';
 
 export default function Payment() {
-  const [menu, setMenu] = useState('01');
+  const [menu, setMenu] = useState('03');
 
   return (
     <S.Wrapper>

@@ -11,7 +11,9 @@ import {
   Input,
   Button,
   Box,
-  useToast
+  useToast,
+  NumberInput,
+  NumberInputField
 } from '@chakra-ui/react';
 
 import { useAppContext } from '@/Contexts/AppContext';
@@ -20,7 +22,8 @@ import {
   formatFormData,
   formatInputFocus,
   formatInputChange,
-  returnFalse
+  returnFalse,
+  guessPaymentMethod
 } from './utils';
 
 export default function CardComponent() {
@@ -55,13 +58,13 @@ export default function CardComponent() {
     resetCheckoutState
   } = useAppContext();
 
-  const handleInputFocus = ({ target }) => {
-    formatInputFocus(target, setFocused);
+  const handleInputFocus = (e) => {
+    formatInputFocus(e, setFocused);
   };
 
-  const handleInputChange = ({ target }) => {
+  const handleInputChange = (e) => {
     formatInputChange(
-      target,
+      e,
       setNumber,
       setCvc,
       setName,
@@ -159,22 +162,29 @@ export default function CardComponent() {
           <Flex mt="1rem">
             <FormControl mr="2rem">
               <FormLabel htmlFor="cardNumber">Número do Cartão</FormLabel>
-              <Input
-                placeholder="0000 0000 0000 0000"
-                pattern="[\d| ]{16,22}"
-                type="text"
+              <NumberInput
                 id="cardNumber"
-                data-checkout="cardNumber"
-                autoComplete="off"
-                required
                 onPaste={returnFalse}
                 onCopy={returnFalse}
                 onCut={returnFalse}
                 onDrag={returnFalse}
                 onDrop={returnFalse}
-                onChange={handleInputChange}
+                pattern="[\d| ]{16,22}"
+                max={9999999999999999999999}
+                onChange={(value) => {
+                  setNumber(value);
+                  guessPaymentMethod(value);
+                }}
                 onFocus={handleInputFocus}
-              />
+              >
+                <NumberInputField
+                  data-checkout="cardNumber"
+                  autoComplete="off"
+                  required
+                  placeholder="0000 0000 0000 0000"
+                  maxLength={22}
+                />
+              </NumberInput>
             </FormControl>
             <FormControl>
               <FormLabel htmlFor="cardholderName">Titular do Cartão</FormLabel>
@@ -196,59 +206,68 @@ export default function CardComponent() {
                 Data de vencimento
               </FormLabel>
               <Flex>
-                <Input
-                  type="text"
-                  placeholder="MM"
+                <NumberInput
                   id="cardExpirationMonth"
-                  data-checkout="cardExpirationMonth"
-                  autoComplete="off"
-                  maxlength="2"
                   required
                   onPaste={returnFalse}
                   onCopy={returnFalse}
                   onCut={returnFalse}
                   onDrag={returnFalse}
                   onDrop={returnFalse}
-                  onChange={handleInputChange}
+                  onChange={setMonth}
                   onFocus={handleInputFocus}
-                />
-                <Input
-                  type="text"
-                  placeholder="YY"
+                >
+                  <NumberInputField
+                    data-checkout="cardExpirationMonth"
+                    autoComplete="off"
+                    required
+                    placeholder="MM"
+                    maxLength={2}
+                  />
+                </NumberInput>
+                <NumberInput
                   id="cardExpirationYear"
-                  data-checkout="cardExpirationYear"
-                  autoComplete="off"
-                  maxLength="2"
                   required
                   onPaste={returnFalse}
                   onCopy={returnFalse}
                   onCut={returnFalse}
                   onDrag={returnFalse}
                   onDrop={returnFalse}
-                  onChange={handleInputChange}
+                  onChange={setYear}
                   onFocus={handleInputFocus}
-                />
+                >
+                  <NumberInputField
+                    data-checkout="cardExpirationYear"
+                    autoComplete="off"
+                    required
+                    placeholder="YY"
+                    maxLength={2}
+                  />
+                </NumberInput>
               </Flex>
             </FormControl>
             <FormControl mr="2rem" maxW="20%">
               <FormLabel htmlFor="securityCode">Código CVV</FormLabel>
-              <Input
-                placeholder="123"
+              <NumberInput
                 pattern="\d{3,4}"
                 id="securityCode"
-                data-checkout="securityCode"
-                type="number"
-                autoComplete="off"
-                maxLength="4"
                 required
-                onChange={handleInputChange}
+                onChange={setCvc}
                 onFocus={handleInputFocus}
                 onPaste={returnFalse}
                 onCopy={returnFalse}
                 onCut={returnFalse}
                 onDrag={returnFalse}
                 onDrop={returnFalse}
-              />
+              >
+                <NumberInputField
+                  data-checkout="securityCode"
+                  autoComplete="off"
+                  required
+                  placeholder="123"
+                  maxLength={4}
+                />
+              </NumberInput>
             </FormControl>
             <FormControl>
               <FormLabel htmlFor="installments">Parcelamento em</FormLabel>
