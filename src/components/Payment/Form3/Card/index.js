@@ -1,3 +1,4 @@
+import 'react-credit-cards/es/styles-compiled.css';
 import Card from 'react-credit-cards';
 import { useState } from 'react';
 import axios from 'axios';
@@ -9,7 +10,8 @@ import {
   Flex,
   Input,
   Button,
-  Box
+  Box,
+  useToast
 } from '@chakra-ui/react';
 
 import { useAppContext } from '@/Contexts/AppContext';
@@ -20,7 +22,6 @@ import {
   formatInputChange,
   returnFalse
 } from './utils';
-import 'react-credit-cards/es/styles-compiled.css';
 
 export default function CardComponent() {
   const {
@@ -76,6 +77,7 @@ export default function CardComponent() {
   // FormSubmit
   const [doSubmit, setDoSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
+  const toast = useToast();
 
   function getCardToken(event) {
     event.preventDefault();
@@ -95,17 +97,15 @@ export default function CardComponent() {
       const formData = formatFormData(form);
       const otherData = {
         token: response.id,
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        area_code: areaCode,
-        phoneNumber: phoneNumber,
-        transactionAmount: transactionAmount,
-        address: {
-          zip_code: cep,
-          street_name: logradouro,
-          street_number: streetNumber
-        }
+        firstName,
+        lastName,
+        email,
+        areaCode,
+        phoneNumber,
+        transactionAmount,
+        cep,
+        logradouro,
+        streetNumber
       };
       const data = { ...formData, ...otherData };
 
@@ -121,12 +121,24 @@ export default function CardComponent() {
           resetCheckoutState();
         })
         .catch((err) => {
-          alert(err.message);
+          toast({
+            title: 'Ocorreu um erro.',
+            description: err.response.message,
+            status: 'error',
+            duration: 9000,
+            isClosable: true
+          });
           setDoSubmit(false);
           setLoading(false);
         });
     } else {
-      alert('Dados incorretos, por favor verifique.');
+      toast({
+        title: 'Ocorreu um erro.',
+        description: 'Dados incorretos, por favor verifique.',
+        status: 'error',
+        duration: 9000,
+        isClosable: true
+      });
       setLoading(false);
     }
   }
@@ -153,7 +165,6 @@ export default function CardComponent() {
                 type="text"
                 id="cardNumber"
                 data-checkout="cardNumber"
-                name="cardNumber"
                 autoComplete="off"
                 required
                 onPaste={returnFalse}
@@ -169,7 +180,6 @@ export default function CardComponent() {
               <FormLabel htmlFor="cardholderName">Titular do Cartão</FormLabel>
               <Input
                 id="cardholderName"
-                name="cardholderName"
                 data-checkout="cardholderName"
                 type="text"
                 placeholder="Ex: João da Silva"
@@ -187,12 +197,12 @@ export default function CardComponent() {
               </FormLabel>
               <Flex>
                 <Input
-                  type="number"
-                  name="cardExpirationMonth"
+                  type="text"
                   placeholder="MM"
                   id="cardExpirationMonth"
                   data-checkout="cardExpirationMonth"
                   autoComplete="off"
+                  maxlength="2"
                   required
                   onPaste={returnFalse}
                   onCopy={returnFalse}
@@ -203,12 +213,12 @@ export default function CardComponent() {
                   onFocus={handleInputFocus}
                 />
                 <Input
-                  type="number"
-                  name="cardExpirationYear"
+                  type="text"
                   placeholder="YY"
                   id="cardExpirationYear"
                   data-checkout="cardExpirationYear"
                   autoComplete="off"
+                  maxLength="2"
                   required
                   onPaste={returnFalse}
                   onCopy={returnFalse}
@@ -223,13 +233,13 @@ export default function CardComponent() {
             <FormControl mr="2rem" maxW="20%">
               <FormLabel htmlFor="securityCode">Código CVV</FormLabel>
               <Input
-                name="securityCode"
                 placeholder="123"
                 pattern="\d{3,4}"
                 id="securityCode"
                 data-checkout="securityCode"
                 type="number"
                 autoComplete="off"
+                maxLength="4"
                 required
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}

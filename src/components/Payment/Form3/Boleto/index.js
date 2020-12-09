@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Field, Form, Formik } from 'formik';
+import * as Yup from 'yup';
 
 import { useAppContext } from '@/Contexts/AppContext';
 import { formatDocNumber } from '@/utils/format';
@@ -20,7 +21,19 @@ export default function Boleto() {
     docNumber,
     setDocType,
     setDocNumber,
-    transactionAmount
+    transactionAmount,
+    firstName,
+    lastName,
+    email,
+    areaCode,
+    phoneNumber,
+    logradouro,
+    streetNumber,
+    cep,
+    bairro,
+    cidadeEstado,
+    referencia,
+    complemento
   } = useAppContext();
 
   const [loading, setLoading] = useState(false);
@@ -39,9 +52,26 @@ export default function Boleto() {
     setLoading(true);
     setDocType(dataForm.docType);
     setDocNumber(dataForm.docNumber);
-    console.log(dataForm);
 
-    Axios.post(`${API_URL}/orders/payment_boleto`, dataForm)
+    const data = {
+      ...dataForm,
+      firstName,
+      lastName,
+      email,
+      areaCode,
+      phoneNumber,
+      logradouro,
+      streetNumber,
+      cep,
+      bairro,
+      cidadeEstado,
+      referencia,
+      complemento
+    };
+
+    console.log(data);
+
+    Axios.post(`${API_URL}/orders/payment_boleto`, data)
       .then((res) => {
         // Router.push({
         //   pathname: '/obrigado/',
@@ -58,15 +88,21 @@ export default function Boleto() {
     setLoading(false);
   };
 
+  const validations = Yup.object().shape({
+    docType: Yup.string().required('Obrigatório'),
+    docNumber: Yup.string()
+      .min(11, 'Documento inválido')
+      .required('Obrigatório')
+  });
   return (
     <Formik
       onSubmit={handleSubmit}
       initialValues={{
         docType: docType ? docType : 'CPF',
         docNumber: docNumber,
-        transactionAmount: transactionAmount,
-        paymentMethodId: 'ticket'
+        transactionAmount: transactionAmount
       }}
+      validationSchema={validations}
     >
       {(props) => (
         <Form>
@@ -78,7 +114,12 @@ export default function Boleto() {
                   isInvalid={form.errors.docType && form.touched.docType}
                 >
                   <FormLabel htmlFor="docType">Tipo de documento</FormLabel>
-                  <Select id="docType" data-checkout="docType" {...field}>
+                  <Select
+                    id="docType"
+                    data-checkout="docType"
+                    {...field}
+                    required
+                  >
                     <option value="CPF">CPF</option>
                     <option value="CNPJ">CNPJ</option>
                   </Select>
@@ -100,6 +141,7 @@ export default function Boleto() {
                     placeholder="CPF ou CNPJ"
                     maxLength="18"
                     {...field}
+                    required
                     onBlur={(event) => formatDocNumberOnBlur(event, props)}
                   />
                   <FormErrorMessage fontSize="12px">
@@ -119,7 +161,7 @@ export default function Boleto() {
               loadingText="Processando..."
               mb="1rem"
             >
-              Pagar
+              Gerar Boleto
             </Button>
           </Flex>
         </Form>
