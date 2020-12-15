@@ -8,22 +8,11 @@ const AppContext = createContext({ isAuthenticated: false });
 export default AppContext;
 
 export const AppUserProvider = ({ children, value }) => {
-  // form1 - personal info
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [areaCode, setAreaCode] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [transactionAmount, setTransactionAmount] = useState('89.9');
+  // order details
+  const [order, setOrder] = useState({});
+  console.log(order);
 
-  //form2 - address
-  const [logradouro, setLogradouro] = useState('');
-  const [streetNumber, setStreetNumber] = useState();
-  const [cep, setCep] = useState('');
-  const [bairro, setBairro] = useState('');
-  const [cidadeEstado, setCidadeEstado] = useState('');
-  const [referencia, setReferencia] = useState('');
-  const [complemento, setComplemento] = useState('');
+  const [transactionAmount, setTransactionAmount] = useState('89.9');
 
   // form3 - payment - credit card
   const [number, setNumber] = useState('');
@@ -38,18 +27,6 @@ export const AppUserProvider = ({ children, value }) => {
   const [parcelas, setParcelas] = useState('');
 
   function resetCheckoutState() {
-    setFirstName('');
-    setLastName('');
-    setEmail('');
-    setAreaCode('');
-    setPhoneNumber('');
-    setLogradouro('');
-    setStreetNumber('');
-    setCep('');
-    setBairro('');
-    setCidadeEstado('');
-    setReferencia('');
-    setComplemento('');
     setNumber('');
     setName('');
     setMonth('');
@@ -80,39 +57,17 @@ export const AppUserProvider = ({ children, value }) => {
         setBandeira,
         focused,
         setFocused,
-        firstName,
-        setFirstName,
-        lastName,
-        setLastName,
         docType,
         setDocType,
         docNumber,
         setDocNumber,
-        email,
-        setEmail,
-        areaCode,
-        setAreaCode,
-        phoneNumber,
-        setPhoneNumber,
         transactionAmount,
         setTransactionAmount,
         parcelas,
         setParcelas,
-        logradouro,
-        setLogradouro,
-        streetNumber,
-        setStreetNumber,
-        cep,
-        setCep,
-        bairro,
-        setBairro,
-        cidadeEstado,
-        setCidadeEstado,
-        referencia,
-        setReferencia,
-        complemento,
-        setComplemento,
-        resetCheckoutState
+        resetCheckoutState,
+        order,
+        setOrder
       }}
     >
       {children}

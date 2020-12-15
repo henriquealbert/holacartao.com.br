@@ -18,41 +18,47 @@ import { Field, Form, Formik } from 'formik';
 import { useAppContext } from '@/Contexts/AppContext';
 import { formatCEP } from '@/utils/format';
 import Axios from 'axios';
+import client from '@/graphql/client';
+import MUTATION_UPDATE_ADDRESS from '@/graphql/mutations/updateAddress';
 
 export default function Form2({ setMenu }) {
+  // Input
+  const { setOrder, order } = useAppContext();
+
   const toast = useToast();
-  // Menu Functions
-  const handleSubmit = (dataForm) => {
-    setLogradouro(dataForm.logradouro);
-    setStreetNumber(dataForm.streetNumber);
-    setCep(formatCEP(dataForm.cep));
-    setBairro(dataForm.bairro);
-    setCidadeEstado(dataForm.cidadeEstado);
-    setReferencia(dataForm.referencia);
-    setComplemento(dataForm.complemento);
+
+  const handleSubmit = async ({
+    logradouro,
+    streetNumber,
+    cep,
+    bairro,
+    cidadeEstado,
+    referencia,
+    complemento
+  }) => {
+    const { updateAddress } = await client.request(MUTATION_UPDATE_ADDRESS, {
+      input: {
+        where: {
+          id: order.address.id
+        },
+        data: {
+          logradouro,
+          streetNumber: parseInt(streetNumber),
+          cep,
+          bairro,
+          cidadeEstado,
+          referencia,
+          complemento
+        }
+      }
+    });
+    setOrder((prev) => ({ ...prev, address: updateAddress.address }));
     setMenu('03');
   };
+
   const handleBack = () => {
     setMenu('01');
   };
-
-  // Input
-  const {
-    logradouro,
-    setLogradouro,
-    streetNumber,
-    setStreetNumber,
-    cep,
-    setCep,
-    bairro,
-    setBairro,
-    cidadeEstado,
-    setCidadeEstado,
-    referencia,
-    setReferencia,
-    complemento,
-    setComplemento
-  } = useAppContext();
 
   function formatCepOnBlur(event, props) {
     const formattedCep = formatCEP(props.values.cep);
@@ -100,13 +106,13 @@ export default function Form2({ setMenu }) {
   return (
     <Formik
       initialValues={{
-        logradouro: logradouro,
-        streetNumber: streetNumber,
-        cep: cep,
-        bairro: bairro,
-        cidadeEstado: cidadeEstado,
-        referencia: referencia,
-        complemento: complemento
+        logradouro: '',
+        streetNumber: '',
+        cep: '',
+        bairro: '',
+        cidadeEstado: '',
+        referencia: '',
+        complemento: ''
       }}
       onSubmit={handleSubmit}
       validationSchema={validations}

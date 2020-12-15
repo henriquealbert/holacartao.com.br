@@ -14,7 +14,7 @@ import { Button } from '@chakra-ui/react';
 export default function SubmitPrint() {
   const [loading, setLoading] = useState(false);
 
-  const { user } = useAppContext();
+  const { user, setOrder } = useAppContext();
   const { store: frenteStore } = useEditorStoreFrente();
   const { store: versoStore } = useEditorStoreVerso();
 
@@ -38,6 +38,7 @@ export default function SubmitPrint() {
       });
 
       if (newOrder) {
+        setOrder(newOrder.createOrder);
         setLoading(false);
         Router.push('/pagamento/');
       }
@@ -68,7 +69,10 @@ export default function SubmitPrint() {
         }
       });
 
+      console.log(newOrder);
+
       if (newOrder) {
+        setOrder(newOrder.createOrder.order);
         setLoading(false);
         Router.push('/pagamento/');
       }

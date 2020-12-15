@@ -10,10 +10,11 @@ import {
 import { useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import Router from 'next/router';
+import Axios from 'axios';
 
 import { useAppContext } from '@/Contexts/AppContext';
 import { formatDocNumber } from '@/utils/format';
-import Axios from 'axios';
 
 export default function Boleto() {
   const {
@@ -22,18 +23,8 @@ export default function Boleto() {
     setDocType,
     setDocNumber,
     transactionAmount,
-    firstName,
-    lastName,
-    email,
-    areaCode,
-    phoneNumber,
-    logradouro,
-    streetNumber,
-    cep,
-    bairro,
-    cidadeEstado,
-    referencia,
-    complemento
+    setOrder,
+    order
   } = useAppContext();
 
   const [loading, setLoading] = useState(false);
@@ -53,32 +44,13 @@ export default function Boleto() {
     setDocType(dataForm.docType);
     setDocNumber(dataForm.docNumber);
 
-    const data = {
-      ...dataForm,
-      firstName,
-      lastName,
-      email,
-      areaCode,
-      phoneNumber,
-      logradouro,
-      streetNumber,
-      cep,
-      bairro,
-      cidadeEstado,
-      referencia,
-      complemento
-    };
-
-    console.log(data);
+    const data = { ...dataForm, ...order.address };
 
     Axios.post(`${API_URL}/orders/payment_boleto`, data)
       .then((res) => {
-        // Router.push({
-        //   pathname: '/obrigado/',
-        //   query: { id: res.data.id, status: res.data.status }
-        // });
-        console.log(res.data);
+        setOrder((prev) => ({ ...prev, ...res.data }));
         setLoading(false);
+        Router.push('/obrigado/');
       })
       .catch((err) => {
         alert(err);

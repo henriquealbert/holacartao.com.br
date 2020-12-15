@@ -13,40 +13,67 @@ import * as Yup from 'yup';
 import { Form, Formik, Field } from 'formik';
 
 import { useAppContext } from '@/Contexts/AppContext';
+import client from '@/graphql/client';
+import MUTATION_CREATE_ADDRESS from '@/graphql/mutations/createAddress';
+import MUTATION_UPDATE_ADDRESS from '@/graphql/mutations/updateAddress';
 
 export default function Form1({ setMenu }) {
-  const handleSubmit = (dataForm) => {
-    setFirstName(dataForm.first_name);
-    setLastName(dataForm.last_name);
-    setEmail(dataForm.email);
-    setAreaCode(dataForm.area_code);
-    setPhoneNumber(dataForm.number);
-    setMenu('02');
-  };
+  const { setOrder, order } = useAppContext();
 
-  const {
-    setFirstName,
-    setLastName,
-    setEmail,
-    setAreaCode,
-    setPhoneNumber,
+  const handleSubmit = async ({
     firstName,
     lastName,
     email,
     areaCode,
     phoneNumber
-  } = useAppContext();
+  }) => {
+    if (order.address.id) {
+      const { updateAddress } = await client.request(MUTATION_UPDATE_ADDRESS, {
+        input: {
+          where: {
+            id: order.address.id
+          },
+          data: {
+            firstName,
+            lastName,
+            email,
+            areaCode,
+            phoneNumber
+          }
+        }
+      });
+      setOrder((prev) => ({ ...prev, address: updateAddress.address }));
+      setMenu('02');
+    }
+
+    if (!order.address.id) {
+      const { createAddress } = await client.request(MUTATION_CREATE_ADDRESS, {
+        input: {
+          data: {
+            order: order.order.id,
+            firstName,
+            lastName,
+            email,
+            areaCode,
+            phoneNumber
+          }
+        }
+      });
+      setOrder((prev) => ({ ...prev, address: createAddress.address }));
+      setMenu('02');
+    }
+  };
 
   const validations = Yup.object().shape({
-    first_name: Yup.string().required('Este é um campo obrigatório.'),
-    last_name: Yup.string().required('Este é um campo obrigatório.'),
+    firstName: Yup.string().required('Este é um campo obrigatório.'),
+    lastName: Yup.string().required('Este é um campo obrigatório.'),
     email: Yup.string()
       .email('O e-mail deve ser válido.')
       .required('Este é um campo obrigatório.'),
-    area_code: Yup.string()
+    areaCode: Yup.string()
       .matches(/[1-9]{2}/, 'Formato inválido.')
       .required('Este é um campo obrigatório.'),
-    number: Yup.string()
+    phoneNumber: Yup.string()
       .matches(
         /(?:[2-8]|9[1-9])[0-9]{3}[0-9]{4}/,
         'Formato inválido de telefone.'
@@ -57,11 +84,11 @@ export default function Form1({ setMenu }) {
   return (
     <Formik
       initialValues={{
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        area_code: areaCode,
-        number: phoneNumber
+        firstName: '',
+        lastName: '',
+        email: '',
+        areaCode: '',
+        phoneNumber: ''
       }}
       onSubmit={handleSubmit}
       validationSchema={validations}
@@ -69,26 +96,26 @@ export default function Form1({ setMenu }) {
       {() => (
         <Form>
           <Flex mb="1rem">
-            <Field name="first_name" type="text">
+            <Field name="firstName" type="text">
               {({ field, form }) => (
                 <FormControl
                   mr="2rem"
-                  isInvalid={form.errors.first_name && form.touched.first_name}
+                  isInvalid={form.errors.firstName && form.touched.firstName}
                 >
-                  <FormLabel htmlFor="first_name">Nome</FormLabel>
-                  <Input {...field} id="first_name" />
-                  <FormErrorMessage>{form.errors.first_name}</FormErrorMessage>
+                  <FormLabel htmlFor="firstName">Nome</FormLabel>
+                  <Input {...field} id="firstName" />
+                  <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
                 </FormControl>
               )}
             </Field>
-            <Field name="last_name" type="text">
+            <Field name="lastName" type="text">
               {({ field, form }) => (
                 <FormControl
-                  isInvalid={form.errors.last_name && form.touched.last_name}
+                  isInvalid={form.errors.lastName && form.touched.lastName}
                 >
-                  <FormLabel htmlFor="last_name">Sobrenome</FormLabel>
-                  <Input {...field} id="last_name" />
-                  <FormErrorMessage>{form.errors.last_name}</FormErrorMessage>
+                  <FormLabel htmlFor="lastName">Sobrenome</FormLabel>
+                  <Input {...field} id="lastName" />
+                  <FormErrorMessage>{form.errors.lastName}</FormErrorMessage>
                 </FormControl>
               )}
             </Field>
@@ -109,34 +136,38 @@ export default function Form1({ setMenu }) {
               </Field>
             </Box>
             <Box d="flex" w="100%">
-              <Field name="area_code">
+              <Field name="areaCode">
                 {({ field, form }) => (
                   <FormControl
                     w="30%"
                     mr="2rem"
-                    isInvalid={form.errors.area_code && form.touched.area_code}
+                    isInvalid={form.errors.areaCode && form.touched.areaCode}
                   >
-                    <FormLabel htmlFor="area_code">DDD</FormLabel>
-                    <NumberInput id="area_code" {...field}>
+                    <FormLabel htmlFor="areaCode">DDD</FormLabel>
+                    <NumberInput id="areaCode" {...field}>
                       <NumberInputField {...field} maxLength="2" />
                     </NumberInput>
                     <FormErrorMessage fontSize="10px" textAlign="center">
-                      {form.errors.area_code}
+                      {form.errors.areaCode}
                     </FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
-              <Field name="number" maxLength="9">
+              <Field name="phoneNumber" maxLength="9">
                 {({ field, form }) => (
                   <FormControl
                     w="100%"
-                    isInvalid={form.errors.number && form.touched.number}
+                    isInvalid={
+                      form.errors.phoneNumber && form.touched.phoneNumber
+                    }
                   >
-                    <FormLabel htmlFor="number">Telefone</FormLabel>
-                    <NumberInput id="number" {...field}>
+                    <FormLabel htmlFor="phoneNumber">Telefone</FormLabel>
+                    <NumberInput id="phoneNumber" {...field}>
                       <NumberInputField {...field} maxLength="9" />
                     </NumberInput>
-                    <FormErrorMessage>{form.errors.number}</FormErrorMessage>
+                    <FormErrorMessage>
+                      {form.errors.phoneNumber}
+                    </FormErrorMessage>
                   </FormControl>
                 )}
               </Field>

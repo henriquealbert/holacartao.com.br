@@ -4,6 +4,7 @@ import { useEditorStoreFrente } from './Frente/Store';
 import { useEditorStoreVerso } from './Verso/Store';
 import EditorFrente from './Frente';
 import EditorVerso from './Verso';
+import { useAppContext } from '@/Contexts/AppContext';
 
 export default function EditorComponent({ data, user }) {
   const {
@@ -22,12 +23,15 @@ export default function EditorComponent({ data, user }) {
     resetState: resetStateVerso
   } = useEditorStoreVerso();
 
+  const { setOrder } = useAppContext();
+
   // reset all data
 
   useEffect(() => {
     resetUtilsState();
     resetStateFrente();
     resetStateVerso();
+    setOrder({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

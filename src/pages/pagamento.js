@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
+import nextCookie from 'next-cookies';
 
 import Layout from '@/components/Layout';
 import Payment from '@/components/Payment';
@@ -24,4 +25,18 @@ export default function Pagamento() {
       </Layout>
     </>
   );
+}
+
+export async function getServerSideProps(ctx) {
+  const { token } = nextCookie(ctx);
+
+  if (!token) {
+    return {
+      props: {}
+    };
+  }
+
+  return {
+    props: {} // will be passed to the page component as props
+  };
 }

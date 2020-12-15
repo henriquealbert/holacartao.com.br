@@ -44,18 +44,12 @@ export default function CardComponent() {
     setDocType,
     docNumber,
     setDocNumber,
-    firstName,
-    lastName,
-    email,
-    areaCode,
-    phoneNumber,
     transactionAmount,
     parcelas,
     setParcelas,
-    cep,
-    logradouro,
-    streetNumber,
-    resetCheckoutState
+    resetCheckoutState,
+    setOrder,
+    order
   } = useAppContext();
 
   const handleInputFocus = (e) => {
@@ -100,28 +94,18 @@ export default function CardComponent() {
       const formData = formatFormData(form);
       const otherData = {
         token: response.id,
-        firstName,
-        lastName,
-        email,
-        areaCode,
-        phoneNumber,
-        transactionAmount,
-        cep,
-        logradouro,
-        streetNumber
+        ...order.address
       };
       const data = { ...formData, ...otherData };
 
       axios
         .post(`${API_URL}/orders/payment/credit_card`, data)
         .then((res) => {
-          Router.push({
-            pathname: '/obrigado/',
-            query: { id: res.data.id, status: res.data.status }
-          });
+          setOrder((prev) => ({ ...prev, ...res.data }));
           setLoading(false);
           setDoSubmit(false);
           resetCheckoutState();
+          Router.push('/obrigado/');
         })
         .catch((err) => {
           toast({
