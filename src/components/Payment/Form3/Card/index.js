@@ -1,6 +1,6 @@
 import 'react-credit-cards/es/styles-compiled.css';
 import Card from 'react-credit-cards';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import axios from 'axios';
 import Router from 'next/router';
 import {
@@ -52,6 +52,10 @@ export default function CardComponent() {
     setOrder,
     order
   } = useAppContext();
+  const formRef = useRef();
+  // FormSubmit
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
 
   // Mercado Pago Scripts
   const PUBLIC_KEY = process.env.NEXT_PUBLIC_MERCADOPAGO;
@@ -61,8 +65,10 @@ export default function CardComponent() {
   );
   if (status === 'ready') {
     window.Mercadopago.setPublishableKey(PUBLIC_KEY);
+    window.Mercadopago.clearSession();
     window.Mercadopago.getIdentificationTypes();
     guessPaymentMethod();
+    console.log(window.Mercadopago);
   }
 
   const handleInputFocus = (e) => {
@@ -71,30 +77,21 @@ export default function CardComponent() {
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  // FormSubmit
-  const [doSubmit, setDoSubmit] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const toast = useToast();
-
   function getCardToken(event) {
     event.preventDefault();
     setLoading(true);
 
-    if (!doSubmit) {
-      let form = document.getElementById('paymentForm');
-      form.elements['docNumber'].value = form.elements[
-        'docNumber'
-      ].value.replace(/[^0-9]/g, '');
-      window.Mercadopago.createToken(form, setCardTokenAndPay);
-
-      return false;
-    }
+    let form = formRef.current;
+    form.elements['docNumber'].value = form.elements['docNumber'].value.replace(
+      /[^0-9]/g,
+      ''
+    );
+    window.Mercadopago.createToken(form, setCardTokenAndPay);
   }
 
   function setCardTokenAndPay(status, response) {
     if (status == 200 || status == 201) {
-      setDoSubmit(true);
-      let form = document.getElementById('paymentForm');
+      let form = formRef.current;
       const formData = formatFormData(form);
       const otherData = {
         token: response.id,
@@ -107,15 +104,13 @@ export default function CardComponent() {
         .then((res) => {
           setOrder((prev) => ({ ...prev, ...res.data }));
           setLoading(false);
-          setDoSubmit(false);
           resetCheckoutState();
           Router.push('/obrigado/');
         })
         .catch((err) => {
           resetCheckoutState();
-          setDoSubmit(false);
           setLoading(false);
-          form.reset();
+          window.Mercadopago.clearSession();
           toast({
             title: 'Ocorreu um erro.',
             description: err.response?.message,
@@ -126,8 +121,7 @@ export default function CardComponent() {
         });
     } else {
       resetCheckoutState();
-      document.getElementById('paymentForm').reset();
-      setDoSubmit(false);
+      window.Mercadopago.clearSession();
       setLoading(false);
       toast({
         title: 'Ocorreu um erro.',
@@ -151,7 +145,7 @@ export default function CardComponent() {
         />
       </Box>
       <Box>
-        <form onSubmit={getCardToken} id="paymentForm">
+        <form ref={formRef} onSubmit={getCardToken} id="paymentForm">
           <Flex mt="1rem">
             <FormControl mr="2rem">
               <FormLabel htmlFor="cardNumber">Número do Cartão</FormLabel>
@@ -168,6 +162,7 @@ export default function CardComponent() {
                   setNumber(value);
                   guessPaymentMethod(value);
                 }}
+                value={number}
                 onFocus={handleInputFocus}
               >
                 <NumberInputField
@@ -189,6 +184,7 @@ export default function CardComponent() {
                 required
                 onChange={({ target }) => setName(target.value)}
                 onFocus={handleInputFocus}
+                value={name}
               />
             </FormControl>
           </Flex>
@@ -209,6 +205,7 @@ export default function CardComponent() {
                   onDrop={returnFalse}
                   onChange={setMonth}
                   onFocus={handleInputFocus}
+                  value={month}
                 >
                   <NumberInputField
                     data-checkout="cardExpirationMonth"
@@ -228,6 +225,7 @@ export default function CardComponent() {
                   onDrop={returnFalse}
                   onChange={setYear}
                   onFocus={handleInputFocus}
+                  value={year}
                 >
                   <NumberInputField
                     data-checkout="cardExpirationYear"
@@ -252,6 +250,7 @@ export default function CardComponent() {
                 onCut={returnFalse}
                 onDrag={returnFalse}
                 onDrop={returnFalse}
+                value={cvc}
               >
                 <NumberInputField
                   data-checkout="securityCode"
