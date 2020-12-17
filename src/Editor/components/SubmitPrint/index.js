@@ -69,10 +69,8 @@ export default function SubmitPrint() {
         }
       });
 
-      console.log(newOrder);
-
       if (newOrder) {
-        setOrder(newOrder.createOrder.order);
+        setOrder(newOrder.createOrder);
         setLoading(false);
         Router.push('/pagamento/');
       }

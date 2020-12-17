@@ -1,4 +1,3 @@
-import { formatDocNumber } from '@/utils/format';
 import Payment from 'payment';
 
 function clearNumber(value = '') {
@@ -66,11 +65,7 @@ export function formatFormData(form) {
   for (let key of formData.keys()) {
     obj[key] = formData.get(key);
   }
-  delete obj.cardExpirationMonth;
-  delete obj.cardExpirationYear;
-  delete obj.cardNumber;
-  delete obj.securityCode;
-  delete obj.cardHolderName;
+
   return obj;
 }
 
@@ -85,28 +80,6 @@ export function formatInputFocus(e, setFocused) {
     setFocused('expiry');
   } else if (e.target.id === 'cardExpirationYear') {
     setFocused('expiry');
-  }
-}
-
-export function formatInputChange(
-  e,
-  setCvc,
-  setName,
-  setYear,
-  setDocType,
-  setDocNumber
-) {
-  if (e.target.id === 'securityCode') {
-    e.target.value = formatCVC(e.target.value);
-    setCvc(e.target.value);
-  } else if (e.target.id === 'cardholderName') {
-    setName(e.target.value);
-  } else if (e.target.id === 'docType') {
-    setDocType(e.target.value);
-  } else if (e.target.id === 'docNumber') {
-    const formattedDoc = formatDocNumber(e.target.value);
-    setDocNumber(formattedDoc);
-    formattedDoc.length <= 14 ? setDocType('CPF') : setDocType('CNPJ');
   }
 }
 

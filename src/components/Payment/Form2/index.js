@@ -106,14 +106,25 @@ export default function Form2({ setMenu }) {
   return (
     <Formik
       initialValues={{
-        logradouro: '',
-        streetNumber: '',
-        cep: '',
-        bairro: '',
-        cidadeEstado: '',
-        referencia: '',
-        complemento: ''
+        logradouro: order?.address?.logradouro
+          ? order?.address?.logradouro
+          : '',
+        streetNumber: order?.address?.streetNumber
+          ? order?.address?.streetNumber
+          : '',
+        cep: order?.address?.cep ? order?.address?.cep : '',
+        bairro: order?.address?.bairro ? order?.address?.bairro : '',
+        cidadeEstado: order?.address?.cidadeEstado
+          ? order?.address?.cidadeEstado
+          : '',
+        referencia: order?.address?.referencia
+          ? order?.address?.referencia
+          : '',
+        complemento: order?.address?.complemento
+          ? order?.address?.complemento
+          : ''
       }}
+      enableReinitialize
       onSubmit={handleSubmit}
       validationSchema={validations}
     >

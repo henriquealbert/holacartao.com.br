@@ -21,10 +21,11 @@ import {
   formatExpirationDate,
   formatFormData,
   formatInputFocus,
-  formatInputChange,
   returnFalse,
   guessPaymentMethod
 } from './utils';
+import { formatDocNumber } from '@/utils/format';
+import useScript from '@/hooks/useScript';
 
 export default function CardComponent() {
   const {
@@ -52,21 +53,20 @@ export default function CardComponent() {
     order
   } = useAppContext();
 
+  // Mercado Pago Scripts
+  const PUBLIC_KEY = process.env.NEXT_PUBLIC_MERCADOPAGO;
+  useScript('https://www.mercadopago.com/v2/security.js');
+  const status = useScript(
+    'https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js'
+  );
+  if (status === 'ready') {
+    window.Mercadopago.setPublishableKey(PUBLIC_KEY);
+    window.Mercadopago.getIdentificationTypes();
+    guessPaymentMethod();
+  }
+
   const handleInputFocus = (e) => {
     formatInputFocus(e, setFocused);
-  };
-
-  const handleInputChange = (e) => {
-    formatInputChange(
-      e,
-      setNumber,
-      setCvc,
-      setName,
-      setMonth,
-      setYear,
-      setDocType,
-      setDocNumber
-    );
   };
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -81,8 +81,12 @@ export default function CardComponent() {
     setLoading(true);
 
     if (!doSubmit) {
-      const form = document.getElementById('paymentForm');
+      let form = document.getElementById('paymentForm');
+      form.elements['docNumber'].value = form.elements[
+        'docNumber'
+      ].value.replace(/[^0-9]/g, '');
       window.Mercadopago.createToken(form, setCardTokenAndPay);
+
       return false;
     }
   }
@@ -108,25 +112,30 @@ export default function CardComponent() {
           Router.push('/obrigado/');
         })
         .catch((err) => {
+          resetCheckoutState();
+          setDoSubmit(false);
+          setLoading(false);
+          form.reset();
           toast({
             title: 'Ocorreu um erro.',
-            description: err.response.message,
+            description: err.response?.message,
             status: 'error',
             duration: 9000,
             isClosable: true
           });
-          setDoSubmit(false);
-          setLoading(false);
         });
     } else {
+      resetCheckoutState();
+      document.getElementById('paymentForm').reset();
+      setDoSubmit(false);
+      setLoading(false);
       toast({
         title: 'Ocorreu um erro.',
-        description: 'Dados incorretos, por favor verifique.',
+        description: response.cause.map((item) => `${item?.description} `),
         status: 'error',
         duration: 9000,
         isClosable: true
       });
-      setLoading(false);
     }
   }
 
@@ -153,7 +162,7 @@ export default function CardComponent() {
                 onCut={returnFalse}
                 onDrag={returnFalse}
                 onDrop={returnFalse}
-                pattern="[\d| ]{16,22}"
+                pattern="[\d| ]{15,22}"
                 max={9999999999999999999999}
                 onChange={(value) => {
                   setNumber(value);
@@ -178,7 +187,7 @@ export default function CardComponent() {
                 type="text"
                 placeholder="Ex: João da Silva"
                 required
-                onChange={handleInputChange}
+                onChange={({ target }) => setName(target.value)}
                 onFocus={handleInputFocus}
               />
             </FormControl>
@@ -276,7 +285,7 @@ export default function CardComponent() {
                 data-checkout="docType"
                 required
                 value={docType}
-                onChange={handleInputChange}
+                onChange={({ target }) => setDocType(target.value)}
               ></Select>
             </FormControl>
             <FormControl>
@@ -289,7 +298,13 @@ export default function CardComponent() {
                 required
                 placeholder="CPF ou CNPJ"
                 value={docNumber}
-                onChange={handleInputChange}
+                onChange={({ target }) => {
+                  const formattedDoc = formatDocNumber(target.value);
+                  setDocNumber(formattedDoc);
+                  formattedDoc.length <= 14
+                    ? setDocType('CPF')
+                    : setDocType('CNPJ');
+                }}
               />
             </FormControl>
           </Flex>
@@ -301,12 +316,7 @@ export default function CardComponent() {
               name="issuer"
               data-checkout="issuer"
             ></select>
-            <input
-              type="hidden"
-              name="paymentMethodId"
-              id="paymentMethodId"
-              value="credit_card"
-            />
+            <input type="hidden" name="paymentMethodId" id="paymentMethodId" />
             <input
               type="hidden"
               name="transactionAmount"

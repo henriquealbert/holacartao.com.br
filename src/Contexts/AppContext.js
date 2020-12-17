@@ -37,6 +37,7 @@ export const AppUserProvider = ({ children, value }) => {
     setDocType('');
     setDocNumber('');
     setParcelas('');
+    setTransactionAmount('89.9');
   }
 
   return (

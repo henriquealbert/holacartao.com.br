@@ -27,7 +27,7 @@ export default function Form1({ setMenu }) {
     areaCode,
     phoneNumber
   }) => {
-    if (order.address.id) {
+    if (order.address?.id) {
       const { updateAddress } = await client.request(MUTATION_UPDATE_ADDRESS, {
         input: {
           where: {
@@ -46,7 +46,7 @@ export default function Form1({ setMenu }) {
       setMenu('02');
     }
 
-    if (!order.address.id) {
+    if (!order.address?.id) {
       const { createAddress } = await client.request(MUTATION_CREATE_ADDRESS, {
         input: {
           data: {
@@ -84,12 +84,15 @@ export default function Form1({ setMenu }) {
   return (
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
-        areaCode: '',
-        phoneNumber: ''
+        firstName: order?.address?.firstName ? order?.address?.firstName : '',
+        lastName: order?.address?.lastName ? order?.address?.lastName : '',
+        email: order?.address?.email ? order?.address?.email : '',
+        areaCode: order?.address?.areaCode ? order?.address?.areaCode : '',
+        phoneNumber: order?.address?.phoneNumber
+          ? order.address?.phoneNumber
+          : ''
       }}
+      enableReinitialize
       onSubmit={handleSubmit}
       validationSchema={validations}
     >
