@@ -69,6 +69,21 @@ const theme = extendTheme({
           _focus: {
             boxShadow: '0 0 0 3px rgba(23, 171, 75, 0.6)'
           }
+        },
+        outline: {
+          color: 'white',
+          border: '3px solid',
+          borderColor: 'white',
+          _hover: {
+            bg: 'none',
+            boxShadow: 'inset 0px 4px 10px rgba(0, 0, 0, 0.25)'
+          },
+          _focus: {
+            boxShadow: '0 0 0 3px rgba(23, 171, 75, 0.6)'
+          },
+          fontWeight: 'bold',
+          fontFamily: 'Roboto',
+          paddingY: '12px'
         }
       }
     },

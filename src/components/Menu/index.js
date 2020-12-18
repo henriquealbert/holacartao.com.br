@@ -1,13 +1,16 @@
-import { useState, useContext } from 'react';
-import AppContext from '@/Contexts/AppContext';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+
+import { useAppContext } from '@/Contexts/AppContext';
 import { logout } from '@/lib/auth';
 
 import * as S from './styled';
+import { Button } from '@chakra-ui/react';
 
-export default function Menu() {
-  const { setUser, isAuthenticated } = useContext(AppContext);
+export default function Menu({ home }) {
+  const { setUser, isAuthenticated } = useAppContext();
   //Responsive Menu
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -21,60 +24,48 @@ export default function Menu() {
   return (
     <S.MenuContainer>
       <button onClick={handleOpen}>
-        {!openMenu ? <S.OpenMenu /> : <S.CloseMenu />}
+        {!openMenu ? (
+          <HamburgerIcon w={10} h={10} color={home ? 'white' : 'black'} />
+        ) : (
+          <CloseIcon w={10} h={10} color={home ? 'white' : 'black'} />
+        )}
       </button>
-      <S.MenuWrapper className={!openMenu ? '' : 'open'}>
+      <S.MenuWrapper className={!openMenu ? '' : 'open'} home={home}>
         <nav>
           <ul>
-            <li>
-              <Link href="/">
-                <a className={pathname === '/' ? 'active' : ''}>Início</a>
-              </Link>
-            </li>
-            <li>
+            <S.Links home={home}>
               <Link href="/modelos">
                 <a className={pathname === '/modelos' ? 'active' : ''}>
                   Modelos
                 </a>
               </Link>
-            </li>
+            </S.Links>
+            <S.Links home={home}>
+              <Link href="/ajuda">
+                <a className={pathname === '/ajuda' ? 'active' : ''}>Ajuda</a>
+              </Link>
+            </S.Links>
             {isAuthenticated ? (
-              <li>
+              <S.Links home={home}>
                 <Link href="/minha-conta">
                   <a
-                    className={
-                      pathname === '/minha-conta'
-                        ? 'active'
-                        : pathname === '/minha-conta/pedidos'
-                        ? 'active'
-                        : pathname === '/minha-conta/pedidos/[id]'
-                        ? 'active'
-                        : pathname === '/minha-conta/dados'
-                        ? 'active'
-                        : pathname === '/minha-conta/dados/edit'
-                        ? 'active'
-                        : pathname === '/minha-conta/ajuda'
-                        ? 'active'
-                        : pathname === '/minha-conta/cartoes-salvos'
-                        ? 'active'
-                        : null
-                    }
+                    className={pathname.includes('minha-conta') ? 'active' : ''}
                   >
                     Minha Conta
                   </a>
                 </Link>
-              </li>
+              </S.Links>
             ) : (
-              <li>
+              <S.Links home={home}>
                 <Link href="/criar-conta">
                   <a className={pathname === '/criar-conta' ? 'active' : ''}>
                     Criar Conta
                   </a>
                 </Link>
-              </li>
+              </S.Links>
             )}
             {isAuthenticated ? (
-              <li>
+              <S.Links home={home}>
                 <S.LogoutMenuA
                   onClick={() => {
                     logout();
@@ -83,19 +74,24 @@ export default function Menu() {
                 >
                   Sair
                 </S.LogoutMenuA>
-              </li>
+              </S.Links>
             ) : (
-              <li>
+              <S.Links btn={home ? true : false}>
                 <Link href="/login">
-                  <a className={pathname === '/login' ? 'active' : ''}>Login</a>
+                  <Button
+                    as="a"
+                    variant="outline"
+                    cursor="pointer"
+                    w="118px"
+                    h="40px"
+                    fontSize="14px"
+                    borderColor={home ? '' : 'black'}
+                  >
+                    Entrar
+                  </Button>
                 </Link>
-              </li>
+              </S.Links>
             )}
-            <li>
-              <Link href="/ajuda">
-                <a className={pathname === '/ajuda' ? 'active' : ''}>Ajuda</a>
-              </Link>
-            </li>
           </ul>
         </nav>
       </S.MenuWrapper>

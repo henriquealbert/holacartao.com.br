@@ -3,12 +3,17 @@ import Image from 'next/image';
 
 import Menu from '../Menu';
 
-import * as S from './styled';
+import { Box, Flex } from '@chakra-ui/react';
 
-export default function Header() {
+export default function Header({ home }) {
   return (
-    <S.HeaderWrapper id="top">
-      <S.HeaderContainer>
+    <Box position={home ? 'absolute' : ''} w="100%" zIndex="2000">
+      <Flex
+        p="22px 0"
+        maxW="1280px"
+        m={{ xl: '0 auto', base: '0 1rem' }}
+        justifyContent="space-between"
+      >
         <Link href="/">
           <a>
             <Image
@@ -21,8 +26,8 @@ export default function Header() {
             />
           </a>
         </Link>
-        <Menu />
-      </S.HeaderContainer>
-    </S.HeaderWrapper>
+        <Menu home={home} />
+      </Flex>
+    </Box>
   );
 }

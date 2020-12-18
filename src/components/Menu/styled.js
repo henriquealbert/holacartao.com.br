@@ -1,6 +1,4 @@
 import styled from '@emotion/styled';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { MdClose } from 'react-icons/md';
 
 export const MenuContainer = styled.div`
   button {
@@ -18,48 +16,18 @@ export const MenuWrapper = styled.div`
   color: #fff;
   width: 175px;
   position: fixed;
+  padding: 0.9rem;
   right: 0;
   top: 66px;
   background: var(--white);
   transform: translateX(110%);
   transition: all 0.5s;
   overflow-x: hidden;
-  border-radius: 0 0 0 20px;
+  border-radius: 20px 0 0 20px;
   z-index: 50;
 
   &.open {
     transform: translateX(0);
-  }
-
-  li {
-    text-align: center;
-    padding: 0.9rem;
-    text-align: right;
-    font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
-  }
-
-  li:last-child {
-    padding-top: 10px;
-    border-top: 3px solid #fff;
-    margin-left: 3rem;
-    margin-right: 0.9rem;
-    padding: 0.9rem 0 0.9rem 0.9rem;
-  }
-
-  li {
-    a {
-      color: var(--black);
-      font-weight: 500;
-
-      &:hover {
-        font-weight: 800;
-      }
-
-      &.active {
-        font-weight: 800;
-      }
-    }
   }
 
   @media (min-width: 768px) {
@@ -68,41 +36,61 @@ export const MenuWrapper = styled.div`
     background: initial;
     position: initial;
     display: initial;
+    padding: 0;
 
     nav {
       ul {
         display: flex;
-
-        li {
-          text-transform: uppercase;
-          font-weight: 500;
-          font-size: 13px;
-          line-height: 23px;
-          letter-spacing: 0.02em;
-        }
-        li:last-child {
-          border-top: none;
-          margin: 0;
-        }
+        align-items: center;
       }
     }
   }
 `;
 
-export const OpenMenu = styled(GiHamburgerMenu)`
-  height: 50px;
-  width: 50px;
-  background: var(--white);
-  color: var(--black);
-  border: none;
-`;
+export const Links = styled.li`
+  text-align: center;
+  padding: 0.9rem;
+  text-align: right;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.02em;
 
-export const CloseMenu = styled(MdClose)`
-  height: 50px;
-  width: 50px;
-  background: var(--white);
-  color: var(--black);
-  border: none;
+  a {
+    color: #000;
+  }
+
+  &:last-child {
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.9rem 0 0.9rem 0.9rem;
+  }
+
+  @media (min-width: 768px) {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.02em;
+
+    a {
+      color: ${(props) => (props.home ? '#fff' : props.btn ? '#fff' : '#000')};
+      font-weight: bold;
+
+      &:hover {
+        color: ${(props) =>
+          props.home ? '#000' : props.btn ? '#fff' : '#1db954'};
+      }
+
+      &.active {
+        color: #1db954;
+      }
+    }
+    &:last-child {
+      border-top: none;
+      margin: 0;
+    }
+  }
 `;
 
 export const LogoutMenuA = styled.a`
