@@ -10,7 +10,6 @@ export default AppContext;
 export const AppUserProvider = ({ children, value }) => {
   // order details
   const [order, setOrder] = useState({});
-  console.log(order);
 
   const [transactionAmount, setTransactionAmount] = useState('89.9');
 

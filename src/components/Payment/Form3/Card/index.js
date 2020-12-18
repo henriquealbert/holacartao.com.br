@@ -68,7 +68,6 @@ export default function CardComponent() {
     window.Mercadopago.clearSession();
     window.Mercadopago.getIdentificationTypes();
     guessPaymentMethod();
-    console.log(window.Mercadopago);
   }
 
   const handleInputFocus = (e) => {
