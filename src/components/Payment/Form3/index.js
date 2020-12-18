@@ -1,3 +1,4 @@
+import { Button, Img } from '@chakra-ui/react';
 import {
   Accordion,
   AccordionItem,
@@ -5,12 +6,17 @@ import {
   AccordionItemButton,
   AccordionItemPanel
 } from 'react-accessible-accordion';
+import Boleto from './Boleto';
 
 import CardComponent from './Card';
 
 import * as S from './styled';
 
-export default function Form3() {
+export default function Form3({ setMenu }) {
+  const handleBack = () => {
+    setMenu('02');
+  };
+
   return (
     <S.Wrapper>
       <Accordion allowZeroExpanded>
@@ -33,9 +39,26 @@ export default function Form3() {
               <p>O pagamento será aprovado em até 3 dias úteis.</p>
             </AccordionItemButton>
           </AccordionItemHeading>
-          <AccordionItemPanel>Teste</AccordionItemPanel>
+          <AccordionItemPanel>
+            <Boleto />
+          </AccordionItemPanel>
         </AccordionItem>
       </Accordion>
+      <Button
+        bg="none"
+        _hover={{ bg: 'none', textDecoration: 'underline' }}
+        textTransform="lowercase"
+        fontSize="13px"
+        fontFamily="Montserrat"
+        onClick={handleBack}
+        type="button"
+        display="block"
+        mt="2rem"
+        mb="5rem"
+      >
+        voltar
+        <Img src="/images/arrow-checkout.svg" alt="Voltar" />
+      </Button>
     </S.Wrapper>
   );
 }

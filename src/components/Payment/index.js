@@ -34,7 +34,7 @@ export default function Payment() {
         )}
         {menu === '03' ? (
           <S.Content>
-            <Form3 />
+            <Form3 setMenu={setMenu} />
           </S.Content>
         ) : (
           ''

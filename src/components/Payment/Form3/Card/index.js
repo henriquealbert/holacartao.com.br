@@ -1,19 +1,8 @@
+import 'react-credit-cards/es/styles-compiled.css';
 import Card from 'react-credit-cards';
-import { useAppContext } from '@/Contexts/AppContext';
-import useScript from '@/hooks/useScript';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import axios from 'axios';
 import Router from 'next/router';
-
-import {
-  formatExpirationDate,
-  formatFormData,
-  formatInputFocus,
-  formatInputChange,
-  returnFalse,
-  guessPaymentMethod
-} from './utils';
-
 import {
   FormControl,
   FormLabel,
@@ -21,12 +10,22 @@ import {
   Flex,
   Input,
   Button,
-  Box
+  Box,
+  useToast,
+  NumberInput,
+  NumberInputField
 } from '@chakra-ui/react';
 
-import 'react-credit-cards/es/styles-compiled.css';
-
-import * as S from './styled';
+import { useAppContext } from '@/Contexts/AppContext';
+import {
+  formatExpirationDate,
+  formatFormData,
+  formatInputFocus,
+  returnFalse,
+  guessPaymentMethod
+} from './utils';
+import { formatDocNumber } from '@/utils/format';
+import useScript from '@/hooks/useScript';
 
 export default function CardComponent() {
   const {
@@ -46,110 +45,95 @@ export default function CardComponent() {
     setDocType,
     docNumber,
     setDocNumber,
-    firstName,
-    lastName,
-    email,
-    areaCode,
-    phoneNumber,
     transactionAmount,
     parcelas,
     setParcelas,
-    cep,
-    logradouro,
-    streetNumber
+    resetCheckoutState,
+    setOrder,
+    order
   } = useAppContext();
-
-  const handleInputFocus = ({ target }) => {
-    formatInputFocus(target, setFocused);
-  };
-
-  const handleInputChange = ({ target }) => {
-    formatInputChange(
-      target,
-      setNumber,
-      setCvc,
-      setName,
-      setMonth,
-      setYear,
-      setDocType,
-      setDocNumber
-    );
-  };
-
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const PUBLIC_KEY = process.env.NEXT_PUBLIC_MERCADOPAGO;
+  const formRef = useRef();
+  // FormSubmit
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
 
   // Mercado Pago Scripts
+  const PUBLIC_KEY = process.env.NEXT_PUBLIC_MERCADOPAGO;
   useScript('https://www.mercadopago.com/v2/security.js');
   const status = useScript(
     'https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js'
   );
-
   if (status === 'ready') {
     window.Mercadopago.setPublishableKey(PUBLIC_KEY);
+    window.Mercadopago.clearSession();
     window.Mercadopago.getIdentificationTypes();
     guessPaymentMethod();
   }
 
-  // FormSubmit
-  const [doSubmit, setDoSubmit] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const handleInputFocus = (e) => {
+    formatInputFocus(e, setFocused);
+  };
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   function getCardToken(event) {
     event.preventDefault();
     setLoading(true);
 
-    if (!doSubmit) {
-      const form = document.getElementById('paymentForm');
-      window.Mercadopago.createToken(form, setCardTokenAndPay);
-      return false;
-    }
+    let form = formRef.current;
+    form.elements['docNumber'].value = form.elements['docNumber'].value.replace(
+      /[^0-9]/g,
+      ''
+    );
+    window.Mercadopago.createToken(form, setCardTokenAndPay);
   }
 
   function setCardTokenAndPay(status, response) {
     if (status == 200 || status == 201) {
-      setDoSubmit(true);
-      let form = document.getElementById('paymentForm');
+      let form = formRef.current;
       const formData = formatFormData(form);
       const otherData = {
         token: response.id,
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        area_code: areaCode,
-        phoneNumber: phoneNumber,
-        transactionAmount: transactionAmount,
-        address: {
-          zip_code: cep,
-          street_name: logradouro,
-          street_number: streetNumber
-        }
+        ...order.address
       };
       const data = { ...formData, ...otherData };
 
       axios
-        .post(`${API_URL}/orders/payment`, data)
+        .post(`${API_URL}/orders/payment/credit_card`, data)
         .then((res) => {
-          Router.push({
-            pathname: '/obrigado/',
-            query: { id: res.data.id, status: res.data.status }
-          });
+          setOrder((prev) => ({ ...prev, ...res.data }));
           setLoading(false);
-          setDoSubmit(false);
+          resetCheckoutState();
+          Router.push('/obrigado/');
         })
         .catch((err) => {
-          alert(err.message);
-          setDoSubmit(false);
+          resetCheckoutState();
           setLoading(false);
+          window.Mercadopago.clearSession();
+          toast({
+            title: 'Ocorreu um erro.',
+            description: err.response?.message,
+            status: 'error',
+            duration: 9000,
+            isClosable: true
+          });
         });
     } else {
-      alert('Dados incorretos, por favor verifique.');
+      resetCheckoutState();
+      window.Mercadopago.clearSession();
       setLoading(false);
+      toast({
+        title: 'Ocorreu um erro.',
+        description: response.cause.map((item) => `${item?.description} `),
+        status: 'error',
+        duration: 9000,
+        isClosable: true
+      });
     }
   }
 
   return (
-    <Flex>
+    <Box>
       <Box mr="2rem">
         <Card
           number={number}
@@ -160,141 +144,170 @@ export default function CardComponent() {
         />
       </Box>
       <Box>
-        <form onSubmit={getCardToken} id="paymentForm">
-          <Flex>
-            <FormControl>
+        <form ref={formRef} onSubmit={getCardToken} id="paymentForm">
+          <Flex mt="1rem">
+            <FormControl mr="2rem">
               <FormLabel htmlFor="cardNumber">Número do Cartão</FormLabel>
-              <Input
-                placeholder="0000 0000 0000 0000"
-                pattern="[\d| ]{16,22}"
-                required
-                type="text"
+              <NumberInput
                 id="cardNumber"
-                data-checkout="cardNumber"
-                name="cardNumber"
                 onPaste={returnFalse}
                 onCopy={returnFalse}
                 onCut={returnFalse}
                 onDrag={returnFalse}
                 onDrop={returnFalse}
-                autoComplete="off"
-                onChange={handleInputChange}
+                pattern="[\d| ]{15,22}"
+                max={9999999999999999999999}
+                onChange={(value) => {
+                  setNumber(value);
+                  guessPaymentMethod(value);
+                }}
+                value={number}
                 onFocus={handleInputFocus}
+              >
+                <NumberInputField
+                  data-checkout="cardNumber"
+                  autoComplete="off"
+                  required
+                  placeholder="0000 0000 0000 0000"
+                  maxLength={22}
+                />
+              </NumberInput>
+            </FormControl>
+            <FormControl>
+              <FormLabel htmlFor="cardholderName">Titular do Cartão</FormLabel>
+              <Input
+                id="cardholderName"
+                data-checkout="cardholderName"
+                type="text"
+                placeholder="Ex: João da Silva"
+                required
+                onChange={({ target }) => setName(target.value)}
+                onFocus={handleInputFocus}
+                value={name}
               />
             </FormControl>
+          </Flex>
+
+          <Flex mt="1rem">
+            <FormControl mr="1.5rem" maxW="25%">
+              <FormLabel htmlFor="cardExpirationMonth">
+                Data de vencimento
+              </FormLabel>
+              <Flex>
+                <NumberInput
+                  id="cardExpirationMonth"
+                  required
+                  onPaste={returnFalse}
+                  onCopy={returnFalse}
+                  onCut={returnFalse}
+                  onDrag={returnFalse}
+                  onDrop={returnFalse}
+                  onChange={setMonth}
+                  onFocus={handleInputFocus}
+                  value={month}
+                >
+                  <NumberInputField
+                    data-checkout="cardExpirationMonth"
+                    autoComplete="off"
+                    required
+                    placeholder="MM"
+                    maxLength={2}
+                  />
+                </NumberInput>
+                <NumberInput
+                  id="cardExpirationYear"
+                  required
+                  onPaste={returnFalse}
+                  onCopy={returnFalse}
+                  onCut={returnFalse}
+                  onDrag={returnFalse}
+                  onDrop={returnFalse}
+                  onChange={setYear}
+                  onFocus={handleInputFocus}
+                  value={year}
+                >
+                  <NumberInputField
+                    data-checkout="cardExpirationYear"
+                    autoComplete="off"
+                    required
+                    placeholder="YY"
+                    maxLength={2}
+                  />
+                </NumberInput>
+              </Flex>
+            </FormControl>
+            <FormControl mr="2rem" maxW="20%">
+              <FormLabel htmlFor="securityCode">Código CVV</FormLabel>
+              <NumberInput
+                pattern="\d{3,4}"
+                id="securityCode"
+                required
+                onChange={setCvc}
+                onFocus={handleInputFocus}
+                onPaste={returnFalse}
+                onCopy={returnFalse}
+                onCut={returnFalse}
+                onDrag={returnFalse}
+                onDrop={returnFalse}
+                value={cvc}
+              >
+                <NumberInputField
+                  data-checkout="securityCode"
+                  autoComplete="off"
+                  required
+                  placeholder="123"
+                  maxLength={4}
+                />
+              </NumberInput>
+            </FormControl>
+            <FormControl>
+              <FormLabel htmlFor="installments">Parcelamento em</FormLabel>
+              <Select
+                type="text"
+                id="installments"
+                name="installments"
+                placeholder="Selecione o valor..."
+                required
+                onChange={({ target }) => setParcelas(target.value)}
+                value={parcelas}
+              ></Select>
+            </FormControl>
+          </Flex>
+
+          <Flex mt="1rem">
             <FormControl mr="2rem">
               <FormLabel htmlFor="docType">Tipo de documento</FormLabel>
               <Select
                 id="docType"
                 name="docType"
                 data-checkout="docType"
-                type="text"
+                required
                 value={docType}
-                onChange={handleInputChange}
+                onChange={({ target }) => setDocType(target.value)}
               ></Select>
             </FormControl>
             <FormControl>
-              <FormLabel htmlFor="cardholderName">Titular do Cartão</FormLabel>
+              <FormLabel htmlFor="docNumber">Número do documento</FormLabel>
               <Input
-                id="cardholderName"
-                name="cardholderName"
-                data-checkout="cardholderName"
+                id="docNumber"
+                name="docNumber"
+                data-checkout="docNumber"
                 type="text"
-                placeholder="Ex: João da Silva"
                 required
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
+                placeholder="CPF ou CNPJ"
+                value={docNumber}
+                onChange={({ target }) => {
+                  const formattedDoc = formatDocNumber(target.value);
+                  setDocNumber(formattedDoc);
+                  formattedDoc.length <= 14
+                    ? setDocType('CPF')
+                    : setDocType('CNPJ');
+                }}
               />
             </FormControl>
+          </Flex>
 
-            <Flex mb="1rem">
-              <FormControl>
-                <FormLabel htmlFor="docNumber">Número do documento</FormLabel>
-                <Input
-                  id="docNumber"
-                  name="docNumber"
-                  data-checkout="docNumber"
-                  type="text"
-                  value={docNumber}
-                  onChange={handleInputChange}
-                />
-              </FormControl>
-            </Flex>
-          </Flex>
-          <Flex>
-            <Box>
-              <FormControl>
-                <FormLabel htmlFor="cardExpirationMonth">
-                  Data de vencimento
-                </FormLabel>
-                <Flex>
-                  <Input
-                    type="text"
-                    name="cardExpirationMonth"
-                    placeholder="MM"
-                    id="cardExpirationMonth"
-                    data-checkout="cardExpirationMonth"
-                    onPaste={returnFalse}
-                    onCopy={returnFalse}
-                    onCut={returnFalse}
-                    onDrag={returnFalse}
-                    onDrop={returnFalse}
-                    autoComplete="off"
-                    required
-                    onChange={handleInputChange}
-                    onFocus={handleInputFocus}
-                  />
-                  <Input
-                    type="text"
-                    name="cardExpirationYear"
-                    placeholder="YY"
-                    id="cardExpirationYear"
-                    data-checkout="cardExpirationYear"
-                    onPaste={returnFalse}
-                    onCopy={returnFalse}
-                    onCut={returnFalse}
-                    onDrag={returnFalse}
-                    onDrop={returnFalse}
-                    autoComplete="off"
-                    required
-                    onChange={handleInputChange}
-                    onFocus={handleInputFocus}
-                  />
-                </Flex>
-              </FormControl>
-            </Box>
-            <FormControl>
-              <FormLabel htmlFor="securityCode">Código CVV</FormLabel>
-              <Input
-                name="securityCode"
-                placeholder="123"
-                pattern="\d{3,4}"
-                required
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
-                id="securityCode"
-                data-checkout="securityCode"
-                type="text"
-                onPaste={returnFalse}
-                onCopy={returnFalse}
-                onCut={returnFalse}
-                onDrag={returnFalse}
-                onDrop={returnFalse}
-                autoComplete="off"
-              />
-            </FormControl>
-          </Flex>
-          <S.FormGroup>
-            <FormLabel htmlFor="installments">Parcelamento em</FormLabel>
-            <Select
-              type="text"
-              id="installments"
-              name="installments"
-              onChange={({ target }) => setParcelas(target.value)}
-              value={parcelas}
-            ></Select>
-          </S.FormGroup>
-          <div style={{ display: 'none' }}>
+          <Box display="none">
             <select
               type="hidden"
               id="issuer"
@@ -308,12 +321,20 @@ export default function CardComponent() {
               id="transactionAmount"
               value={transactionAmount}
             />
-          </div>
-          <Box>
-            <Button type="submit">{loading ? 'Carregando...' : 'Pagar'}</Button>
           </Box>
+          <Flex mt="2rem" justifyContent="flex-end">
+            <Button
+              variant="primary"
+              size="lg"
+              type="submit"
+              isLoading={loading}
+              loadingText="Processando..."
+            >
+              Pagar
+            </Button>
+          </Flex>
         </form>
       </Box>
-    </Flex>
+    </Box>
   );
 }

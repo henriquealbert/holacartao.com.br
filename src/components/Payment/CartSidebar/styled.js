@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 
 export const Content = styled.div`
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
-  margin-top: 3.5rem;
+  padding: 1.5rem;
+
   h2 {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
@@ -77,16 +76,13 @@ export const PriceInfo = styled.div`
     letter-spacing: 0.01em;
     color: var(--gray-2);
   }
-  p:last-child {
-    padding: 0;
-  }
 
   .sidebar-cart-total:before {
     content: '';
     position: absolute;
     display: block;
     height: 1px;
-    width: 80%;
+    width: 100%;
     bottom: 45px;
     background: var(--white-3);
     z-index: 1;

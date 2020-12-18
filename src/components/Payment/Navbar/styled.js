@@ -18,7 +18,6 @@ export const Wrapper = styled.nav`
       text-transform: uppercase;
       color: #c9c3c3;
       padding-right: 2rem;
-      cursor: pointer;
 
       &.active {
         color: var(--black);
