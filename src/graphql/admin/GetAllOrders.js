@@ -11,24 +11,33 @@ const GET_ALL_ORDERS = gql`
       preco
       grafica_pedido
       metodo_pagamento
+      docType
+      docNumber
+      installments
+      total_pago
+      mercadopago_id
+      link_boleto
+      data_aprovacao
+      data_criacao
+      cartao_frente
+      cartao_verso
       address {
         id
-        name
-        last_name
-        cpf
+        firstName
+        lastName
+        email
         cep
         logradouro
-        numero
+        streetNumber
         referencia
-        telefone
-        cidade
-        estado
+        areaCode
+        phoneNumber
+        cidadeEstado
         bairro
         complemento
       }
       user {
         id
-        email
       }
       observations {
         id

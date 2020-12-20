@@ -1,34 +1,31 @@
-import {
-  formatCEP,
-  formatPrice,
-  formatCPF,
-  formatPayment,
-  formatPhone
-} from '@/utils/format';
+import { formatPrice, formatPayment, formatPhone } from '@/utils/format';
 
 import * as S from './styled';
 
 export default function SingleOrderTable({ order }) {
+  console.log(order);
   return (
     <S.OrderTable>
       <tbody>
         <tr>
           <td>Nome:</td>
           <td>
-            {order?.address?.name} {order?.address?.last_name}
+            {order?.address?.firstName} {order?.address?.lastName}
           </td>
         </tr>
         <tr>
           <td>E-mail:</td>
-          <td>{order?.user.email}</td>
+          <td>{order?.address?.email}</td>
         </tr>
         <tr>
           <td>Telefone:</td>
-          <td>{formatPhone(order?.address?.telefone)}</td>
+          <td>
+            {formatPhone(order?.address.areaCode + order?.address?.phoneNumber)}
+          </td>
         </tr>
         <tr>
-          <td>CPF:</td>
-          <td>{formatCPF(order?.address?.cpf)}</td>
+          <td>{order?.docType}:</td>
+          <td>{order?.docNumber}</td>
         </tr>
         <tr>
           <td>Quantidade:</td>
@@ -46,19 +43,17 @@ export default function SingleOrderTable({ order }) {
           <td>Endereço:</td>
           <td>
             {order?.address?.logradouro} - <strong>nº</strong>{' '}
-            {order?.address?.numero} - <strong>Bairro</strong>{' '}
+            {order?.address?.streetNumber} - <strong>Bairro</strong>{' '}
             {order?.address?.bairro}
           </td>
         </tr>
         <tr>
           <td>Cidade e Estado:</td>
-          <td>
-            {order?.address?.cidade} - {order?.address?.estado}
-          </td>
+          <td>{order?.address?.cidadeEstado}</td>
         </tr>
         <tr>
           <td>CEP:</td>
-          <td>{formatCEP(order?.address?.cep)}</td>
+          <td>{order?.address?.cep}</td>
         </tr>
         <tr>
           <td>Complemento:</td>

@@ -4,7 +4,6 @@ import serverClient from '@/graphql/serverClient';
 import GET_CARD_MODELS from '@/graphql/queries/GetCardModels';
 
 import Layout from '@/components/Layout';
-// import StepsTwo from '@/components/StepsTwo';
 import ModelosList from '@/components/ModelosList';
 
 export default function Modelos({ data }) {
@@ -14,7 +13,6 @@ export default function Modelos({ data }) {
         <title>Modelos de Cartão - Hola Cartão</title>
       </Head>
       <Layout>
-        {/* <StepsTwo /> */}
         <ModelosList data={data} />
       </Layout>
     </>

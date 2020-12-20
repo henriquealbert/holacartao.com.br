@@ -1,6 +1,14 @@
-import * as S from './styled';
 import { useState } from 'react';
 import Link from 'next/link';
+import {
+  Box,
+  Flex,
+  FormControl,
+  FormLabel,
+  Select,
+  Text
+} from '@chakra-ui/react';
+import SingleModel from './singleModel';
 
 export default function ModelosList({ data }) {
   const { cardModels } = data;
@@ -12,29 +20,41 @@ export default function ModelosList({ data }) {
   );
 
   return (
-    <S.ModelosWrapper>
-      <h1>Escolha um modelo para customizar</h1>
-      <S.TextWrapper>
-        <p>
-          Crie seu próprio cartão de visita à partir de modelo em branco{' '}
+    <Box mx="1rem" mt="52px">
+      <Box>
+        <Text
+          as="h1"
+          fontFamily="Roboto"
+          fontWeight="500"
+          fontSize="55px"
+          letterSpacing="0.01em"
+          lineHeight="66px"
+        >
+          Modelos de Cartão de Visita
+        </Text>
+        <Text fontSize="18px" letterSpacing="0.01em" color="gray.600" my="42px">
+          Crie seu próprio cartão de visita à partir de um modelo em branco{' '}
           <Link
             href={{
               pathname: '/editor/',
               query: { url: '/editor/' }
             }}
           >
-            <a>clicando aqui</a>
-          </Link>
-        </p>
-        <p>Ou clique em um modelo abaixo para personalizar. </p>
-      </S.TextWrapper>
-
-      <S.SelectModelo>
-        <p>Filtrar por Categoria:</p>
-        <select
-          name="category"
-          id="category"
-          onChange={(e) => setCategoria(e.target.value)}
+            <Text as="a" textDecoration="underline">
+              clicando aqui
+            </Text>
+          </Link>{' '}
+          ou escolha um modelo abaixo para personalizar.
+        </Text>
+      </Box>
+      <FormControl>
+        <FormLabel>Selecione uma Categoria</FormLabel>
+        <Select
+          onChange={setCategoria}
+          border="3px solid"
+          borderColor="brand.200"
+          h="50px"
+          size="lg"
         >
           <option value="All">Todos os Modelos</option>
           {cardCategories?.map((category) => {
@@ -44,51 +64,17 @@ export default function ModelosList({ data }) {
               </option>
             );
           })}
-        </select>
-      </S.SelectModelo>
-
-      <S.ModeloGrid>
+        </Select>
+      </FormControl>
+      <Flex mt="56px">
         {categoria === 'All'
-          ? cardModels?.map((model) => {
-              return (
-                <S.Modelo key={model.id}>
-                  <Link
-                    href={{
-                      pathname: `/editor/${model.slug}`,
-                      query: {
-                        url: `/editor/${model.slug}`,
-                        card: model.id
-                      }
-                    }}
-                  >
-                    <a>
-                      <S.ModeloContent>{model.title}</S.ModeloContent>
-                    </a>
-                  </Link>
-                </S.Modelo>
-              );
-            })
-          : categoriesList?.map((model) => {
-              return (
-                <S.Modelo key={model.id}>
-                  <Link
-                    href={{
-                      pathname: `/editor/${model.slug}`,
-
-                      query: {
-                        url: `/editor/${model.slug}`,
-                        card: model.id
-                      }
-                    }}
-                  >
-                    <a>
-                      <S.ModeloContent>{model.title}</S.ModeloContent>
-                    </a>
-                  </Link>
-                </S.Modelo>
-              );
-            })}
-      </S.ModeloGrid>
-    </S.ModelosWrapper>
+          ? cardModels?.map((model) => (
+              <SingleModel key={model.id} model={model} />
+            ))
+          : categoriesList?.map((model) => (
+              <SingleModel key={model.id} model={model} />
+            ))}
+      </Flex>
+    </Box>
   );
 }
