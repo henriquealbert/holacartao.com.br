@@ -113,6 +113,7 @@ export default function ModelosList({ data }) {
           mt="56px"
           direction={{ base: 'column', md: 'row' }}
           justifyContent={{ base: '', md: 'space-around' }}
+          flexWrap="wrap"
         >
           {categoria === 'All'
             ? currentModelsAll?.map((model) => (
