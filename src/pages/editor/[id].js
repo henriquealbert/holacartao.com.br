@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import Router from 'next/router';
 
 import { auth } from '@/Contexts/AppContext';
 import serverClient from '@/graphql/serverClient';
@@ -7,6 +8,7 @@ import GET_CARD_MODEL from '@/graphql/admin/GetCardModel';
 import GET_SINGLE_SAVED_CARD from '@/graphql/queries/GetSingleSavedCard';
 
 import LoadingEditor from '@/Editor/Loading';
+import useWindowDimensions from '@/utils/getWindowDimensions';
 
 const options = {
   ssr: false,
@@ -15,6 +17,8 @@ const options = {
 const EditorComponent = dynamic(() => import('@/Editor/index'), options);
 
 export default function UserEditor({ data }) {
+  const { isMobile } = useWindowDimensions();
+  if (isMobile) Router.push('/modelos/');
   return (
     <>
       <Head>
