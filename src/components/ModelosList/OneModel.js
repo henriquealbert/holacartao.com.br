@@ -2,7 +2,7 @@ import { Box, Img, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import Router from 'next/router';
 
-export default function SingleModel({ model, cancelClick, onOpen }) {
+export default function OneModel({ model, cancelClick, onOpen }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const onClick = () => {

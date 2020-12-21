@@ -16,7 +16,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 
-import SingleModel from './SingleModel';
+import OneModel from './OneModel';
 import SelectCategory from './SelectCategory';
 import Pagination from './Pagination';
 import useWindowDimensions from '@/utils/getWindowDimensions';
@@ -116,7 +116,7 @@ export default function ModelosList({ data }) {
         >
           {categoria === 'All'
             ? currentModelsAll?.map((model) => (
-                <SingleModel
+                <OneModel
                   key={model.id}
                   model={model}
                   cancelClick={isMobile}
@@ -124,7 +124,7 @@ export default function ModelosList({ data }) {
                 />
               ))
             : categoriesList?.map((model) => (
-                <SingleModel
+                <OneModel
                   key={model.id}
                   model={model}
                   cancelClick={isMobile}
