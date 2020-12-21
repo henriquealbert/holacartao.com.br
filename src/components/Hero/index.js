@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Img, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 
 const Hero = () => {
   return (
@@ -69,31 +70,35 @@ const Hero = () => {
                 direction={{ base: 'column', lg: 'row' }}
                 alignItems="center"
               >
-                <Button
-                  as="a"
-                  variant="primary"
-                  size="lg"
-                  maxW="250px"
-                  w="100%"
-                  h="50px"
-                  cursor="pointer"
-                  mr={{ base: '', lg: '2rem' }}
-                >
-                  Ver Modelos
-                </Button>
+                <Link href="/modelos/">
+                  <Button
+                    as="a"
+                    variant="primary"
+                    size="lg"
+                    maxW="250px"
+                    w="100%"
+                    h="50px"
+                    cursor="pointer"
+                    mr={{ base: '', lg: '2rem' }}
+                  >
+                    Ver Modelos
+                  </Button>
+                </Link>
 
-                <Button
-                  as="a"
-                  variant="outline"
-                  size="lg"
-                  maxW="250px"
-                  w="100%"
-                  h="50px"
-                  mt={{ base: '20px', lg: '0' }}
-                  cursor="pointer"
-                >
-                  Criar meu Cartão
-                </Button>
+                <Link href="/modelos/">
+                  <Button
+                    as="a"
+                    variant="outline"
+                    size="lg"
+                    maxW="250px"
+                    w="100%"
+                    h="50px"
+                    mt={{ base: '20px', lg: '0' }}
+                    cursor="pointer"
+                  >
+                    Criar meu Cartão
+                  </Button>
+                </Link>
               </Flex>
             </Box>
           </Box>
