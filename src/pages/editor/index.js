@@ -1,8 +1,10 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import Router from 'next/router';
 
 import { auth } from '@/Contexts/AppContext';
 import LoadingEditor from '@/Editor/Loading';
+import useWindowDimensions from '@/utils/getWindowDimensions';
 
 const options = {
   ssr: false,
@@ -11,6 +13,9 @@ const options = {
 const EditorComponent = dynamic(() => import('@/Editor/index'), options);
 
 export default function Editor() {
+  const { isMobile } = useWindowDimensions();
+  if (isMobile) Router.push('/modelos/');
+
   return (
     <>
       <Head>

@@ -4,9 +4,8 @@ import * as S from './styled';
 import { useFetchAdmin } from '@/hooks/useFetchAdmin';
 import GET_ALL_ORDERS from '@/graphql/admin/GetAllOrders';
 
-export default function AdminTrello({ initialData }) {
+export default function AdminTrello() {
   const { data, error } = useFetchAdmin(GET_ALL_ORDERS, null, {
-    initialData,
     revalidateOnMount: true
   });
 

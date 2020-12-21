@@ -1,34 +1,40 @@
 import {
-  formatCEP,
   formatPrice,
-  formatCPF,
   formatPayment,
-  formatPhone
+  formatPhone,
+  formatDateHour
 } from '@/utils/format';
+
+import Link from 'next/link';
 
 import * as S from './styled';
 
 export default function SingleOrderTable({ order }) {
+  console.log(order);
   return (
     <S.OrderTable>
       <tbody>
         <tr>
           <td>Nome:</td>
           <td>
-            {order?.address?.name} {order?.address?.last_name}
+            {order?.address?.firstName} {order?.address?.lastName}
           </td>
         </tr>
         <tr>
           <td>E-mail:</td>
-          <td>{order?.user.email}</td>
+          <td>{order?.address?.email}</td>
         </tr>
         <tr>
           <td>Telefone:</td>
-          <td>{formatPhone(order?.address?.telefone)}</td>
+          <td>
+            {formatPhone(
+              order?.address?.areaCode + order?.address?.phoneNumber
+            )}
+          </td>
         </tr>
         <tr>
-          <td>CPF:</td>
-          <td>{formatCPF(order?.address?.cpf)}</td>
+          <td>{order?.docType}:</td>
+          <td>{order?.docNumber}</td>
         </tr>
         <tr>
           <td>Quantidade:</td>
@@ -46,19 +52,17 @@ export default function SingleOrderTable({ order }) {
           <td>Endereço:</td>
           <td>
             {order?.address?.logradouro} - <strong>nº</strong>{' '}
-            {order?.address?.numero} - <strong>Bairro</strong>{' '}
+            {order?.address?.streetNumber} - <strong>Bairro</strong>{' '}
             {order?.address?.bairro}
           </td>
         </tr>
         <tr>
           <td>Cidade e Estado:</td>
-          <td>
-            {order?.address?.cidade} - {order?.address?.estado}
-          </td>
+          <td>{order?.address?.cidadeEstado}</td>
         </tr>
         <tr>
           <td>CEP:</td>
-          <td>{formatCEP(order?.address?.cep)}</td>
+          <td>{order?.address?.cep}</td>
         </tr>
         <tr>
           <td>Complemento:</td>
@@ -68,6 +72,63 @@ export default function SingleOrderTable({ order }) {
         <tr>
           <td>Referência:</td>
           <td>{order?.address?.referencia}</td>
+        </tr>
+
+        <tr>
+          <td>Parcelas:</td>
+          <td>{order?.installments}</td>
+        </tr>
+
+        <tr>
+          <td>Total Pago no Mercadopago:</td>
+          <td>{formatPrice(order?.total_pago)}</td>
+        </tr>
+
+        <tr>
+          <td>Mercadopago ID:</td>
+          <td>{order?.mercadopago_id}</td>
+        </tr>
+
+        <tr>
+          <td>Data de criação:</td>
+          <td>{formatDateHour(order?.data_criacao)}</td>
+        </tr>
+
+        <tr>
+          <td>Data de Aprovação:</td>
+          <td>{formatDateHour(order?.data_aprovacao)}</td>
+        </tr>
+
+        {order?.link_boleto !== 'null' ? (
+          <tr>
+            <td>Link do Boleto:</td>
+            <td>
+              <a
+                href={order?.link_boleto}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {order?.link_boleto}
+              </a>
+            </td>
+          </tr>
+        ) : null}
+        <tr>
+          <td>Cartão no Editor:</td>
+          <td>
+            <Link
+              href={{
+                pathname: `/editor/${order?.saved_card?.slug}`,
+                query: {
+                  url: `/editor/${order?.saved_card?.slug}`,
+                  saved_card: true,
+                  card: order?.saved_card?.id
+                }
+              }}
+            >
+              <a>Abrir no editor</a>
+            </Link>
+          </td>
         </tr>
 
         <tr>

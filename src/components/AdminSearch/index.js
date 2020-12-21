@@ -6,14 +6,12 @@ import GET_ALL_ORDERS from '@/graphql/admin/GetAllOrders';
 
 import * as S from './styled';
 
-export default function AdminSearch({ initialData }) {
-  const { data, error } = useFetchAdmin(GET_ALL_ORDERS, null, {
-    initialData: initialData
-  });
+export default function AdminSearch() {
+  const { data, error } = useFetchAdmin(GET_ALL_ORDERS);
 
   const [searchTerm, setSearchTerm] = useState('');
 
-  const KEYS_TO_FILTERS = ['id', 'user.email', 'address.cep', 'address.cpf'];
+  const KEYS_TO_FILTERS = ['id', 'address.email', 'address.cep'];
 
   const filtered = data?.orders.filter(
     createFilter(searchTerm, KEYS_TO_FILTERS)
@@ -56,13 +54,13 @@ export default function AdminSearch({ initialData }) {
                         Pedido:<span>{item.id}</span>
                       </li>
                       <li>
-                        Email:<span>{item.user.email}</span>
+                        Email:<span>{item.address?.email}</span>
                       </li>
                       <li>
-                        CPF:<span>{item.address.cpf}</span>
+                        {item.docType}:<span>{item.docNumber}</span>
                       </li>
                       <li>
-                        CEP:<span>{item.address.cep}</span>
+                        CEP:<span>{item.address?.cep}</span>
                       </li>
                     </ul>
                   </a>

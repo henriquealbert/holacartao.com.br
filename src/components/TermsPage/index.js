@@ -6,9 +6,9 @@ export default function TermsPage({ data }) {
     <S.TermsWrapper>
       <h1>
         <S.FileIcon />
-        {termos.title}
+        {termos?.title}
       </h1>
-      <div dangerouslySetInnerHTML={{ __html: termos.content }} />
+      <div dangerouslySetInnerHTML={{ __html: termos?.content }} />
     </S.TermsWrapper>
   );
 }

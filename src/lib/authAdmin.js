@@ -17,6 +17,7 @@ export const adminLogin = (identifier, password) => {
         if (res.data.user.role.name === 'Admin') {
           //set token response from Strapi for server validation
           Cookie.set('adminToken', res.data.jwt, { expires: 7, path: '/' });
+          Cookie.set('token', res.data.jwt, { expires: 7, path: '/' });
 
           //resolve the promise to set loading to false in SignUp form
           resolve(res);
@@ -34,6 +35,7 @@ export const adminLogin = (identifier, password) => {
 export const adminLogout = () => {
   //remove token and user cookie
   Cookie.remove('adminToken');
+  Cookie.remove('token');
   delete window.__user;
   // sync logout between multiple windows
   window.localStorage.setItem('logout', Date.now());
