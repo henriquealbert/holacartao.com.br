@@ -22,11 +22,11 @@ import Pagination from './Pagination';
 import useWindowDimensions from '@/utils/getWindowDimensions';
 
 export default function ModelosList({ data }) {
-  //modal mobile
+  // modal mobile
   const { isMobile } = useWindowDimensions();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  //data
+  // data
   const { cardModels } = data;
   const { cardCategories } = data;
 
