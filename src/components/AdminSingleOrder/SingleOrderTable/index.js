@@ -1,4 +1,11 @@
-import { formatPrice, formatPayment, formatPhone } from '@/utils/format';
+import {
+  formatPrice,
+  formatPayment,
+  formatPhone,
+  formatDateHour
+} from '@/utils/format';
+
+import Link from 'next/link';
 
 import * as S from './styled';
 
@@ -20,7 +27,9 @@ export default function SingleOrderTable({ order }) {
         <tr>
           <td>Telefone:</td>
           <td>
-            {formatPhone(order?.address.areaCode + order?.address?.phoneNumber)}
+            {formatPhone(
+              order?.address?.areaCode + order?.address?.phoneNumber
+            )}
           </td>
         </tr>
         <tr>
@@ -63,6 +72,63 @@ export default function SingleOrderTable({ order }) {
         <tr>
           <td>Referência:</td>
           <td>{order?.address?.referencia}</td>
+        </tr>
+
+        <tr>
+          <td>Parcelas:</td>
+          <td>{order?.installments}</td>
+        </tr>
+
+        <tr>
+          <td>Total Pago no Mercadopago:</td>
+          <td>{formatPrice(order?.total_pago)}</td>
+        </tr>
+
+        <tr>
+          <td>Mercadopago ID:</td>
+          <td>{order?.mercadopago_id}</td>
+        </tr>
+
+        <tr>
+          <td>Data de criação:</td>
+          <td>{formatDateHour(order?.data_criacao)}</td>
+        </tr>
+
+        <tr>
+          <td>Data de Aprovação:</td>
+          <td>{formatDateHour(order?.data_aprovacao)}</td>
+        </tr>
+
+        {order?.link_boleto !== 'null' ? (
+          <tr>
+            <td>Link do Boleto:</td>
+            <td>
+              <a
+                href={order?.link_boleto}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {order?.link_boleto}
+              </a>
+            </td>
+          </tr>
+        ) : null}
+        <tr>
+          <td>Cartão no Editor:</td>
+          <td>
+            <Link
+              href={{
+                pathname: `/editor/${order?.saved_card?.slug}`,
+                query: {
+                  url: `/editor/${order?.saved_card?.slug}`,
+                  saved_card: true,
+                  card: order?.saved_card?.id
+                }
+              }}
+            >
+              <a>Abrir no editor</a>
+            </Link>
+          </td>
         </tr>
 
         <tr>

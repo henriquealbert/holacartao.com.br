@@ -23,6 +23,7 @@ const GET_SINGLE_ORDER = gql`
       cartao_verso
       saved_card {
         id
+        slug
       }
       address {
         id

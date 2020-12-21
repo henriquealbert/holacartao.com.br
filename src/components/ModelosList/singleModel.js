@@ -5,7 +5,7 @@ export default function SingleModel({ model }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   return (
-    <Box key={model.id}>
+    <Box key={model.id} mb="24px">
       <Link
         href={{
           pathname: `/editor/${model.slug}`,

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import {
   Box,
+  Button,
   Flex,
   FormControl,
   FormLabel,
@@ -9,12 +10,14 @@ import {
   Text
 } from '@chakra-ui/react';
 import SingleModel from './singleModel';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 
 export default function ModelosList({ data }) {
   const { cardModels } = data;
   const { cardCategories } = data;
 
   const [categoria, setCategoria] = useState('All');
+
   const categoriesList = cardModels?.filter(
     (model) => model.card_category.title === categoria
   );
@@ -50,7 +53,7 @@ export default function ModelosList({ data }) {
       <FormControl>
         <FormLabel>Selecione uma Categoria</FormLabel>
         <Select
-          onChange={setCategoria}
+          onChange={({ target }) => setCategoria(target.value)}
           border="3px solid"
           borderColor="brand.200"
           h="50px"
@@ -66,7 +69,7 @@ export default function ModelosList({ data }) {
           })}
         </Select>
       </FormControl>
-      <Flex mt="56px">
+      <Flex mt="56px" direction={{ base: 'column', md: 'row' }}>
         {categoria === 'All'
           ? cardModels?.map((model) => (
               <SingleModel key={model.id} model={model} />
@@ -74,6 +77,22 @@ export default function ModelosList({ data }) {
           : categoriesList?.map((model) => (
               <SingleModel key={model.id} model={model} />
             ))}
+      </Flex>
+      <Flex justifyContent="center" mb="2rem">
+        <Button
+          m="2rem auto"
+          variant="link"
+          type="button"
+          textTransform="none"
+          fontWeight="bold"
+          fontSize="18px"
+          letterSpacing="0.02em"
+          color="gray.800"
+          size="lg"
+          rightIcon={<ChevronDownIcon w={8} h={8} />}
+        >
+          Mais Modelos
+        </Button>
       </Flex>
     </Box>
   );

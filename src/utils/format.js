@@ -4,8 +4,11 @@ export function formatCEP(CEP) {
 }
 
 export function formatPrice(Price) {
-  const price = 'R$ ' + String(Price) + 0;
-  return price.replace('.', ',');
+  const price = Price?.toLocaleString('pt-br', {
+    style: 'currency',
+    currency: 'BRL'
+  });
+  return price;
 }
 
 export function formatCPF(CPF) {
