@@ -36,7 +36,6 @@ export default function FormLogin() {
     login(identifier, password)
       .then((res) => {
         setLoading(false);
-        // set authed User in global context to update header/app state
         setUser(res.data.user);
       })
       .catch(() => {

@@ -25,8 +25,14 @@ export const registerUser = (username, email, password, occupation, terms) => {
 
         //resolve the promise to set loading to false in SignUp form
         resolve(res);
-        //redirect back to home page for restaurance selection
-        Router.push('/minha-conta/');
+        if (Router.query.url) {
+          Router.push({
+            pathname: Router.query.url,
+            query: Router.query
+          });
+        } else {
+          Router.push('/minha-conta/');
+        }
       })
       .catch((error) => {
         //reject the promise and pass the error object back to the form
