@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Img, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 
-const Hero = () => {
+export default function HomeHero() {
   return (
     <Box h="100%" display={{ md: 'flex' }}>
       <Box
@@ -106,6 +106,4 @@ const Hero = () => {
       </Box>
     </Box>
   );
-};
-
-export default Hero;
+}

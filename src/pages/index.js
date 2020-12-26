@@ -1,7 +1,8 @@
 import Head from 'next/head';
 
 import Layout from '@/components/Layout';
-import Hero from '@/components/Hero';
+import HomeHero from '@/components/HomeHero';
+import HomeDescription from '@/components/HomeDescription';
 
 export default function Index() {
   return (
@@ -10,7 +11,8 @@ export default function Index() {
         <title>Início - Hola Cartão</title>
       </Head>
       <Layout home>
-        <Hero />
+        <HomeHero />
+        <HomeDescription />
       </Layout>
     </>
   );

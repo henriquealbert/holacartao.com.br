@@ -8,7 +8,7 @@ export default function CriarConta() {
   return (
     <>
       <Head>
-        <title>Crie sua Conta - Hola Cartão</title>
+        <title>Cadastre-se - Hola Cartão</title>
       </Head>
       <Layout>
         <FormCreate />
