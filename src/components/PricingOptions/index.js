@@ -19,7 +19,7 @@ export const BasicPrice = () => {
   );
 };
 
-export const StandardPrice = () => {
+export const StandardPrice = ({ home }) => {
   return (
     <S.OptionItem>
       <S.Medalha>
@@ -27,7 +27,7 @@ export const StandardPrice = () => {
       </S.Medalha>
       <h4>Standard</h4>
       <S.Border gradient="standard">
-        <S.BoxOption>
+        <S.BoxOption home={home}>
           <S.Quantity>
             250<span>cartões</span>
           </S.Quantity>
@@ -36,6 +36,11 @@ export const StandardPrice = () => {
             <span>R$</span>89,90
           </S.Price>
         </S.BoxOption>
+        {home ? (
+          <S.CustoBeneficio>melhor custo benefício! </S.CustoBeneficio>
+        ) : (
+          ''
+        )}
       </S.Border>
     </S.OptionItem>
   );

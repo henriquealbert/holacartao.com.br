@@ -45,7 +45,14 @@ export default function HomeDescription() {
             mb={{ base: '40px', lg: '0' }}
           >
             <Link href="/modelos/">
-              <Button variant="primary" size="lg" as="a" cursor="pointer">
+              <Button
+                variant="primary"
+                size="lg"
+                as="a"
+                cursor="pointer"
+                h="50px"
+                w="250px"
+              >
                 Ver Modelos
               </Button>
             </Link>

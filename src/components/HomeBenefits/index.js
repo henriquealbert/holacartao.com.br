@@ -30,8 +30,9 @@ export default function HomeBenefits() {
       mx={{ base: '36px', lg: 'auto' }}
     >
       <Flex
-        direction={{ base: 'column', md: 'row' }}
-        justifyContent={{ base: 'initial', md: 'center' }}
+        direction={{ base: 'column', lg: 'row' }}
+        justifyContent={{ base: 'initial', lg: 'space-between' }}
+        alignItems={{ base: 'center', lg: 'initial' }}
       >
         <GradientText>sem stress</GradientText>
         <Box position="relative">
