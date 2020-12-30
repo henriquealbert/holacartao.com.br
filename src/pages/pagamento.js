@@ -1,6 +1,6 @@
-import Head from 'next/head';
 import { useEffect } from 'react';
 import nextCookie from 'next-cookies';
+import { NextSeo } from 'next-seo';
 
 import Layout from '@/components/Layout';
 import Payment from '@/components/Payment';
@@ -17,9 +17,11 @@ export default function Pagamento() {
 
   return (
     <>
-      <Head>
-        <title>Finalize e Imprima o seu Cartão - Hola Cartão</title>
-      </Head>
+      <NextSeo
+        noindex={true}
+        title="Finalize sua Compra e Imprima o seu Cartão - Hola Cartão"
+      />
+
       <Layout>
         <Payment />
       </Layout>

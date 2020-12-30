@@ -1,17 +1,20 @@
-import Head from 'next/head';
-
 import Layout from '@/components/Layout';
-import Hero from '@/components/Hero';
+import HomeHero from '@/components/HomeHero';
+import HomeDescription from '@/components/HomeDescription';
+import HomeBenefits from '@/components/HomeBenefits';
+import HomeFeatures from '@/components/HomeFeatures';
+import HomePrices from '@/components/HomePrices';
+import HomeLast from '@/components/HomeLast';
 
 export default function Index() {
   return (
-    <>
-      <Head>
-        <title>Início - Hola Cartão</title>
-      </Head>
-      <Layout home>
-        <Hero />
-      </Layout>
-    </>
+    <Layout home>
+      <HomeHero />
+      <HomeDescription />
+      <HomeBenefits />
+      <HomeFeatures />
+      <HomePrices />
+      <HomeLast />
+    </Layout>
   );
 }

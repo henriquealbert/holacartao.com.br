@@ -1,18 +1,20 @@
+import { NextSeo } from 'next-seo';
 import { auth } from '@/Contexts/AppContext';
 // Components
-import Head from 'next/head';
 import Layout from '@/components/Layout';
 import MyAccOrdersID from '@/components/MyAccOrdersID';
 import MyAccLayout from '@/components/MyAccLayout';
 import serverClient from '@/graphql/serverClient';
 import GET_ORDER from '@/graphql/queries/GetOrder';
 
-export default function MinhaContaPedidosID({ data }) {
+export default function MinhaContaPedidosID({ data, id }) {
   return (
     <>
-      <Head>
-        <title>Pedido # - Meus Pedidos - Hola Cartão</title>
-      </Head>
+      <NextSeo
+        noindex={true}
+        title={`Pedido #${id} - Meus Pedidos - Hola Cartão`}
+      />
+
       <Layout>
         <MyAccLayout>
           <MyAccOrdersID data={data} />
@@ -39,6 +41,6 @@ export async function getServerSideProps(ctx) {
   });
 
   return {
-    props: { data } // will be passed to the page component as props
+    props: { data, id } // will be passed to the page component as props
   };
 }

@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Img, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 
-const Hero = () => {
+export default function HomeHero() {
   return (
     <Box h="100%" display={{ md: 'flex' }}>
       <Box
@@ -12,6 +12,7 @@ const Hero = () => {
         <Box w={{ base: '100vw', md: '50%' }}>
           <Img
             src="/static/hero.jpg"
+            alt="Mulher Sorrindo para a solução Hola Cartão"
             w="100%"
             h={{ base: '100vh', md: '100vh' }}
             minH={{ base: '667px', md: 'auto' }}
@@ -50,6 +51,7 @@ const Hero = () => {
                 letterSpacing="0.01em"
                 color="white"
                 maxW={{ base: '325px', md: '525px' }}
+                as="h1"
               >
                 Uma solução <br /> em cartões de visita.
               </Text>
@@ -61,6 +63,7 @@ const Hero = () => {
                 fontFamily="Roboto"
                 mt="30px"
                 maxW={{ base: '325px', md: '525px' }}
+                as="h2"
               >
                 Crie seu cartão de visita online e receba impresso em casa em
                 até 7 dias com frete grátis!
@@ -106,6 +109,4 @@ const Hero = () => {
       </Box>
     </Box>
   );
-};
-
-export default Hero;
+}

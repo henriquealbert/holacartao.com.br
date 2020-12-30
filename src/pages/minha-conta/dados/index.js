@@ -1,7 +1,7 @@
+import { NextSeo } from 'next-seo';
 import { auth } from '@/Contexts/AppContext';
 
 // Components
-import Head from 'next/head';
 import Layout from '@/components/Layout';
 import MyAccData from '@/components/MyAccData';
 import MyAccLayout from '@/components/MyAccLayout';
@@ -12,9 +12,8 @@ import GET_USER from '@/graphql/queries/GetUser';
 export default function MinhaContaDados({ initialData }) {
   return (
     <>
-      <Head>
-        <title>Meus Dados - Hola Cartão</title>
-      </Head>
+      <NextSeo noindex={true} title="Meus Dados - Hola Cartão" />
+
       <Layout>
         <MyAccLayout>
           <MyAccData initialData={initialData} />

@@ -1,7 +1,7 @@
 import { authAdmin } from '@/Contexts/AdminContext';
+import { NextSeo } from 'next-seo';
 
 // Components
-import Head from 'next/head';
 import serverClient from '@/graphql/serverClient';
 import GET_SINGLE_ORDER from '@/graphql/admin/GetSingleOrder';
 import AdminHeader from '@/components/AdminHeader';
@@ -10,9 +10,11 @@ import AdminSingleOrder from '@/components/AdminSingleOrder';
 export default function AdminDashboardPedidosID({ order }) {
   return (
     <>
-      <Head>
-        <title>Pedido #2020{order.order.id} - Admin - Hola Cartão</title>
-      </Head>
+      <NextSeo
+        noindex={true}
+        title={`Pedido #2020${order.order.id} - Admin - Hola Cartão`}
+      />
+
       <AdminHeader />
       <AdminSingleOrder initialData={order} />
     </>

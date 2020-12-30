@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
+  <url>
+    <loc>https://holacartao.com.br/</loc>
+  </url>
+
+  <url>
+    <loc>https://holacartao.com.br/ajuda/</loc>
+  </url>
+
+  <url>
+    <loc>https://holacartao.com.br/politica-privacidade/</loc>
+  </url>
+
+  <url>
+    <loc>https://holacartao.com.br/criar-conta/</loc>
+  </url>
+
+  <url>
+    <loc>https://holacartao.com.br/criar-nova-senha/</loc>
+  </url>
+
+  <url>
+    <loc>https://holacartao.com.br/esqueceu-senha/</loc>
+  </url>
+
+  <url>
+    <loc>https://holacartao.com.br/login/</loc>
+  </url>
+
+  <url>
+    <loc>https://holacartao.com.br/modelos/</loc>
+  </url>
+
+</urlset>

@@ -1,13 +1,12 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import Layout from '@/components/Layout';
 import FormLostPass from '@/components/FormLostPass';
 
 export default function FogotPass() {
   return (
     <>
-      <Head>
-        <title>Esqueceu sua senha? - Hola Cartão</title>
-      </Head>
+      <NextSeo title="Esqueceu sua senha? - Hola Cartão" />
+
       <Layout>
         <FormLostPass />
       </Layout>

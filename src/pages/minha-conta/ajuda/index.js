@@ -1,6 +1,6 @@
+import { NextSeo } from 'next-seo';
 import { auth } from '@/Contexts/AppContext';
 // Components
-import Head from 'next/head';
 import Layout from '@/components/Layout';
 import MyAccHelp from '@/components/MyAccHelp';
 import MyAccLayout from '@/components/MyAccLayout';
@@ -8,9 +8,8 @@ import MyAccLayout from '@/components/MyAccLayout';
 export default function MinhaContaAjuda() {
   return (
     <>
-      <Head>
-        <title>Ajuda - Hola Cartão</title>
-      </Head>
+      <NextSeo noindex={true} title="Ajuda - Hola Cartão" />
+
       <Layout>
         <MyAccLayout>
           <MyAccHelp />

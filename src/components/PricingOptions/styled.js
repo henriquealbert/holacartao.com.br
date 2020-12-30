@@ -5,7 +5,7 @@ export const OptionItem = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  h4 {
+  h6 {
     font-weight: 500;
     font-size: 1rem;
     line-height: 15px;
@@ -37,7 +37,7 @@ export const Border = styled.div`
 
 export const BoxOption = styled.div`
   background: #fff;
-  border-radius: 18px;
+  border-radius: ${(props) => (props.home ? '18px 18px 0 0' : '18px')};
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -75,4 +75,18 @@ export const Price = styled.div`
   span {
     font-size: 15px;
   }
+`;
+
+export const CustoBeneficio = styled.div`
+  background: #fff;
+  border-radius: 0 0 18px 18px;
+  font-weight: 500;
+  font-size: 13.1123px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #433b3b;
+  text-align: center;
+  padding-bottom: 10px;
+  margin-top: -10px;
 `;

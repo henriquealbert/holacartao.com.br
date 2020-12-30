@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 import { authAdmin } from '@/Contexts/AdminContext';
 import AdminHeader from '@/components/AdminHeader';
@@ -7,9 +7,8 @@ import AdminCardTable from '@/components/AdminCardTable';
 export default function CardModels() {
   return (
     <>
-      <Head>
-        <title>Modelos de Cartão - Admin - Hola Cartão</title>
-      </Head>
+      <NextSeo noindex={true} title="Modelos de Cartão - Admin - Hola Cartão" />
+
       <AdminHeader />
       <AdminCardTable />
     </>

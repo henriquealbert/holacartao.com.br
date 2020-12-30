@@ -1,13 +1,12 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import Layout from '@/components/Layout';
 import FormRecoveryPass from '@/components/FormRecoveryPass';
 
 export default function CreateNewPass({ query }) {
   return (
     <>
-      <Head>
-        <title>Crie sua nova senha - Hola Cartão</title>
-      </Head>
+      <NextSeo title="Crie sua nova senha - Hola Cartão" />
+
       <Layout>
         <FormRecoveryPass query={query} />
       </Layout>
