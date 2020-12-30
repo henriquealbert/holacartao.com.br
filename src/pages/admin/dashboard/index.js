@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 import { authAdmin } from '@/Contexts/AdminContext';
 import AdminHeader from '@/components/AdminHeader';
@@ -8,9 +8,8 @@ import AdminTrello from '@/components/AdminTrello';
 export default function Dashboard() {
   return (
     <>
-      <Head>
-        <title>Dashboard - Admin - Hola Cartão</title>
-      </Head>
+      <NextSeo noindex={true} title="Dashboard - Admin - Hola Cartão" />
+
       <AdminHeader />
       <AdminSearch />
       <AdminTrello />

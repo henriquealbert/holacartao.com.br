@@ -5,3 +5,6 @@ Disallow: /minha-conta/
 Disallow: /admin/
 Disallow: /pagamento/
 Disallow: /obrigado/
+Host: https://holacartao.com.br
+Sitemap: https://https://holacartao.com.br/sitemap.xml
+

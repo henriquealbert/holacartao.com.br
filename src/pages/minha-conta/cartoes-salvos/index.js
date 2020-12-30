@@ -1,6 +1,6 @@
+import { NextSeo } from 'next-seo';
 import { auth } from '@/Contexts/AppContext';
 // Components
-import Head from 'next/head';
 import Layout from '@/components/Layout';
 import MyAccSavedCards from '@/components/MyAccSavedCards';
 import MyAccLayout from '@/components/MyAccLayout';
@@ -11,9 +11,8 @@ import GET_SAVED_CARDS from '@/graphql/queries/GetSavedCards';
 export default function MinhaContaCartoesSalvos({ initialData }) {
   return (
     <>
-      <Head>
-        <title>Meus Cartões Salvos - Hola Cartão</title>
-      </Head>
+      <NextSeo noindex={true} title="Meus Cartões Salvos - Hola Cartão" />
+
       <Layout>
         <MyAccLayout>
           <MyAccSavedCards initialData={initialData} />

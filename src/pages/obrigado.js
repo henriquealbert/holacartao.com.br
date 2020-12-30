@@ -1,15 +1,13 @@
-// Components
+import { NextSeo } from 'next-seo';
+
 import Layout from '@/components/Layout';
-import Head from 'next/head';
 import nextCookie from 'next-cookies';
 import ThankYou from '@/components/ThankYou';
 
 function Obrigado() {
   return (
     <>
-      <Head>
-        <title>Obrigado! - Hola Cartão</title>
-      </Head>
+      <NextSeo noindex={true} title="Obrigado! - Hola Cartão" />
       <Layout>
         <ThankYou />
       </Layout>

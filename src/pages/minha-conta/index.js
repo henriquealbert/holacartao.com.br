@@ -1,16 +1,15 @@
 import { auth } from '@/Contexts/AppContext';
 // Components
-import Head from 'next/head';
 import Layout from '@/components/Layout';
 import MyAcc from '@/components/MyAcc';
 import MyAccLayout from '@/components/MyAccLayout';
+import { NextSeo } from 'next-seo';
 
 export default function MinhaConta() {
   return (
     <>
-      <Head>
-        <title>Minha Conta - Hola Cartão</title>
-      </Head>
+      <NextSeo noindex={true} title="Minha Conta - Hola Cartão" />
+
       <Layout>
         <MyAccLayout>
           <MyAcc />

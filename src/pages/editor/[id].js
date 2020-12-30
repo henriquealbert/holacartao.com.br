@@ -1,5 +1,5 @@
+import { NextSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import Router from 'next/router';
 
 import { auth } from '@/Contexts/AppContext';
@@ -21,9 +21,11 @@ export default function UserEditor({ data }) {
   if (isMobile) Router.push('/modelos/');
   return (
     <>
-      <Head>
-        <title>Edite seu Modelo de Cartão - Hola Cartão</title>
-      </Head>
+      <NextSeo
+        noindex={true}
+        title="Edite seu Modelo de Cartão - Hola Cartão"
+      />
+
       <EditorComponent data={data} user />
     </>
   );

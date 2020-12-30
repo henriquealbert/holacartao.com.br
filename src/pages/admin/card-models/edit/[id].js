@@ -1,5 +1,5 @@
+import { NextSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 
 import { authAdmin } from '@/Contexts/AdminContext';
 import serverClient from '@/graphql/serverClient';
@@ -15,9 +15,10 @@ const EditorComponent = dynamic(() => import('@/Editor/index'), options);
 export default function CardModelEdit({ data }) {
   return (
     <>
-      <Head>
-        <title>Editar Modelo de Cartão - Admin - Hola Cartão</title>
-      </Head>
+      <NextSeo
+        noindex={true}
+        title="Editar Modelo de Cartão - Admin - Hola Cartão"
+      />
 
       <EditorComponent data={data} />
     </>

@@ -5,7 +5,7 @@ export const OptionItem = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  h4 {
+  h6 {
     font-weight: 500;
     font-size: 1rem;
     line-height: 15px;

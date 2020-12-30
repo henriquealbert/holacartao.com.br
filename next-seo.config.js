@@ -1,6 +1,6 @@
-const title =
+const title = 'Hola Cartão - Uma solução em cartões de visita.';
+const description =
   'Hola Cartão – Crie seu cartão de visita online e receba impresso em casa em até 7 dias com frete grátis!';
-const description = 'Hola Cartão - Uma solução em cartões de visita.';
 
 const SEO = {
   title,

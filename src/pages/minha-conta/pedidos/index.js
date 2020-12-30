@@ -1,6 +1,6 @@
+import { NextSeo } from 'next-seo';
 import { auth } from '@/Contexts/AppContext';
 // Components
-import Head from 'next/head';
 import Layout from '@/components/Layout';
 import MyAccOrders from '@/components/MyAccOrders';
 import MyAccLayout from '@/components/MyAccLayout';
@@ -11,9 +11,8 @@ import GET_ORDERS from '@/graphql/queries/GetOrders';
 export default function MinhaContaPedidos({ initialData }) {
   return (
     <>
-      <Head>
-        <title>Meus Pedidos - Hola Cartão</title>
-      </Head>
+      <NextSeo noindex={true} title="Meus Pedidos - Hola Cartão" />
+
       <Layout>
         <MyAccLayout>
           <MyAccOrders initialData={initialData} />

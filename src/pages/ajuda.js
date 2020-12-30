@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 import Layout from '@/components/Layout';
 import HelpPage from '@/components/HelpPage';
@@ -8,9 +8,8 @@ import GET_HELP_PAGE from '@/graphql/queries/GetHelpPage';
 export default function Ajuda({ data }) {
   return (
     <>
-      <Head>
-        <title>Central de Ajuda - Hola Cartão</title>
-      </Head>
+      <NextSeo title="Central de Ajuda - Hola Cartão" />
+
       <Layout>
         <HelpPage data={data} />
       </Layout>

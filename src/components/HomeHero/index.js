@@ -50,6 +50,7 @@ export default function HomeHero() {
                 letterSpacing="0.01em"
                 color="white"
                 maxW={{ base: '325px', md: '525px' }}
+                as="h1"
               >
                 Uma solução <br /> em cartões de visita.
               </Text>
@@ -61,6 +62,7 @@ export default function HomeHero() {
                 fontFamily="Roboto"
                 mt="30px"
                 maxW={{ base: '325px', md: '525px' }}
+                as="h2"
               >
                 Crie seu cartão de visita online e receba impresso em casa em
                 até 7 dias com frete grátis!

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Box, Flex, Icon, Text } from '@chakra-ui/react';
 import { AiFillInstagram } from 'react-icons/ai';
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function Footer() {
   return (
@@ -34,8 +35,15 @@ export default function Footer() {
                     <a>Modelos</a>
                   </Link>
                 </Text>
-                <Text as="li" color="white">
-                  <a>Pacotes</a>
+                <Text as="li" color="white" cursor="pointer">
+                  <ScrollLink
+                    to="home-prices"
+                    smooth={true}
+                    duration={1000}
+                    title="Ver Pacotes"
+                  >
+                    <a>Pacotes</a>
+                  </ScrollLink>
                 </Text>
                 <Text as="li" color="white">
                   <Link href="/criar-conta/">

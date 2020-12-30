@@ -43,6 +43,7 @@ export default function HomeLast() {
                 color="white"
                 maxW={{ base: '307px', md: '525px' }}
                 my="40px"
+                as="h3"
               >
                 Conexões abrem novas portas
               </Text>

@@ -3,7 +3,7 @@ import * as S from './styled';
 export const BasicPrice = () => {
   return (
     <S.OptionItem>
-      <h4>Basic</h4>
+      <h6>Basic</h6>
       <S.Border>
         <S.BoxOption>
           <S.Quantity>
@@ -25,7 +25,7 @@ export const StandardPrice = ({ home }) => {
       <S.Medalha>
         <img src="/images/medalha.svg" alt="Recomendado" />
       </S.Medalha>
-      <h4>Standard</h4>
+      <h6>Standard</h6>
       <S.Border gradient="standard">
         <S.BoxOption home={home}>
           <S.Quantity>
@@ -49,7 +49,7 @@ export const StandardPrice = ({ home }) => {
 export const CinquecentoPrice = () => {
   return (
     <S.OptionItem>
-      <h4>Cinque­cento</h4>
+      <h6>Cinque­cento</h6>
       <S.Border gradient="cinquecento">
         <S.BoxOption>
           <S.Quantity>
