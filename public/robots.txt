@@ -1,4 +1,5 @@
 User-Agent: *
+Allow: /
 Disallow: /editor/
 Disallow: /minha-conta/
 Disallow: /admin/

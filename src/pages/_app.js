@@ -13,6 +13,10 @@ import { globalStyles } from '@/styles/global';
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from '@/styles/theme';
 
+// SEO
+import { DefaultSeo } from 'next-seo';
+import SEO from '../../next-seo.config';
+
 export default function App({ Component, pageProps }) {
   const { admin, setAdmin, user, setUser } = useAuth();
 
@@ -23,6 +27,7 @@ export default function App({ Component, pageProps }) {
           <EditorUtilsProvider>
             <EditorProviderFrente>
               <EditorProviderVerso>
+                <DefaultSeo {...SEO} />
                 {globalStyles}
                 <Component {...pageProps} />
               </EditorProviderVerso>
