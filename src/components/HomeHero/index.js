@@ -12,6 +12,7 @@ export default function HomeHero() {
         <Box w={{ base: '100vw', md: '50%' }}>
           <Img
             src="/static/hero.jpg"
+            alt="Mulher Sorrindo para a solução Hola Cartão"
             w="100%"
             h={{ base: '100vh', md: '100vh' }}
             minH={{ base: '667px', md: 'auto' }}

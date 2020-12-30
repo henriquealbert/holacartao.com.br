@@ -26,6 +26,7 @@ export default function HomeFeatures() {
             width={525}
             height={474}
             quality={100}
+            alt="Modelos de Cartão de Visita para Editar"
           />
         </Box>
         <Box w={{ base: '100%', lg: '45%' }}>
@@ -172,6 +173,7 @@ export default function HomeFeatures() {
             width={582}
             height={380}
             quality={100}
+            alt="Confiança e depoimentos de outras pessoas"
           />
         </Box>
       </Flex>

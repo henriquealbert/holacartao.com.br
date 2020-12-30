@@ -116,6 +116,7 @@ export default function HomePrices() {
             h="100%"
             pr="2rem"
             pb="2rem"
+            alt="Qualidade"
           />
           <Img
             src="/static/mercadopago.png"
@@ -123,16 +124,31 @@ export default function HomePrices() {
             h="100%"
             pr="2rem"
             pb="2rem"
+            alt="MercadoPago"
           />
-          <Img src="/static/boleto.png" w="auto" h="100%" pr="2rem" pb="2rem" />
+          <Img
+            src="/static/boleto.png"
+            w="auto"
+            h="100%"
+            pr="2rem"
+            pb="2rem"
+            alt="Boleto"
+          />
           <Img
             src="/static/credit-card.png"
             w="auto"
             h="100%"
             pr="2rem"
             pb="2rem"
+            alt="Cartão de crédito em até 12 vezes"
           />
-          <Img src="/static/google-security.png" w="auto" h="100%" pb="2rem" />
+          <Img
+            src="/static/google-security.png"
+            w="auto"
+            h="100%"
+            pb="2rem"
+            alt="Segurança do Google"
+          />
         </Flex>
       </Flex>
     </Box>

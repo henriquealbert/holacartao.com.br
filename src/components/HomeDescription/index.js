@@ -64,6 +64,7 @@ export default function HomeDescription() {
             width={640}
             height={360}
             quality="100"
+            alt="Editor de Cartão de Visita Hola Cartão"
           />
         </Flex>
       </Flex>

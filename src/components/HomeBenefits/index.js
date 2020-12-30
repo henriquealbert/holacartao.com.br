@@ -41,6 +41,7 @@ export default function HomeBenefits() {
             height={379}
             width={582}
             quality="100"
+            alt="Mulher sorrindo sem stress para Hola Cartão"
           />
           <Box
             display={{ base: 'block', lg: 'none' }}

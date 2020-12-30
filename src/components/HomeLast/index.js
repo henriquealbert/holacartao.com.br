@@ -87,6 +87,7 @@ export default function HomeLast() {
             h={{ base: '690px', md: '100%' }}
             minH={{ base: '690px', md: 'auto' }}
             objectFit="cover"
+            alt="Pessoa com tranquilidade por ter usado o cartão de visita do Hola Cartão"
           />
         </Box>
       </Box>
