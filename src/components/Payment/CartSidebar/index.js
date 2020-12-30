@@ -28,14 +28,16 @@ export default function CartSidebar() {
               <p>Frete:</p>
             </Box>
             <Box>
-              <Text textAlign="end">{formatPrice(transactionAmount)}</Text>
+              <Text textAlign="end">
+                {formatPrice(parseFloat(transactionAmount))}
+              </Text>
               <Text textAlign="end">R$ 00,00</Text>
             </Box>
           </SimpleGrid>
           <SimpleGrid columns={2} className="sidebar-cart-total">
             <Text as="h4">TOTAL</Text>
             <Text as="h4" textAlign="end">
-              {formatPrice(transactionAmount)}
+              {formatPrice(parseFloat(transactionAmount))}
             </Text>
           </SimpleGrid>
         </S.PriceInfo>
