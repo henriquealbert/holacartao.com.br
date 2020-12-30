@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Link from 'next/link';
 import {
   Box,
   Button,
@@ -15,6 +14,7 @@ import {
   Text,
   useDisclosure
 } from '@chakra-ui/react';
+import Router from 'next/router';
 
 import OneModel from './OneModel';
 import SelectCategory from './SelectCategory';
@@ -25,6 +25,17 @@ export default function ModelosList({ data }) {
   // modal mobile
   const { isMobile } = useWindowDimensions();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const onClick = () => {
+    if (isMobile) {
+      onOpen();
+      return;
+    }
+    Router.push({
+      pathname: '/editor/',
+      query: { url: '/editor/' }
+    });
+  };
 
   // data
   const { cardModels } = data;
@@ -79,27 +90,21 @@ export default function ModelosList({ data }) {
             maxW="360px"
           >
             Crie seu próprio cartão de visita à partir de um modelo em branco{' '}
-            <Link
-              href={{
-                pathname: '/editor/',
-                query: { url: '/editor/' }
-              }}
+            <Button
+              variant="link"
+              as="a"
+              textDecoration="underline"
+              textTransform="normal"
+              cursor="pointer"
+              fontSize="18px"
+              letterSpacing="0.01em"
+              color="gray.900"
+              lineHeight="30px"
+              mb="2px"
+              onClick={onClick}
             >
-              <Button
-                variant="link"
-                as="a"
-                textDecoration="underline"
-                textTransform="normal"
-                cursor="pointer"
-                fontSize="18px"
-                letterSpacing="0.01em"
-                color="gray.900"
-                lineHeight="30px"
-                mb="2px"
-              >
-                clicando aqui
-              </Button>
-            </Link>{' '}
+              clicando aqui
+            </Button>
             ou escolha um modelo abaixo para personalizar.
           </Text>
         </Flex>
