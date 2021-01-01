@@ -10,6 +10,8 @@ export default function MyAccHelp() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const validations = Yup.object().shape({
     name: Yup.string().required('O nome é um campo obrigatório.'),
     email: Yup.string()
@@ -21,7 +23,7 @@ export default function MyAccHelp() {
   const handleSubmit = (data, { resetForm }) => {
     setLoading(true);
     axios
-      .post('http://localhost:1337/central-de-ajuda/sendHelp', data)
+      .post(`${API_URL}/central-de-ajuda/sendHelp`, data)
       .then(() => {
         setLoading(false);
         setSuccess(true);
