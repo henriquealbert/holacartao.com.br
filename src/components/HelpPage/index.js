@@ -53,11 +53,6 @@ export default function HelpPage({ data }) {
           </S.AnswerFAQ>
         );
       })}
-
-      <h4>
-        Não encontrou uma resposta para sua dúvida, entre em contato com *******
-        e vamos conversar!
-      </h4>
     </S.HelpPageWrapper>
   );
 }

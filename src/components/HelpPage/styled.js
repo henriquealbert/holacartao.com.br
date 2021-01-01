@@ -120,6 +120,6 @@ export const ImageDiv = styled.div`
   img {
     border-radius: 1rem;
     margin: 1rem;
-    max-width: 270px;
+    max-width: 540px;
   }
 `;
