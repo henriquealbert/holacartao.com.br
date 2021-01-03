@@ -1,6 +1,6 @@
-const title = 'Hola Cartão - Uma solução em cartões de visita.';
+const title = 'Crie Cartão de Visita Online e Receba em Casa | Frete Grátis';
 const description =
-  'Hola Cartão – Crie seu cartão de visita online e receba impresso em casa em até 7 dias com frete grátis!';
+  'Pronto em minutos! Sem contato com gráficas, Sem contratar um designer, Sem sair de casa. Pacotes à partir de R$79,90 com FRETE GRÁTIS';
 
 const SEO = {
   title,
@@ -15,10 +15,10 @@ const SEO = {
     description,
     images: [
       {
-        url: 'https://holacartao.com.br/og.png',
+        url: 'https://holacartao.com.br/og.jpeg',
         alt: title,
-        width: 1280,
-        height: 720
+        width: 1200,
+        height: 628
       }
     ]
   }
