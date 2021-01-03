@@ -1,6 +1,27 @@
 import { Box, Button, Flex, Icon, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import Image from 'next/image';
+import styled from '@emotion/styled';
+
+const VideoWrapper = styled.div`
+  position: relative;
+  padding-bottom: 40%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  @media screen and (min-width: 900px) {
+    padding-bottom: 43%;
+  }
+`;
 
 export default function HomeDescription() {
   return (
@@ -58,14 +79,15 @@ export default function HomeDescription() {
             </Link>
           </Flex>
         </Box>
-        <Flex justifyContent="center">
-          <Image
-            src="/static/editor-home.jpg"
-            width={640}
-            height={360}
-            quality="100"
-            alt="Editor de Cartão de Visita Hola Cartão"
-          />
+        <Flex maxW="720px" w="100%">
+          <VideoWrapper>
+            <iframe
+              src="https://fast.wistia.net/embed/iframe/3oahe1mwr6?seo=false&videoFoam=true"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </VideoWrapper>
         </Flex>
       </Flex>
       <Flex

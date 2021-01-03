@@ -42,7 +42,7 @@ export default function Footer() {
                     duration={1000}
                     title="Ver Pacotes"
                   >
-                    <a>Pacotes</a>
+                    Pacotes
                   </ScrollLink>
                 </Text>
                 <Text as="li" color="white">
