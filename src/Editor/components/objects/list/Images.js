@@ -10,14 +10,14 @@ export default function Images({ editorStore }) {
       {imgs.map((img) => {
         return (
           <ImageComponent
-            key={img.id}
+            key={img?.id}
             shapeProps={img}
-            isSelected={img.id === selectedId}
+            isSelected={img?.id === selectedId}
             onSelect={() => {
-              setSelectedId(img.id);
+              setSelectedId(img?.id);
             }}
             onChange={(newAttrs) => {
-              updateElement(img.id, newAttrs);
+              updateElement(img?.id, newAttrs);
             }}
             image={img}
           />

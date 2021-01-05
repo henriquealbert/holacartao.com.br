@@ -16,15 +16,15 @@ export default function Icons({ editorStore }) {
       {icons.map((icon) => {
         return (
           <IconComponent
-            key={icon.id}
+            key={icon?.id}
             shapeProps={icon}
-            isSelected={icon.id === selectedId}
+            isSelected={icon?.id === selectedId}
             onSelect={() => {
-              setSelectedId(icon.id);
-              setColor(icon.fill);
+              setSelectedId(icon?.id);
+              setColor(icon?.fill);
             }}
             onChange={(newAttrs) => {
-              updateElement(icon.id, newAttrs);
+              updateElement(icon?.id, newAttrs);
             }}
             icon={icon}
           />

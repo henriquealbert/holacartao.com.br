@@ -8,10 +8,10 @@ export default function BackgroundColor({ store, BgId }) {
       {bg.map((bg) => {
         return (
           <Rect
-            key={bg.id}
-            fill={bg.fill}
-            width={bg.width}
-            height={bg.height}
+            key={bg?.id}
+            fill={bg?.fill}
+            width={bg?.width}
+            height={bg?.height}
             id={BgId}
           />
         );

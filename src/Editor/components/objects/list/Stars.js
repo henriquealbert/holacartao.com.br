@@ -16,17 +16,17 @@ export default function Stars({ editorStore }) {
       {stars.map((star) => {
         return (
           <StarComponent
-            key={star.id}
+            key={star?.id}
             shapeProps={star}
-            isSelected={star.id === selectedId}
+            isSelected={star?.id === selectedId}
             onSelect={() => {
-              setSelectedId(star.id);
-              setColor(star.fill);
+              setSelectedId(star?.id);
+              setColor(star?.fill);
             }}
             onChange={(newAttrs) => {
-              updateElement(star.id, newAttrs);
+              updateElement(star?.id, newAttrs);
             }}
-            color={star.fill}
+            color={star?.fill}
           />
         );
       })}

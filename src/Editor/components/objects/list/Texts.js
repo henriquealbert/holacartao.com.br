@@ -23,22 +23,22 @@ export default function Texts({ editorStore }) {
       {txts.map((text) => {
         return (
           <TextComponent
-            key={text.id}
+            key={text?.id}
             shapeProps={text}
-            isSelected={text.id === selectedId}
+            isSelected={text?.id === selectedId}
             onSelect={() => {
-              setSelectedId(text.id);
-              setText(text.text);
-              setTextFontFamily(text.fontFamily);
-              setTextFontSize(text.fontSize);
-              setTextFontStyle(text.fontStyle);
-              setTextFontDecoration(text.textDecoration);
-              setTextAlign(text.align);
-              setColor(text.fill);
-              setTextLetterSpacing(text.letterSpacing);
+              setSelectedId(text?.id);
+              setText(text?.text);
+              setTextFontFamily(text?.fontFamily);
+              setTextFontSize(text?.fontSize);
+              setTextFontStyle(text?.fontStyle);
+              setTextFontDecoration(text?.textDecoration);
+              setTextAlign(text?.align);
+              setColor(text?.fill);
+              setTextLetterSpacing(text?.letterSpacing);
             }}
             onChange={(newAttrs) => {
-              updateElement(text.id, newAttrs);
+              updateElement(text?.id, newAttrs);
             }}
           />
         );

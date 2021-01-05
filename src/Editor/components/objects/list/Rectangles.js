@@ -16,17 +16,17 @@ export default function Rectangles({ editorStore }) {
       {rects.map((rect) => {
         return (
           <RectangleComponent
-            key={rect.id}
+            key={rect?.id}
             shapeProps={rect}
-            isSelected={rect.id === selectedId}
+            isSelected={rect?.id === selectedId}
             onSelect={() => {
-              setSelectedId(rect.id);
-              setColor(rect.fill);
+              setSelectedId(rect?.id);
+              setColor(rect?.fill);
             }}
             onChange={(newAttrs) => {
-              updateElement(rect.id, newAttrs);
+              updateElement(rect?.id, newAttrs);
             }}
-            color={rect.fill}
+            color={rect?.fill}
           />
         );
       })}
