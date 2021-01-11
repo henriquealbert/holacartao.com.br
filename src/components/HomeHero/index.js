@@ -17,6 +17,7 @@ export default function HomeHero() {
             h={{ base: '100vh', md: '100vh' }}
             minH={{ base: '667px', md: 'auto' }}
             objectFit="cover"
+            loading="lazy"
           />
         </Box>
         <Box
