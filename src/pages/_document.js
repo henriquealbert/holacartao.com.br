@@ -1,3 +1,4 @@
+import GoogleAds from '@/utils/GoogleAds';
 import GoogleAnalytics from '@/utils/GoogleAnalytics';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
@@ -12,6 +13,7 @@ class MyDocument extends Document {
       <Html lang="pt-br">
         <Head>
           <GoogleAnalytics />
+          <GoogleAds />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap"

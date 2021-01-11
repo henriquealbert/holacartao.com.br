@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import nextCookie from 'next-cookies';
 import { NextSeo } from 'next-seo';
+import Head from 'next/head';
+import GAdsInitiatePurchase from '@/utils/GoogleAdsConversion/GAdsInitiatePurchase';
 
 import Layout from '@/components/Layout';
 import Payment from '@/components/Payment';
@@ -21,6 +23,9 @@ export default function Pagamento() {
         noindex={true}
         title="Finalize sua Compra e Imprima o seu Cartão - Hola Cartão"
       />
+      <Head>
+        <GAdsInitiatePurchase />
+      </Head>
 
       <Layout>
         <Payment />

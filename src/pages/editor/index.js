@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 import Router from 'next/router';
+import Head from 'next/head';
+import GAdsLead from '@/utils/GoogleAdsConversion/GAdsLead';
 
 import { auth } from '@/Contexts/AppContext';
 import LoadingEditor from '@/Editor/Loading';
@@ -19,6 +21,9 @@ export default function Editor() {
   return (
     <>
       <NextSeo noindex={true} title="Crie seu Modelo de Cartão - Hola Cartão" />
+      <Head>
+        <GAdsLead />
+      </Head>
 
       <EditorComponent user />
     </>

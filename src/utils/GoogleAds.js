@@ -1,9 +1,9 @@
-export default function GoogleAnalytics() {
+export default function GoogleAds() {
   return (
     <>
       <script
         async
-        src="https://www.googletagmanager.com/gtag/js?id=G-R20TJELDX5"
+        src="https://www.googletagmanager.com/gtag/js?id=AW-451436940"
       ></script>
       <script
         dangerouslySetInnerHTML={{
@@ -11,8 +11,9 @@ export default function GoogleAnalytics() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-R20TJELDX5');
-            `
+
+            gtag('config', 'AW-451436940');
+          `
         }}
       />
     </>

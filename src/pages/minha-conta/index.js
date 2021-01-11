@@ -1,14 +1,19 @@
+import { NextSeo } from 'next-seo';
+import Head from 'next/head';
+import GAdsLead from '@/utils/GoogleAdsConversion/GAdsLead';
+
 import { auth } from '@/Contexts/AppContext';
-// Components
 import Layout from '@/components/Layout';
 import MyAcc from '@/components/MyAcc';
 import MyAccLayout from '@/components/MyAccLayout';
-import { NextSeo } from 'next-seo';
 
 export default function MinhaConta() {
   return (
     <>
       <NextSeo noindex={true} title="Minha Conta - Hola Cartão" />
+      <Head>
+        <GAdsLead />
+      </Head>
 
       <Layout>
         <MyAccLayout>
