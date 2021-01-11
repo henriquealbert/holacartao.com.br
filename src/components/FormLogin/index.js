@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useState, useContext } from 'react';
 import { Formik, Form, Field } from 'formik';
 import {
@@ -17,6 +18,8 @@ import { login } from '@/lib/auth';
 import AppContext from '@/Contexts/AppContext';
 
 export default function FormLogin() {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const toast = useToast();
 
@@ -67,6 +70,20 @@ export default function FormLogin() {
         mb="1rem"
       >
         Bom ver você novamente.
+      </Text>
+
+      <Text textAlign="center" color="gray.500" mb="2rem" fontSize="20px">
+        Não possui uma conta ainda?{' '}
+        <Link href={{ pathname: '/criar-conta/', query: router.query }}>
+          <Text
+            as="a"
+            cursor="pointer"
+            _hover={{ textDecoration: 'underline' }}
+            color="blue.500"
+          >
+            clique aqui para criar.
+          </Text>
+        </Link>
       </Text>
 
       <Flex justifyContent={{ base: 'none', md: 'center' }} mt="2rem">

@@ -10,7 +10,6 @@ import Link from 'next/link';
 import * as S from './styled';
 
 export default function SingleOrderTable({ order }) {
-  console.log(order);
   return (
     <S.OrderTable>
       <tbody>
