@@ -1,3 +1,4 @@
+import Chat from '@/utils/Chat';
 import FacebookPixel from '@/utils/FacebookPixel';
 import GoogleAds from '@/utils/GoogleAds';
 import GoogleAnalytics from '@/utils/GoogleAnalytics';
@@ -17,6 +18,7 @@ class MyDocument extends Document {
           <GoogleAnalytics />
           <GoogleAds />
           <FacebookPixel />
+          <Chat />
 
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
