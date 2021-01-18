@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 const VideoWrapper = styled.div`
   position: relative;
-  padding-bottom: 40%;
+  padding-bottom: 48%;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
@@ -18,8 +18,8 @@ const VideoWrapper = styled.div`
     width: 100%;
     height: 100%;
   }
-  @media screen and (min-width: 900px) {
-    padding-bottom: 43%;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 51.5%;
   }
 `;
 
@@ -82,7 +82,7 @@ export default function HomeDescription() {
         <Flex maxW="720px" w="100%">
           <VideoWrapper>
             <iframe
-              src="https://fast.wistia.net/embed/iframe/3oahe1mwr6?seo=false&videoFoam=true"
+              src="https://fast.wistia.net/embed/iframe/r36917efm3?seo=false&videoFoam=true"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

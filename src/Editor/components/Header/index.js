@@ -5,6 +5,7 @@ import { Flex, Icon, Img } from '@chakra-ui/react';
 import SaveCardHeader from '../SaveCardHeader';
 
 import * as S from './styled';
+import TutorialModal from './TutorialModal';
 
 export default function Header({ editorStore, user }) {
   const { removeElement, handleUndo } = editorStore;
@@ -59,6 +60,7 @@ export default function Header({ editorStore, user }) {
           </Icon>
           excluir
         </S.ActionButton>
+        {user && <TutorialModal />}
       </Flex>
       {user && <SaveCardHeader />}
     </Flex>
