@@ -13,13 +13,6 @@ const MUTATION_CREATE_ADDRESS = gql`
         email
         areaCode
         phoneNumber
-        cep
-        logradouro
-        streetNumber
-        complemento
-        referencia
-        bairro
-        cidadeEstado
       }
     }
   }

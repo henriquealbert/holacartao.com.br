@@ -30,11 +30,11 @@
     "next-seo": "^4.17.0",
     "payment": "^2.4.0",
     "prop-types": "^15.7.2",
-    "react": "17.0.1",
+    "react": "17.0.2",
     "react-accessible-accordion": "^3.3.3",
     "react-color": "^2.19.3",
     "react-credit-cards": "^0.8.3",
-    "react-dom": "17.0.1",
+    "react-dom": "17.0.2",
     "react-icons": "^4.1.0",
     "react-konva": "^17.0.0-0",
     "react-modal": "^3.12.1",
@@ -45,15 +45,15 @@
     "yup": "^0.32.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-proposal-decorators": "^7.12.1",
-    "@emotion/babel-plugin": "^11.1.2",
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-proposal-decorators": "^7.14.2",
+    "@emotion/babel-plugin": "^11.3.0",
     "babel-loader": "^8.2.2",
-    "eslint": "^7.16.0",
-    "eslint-config-prettier": "^7.1.0",
-    "eslint-plugin-prettier": "^3.3.0",
-    "eslint-plugin-react": "^7.21.5",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.3.0"
   }
 }

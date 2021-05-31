@@ -18,7 +18,7 @@ class MyDocument extends Document {
           <GoogleAnalytics />
           <GoogleAds />
           <FacebookPixel />
-          <Chat />
+          {/* <Chat /> */}
 
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
@@ -31,6 +31,10 @@ class MyDocument extends Document {
           />
           <link
             href="https://fonts.googleapis.com/css2?family=Varela&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
             rel="stylesheet"
           />
           <link

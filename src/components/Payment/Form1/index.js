@@ -27,7 +27,7 @@ export default function Form1({ setMenu }) {
     areaCode,
     phoneNumber
   }) => {
-    if (order.address?.id) {
+    if (order?.address?.id) {
       const { updateAddress } = await client.request(MUTATION_UPDATE_ADDRESS, {
         input: {
           where: {
@@ -46,11 +46,11 @@ export default function Form1({ setMenu }) {
       setMenu('02');
     }
 
-    if (!order.address?.id) {
+    if (!order?.address?.id) {
       const { createAddress } = await client.request(MUTATION_CREATE_ADDRESS, {
         input: {
           data: {
-            order: order.order.id,
+            order: order?.order?.id,
             firstName,
             lastName,
             email,
@@ -59,6 +59,7 @@ export default function Form1({ setMenu }) {
           }
         }
       });
+      console.log(createAddress);
       setOrder((prev) => ({ ...prev, address: createAddress.address }));
       setMenu('02');
     }
